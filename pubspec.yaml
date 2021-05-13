@@ -20,9 +20,11 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
-
-
   uses-material-design: true
   assets:
     - images/
 
+  fonts:
+    - family: Young
+      fonts:
+        - asset: fonts/young.ttf

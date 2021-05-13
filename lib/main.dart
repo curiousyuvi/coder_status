@@ -1,5 +1,10 @@
+import 'package:codersstatus/coderavatarwidget.dart';
+import 'package:codersstatus/coderbadgewidget.dart';
+import 'package:codersstatus/colorscheme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
+import 'package:flutter/rendering.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -8,175 +13,158 @@ void main() {
     MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.blueGrey[800],
-        body: Home(),
+        backgroundColor: colorschemeclass.vdarkgeen,
+        body: coderbadges(),
       ),
     ),
   );
 }
 
-class Home extends StatefulWidget {
-  const Home({Key key}) : super(key: key);
+class coderbadges extends StatefulWidget {
+  const coderbadges({Key key}) : super(key: key);
 
   @override
-  _HomeState createState() => _HomeState();
+  _coderbadgesState createState() => _coderbadgesState();
 }
 
-class _HomeState extends State<Home> {
-  String s = ' 0 pts.';
-
-  Future<http.Response> fetchdata() async {
-    http.Response response = await http.get(
-        'https://competitive-coding-api.herokuapp.com/api/codechef/curiousyuvi');
-    return response;
-  }
+class _coderbadgesState extends State<coderbadges>
+    with SingleTickerProviderStateMixin {
+  void onclickavatar() async {}
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Center(
+    return Padding(
+      padding: const EdgeInsets.all(24.0),
+      child: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: Image(
-                      image: AssetImage('images/codeforces_logo.png'),
-                      height: 100.0,
-                      width: 100.0,
-                    ),
-                  ),
+                Icon(
+                  CupertinoIcons.back,
+                  color: Colors.white,
                 ),
-                new Container(
-                  height: 40.0,
-                  color: Colors.transparent,
-                  child: new Container(
-                      decoration: new BoxDecoration(
-                          color: Colors.green,
-                          borderRadius: new BorderRadius.only(
-                              topLeft: const Radius.circular(30.0),
-                              topRight: const Radius.circular(30.0),
-                              bottomLeft: const Radius.circular(30.0),
-                              bottomRight: const Radius.circular(30.0))),
-                      child: new Center(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: new Text(
-                            "Rating: ",
-                            style:
-                                TextStyle(fontSize: 20.0, color: Colors.white),
-                          ),
-                        ),
-                      )),
-                ),
+                //"Badges" Heading
                 Text(
-                  ' 0 pts.',
-                  style: TextStyle(fontSize: 20.0, color: Colors.white),
+                  'Badges',
+                  style: TextStyle(
+                      color: Colors.white, fontSize: 35, fontFamily: 'young'),
+                ),
+                SizedBox(
+                  width: 20,
                 )
               ],
             ),
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: InkWell(
-                      onTap: () async {
-                        http.Response response = await fetchdata();
-                        if (response.statusCode == 200) {
-
-                          int rating=jsonDecode(response.body)['rating'];
-                          s='$rating pts.';
-
-                          setState(() {});
-                        } else {
-                          s = 'ERROR';
-                          print('ERROR');
-                          setState(() {});
-                        }
-                      },
-                      child: Image(
-                        image: AssetImage('images/codechef_logo.png'),
-                        height: 100.0,
-                        width: 100.0,
-                      ),
+            //Avatar of the coder
+            Padding(
+              padding: const EdgeInsets.all(30.0),
+              child: GestureDetector(
+                onTap: () {
+                  onclickavatar();
+                },
+                child: Container(
+                  height: 140,
+                  width: 140,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                          color: colorschemeclass.brigthgreen.withOpacity(0.7),
+                          spreadRadius: 10,
+                          blurRadius: 40)
+                    ],
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                        color: colorschemeclass.brigthgreen, width: 5),
+                    image: DecorationImage(
+                      image: AssetImage('images/examplecoder.jpg'),
                     ),
                   ),
                 ),
-                new Container(
-                  height: 40.0,
-                  color: Colors.transparent,
-                  child: new Container(
-                      decoration: new BoxDecoration(
-                          color: Colors.green,
-                          borderRadius: new BorderRadius.only(
-                              topLeft: const Radius.circular(30.0),
-                              topRight: const Radius.circular(30.0),
-                              bottomLeft: const Radius.circular(30.0),
-                              bottomRight: const Radius.circular(30.0))),
-                      child: new Center(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: new Text(
-                            "Rating: ",
-                            style:
-                                TextStyle(fontSize: 20.0, color: Colors.white),
-                          ),
-                        ),
-                      )),
-                ),
-                Text(
-                  s,
-                  style: TextStyle(fontSize: 20.0, color: Colors.white),
-                )
-              ],
+              ),
             ),
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: Image(
-                      image: AssetImage('images/hackerrank_logo.png'),
-                      height: 100.0,
-                      width: 100.0,
-                    ),
+            //coder full name
+            Padding(
+              padding: const EdgeInsets.all(1.0),
+              child: Center(
+                  child: Text(
+                'Yuvraj Singh',
+                style: TextStyle(
+                    fontSize: 25, color: Colors.white, fontFamily: 'young'),
+              )),
+            ),
+
+            //codername
+            Padding(
+              padding: const EdgeInsets.all(1.0),
+              child: Center(
+                child: Text(
+                  '@curiousyuvi',
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white.withAlpha(900),
+                      fontFamily: 'young'),
+                ),
+              ),
+            ),
+
+            //coderpoints
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    '8122 pts',
+                    style: TextStyle(
+                        fontSize: 40,
+                        color: colorschemeclass.brigthgreen,
+                        fontFamily: 'young'),
                   ),
-                ),
-                new Container(
-                  height: 40.0,
-                  color: Colors.transparent,
-                  child: new Container(
-                      decoration: new BoxDecoration(
-                          color: Colors.green,
-                          borderRadius: new BorderRadius.only(
-                              topLeft: const Radius.circular(30.0),
-                              topRight: const Radius.circular(30.0),
-                              bottomLeft: const Radius.circular(30.0),
-                              bottomRight: const Radius.circular(30.0))),
-                      child: new Center(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: new Text(
-                            "Rating: ",
-                            style:
-                                TextStyle(fontSize: 20.0, color: Colors.white),
-                          ),
-                        ),
-                      )),
-                ),
-                Text(
-                  ' 0 pts.',
-                  style: TextStyle(fontSize: 20.0, color: Colors.white),
-                )
-              ],
+                  Padding(
+                    padding: const EdgeInsets.all(2.0),
+                    child: Icon(
+                      CupertinoIcons.arrowtriangle_up_fill,
+                      color: colorschemeclass.brigthgreen,
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  coderbadgewidgetclass.getcoderbadge(
+                    AssetImage('images/codechefon.jpg'),AssetImage('images/codechefon.jpg'),
+                  ),
+                  coderbadgewidgetclass.getcoderbadge(
+                    AssetImage('images/codeforceson.jpg'),AssetImage('images/codeforceson.jpg'),
+                  ),
+                  coderbadgewidgetclass.getcoderbadge(
+                    AssetImage('images/leetcodeon.jpg'),  AssetImage('images/leetcodeon.jpg'),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  coderbadgewidgetclass.getcoderbadge(
+                    AssetImage('images/IBoff.jpg'),  AssetImage('images/IBoff.jpg'),
+                  ),
+                  coderbadgewidgetclass.getcoderbadge(
+                    AssetImage('images/spojlogooff.jpg'), AssetImage('images/spojlogooff.jpg'),
+                  ),
+                  coderbadgewidgetclass.getcoderbadge(
+                    AssetImage('images/atcoderoff.jpg'),AssetImage('images/atcoderoff.jpg'),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
