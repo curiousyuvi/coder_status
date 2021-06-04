@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'mybadgesscreen.dart';
+import 'enternamescreen.dart';
+import 'entercodernamescreen.dart';
 
 void main() => runApp(myApp());
 
@@ -13,7 +15,7 @@ class myApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: mybadgesscreen(),
+      home: enternamescreen(),
     );
   }
 }
