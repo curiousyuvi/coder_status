@@ -8,7 +8,7 @@ import 'package:flutter/widgets.dart';
 void main() => runApp(
       MaterialApp(
         home: Scaffold(
-          backgroundColor: colorschemeclass.vdarkgreen,
+          backgroundColor: colorschemeclass.dark,
           body: drawer(),
         ),
       ),

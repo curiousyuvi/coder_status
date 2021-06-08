@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'mybadgesscreen.dart';
-import 'enternamescreen.dart';
-import 'entercodernamescreen.dart';
+import 'signinscreen.dart';
+import 'registerscreen.dart';
 
 void main() => runApp(myApp());
 
@@ -15,9 +15,12 @@ class myApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+          accentColor: colorschemeclass.primarygreen,
+          primaryColor: colorschemeclass.primarygreen,
+      scaffoldBackgroundColor: colorschemeclass.dark,
+      textTheme: TextTheme(bodyText1: TextStyle(fontFamily: 'young',color: Colors.white),headline1: TextStyle(fontFamily: 'young',color: Colors.white))),
       home: enternamescreen(),
     );
   }
 }
-
-

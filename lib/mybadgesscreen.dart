@@ -41,8 +41,8 @@ class mybadgesscreenState extends State<mybadgesscreen> {
           decoration: BoxDecoration(
               gradient: LinearGradient(
             colors: [
-              colorschemeclass.vdarkgreen,
-              colorschemeclass.greygreen,
+              colorschemeclass.dark,
+              colorschemeclass.tertiarygreen,
             ],
             begin: Alignment.bottomCenter,
             end: Alignment.topCenter,
@@ -63,7 +63,7 @@ class mybadgesscreenState extends State<mybadgesscreen> {
                   ..setEntry(0, 3, 200 * val)
                   ..rotateY((pi / 6) * val),
                 child: Scaffold(
-                  backgroundColor: colorschemeclass.vdarkgreen,
+                  backgroundColor: colorschemeclass.dark,
                   body: SafeArea(
                     child: Flexible(
                       child: Container(
@@ -92,18 +92,18 @@ class mybadgesscreenState extends State<mybadgesscreen> {
                                 decoration: BoxDecoration(
                                   boxShadow: [
                                     BoxShadow(
-                                        color: colorschemeclass.brigthgreen
+                                        color: colorschemeclass.primarygreen
                                             .withOpacity(0.7),
                                         spreadRadius: 10,
                                         blurRadius: 40)
                                   ],
                                   shape: BoxShape.circle,
                                   border: Border.all(
-                                      color: colorschemeclass.brigthgreen,
+                                      color: colorschemeclass.primarygreen,
                                       width: 5),
                                   image: DecorationImage(
                                     image: AssetImage(
-                                      'images/examplecoder.jpg',
+                                      'images/useravatar.jpg',
                                     ),
                                   ),
                                 ),
@@ -146,14 +146,14 @@ class mybadgesscreenState extends State<mybadgesscreen> {
                                     '1675 pts',
                                     style: TextStyle(
                                         fontSize: 40,
-                                        color: colorschemeclass.brigthgreen,
+                                        color: colorschemeclass.primarygreen,
                                         fontFamily: 'young'),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.all(2.0),
                                     child: Icon(
                                       CupertinoIcons.arrowtriangle_up_fill,
-                                      color: colorschemeclass.brigthgreen,
+                                      color: colorschemeclass.primarygreen,
                                     ),
                                   )
                                 ],
@@ -162,7 +162,8 @@ class mybadgesscreenState extends State<mybadgesscreen> {
                             Padding(
                               padding: const EdgeInsets.symmetric(vertical: 8),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
                                 children: [
                                   getcoderbadge('images/codechef', 'off.jpg'),
                                   getcoderbadge('images/codeforces', 'off.jpg'),
@@ -171,9 +172,11 @@ class mybadgesscreenState extends State<mybadgesscreen> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 8.0),
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 8.0),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
                                 children: [
                                   getcoderbadge('images/IB', 'off.jpg'),
                                   getcoderbadge('images/spoj', 'off.jpg'),
