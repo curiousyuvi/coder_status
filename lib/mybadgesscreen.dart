@@ -8,6 +8,8 @@ import 'drawer.dart';
 import 'dart:math';
 import 'colorscheme.dart';
 
+void main() => runApp(MaterialApp(home: mybadgesscreen(),));
+
 class mybadgesscreen extends StatefulWidget {
   const mybadgesscreen({Key key}) : super(key: key);
 

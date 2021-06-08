@@ -3,9 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
+import 'package:splashscreen/splashscreen.dart';
 import 'mybadgesscreen.dart';
+import 'registernamescreen.dart';
 import 'signinscreen.dart';
-import 'registerscreen.dart';
 
 void main() => runApp(myApp());
 
@@ -18,9 +19,19 @@ class myApp extends StatelessWidget {
       theme: ThemeData(
           accentColor: colorschemeclass.primarygreen,
           primaryColor: colorschemeclass.primarygreen,
-      scaffoldBackgroundColor: colorschemeclass.dark,
-      textTheme: TextTheme(bodyText1: TextStyle(fontFamily: 'young',color: Colors.white),headline1: TextStyle(fontFamily: 'young',color: Colors.white))),
-      home: enternamescreen(),
+          scaffoldBackgroundColor: colorschemeclass.dark,
+          textTheme: TextTheme(
+              bodyText1: TextStyle(fontFamily: 'young', color: Colors.white),
+              headline1: TextStyle(fontFamily: 'young', color: Colors.white))),
+      home: SplashScreen(
+        seconds: 2,
+        navigateAfterSeconds: signinscreen(),
+        photoSize: 200,
+        image: Image(
+          image: AssetImage('images/appiconnoback.png'),
+        ),
+        backgroundColor: colorschemeclass.dark,
+      ),
     );
   }
 }

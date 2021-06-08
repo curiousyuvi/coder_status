@@ -9,10 +9,10 @@ InputDecoration myInputDecoration = InputDecoration(
       color: colorschemeclass.lightgrey,
     ),
     focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(5),
         borderSide: BorderSide(color: colorschemeclass.primarygreen, width: 2)),
     enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(15),
+      borderRadius: BorderRadius.circular(5),
     ),
     hintText: 'Enter a value',
     hintStyle: TextStyle( color: colorschemeclass.unactivatedblack
