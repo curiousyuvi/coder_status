@@ -1,4 +1,5 @@
 import 'package:codersstatus/colorscheme.dart';
+import 'package:codersstatus/registeremailidscreen.dart';
 import 'package:codersstatus/registernamescreen.dart';
 import 'package:codersstatus/registerpasswoedscreen.dart';
 import 'package:flutter/cupertino.dart';
@@ -62,7 +63,7 @@ class _registercodernamescreenState extends State<registercodernamescreen> {
                     child: Text(
                       'Codername is like a Username ,*Example: @demon_lord',
                       style: TextStyle(
-                          color: colorschemeclass.darkgrey, fontSize: 15, fontFamily: 'young'),
+                          color: colorschemeclass.darkgrey, fontSize: 15, fontFamily: 'young'),textAlign: TextAlign.center,
                     ),
                   )),
               Flexible(child: myTextField(Icon(Icons.alternate_email), 'codername')),
@@ -71,7 +72,7 @@ class _registercodernamescreenState extends State<registercodernamescreen> {
                     print('Next pressed!!!');
                     Navigator.push(context, MaterialPageRoute(
                         builder: (context) {
-                          return registerpasswordscreen();
+                          return registeremailidscreen();
                         }));
                   }))
             ],

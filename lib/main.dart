@@ -15,7 +15,7 @@ class myApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp(debugShowCheckedModeBanner: false,
       theme: ThemeData(
           accentColor: colorschemeclass.primarygreen,
           primaryColor: colorschemeclass.primarygreen,
@@ -26,7 +26,7 @@ class myApp extends StatelessWidget {
       home: SplashScreen(
         seconds: 2,
         navigateAfterSeconds: signinscreen(),
-        photoSize: 200,
+        photoSize: 120,
         image: Image(
           image: AssetImage('images/appiconnoback.png'),
         ),

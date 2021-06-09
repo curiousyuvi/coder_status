@@ -62,7 +62,7 @@ class _registernamescreenState extends State<registernamescreen> {
                     child: Text(
                       '*Example: Alan Wil',
                       style: TextStyle(
-                          color: colorschemeclass.darkgrey, fontSize: 15, fontFamily: 'young'),
+                          color: colorschemeclass.darkgrey, fontSize: 15, fontFamily: 'young'),textAlign: TextAlign.center,
                     ),
                   )),
               Flexible(child: myTextField(Icon(Icons.person), 'Full Name')),

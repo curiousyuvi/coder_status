@@ -1,5 +1,6 @@
 import 'package:codersstatus/colorscheme.dart';
 import 'package:codersstatus/registernamescreen.dart';
+import 'package:codersstatus/registerpasswoedscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -13,18 +14,18 @@ import 'mybadgesscreen.dart';
 
 void main() => runApp(
       MaterialApp(
-        home: registerpasswordscreen(),
+        home: registeremailidscreen(),
       ),
     );
 
-class registerpasswordscreen extends StatefulWidget {
-  const registerpasswordscreen({Key key}) : super(key: key);
+class registeremailidscreen extends StatefulWidget {
+  const registeremailidscreen({Key key}) : super(key: key);
 
   @override
-  _registerpasswordscreenState createState() => _registerpasswordscreenState();
+  _registeremailidscreenState createState() => _registeremailidscreenState();
 }
 
-class _registerpasswordscreenState extends State<registerpasswordscreen> {
+class _registeremailidscreenState extends State<registeremailidscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +52,7 @@ class _registerpasswordscreenState extends State<registerpasswordscreen> {
                   child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  'Choose Password',
+                  'Enter Email Id',
                   style: TextStyle(
                       color: Colors.white, fontSize: 25, fontFamily: 'young'),
                 ),
@@ -60,21 +61,36 @@ class _registerpasswordscreenState extends State<registerpasswordscreen> {
                   child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                    'Use a combination of letters, digits and special characters',
+                    'Please enter a valid Email Id because a verification code will be sent to your Email',
                     style: TextStyle(
                         color: colorschemeclass.darkgrey,
                         fontSize: 15,
                         fontFamily: 'young'),
                     textAlign: TextAlign.center),
               )),
-              Flexible(child: myTextField(Icon(Icons.vpn_key), 'password')),
+              Flexible(child: myTextField(Icon(Icons.email_sharp), 'email id')),
               Flexible(
-                  child: myTextField(Icon(Icons.vpn_key), 'confirm password')),
+                  child: myButton(false, 'Send Confirmation Code', () {
+                print('OTP sent!!!');
+              })),
+              Flexible(
+                  child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                    'Enter the confirmation code you receive on your email',
+                    style: TextStyle(
+                        color: colorschemeclass.darkgrey,
+                        fontSize: 15,
+                        fontFamily: 'young'),
+                    textAlign: TextAlign.center),
+              )),
+              Flexible(
+                  child: myTextField(Icon(Icons.check), 'confirmation code')),
               Flexible(
                   child: myButton(true, 'Next', () {
                 print('Next pressed!!!');
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return mybadgesscreen();
+                  return registerpasswordscreen();
                 }));
               }))
             ],
