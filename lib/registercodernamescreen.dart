@@ -1,31 +1,34 @@
-import 'package:codersstatus/colorscheme.dart';
-import 'package:codersstatus/registeremailidscreen.dart';
+import 'package:codersstatus/components/colorscheme.dart';
+import 'package:codersstatus/registeremailidscreen1.dart';
 import 'package:codersstatus/registernamescreen.dart';
-import 'package:codersstatus/registerpasswoedscreen.dart';
+import 'package:codersstatus/registerpasswordscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'constants.dart';
-import 'myTextField.dart';
-import 'coderstatusheading.dart';
-import 'myButton.dart';
+import 'components/constants.dart';
+import 'components/myTextFormField.dart';
+import 'components/coderstatusheading.dart';
+import 'components/myButton.dart';
 
 void main() => runApp(
-  MaterialApp(
-    home: registercodernamescreen(),
-  ),
-);
+      MaterialApp(
+        home: registercodernamescreen(),
+      ),
+    );
 
 class registercodernamescreen extends StatefulWidget {
   const registercodernamescreen({Key key}) : super(key: key);
 
   @override
-  _registercodernamescreenState createState() => _registercodernamescreenState();
+  _registercodernamescreenState createState() =>
+      _registercodernamescreenState();
 }
 
 class _registercodernamescreenState extends State<registercodernamescreen> {
+  String codername = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,31 +53,39 @@ class _registercodernamescreenState extends State<registercodernamescreen> {
               ),
               Flexible(
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'Choose Codername',
-                      style: TextStyle(
-                          color: Colors.white, fontSize: 25, fontFamily: 'young'),
-                    ),
-                  )),
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Choose Codername',
+                  style: TextStyle(
+                      color: Colors.white, fontSize: 25, fontFamily: 'young'),
+                ),
+              )),
               Flexible(
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'Codername is like a Username ,*Example: @demon_lord',
-                      style: TextStyle(
-                          color: colorschemeclass.darkgrey, fontSize: 15, fontFamily: 'young'),textAlign: TextAlign.center,
-                    ),
-                  )),
-              Flexible(child: myTextField(Icon(Icons.alternate_email), 'codername')),
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Codername is like a Username ,*Example: @demon_lord',
+                  style: TextStyle(
+                      color: colorschemeclass.darkgrey,
+                      fontSize: 15,
+                      fontFamily: 'young'),
+                  textAlign: TextAlign.center,
+                ),
+              )),
+              Flexible(
+                  child: myTextEormField(
+                      Icon(Icons.alternate_email), 'codername', false, (val) {
+                setState(() {
+                  codername = val;
+                });
+              }, TextInputType.text)),
               Flexible(
                   child: myButton(true, 'Next', () {
-                    print('Next pressed!!!');
-                    Navigator.push(context, MaterialPageRoute(
-                        builder: (context) {
-                          return registeremailidscreen();
-                        }));
-                  }))
+                print(codername);
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return registeremailidscreen1();
+                }));
+              }))
             ],
           ),
         ),

@@ -1,6 +1,7 @@
 import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/registercodernamescreen.dart';
+import 'package:codersstatus/registeremailidscreen2.dart';
 import 'package:codersstatus/registernamescreen.dart';
+import 'package:codersstatus/registerpasswordscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -10,22 +11,23 @@ import 'components/constants.dart';
 import 'components/myTextFormField.dart';
 import 'components/coderstatusheading.dart';
 import 'components/myButton.dart';
+import 'mybadgesscreen.dart';
 
 void main() => runApp(
       MaterialApp(
-        home: registernamescreen(),
+        home: registeremailidscreen1(),
       ),
     );
 
-class registernamescreen extends StatefulWidget {
-  const registernamescreen({Key key}) : super(key: key);
+class registeremailidscreen1 extends StatefulWidget {
+  const registeremailidscreen1({Key key}) : super(key: key);
 
   @override
-  _registernamescreenState createState() => _registernamescreenState();
+  _registeremailidscreen1State createState() => _registeremailidscreen1State();
 }
 
-class _registernamescreenState extends State<registernamescreen> {
-  String name = '';
+class _registeremailidscreen1State extends State<registeremailidscreen1> {
+  String emailid = '';
 
   @override
   Widget build(BuildContext context) {
@@ -46,44 +48,39 @@ class _registernamescreenState extends State<registernamescreen> {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 50,
+              Flexible(
+                child: SizedBox(
+                  height: 20,
+                ),
               ),
               Flexible(
-                  child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'Enter Your Full Name',
-                  style: TextStyle(
-                      color: Colors.white, fontSize: 25, fontFamily: 'young'),
-                ),
+                  child: Text(
+                'Enter Email Id',
+                style: TextStyle(
+                    color: Colors.white, fontSize: 25, fontFamily: 'young'),
               )),
               Flexible(
-                  child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  '*Example: Alan Wil',
-                  style: TextStyle(
-                      color: colorschemeclass.darkgrey,
-                      fontSize: 15,
-                      fontFamily: 'young'),
-                  textAlign: TextAlign.center,
-                ),
-              )),
+                  child: Text(
+                      'A verification code will be sent to your given Email',
+                      style: TextStyle(
+                          color: colorschemeclass.darkgrey,
+                          fontSize: 15,
+                          fontFamily: 'young'),
+                      textAlign: TextAlign.center)),
               Flexible(
-                  child: myTextEormField(Icon(Icons.person), 'Full Name', false,
-                      (val) {
+                  child: myTextEormField(
+                      Icon(Icons.email_sharp), 'email id', false, (val) {
                 setState(() {
-                  name = val;
+                  emailid = val;
                 });
-              }, TextInputType.name)),
+              }, TextInputType.emailAddress)),
               Flexible(
-                  child: myButton(true, 'Next', () {
-                print(name);
+                  child: myButton(false, 'Send Confirmation Code', () {
+                print(emailid);
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return registercodernamescreen();
+                  return registeremailidscreen2();
                 }));
-              }))
+              })),
             ],
           ),
         ),

@@ -1,4 +1,4 @@
-import 'package:codersstatus/colorscheme.dart';
+import 'package:codersstatus/components/colorscheme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -6,7 +6,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'drawer.dart';
 import 'dart:math';
-import 'colorscheme.dart';
+import 'components/colorscheme.dart';
 
 void main() => runApp(MaterialApp(home: mybadgesscreen(),));
 

@@ -1,6 +1,6 @@
 import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/registercodernamescreen.dart';
 import 'package:codersstatus/registernamescreen.dart';
+import 'package:codersstatus/registerpasswordscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -10,22 +10,23 @@ import 'components/constants.dart';
 import 'components/myTextFormField.dart';
 import 'components/coderstatusheading.dart';
 import 'components/myButton.dart';
+import 'mybadgesscreen.dart';
 
 void main() => runApp(
       MaterialApp(
-        home: registernamescreen(),
+        home: registeremailidscreen2(),
       ),
     );
 
-class registernamescreen extends StatefulWidget {
-  const registernamescreen({Key key}) : super(key: key);
+class registeremailidscreen2 extends StatefulWidget {
+  const registeremailidscreen2({Key key}) : super(key: key);
 
   @override
-  _registernamescreenState createState() => _registernamescreenState();
+  _registeremailidscreen2State createState() => _registeremailidscreen2State();
 }
 
-class _registernamescreenState extends State<registernamescreen> {
-  String name = '';
+class _registeremailidscreen2State extends State<registeremailidscreen2> {
+  String otp = '';
 
   @override
   Widget build(BuildContext context) {
@@ -46,42 +47,31 @@ class _registernamescreenState extends State<registernamescreen> {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 50,
+              Flexible(
+                child: SizedBox(
+                  height: 20,
+                ),
               ),
               Flexible(
-                  child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'Enter Your Full Name',
-                  style: TextStyle(
-                      color: Colors.white, fontSize: 25, fontFamily: 'young'),
-                ),
-              )),
+                  child: Text(
+                      'Enter the confirmation code you receive on your email',
+                      style: TextStyle(
+                          color: colorschemeclass.darkgrey,
+                          fontSize: 15,
+                          fontFamily: 'young'),
+                      textAlign: TextAlign.center)),
               Flexible(
-                  child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  '*Example: Alan Wil',
-                  style: TextStyle(
-                      color: colorschemeclass.darkgrey,
-                      fontSize: 15,
-                      fontFamily: 'young'),
-                  textAlign: TextAlign.center,
-                ),
-              )),
-              Flexible(
-                  child: myTextEormField(Icon(Icons.person), 'Full Name', false,
-                      (val) {
+                  child: myTextEormField(
+                      Icon(Icons.check), 'confirmation code', true, (val) {
                 setState(() {
-                  name = val;
+                  otp = val;
                 });
-              }, TextInputType.name)),
+              }, TextInputType.visiblePassword)),
               Flexible(
                   child: myButton(true, 'Next', () {
-                print(name);
+                print(otp);
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return registercodernamescreen();
+                  return registerpasswordscreen();
                 }));
               }))
             ],
