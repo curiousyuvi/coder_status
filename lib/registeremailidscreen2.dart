@@ -60,6 +60,7 @@ class _registeremailidscreen2State extends State<registeremailidscreen2> {
                           fontSize: 15,
                           fontFamily: 'young'),
                       textAlign: TextAlign.center)),
+              SizedBox(height: 10,),
               Flexible(
                   child: myTextEormField(
                       Icon(Icons.check), 'confirmation code', true, (val) {

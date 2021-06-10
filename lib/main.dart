@@ -24,8 +24,9 @@ class myApp extends StatelessWidget {
               bodyText1: TextStyle(fontFamily: 'young', color: Colors.white),
               headline1: TextStyle(fontFamily: 'young', color: Colors.white))),
       home: SplashScreen(
-        seconds: 2,
+        seconds: 3,
         navigateAfterSeconds: signinscreen(),
+        imageBackground: AssetImage('images/matrix_gif.gif'),
         photoSize: 120,
         image: Image(
           image: AssetImage('images/appiconnoback.png'),

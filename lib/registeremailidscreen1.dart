@@ -59,6 +59,8 @@ class _registeremailidscreen1State extends State<registeremailidscreen1> {
                 style: TextStyle(
                     color: Colors.white, fontSize: 25, fontFamily: 'young'),
               )),
+
+              SizedBox(height: 10,),
               Flexible(
                   child: Text(
                       'A verification code will be sent to your given Email',
@@ -67,6 +69,7 @@ class _registeremailidscreen1State extends State<registeremailidscreen1> {
                           fontSize: 15,
                           fontFamily: 'young'),
                       textAlign: TextAlign.center)),
+              SizedBox(height: 10,),
               Flexible(
                   child: myTextEormField(
                       Icon(Icons.email_sharp), 'email id', false, (val) {
