@@ -27,6 +27,18 @@ class registeremailidscreen2 extends StatefulWidget {
 
 class _registeremailidscreen2State extends State<registeremailidscreen2> {
   String otp = '';
+  final _formkey = GlobalKey<FormState>();
+
+  void _submit() {
+    print('login pressed!!!');
+    if (_formkey.currentState.validate()) {
+      _formkey.currentState.save();
+      print(otp);
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return mybadgesscreen();
+      }));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,47 +47,48 @@ class _registeremailidscreen2State extends State<registeremailidscreen2> {
       body: SafeArea(
         child: Container(
           padding: EdgeInsets.all(16),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Flexible(
-                child: Hero(
-                  tag: 'splashscreenImage',
-                  child: Image(
-                    width: 300,
-                    image: AssetImage('images/appiconnoback.png'),
+          child: Form(
+            key: _formkey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Flexible(
+                  child: Hero(
+                    tag: 'splashscreenImage',
+                    child: Image(
+                      width: 300,
+                      image: AssetImage('images/appiconnoback.png'),
+                    ),
                   ),
                 ),
-              ),
-              Flexible(
-                child: SizedBox(
-                  height: 20,
+                Flexible(
+                  child: SizedBox(
+                    height: 20,
+                  ),
                 ),
-              ),
-              Flexible(
-                  child: Text(
-                      'Enter the confirmation code you receive on your email',
-                      style: TextStyle(
-                          color: colorschemeclass.darkgrey,
-                          fontSize: 15,
-                          fontFamily: 'young'),
-                      textAlign: TextAlign.center)),
-              SizedBox(height: 10,),
-              Flexible(
-                  child: myTextEormField(
-                      Icon(Icons.check), 'confirmation code', true, (val) {
-                setState(() {
+                Flexible(
+                    child: Text(
+                        'Enter the confirmation code you receive on your email',
+                        style: TextStyle(
+                            color: colorschemeclass.darkgrey,
+                            fontSize: 15,
+                            fontFamily: 'young'),
+                        textAlign: TextAlign.center)),
+                SizedBox(
+                  height: 10,
+                ),
+                Flexible(
+                    child: myTextEormField(
+                        Icon(Icons.check), 'confirmation code', true, (val) {
                   otp = val;
-                });
-              }, TextInputType.visiblePassword)),
-              Flexible(
-                  child: myButton(true, 'Next', () {
-                print(otp);
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return registerpasswordscreen();
-                }));
-              }))
-            ],
+                },
+                        TextInputType.visiblePassword,
+                        (val) => val.contains(' ')
+                            ? 'Please enter a valid verification code'
+                            : null)),
+                Flexible(child: myButton(true, 'Next', _submit))
+              ],
+            ),
           ),
         ),
       ),

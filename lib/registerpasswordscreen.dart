@@ -75,7 +75,8 @@ class _registerpasswordscreenState extends State<registerpasswordscreen> {
                 setState(() {
                   password = val;
                 });
-              }, TextInputType.visiblePassword)),
+              }, TextInputType.visiblePassword,(val) =>
+                      val.contains('@') ? 'Please enter a valid email' : null)),
               Flexible(
                   child: myTextEormField(
                       Icon(Icons.vpn_key), 'confirm password', true, (val) {
@@ -85,7 +86,8 @@ class _registerpasswordscreenState extends State<registerpasswordscreen> {
                   else
                     print('not matched');
                 });
-              }, TextInputType.visiblePassword)),
+              }, TextInputType.visiblePassword,(val) =>
+                  val.contains('@') ? 'Please enter a valid email' : null)),
               Flexible(
                   child: myButton(true, 'Next', () {
                 print('Next pressed!!!');

@@ -28,6 +28,18 @@ class registercodernamescreen extends StatefulWidget {
 
 class _registercodernamescreenState extends State<registercodernamescreen> {
   String codername = '';
+  final _formkey = GlobalKey<FormState>();
+
+  void _submit() {
+    print('Next pressed!!!');
+    if (_formkey.currentState.validate()) {
+      _formkey.currentState.save();
+      print(codername);
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return registeremailidscreen1();
+      }));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,57 +48,57 @@ class _registercodernamescreenState extends State<registercodernamescreen> {
       body: SafeArea(
         child: Container(
           padding: EdgeInsets.all(16),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Flexible(
-                child: Hero(
-                  tag: 'splashscreenImage',
-                  child: Image(
-                    width: 300,
-                    image: AssetImage('images/appiconnoback.png'),
+          child: Form(
+            key: _formkey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Flexible(
+                  child: Hero(
+                    tag: 'splashscreenImage',
+                    child: Image(
+                      width: 300,
+                      image: AssetImage('images/appiconnoback.png'),
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 50,
-              ),
-              Flexible(
-                  child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'Choose Codername',
-                  style: TextStyle(
-                      color: Colors.white, fontSize: 25, fontFamily: 'young'),
+                SizedBox(
+                  height: 50,
                 ),
-              )),
-              Flexible(
-                  child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'Codername is like a Username ,*Example: @demon_lord',
-                  style: TextStyle(
-                      color: colorschemeclass.darkgrey,
-                      fontSize: 15,
-                      fontFamily: 'young'),
-                  textAlign: TextAlign.center,
-                ),
-              )),
-              Flexible(
-                  child: myTextEormField(
-                      Icon(Icons.alternate_email), 'codername', false, (val) {
-                setState(() {
+                Flexible(
+                    child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Choose Codername',
+                    style: TextStyle(
+                        color: Colors.white, fontSize: 25, fontFamily: 'young'),
+                  ),
+                )),
+                Flexible(
+                    child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Codername is like a Username ,*Example: @demon_lord',
+                    style: TextStyle(
+                        color: colorschemeclass.darkgrey,
+                        fontSize: 15,
+                        fontFamily: 'young'),
+                    textAlign: TextAlign.center,
+                  ),
+                )),
+                Flexible(
+                    child: myTextEormField(
+                        Icon(Icons.alternate_email), 'codername', false, (val) {
                   codername = val;
-                });
-              }, TextInputType.text)),
-              Flexible(
-                  child: myButton(true, 'Next', () {
-                print(codername);
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return registeremailidscreen1();
-                }));
-              }))
-            ],
+                },
+                        TextInputType.text,
+                        (val) => /*(val.contains(' ') || val.length < 5)*/ val
+                                .contains(' ')
+                            ? 'Codername can only be consist a single word having more than 4 characters'
+                            : null)),
+                Flexible(child: myButton(true, 'Next', _submit))
+              ],
+            ),
           ),
         ),
       ),

@@ -10,7 +10,6 @@ import 'components/constants.dart';
 import 'components/myTextFormField.dart';
 import 'components/coderstatusheading.dart';
 import 'components/myButton.dart';
-
 void main() => runApp(
       MaterialApp(
         home: signinscreen(),
@@ -26,8 +25,21 @@ class signinscreen extends StatefulWidget {
 
 class _signinscreenState extends State<signinscreen> {
   //Form State
+
+  final _formkey = GlobalKey<FormState>();
   String emailid = '';
   String password = '';
+
+  void _submit() {
+    print('login pressed!!!');
+    if (_formkey.currentState.validate()) {
+      _formkey.currentState.save();
+      print(emailid + ' ' + password);
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return mybadgesscreen();
+      }));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +49,7 @@ class _signinscreenState extends State<signinscreen> {
         child: Container(
           padding: EdgeInsets.all(16),
           child: Form(
+            key: _formkey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -57,30 +70,27 @@ class _signinscreenState extends State<signinscreen> {
                 Flexible(
                     child: myTextEormField(Icon(Icons.email), 'Email Id', false,
                         (val) {
-                  setState(() {
-                    emailid = val;
-                  });
-                },TextInputType.emailAddress)),
+                  emailid = val;
+                },
+                        TextInputType.emailAddress,
+                        (val) => !val.contains('@')
+                            ? 'Please enter a valid email'
+                            : null)),
                 Flexible(
                     child: myTextEormField(
                         Icon(Icons.vpn_key), 'Password', true, (val) {
-                  setState(() {
-                    password = val;
-                  });
-                },TextInputType.visiblePassword)),
+                  password = val;
+                },
+                        TextInputType.visiblePassword,
+                        (val) => val.length < 6
+                            ? 'Please enter a valid password'
+                            : null)),
                 Flexible(
                     child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Flexible(
-                      child: myButton(true, 'Log in', () {
-                        print('login pressed!!!');
-                        print(emailid+' '+password);
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return mybadgesscreen();
-                        }));
-                      }),
+                      child: myButton(true, 'Log in', _submit),
                     ),
                     Flexible(
                       child: myButton(false, 'Register', () {

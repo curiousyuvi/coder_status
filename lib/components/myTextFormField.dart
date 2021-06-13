@@ -8,14 +8,16 @@ class myTextEormField extends StatelessWidget {
   bool isobscure;
   Function onchangedfunction;
   TextInputType textinputtype;
+  Function validation;
 
   myTextEormField(Icon tficon, String tfhintText, bool isobscure,
-      Function onchangedfunction, TextInputType textinputtype) {
+      Function onchangedfunction, TextInputType textinputtype,Function validation) {
     this.tficon = tficon;
     this.tfhintText = tfhintText;
     this.isobscure = isobscure;
     this.onchangedfunction = onchangedfunction;
     this.textinputtype = textinputtype;
+    this.validation=validation;
   }
 
   @override
@@ -23,6 +25,7 @@ class myTextEormField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: TextFormField(
+      validator: validation,
         onChanged: onchangedfunction,
         keyboardType: textinputtype,
         cursorColor: colorschemeclass.primarygreen,

@@ -26,6 +26,18 @@ class registernamescreen extends StatefulWidget {
 
 class _registernamescreenState extends State<registernamescreen> {
   String name = '';
+  final _formkey = GlobalKey<FormState>();
+
+  void _submit() {
+    print('login pressed!!!');
+    if (_formkey.currentState.validate()) {
+      _formkey.currentState.save();
+      print(name);
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return registercodernamescreen();
+      }));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,57 +46,54 @@ class _registernamescreenState extends State<registernamescreen> {
       body: SafeArea(
         child: Container(
           padding: EdgeInsets.all(16),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Flexible(
-                child: Hero(
-                  tag: 'splashscreenImage',
-                  child: Image(
-                    width: 300,
-                    image: AssetImage('images/appiconnoback.png'),
+          child: Form(
+            key: _formkey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Flexible(
+                  child: Hero(
+                    tag: 'splashscreenImage',
+                    child: Image(
+                      width: 300,
+                      image: AssetImage('images/appiconnoback.png'),
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 50,
-              ),
-              Flexible(
-                  child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'Enter Your Full Name',
-                  style: TextStyle(
-                      color: Colors.white, fontSize: 25, fontFamily: 'young'),
+                SizedBox(
+                  height: 50,
                 ),
-              )),
-              Flexible(
-                  child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  '*Example: Alan Wil',
-                  style: TextStyle(
-                      color: colorschemeclass.darkgrey,
-                      fontSize: 15,
-                      fontFamily: 'young'),
-                  textAlign: TextAlign.center,
-                ),
-              )),
-              Flexible(
-                  child: myTextEormField(Icon(Icons.person), 'Full Name', false,
-                      (val) {
-                setState(() {
+                Flexible(
+                    child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Enter Your Full Name',
+                    style: TextStyle(
+                        color: Colors.white, fontSize: 25, fontFamily: 'young'),
+                  ),
+                )),
+                Flexible(
+                    child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    '*Example: Alan Wil',
+                    style: TextStyle(
+                        color: colorschemeclass.darkgrey,
+                        fontSize: 15,
+                        fontFamily: 'young'),
+                    textAlign: TextAlign.center,
+                  ),
+                )),
+                Flexible(
+                    child: myTextEormField(
+                        Icon(Icons.person), 'Full Name', false, (val) {
                   name = val;
-                });
-              }, TextInputType.name)),
-              Flexible(
-                  child: myButton(true, 'Next', () {
-                print(name);
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return registercodernamescreen();
-                }));
-              }))
-            ],
+                }, TextInputType.name,
+                        (val) => val.length < 5 ? 'Name is too short' : null)),
+                Flexible(
+                    child: myButton(true, 'Next', _submit))
+              ],
+            ),
           ),
         ),
       ),
