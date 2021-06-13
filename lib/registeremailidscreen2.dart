@@ -40,6 +40,8 @@ class _registeremailidscreen2State extends State<registeremailidscreen2> {
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
 
+
+
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return registerpasswordscreen(name,codername,emailid);
       }));
@@ -74,7 +76,7 @@ class _registeremailidscreen2State extends State<registeremailidscreen2> {
                 ),
                 Flexible(
                     child: Text(
-                        'Enter the confirmation code you receive on your email',
+                        'Enter the OTP you receive on your email',
                         style: TextStyle(
                             color: colorschemeclass.darkgrey,
                             fontSize: 15,
@@ -85,7 +87,7 @@ class _registeremailidscreen2State extends State<registeremailidscreen2> {
                 ),
                 Flexible(
                     child: myTextEormField(
-                        Icon(Icons.check), 'confirmation code', true, (val) {
+                        Icon(Icons.lock), 'OTP', true, (val) {
                   otp = val;
                 },
                         TextInputType.visiblePassword,

@@ -9,9 +9,10 @@ import 'package:splashscreen/splashscreen.dart';
 import 'homescreen.dart';
 import 'signinscreen.dart';
 
-Future main() async{
-  WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp();
+Future main() async {
+  await WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(myApp());
 }
 

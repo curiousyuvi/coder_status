@@ -83,7 +83,7 @@ class _registeremailidscreen1State extends State<registeremailidscreen1> {
                 ),
                 Flexible(
                     child: Text(
-                        'A verification code will be sent to your given Email',
+                        'An OTP will be sent to your given Email',
                         style: TextStyle(
                             color: colorschemeclass.darkgrey,
                             fontSize: 15,
@@ -102,7 +102,7 @@ class _registeremailidscreen1State extends State<registeremailidscreen1> {
                             ? 'Please enter a valid email'
                             : null)),
                 Flexible(
-                    child: myButton(false, 'Send Confirmation Code', _submit)),
+                    child: myButton(false, 'Send OTP', _submit)),
               ],
             ),
           ),
