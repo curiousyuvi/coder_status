@@ -14,6 +14,11 @@ InputDecoration myInputDecoration = InputDecoration(
     enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(5),
     ),
+    errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(5),
+        borderSide: BorderSide(color: Colors.red, width: 1)),
+    focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(5),
+        borderSide: BorderSide(color: Colors.red, width: 2)),
     hintText: 'Enter a value',
-    hintStyle: TextStyle( color: colorschemeclass.unactivatedblack
-    ));
+    hintStyle: TextStyle(color: colorschemeclass.unactivatedblack));

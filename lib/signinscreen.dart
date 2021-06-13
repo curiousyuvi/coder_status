@@ -1,5 +1,5 @@
 import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/mybadgesscreen.dart';
+import 'package:codersstatus/homescreen.dart';
 import 'package:codersstatus/registernamescreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +36,7 @@ class _signinscreenState extends State<signinscreen> {
       _formkey.currentState.save();
       print(emailid + ' ' + password);
       Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return mybadgesscreen();
+        return homescreen();
       }));
     }
   }
@@ -82,7 +82,7 @@ class _signinscreenState extends State<signinscreen> {
                   password = val;
                 },
                         TextInputType.visiblePassword,
-                        (val) => val.length < 6
+                        (val) => val.trim().length < 6
                             ? 'Please enter a valid password'
                             : null)),
                 Flexible(

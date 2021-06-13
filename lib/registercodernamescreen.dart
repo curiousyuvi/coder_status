@@ -92,9 +92,9 @@ class _registercodernamescreenState extends State<registercodernamescreen> {
                   codername = val;
                 },
                         TextInputType.text,
-                        (val) => /*(val.contains(' ') || val.length < 5)*/ val
-                                .contains(' ')
-                            ? 'Codername can only be consist a single word having more than 4 characters'
+                        (val) => (val.trim().contains(' ') ||
+                                val.trim().length < 5)
+                            ? 'Codername can only be consist a single word'
                             : null)),
                 Flexible(child: myButton(true, 'Next', _submit))
               ],

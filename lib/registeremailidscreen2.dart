@@ -10,7 +10,7 @@ import 'components/constants.dart';
 import 'components/myTextFormField.dart';
 import 'components/coderstatusheading.dart';
 import 'components/myButton.dart';
-import 'mybadgesscreen.dart';
+import 'homescreen.dart';
 
 void main() => runApp(
       MaterialApp(
@@ -35,7 +35,7 @@ class _registeremailidscreen2State extends State<registeremailidscreen2> {
       _formkey.currentState.save();
       print(otp);
       Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return mybadgesscreen();
+        return registerpasswordscreen();
       }));
     }
   }
@@ -83,7 +83,7 @@ class _registeremailidscreen2State extends State<registeremailidscreen2> {
                   otp = val;
                 },
                         TextInputType.visiblePassword,
-                        (val) => val.contains(' ')
+                        (val) => val.trim().contains(' ')
                             ? 'Please enter a valid verification code'
                             : null)),
                 Flexible(child: myButton(true, 'Next', _submit))

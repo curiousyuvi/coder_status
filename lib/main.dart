@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:splashscreen/splashscreen.dart';
-import 'mybadgesscreen.dart';
+import 'homescreen.dart';
 import 'registernamescreen.dart';
 import 'signinscreen.dart';
 
