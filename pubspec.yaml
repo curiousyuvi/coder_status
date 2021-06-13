@@ -17,6 +17,7 @@ dependencies:
   firebase_core: ^1.1.1
   firebase_auth: ^1.1.4
   cloud_firestore: ^2.1.0
+  http: ^0.13.3
 
 
 dev_dependencies:
