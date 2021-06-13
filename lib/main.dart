@@ -1,3 +1,4 @@
+import 'package:codersstatus/authenticate.dart';
 import 'package:codersstatus/components/colorscheme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,7 +7,6 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'homescreen.dart';
-import 'registernamescreen.dart';
 import 'signinscreen.dart';
 
 Future main() async{
@@ -31,7 +31,7 @@ class myApp extends StatelessWidget {
               headline1: TextStyle(fontFamily: 'young', color: Colors.white))),
       home: SplashScreen(
         seconds: 3,
-        navigateAfterSeconds: signinscreen(),
+        navigateAfterSeconds: Authenticate(),
         imageBackground: AssetImage('images/matrix_gif.gif'),
         photoSize: 120,
         image: Image(

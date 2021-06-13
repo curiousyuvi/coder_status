@@ -14,12 +14,15 @@ import 'components/myButton.dart';
 
 void main() => runApp(
       MaterialApp(
-        home: registercodernamescreen(),
+        home: registercodernamescreen('example name'),
       ),
     );
 
 class registercodernamescreen extends StatefulWidget {
-  const registercodernamescreen({Key key}) : super(key: key);
+  registercodernamescreen(String name){
+    _registercodernamescreenState.name=name;
+  }
+
 
   @override
   _registercodernamescreenState createState() =>
@@ -27,19 +30,20 @@ class registercodernamescreen extends StatefulWidget {
 }
 
 class _registercodernamescreenState extends State<registercodernamescreen> {
+  static String name='';
   String codername = '';
   final _formkey = GlobalKey<FormState>();
 
   void _submit() {
-    print('Next pressed!!!');
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
-      print(codername);
       Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return registeremailidscreen1();
+        return registeremailidscreen1(name,codername);
       }));
     }
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -92,10 +96,10 @@ class _registercodernamescreenState extends State<registercodernamescreen> {
                   codername = val;
                 },
                         TextInputType.text,
-                        (val) => (val.trim().contains(' ') ||
-                                val.trim().length < 5)
-                            ? 'Codername can only be consist a single word'
-                            : null)),
+                        (val) =>
+                            (val.trim().contains(' ') || val.trim().length < 5)
+                                ? 'Codername can only be consist a single word'
+                                : null)),
                 Flexible(child: myButton(true, 'Next', _submit))
               ],
             ),

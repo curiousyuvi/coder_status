@@ -1,6 +1,7 @@
 import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/registercodernamescreen.dart';
 import 'package:codersstatus/registernamescreen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -25,16 +26,14 @@ class registernamescreen extends StatefulWidget {
 }
 
 class _registernamescreenState extends State<registernamescreen> {
-  String name = '';
+  static String name='';
   final _formkey = GlobalKey<FormState>();
 
   void _submit() {
-    print('login pressed!!!');
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
-      print(name);
       Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return registercodernamescreen();
+        return registercodernamescreen(name);
       }));
     }
   }
@@ -90,8 +89,7 @@ class _registernamescreenState extends State<registernamescreen> {
                   name = val;
                 }, TextInputType.name,
                         (val) => val.length < 5 ? 'Name is too short' : null)),
-                Flexible(
-                    child: myButton(true, 'Next', _submit))
+                Flexible(child: myButton(true, 'Next', _submit))
               ],
             ),
           ),

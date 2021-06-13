@@ -1,5 +1,4 @@
 import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/registernamescreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -7,33 +6,60 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'components/constants.dart';
 import 'components/myTextFormField.dart';
-import 'components/coderstatusheading.dart';
 import 'components/myButton.dart';
 import 'homescreen.dart';
+import 'registernamescreen.dart';
+import 'registercodernamescreen.dart';
+import 'registeremailidscreen1.dart';
+import 'createuser.dart';
 
 void main() => runApp(
       MaterialApp(
-        home: registerpasswordscreen(),
+        home: registerpasswordscreen('example name','examplecodername','example@email'),
       ),
     );
 
 class registerpasswordscreen extends StatefulWidget {
-  const registerpasswordscreen({Key key}) : super(key: key);
+  registerpasswordscreen(String name, String codername, String emailid) {
+    _registerpasswordscreenState.name = name;
+    _registerpasswordscreenState.codername = codername;
+    _registerpasswordscreenState.emailid = emailid;
+  }
 
   @override
   _registerpasswordscreenState createState() => _registerpasswordscreenState();
 }
 
 class _registerpasswordscreenState extends State<registerpasswordscreen> {
+  static String name = '';
+  static String codername = '';
+  static String emailid = '';
   String password = '';
+  bool isloading = false;
 
   final _formkey = GlobalKey<FormState>();
 
   void _submit() {
-    print('login pressed!!!');
+    print("Register initiated!!");
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
-      print(password);
+      print(name+' '+codername+' '+emailid+' '+password);
+      setState(() {
+        isloading =true;
+      });
+
+      createAccount(name, codername, emailid, password)
+      .then((user){
+        if(user!=null)
+          {
+            print('account created');
+          }
+        else
+          {
+            print('not');
+          }
+      });
+
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return homescreen();
       }));
@@ -42,7 +68,7 @@ class _registerpasswordscreenState extends State<registerpasswordscreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return isloading? Scaffold(body: Center(child: CircularProgressIndicator(),),):Scaffold(
       backgroundColor: colorschemeclass.dark,
       body: SafeArea(
         child: Container(
@@ -85,8 +111,8 @@ class _registerpasswordscreenState extends State<registerpasswordscreen> {
                       textAlign: TextAlign.center),
                 )),
                 Flexible(
-                    child: myTextEormField(Icon(Icons.vpn_key), 'password', true,
-                        (val) {
+                    child: myTextEormField(
+                        Icon(Icons.vpn_key), 'password', true, (val) {
                   setState(() {
                     password = val;
                   });
@@ -102,10 +128,10 @@ class _registerpasswordscreenState extends State<registerpasswordscreen> {
                         true,
                         (val) {},
                         TextInputType.visiblePassword,
-                        (val) =>
-                            val != password ? 'Password doesn\'t match' : null)),
-                Flexible(
-                    child: myButton(true, 'Next', _submit))
+                        (val) => val != password
+                            ? 'Password doesn\'t match'
+                            : null)),
+                Flexible(child: myButton(true, 'Next', _submit))
               ],
             ),
           ),

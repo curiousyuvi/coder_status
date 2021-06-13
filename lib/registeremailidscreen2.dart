@@ -14,28 +14,34 @@ import 'homescreen.dart';
 
 void main() => runApp(
       MaterialApp(
-        home: registeremailidscreen2(),
+        home: registeremailidscreen2('example name','examplecodername','example@email'),
       ),
     );
 
 class registeremailidscreen2 extends StatefulWidget {
-  const registeremailidscreen2({Key key}) : super(key: key);
+  registeremailidscreen2(String name, String codername, String emailid) {
+    _registeremailidscreen2State.name = name;
+    _registeremailidscreen2State.codername = codername;
+    _registeremailidscreen2State.emailid = emailid;
+  }
 
   @override
   _registeremailidscreen2State createState() => _registeremailidscreen2State();
 }
 
 class _registeremailidscreen2State extends State<registeremailidscreen2> {
+  static String name = '';
+  static String codername = '';
+  static String emailid = '';
   String otp = '';
   final _formkey = GlobalKey<FormState>();
 
   void _submit() {
-    print('login pressed!!!');
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
-      print(otp);
+
       Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return registerpasswordscreen();
+        return registerpasswordscreen(name,codername,emailid);
       }));
     }
   }

@@ -1,5 +1,6 @@
 import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/homescreen.dart';
+import 'package:codersstatus/loginuser.dart';
 import 'package:codersstatus/registernamescreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -29,12 +30,29 @@ class _signinscreenState extends State<signinscreen> {
   final _formkey = GlobalKey<FormState>();
   String emailid = '';
   String password = '';
+  bool isloading=false;
 
   void _submit() {
     print('login pressed!!!');
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
       print(emailid + ' ' + password);
+      setState(() {
+        isloading=true;
+      });
+      login(emailid, password).then((user){
+        if(user!=null) {
+          print('login succesfull');
+          setState(() {
+            isloading=false;
+          });
+        }
+        else
+          {
+            print('login failed');
+          }
+
+      });
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return homescreen();
       }));
