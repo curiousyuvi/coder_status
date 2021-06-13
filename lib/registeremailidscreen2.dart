@@ -11,10 +11,12 @@ import 'components/myTextFormField.dart';
 import 'components/coderstatusheading.dart';
 import 'components/myButton.dart';
 import 'homescreen.dart';
+import 'package:email_auth/email_auth.dart';
 
 void main() => runApp(
       MaterialApp(
-        home: registeremailidscreen2('example name','examplecodername','example@email'),
+        home: registeremailidscreen2(
+            'example name', 'examplecodername', 'example@email'),
       ),
     );
 
@@ -36,14 +38,23 @@ class _registeremailidscreen2State extends State<registeremailidscreen2> {
   String otp = '';
   final _formkey = GlobalKey<FormState>();
 
+
+
+  bool verifyOTP(String OTP) {
+    var res = EmailAuth.validate(receiverMail: emailid, userOTP: OTP);
+    if (res) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   void _submit() {
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
 
-
-
       Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return registerpasswordscreen(name,codername,emailid);
+        return registerpasswordscreen(name, codername, emailid);
       }));
     }
   }
@@ -75,8 +86,7 @@ class _registeremailidscreen2State extends State<registeremailidscreen2> {
                   ),
                 ),
                 Flexible(
-                    child: Text(
-                        'Enter the OTP you receive on your email',
+                    child: Text('Enter the OTP you received on your email',
                         style: TextStyle(
                             color: colorschemeclass.darkgrey,
                             fontSize: 15,
@@ -86,13 +96,13 @@ class _registeremailidscreen2State extends State<registeremailidscreen2> {
                   height: 10,
                 ),
                 Flexible(
-                    child: myTextEormField(
-                        Icon(Icons.lock), 'OTP', true, (val) {
+                    child: myTextEormField(Icon(Icons.lock), 'OTP', true,
+                        (val) {
                   otp = val;
                 },
                         TextInputType.visiblePassword,
-                        (val) => val.trim().contains(' ')
-                            ? 'Please enter a valid verification code'
+                        (val) => !verifyOTP(val.trim())
+                            ? 'OTP doesn\'t match'
                             : null)),
                 Flexible(child: myButton(true, 'Next', _submit))
               ],

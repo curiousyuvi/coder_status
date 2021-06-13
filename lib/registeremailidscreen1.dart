@@ -12,6 +12,7 @@ import 'components/myTextFormField.dart';
 import 'components/coderstatusheading.dart';
 import 'components/myButton.dart';
 import 'homescreen.dart';
+import 'package:email_auth/email_auth.dart';
 
 void main() => runApp(
       MaterialApp(
@@ -40,10 +41,15 @@ class _registeremailidscreen1State extends State<registeremailidscreen1> {
   void _submit() {
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
+      sendOTP();
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return registeremailidscreen2(name,codername,emailid);
       }));
     }
+  }
+  void sendOTP() async {
+    EmailAuth.sessionName = "Email Register";
+    var res = await EmailAuth.sendOtp(receiverMail: emailid);
   }
 
   @override
