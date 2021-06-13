@@ -1,4 +1,5 @@
 import 'package:codersstatus/components/colorscheme.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -8,14 +9,19 @@ import 'homescreen.dart';
 import 'registernamescreen.dart';
 import 'signinscreen.dart';
 
-void main() => runApp(myApp());
+Future main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp();
+  runApp(myApp());
+}
 
 class myApp extends StatelessWidget {
   const myApp({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false,
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
           accentColor: colorschemeclass.primarygreen,
           primaryColor: colorschemeclass.primarygreen,
