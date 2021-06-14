@@ -56,11 +56,11 @@ class _signinscreenState extends State<signinscreen> {
             isloading=false;
           });
           Fluttertoast.showToast(
-              msg: "User not found, Register first",
+              msg: "Email or Password or both are incorrect",
               toastLength: Toast.LENGTH_SHORT,
               gravity: ToastGravity.CENTER,
-              timeInSecForIosWeb: 1,
-              backgroundColor: Colors.red,
+              timeInSecForIosWeb: 3,
+              backgroundColor: colorschemeclass.primarygreen,
               textColor: Colors.white,
               fontSize: 16.0
           );
