@@ -7,10 +7,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'components/constants.dart';
 import 'components/myTextFormField.dart';
 import 'components/coderstatusheading.dart';
 import 'components/myButton.dart';
+
 void main() => runApp(
       MaterialApp(
         home: signinscreen(),
@@ -30,7 +32,7 @@ class _signinscreenState extends State<signinscreen> {
   final _formkey = GlobalKey<FormState>();
   String emailid = '';
   String password = '';
-  bool isloading=false;
+  bool isloading = false;
 
   void _submit() {
     print('login pressed!!!');
@@ -38,94 +40,110 @@ class _signinscreenState extends State<signinscreen> {
       _formkey.currentState.save();
       print(emailid + ' ' + password);
       setState(() {
-        isloading=true;
+        isloading = true;
       });
-      login(emailid, password).then((user){
-        if(user!=null) {
+      login(emailid, password).then((user) {
+        if (user != null) {
           print('login succesfull');
+          setState(() {
+            isloading = false;
+          });
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return homescreen();
+          }));
+        } else {
           setState(() {
             isloading=false;
           });
+          Fluttertoast.showToast(
+              msg: "User not found, Register first",
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.CENTER,
+              timeInSecForIosWeb: 1,
+              backgroundColor: Colors.red,
+              textColor: Colors.white,
+              fontSize: 16.0
+          );
         }
-        else
-          {
-            print('login failed');
-          }
-
       });
-      Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return homescreen();
-      }));
     }
   }
 
+
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: colorschemeclass.dark,
-      body: SafeArea(
-        child: Container(
-          padding: EdgeInsets.all(16),
-          child: Form(
-            key: _formkey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Flexible(
-                  child: Hero(
-                    tag: 'splashscreenImage',
-                    child: Image(
-                      image: AssetImage('images/appiconnoback.png'),
-                    ),
+    return isloading
+        ? Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(),
+            ),
+          )
+        : Scaffold(
+            backgroundColor: colorschemeclass.dark,
+            body: SafeArea(
+              child: Container(
+                padding: EdgeInsets.all(16),
+                child: Form(
+                  key: _formkey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        child: Hero(
+                          tag: 'splashscreenImage',
+                          child: Image(
+                            image: AssetImage('images/appiconnoback.png'),
+                          ),
+                        ),
+                      ),
+                      Flexible(
+                        child: coderstatusheading(),
+                      ),
+                      SizedBox(
+                        height: 50,
+                      ),
+                      Flexible(
+                          child: myTextEormField(
+                              Icon(Icons.email), 'Email Id', false, (val) {
+                        emailid = val;
+                      },
+                              TextInputType.emailAddress,
+                              (val) => !val.contains('@')
+                                  ? 'Please enter a valid email'
+                                  : null)),
+                      Flexible(
+                          child: myTextEormField(
+                              Icon(Icons.vpn_key), 'Password', true, (val) {
+                        password = val;
+                      },
+                              TextInputType.visiblePassword,
+                              (val) => val.trim().length < 6
+                                  ? 'Please enter a valid password'
+                                  : null)),
+                      Flexible(
+                          child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Flexible(
+                            child: myButton(true, 'Log in', _submit),
+                          ),
+                          Flexible(
+                            child: myButton(false, 'Register', () {
+                              print('register pressed!!!');
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return registernamescreen();
+                              }));
+                            }),
+                          ),
+                        ],
+                      ))
+                    ],
                   ),
                 ),
-                Flexible(
-                  child: coderstatusheading(),
-                ),
-                SizedBox(
-                  height: 50,
-                ),
-                Flexible(
-                    child: myTextEormField(Icon(Icons.email), 'Email Id', false,
-                        (val) {
-                  emailid = val;
-                },
-                        TextInputType.emailAddress,
-                        (val) => !val.contains('@')
-                            ? 'Please enter a valid email'
-                            : null)),
-                Flexible(
-                    child: myTextEormField(
-                        Icon(Icons.vpn_key), 'Password', true, (val) {
-                  password = val;
-                },
-                        TextInputType.visiblePassword,
-                        (val) => val.trim().length < 6
-                            ? 'Please enter a valid password'
-                            : null)),
-                Flexible(
-                    child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Flexible(
-                      child: myButton(true, 'Log in', _submit),
-                    ),
-                    Flexible(
-                      child: myButton(false, 'Register', () {
-                        print('register pressed!!!');
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return registernamescreen();
-                        }));
-                      }),
-                    ),
-                  ],
-                ))
-              ],
+              ),
             ),
-          ),
-        ),
-      ),
-    );
+          );
   }
 }

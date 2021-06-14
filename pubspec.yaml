@@ -19,6 +19,7 @@ dependencies:
   cloud_firestore: ^2.1.0
   http: ^0.13.3
   email_auth: ^0.0.1+4
+  fluttertoast: ^8.0.7
 
 
 dev_dependencies:
