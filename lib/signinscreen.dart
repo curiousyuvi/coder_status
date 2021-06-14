@@ -1,4 +1,5 @@
 import 'package:codersstatus/components/colorscheme.dart';
+import 'package:codersstatus/forgotpasswordscreen.dart';
 import 'package:codersstatus/homescreen.dart';
 import 'package:codersstatus/loginuser.dart';
 import 'package:codersstatus/registernamescreen.dart';
@@ -53,7 +54,7 @@ class _signinscreenState extends State<signinscreen> {
           }));
         } else {
           setState(() {
-            isloading=false;
+            isloading = false;
           });
           Fluttertoast.showToast(
               msg: "Email or Password or both are incorrect",
@@ -62,14 +63,11 @@ class _signinscreenState extends State<signinscreen> {
               timeInSecForIosWeb: 3,
               backgroundColor: colorschemeclass.primarygreen,
               textColor: Colors.white,
-              fontSize: 16.0
-          );
+              fontSize: 16.0);
         }
       });
     }
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -138,7 +136,23 @@ class _signinscreenState extends State<signinscreen> {
                             }),
                           ),
                         ],
-                      ))
+                      )),
+                      Flexible(
+                          child: GestureDetector(
+                              onTap: () {
+                                print('forgot password clicked!!');
+                                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                  return forgotpasswordscreen();
+                                }));
+                              },
+                              child: Text(
+                                'Forgot Password?',
+                                style: TextStyle(
+                                    color: colorschemeclass.primarygreen,
+                                    fontFamily: 'young',
+                                    fontSize: 13,
+                                    decoration: TextDecoration.underline),
+                              )))
                     ],
                   ),
                 ),
