@@ -6,11 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'drawer.dart';
-import 'dart:math';
-import 'components/colorscheme.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 void main() => runApp(MaterialApp(
       home: homescreen(),
     ));

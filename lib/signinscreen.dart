@@ -2,6 +2,7 @@ import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/forgotpasswordscreen.dart';
 import 'package:codersstatus/homescreen.dart';
 import 'package:codersstatus/loginuser.dart';
+import 'package:codersstatus/registeravatarscreen.dart';
 import 'package:codersstatus/registernamescreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -131,7 +132,7 @@ class _signinscreenState extends State<signinscreen> {
                               print('register pressed!!!');
                               Navigator.push(context,
                                   MaterialPageRoute(builder: (context) {
-                                return registernamescreen();
+                                return registeravatarscreen();
                               }));
                             }),
                           ),

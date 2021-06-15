@@ -20,6 +20,8 @@ dependencies:
   http: ^0.13.3
   email_auth: ^0.0.1+4
   fluttertoast: ^8.0.7
+  image_picker: ^0.8.0+3
+  image_cropper: ^1.4.0
 
 
 dev_dependencies:
