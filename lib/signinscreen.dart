@@ -79,10 +79,9 @@ class _signinscreenState extends State<signinscreen> {
             ),
           )
         : Scaffold(
-            backgroundColor: colorschemeclass.dark,
             body: SafeArea(
               child: Container(
-                padding: EdgeInsets.all(16),
+                padding: EdgeInsets.all(8),
                 child: Form(
                   key: _formkey,
                   child: Column(
@@ -93,68 +92,92 @@ class _signinscreenState extends State<signinscreen> {
                           tag: 'splashscreenImage',
                           child: Image(
                             image: AssetImage('images/appiconnoback.png'),
+                            height: MediaQuery.of(context).size.height * 0.2,
                           ),
                         ),
                       ),
-                      Flexible(
-                        child: coderstatusheading(),
-                      ),
+                      Flexible(child: coderstatusheading(context)),
                       SizedBox(
-                        height: 50,
+                        height: MediaQuery.of(context).size.height * 0.07,
                       ),
                       Flexible(
+                        child: Container(
+                          width: double.infinity,
+                          height: MediaQuery.of(context).size.height * 0.1,
                           child: myTextEormField(
                               Icon(Icons.email), 'Email Id', false, (val) {
-                        emailid = val;
-                      },
+                            emailid = val;
+                          },
                               TextInputType.emailAddress,
                               (val) => !val.contains('@')
                                   ? 'Please enter a valid email'
-                                  : null)),
+                                  : null),
+                        ),
+                      ),
                       Flexible(
+                        child: Container(
+                          width: double.infinity,
+                          height: MediaQuery.of(context).size.height * 0.1,
                           child: myTextEormField(
                               Icon(Icons.vpn_key), 'Password', true, (val) {
-                        password = val;
-                      },
+                            password = val;
+                          },
                               TextInputType.visiblePassword,
                               (val) => val.trim().length < 6
                                   ? 'Please enter a valid password'
-                                  : null)),
+                                  : null),
+                        ),
+                      ),
                       Flexible(
-                          child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Flexible(
-                            child: myButton(true, 'Log in', _submit),
-                          ),
-                          Flexible(
-                            child: myButton(false, 'Register', () {
-                              print('register pressed!!!');
+                        child: Container(
+                          padding: EdgeInsets.symmetric(horizontal: 8),
+                          height: MediaQuery.of(context).size.height * 0.09,
+                          child: myButton(true, 'Log in', _submit),
+                        ),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.025,
+                      ),
+                      Flexible(
+                        child: GestureDetector(
+                            onTap: () {
                               Navigator.push(context,
                                   MaterialPageRoute(builder: (context) {
                                 return registernamescreen();
                               }));
-                            }),
-                          ),
-                        ],
-                      )),
+                            },
+                            child: Text(
+                              'Create Account',
+                              style: TextStyle(
+                                  color: colorschemeclass.primarygreen,
+                                  fontFamily: 'young',
+                                  fontSize: MediaQuery.of(context).size.height *
+                                      0.022,
+                                  decoration: TextDecoration.underline),
+                            )),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.025,
+                      ),
                       Flexible(
-                          child: GestureDetector(
-                              onTap: () {
-                                print('forgot password clicked!!');
-                                Navigator.push(context,
-                                    MaterialPageRoute(builder: (context) {
-                                  return forgotpasswordscreen();
-                                }));
-                              },
-                              child: Text(
-                                'Forgot Password?',
-                                style: TextStyle(
-                                    color: colorschemeclass.primarygreen,
-                                    fontFamily: 'young',
-                                    fontSize: 13,
-                                    decoration: TextDecoration.underline),
-                              )))
+                        child: GestureDetector(
+                            onTap: () {
+                              print('forgot password clicked!!');
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return forgotpasswordscreen();
+                              }));
+                            },
+                            child: Text(
+                              'Forgot Password?',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'young',
+                                  fontSize:
+                                      MediaQuery.of(context).size.height * 0.02,
+                                  decoration: TextDecoration.underline),
+                            )),
+                      )
                     ],
                   ),
                 ),

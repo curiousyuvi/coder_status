@@ -24,7 +24,7 @@ class myButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(8.0),
       child: Material(
         elevation: 8,
         color: buttoncolor,
@@ -33,7 +33,7 @@ class myButton extends StatelessWidget {
         child: MaterialButton(
           onPressed: dofunction,
           minWidth: double.infinity,
-          height: 50,
+          height: double.infinity,
           child: Text(
             title,
             style: TextStyle(
