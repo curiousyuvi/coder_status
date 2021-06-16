@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'signinscreen.dart';
+import 'package:codersstatus/signinscreen.dart';
 
 Future<User> logout(context) async {
   FirebaseAuth _auth = FirebaseAuth.instance;

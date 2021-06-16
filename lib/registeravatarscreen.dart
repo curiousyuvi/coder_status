@@ -1,8 +1,11 @@
 import 'dart:io';
-
 import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/components/myButton.dart';
-import 'package:codersstatus/logoutuser.dart';
+import 'package:codersstatus/components/urls.dart';
+import 'package:codersstatus/firebase_layer/logoutuser.dart';
+import 'package:codersstatus/firebase_layer/setUserInfo.dart';
+import 'package:codersstatus/firebase_layer/uploadAvatar.dart';
+import 'package:codersstatus/homescreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -11,7 +14,8 @@ import 'package:flutter/widgets.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'components/myAvatarButton.dart';
-import 'package:image_picker/image_picker.dart';
+import 'functions/pickImageAndCrop.dart' as pickImageAndCrop;
+import 'components/myCircleAvatar.dart';
 
 void main() => runApp(MaterialApp(
       home: registeravatarscreen(),
@@ -25,25 +29,26 @@ class registeravatarscreen extends StatefulWidget {
 }
 
 class _registeravatarscreenState extends State<registeravatarscreen> {
-  final picker = ImagePicker();
+  Image avatarshowimage = Image(image: NetworkImage(urls.avatar1url));
+  File imagetobeuploaded = null;
+  String urltobeset = urls.avatar1url;
 
-  Image avatarimage = Image(image: AssetImage('images/avatar1.jpg'));
+  getandupdateurl(File imagefile) async {
+    final url = await UploadUserAvatar.uploadUserAvatar(imagefile);
 
-  Future<File> cropSquareImage(File imageFile) async {
-    return await ImageCropper.cropImage(
-        sourcePath: imageFile.path,
-        aspectRatio: CropAspectRatio(ratioX: 1, ratioY: 1),
-        aspectRatioPresets: [CropAspectRatioPreset.square]);
+    SetUserInfo.updateAvatar(url);
   }
 
-  Future pickimage() async {
-    final pickedfile = await picker.getImage(source: ImageSource.gallery);
-    if (pickedfile == null) return null;
-    final croppedfile = await cropSquareImage(File(pickedfile.path));
+  pick() async {
+    urltobeset = null;
+    final pickedfile = await pickImageAndCrop.pickimage();
+    imagetobeuploaded = pickedfile;
+
     setState(() {
-      if(croppedfile!=null)
-      avatarimage = Image.file(File(croppedfile.path));
+      avatarshowimage = Image.file(pickedfile);
     });
+
+    return;
   }
 
   List<bool> _selections = [
@@ -94,21 +99,7 @@ class _registeravatarscreenState extends State<registeravatarscreen> {
                       color: Colors.white, fontFamily: 'young', fontSize: 25),
                 )),
                 SizedBox(height: 20),
-                Container(
-                  height: 200,
-                  width: 200,
-                  decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                            color: colorschemeclass.primarygreen,
-                            blurRadius: 20)
-                      ],
-                      border: Border.all(
-                          color: colorschemeclass.primarygreen, width: 5),
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                          fit: BoxFit.fitWidth, image: avatarimage.image)),
-                ),
+                myCircleAvatar(avatarimage: avatarshowimage),
                 SizedBox(height: 20),
                 Flexible(
                   child: SingleChildScrollView(
@@ -140,11 +131,51 @@ class _registeravatarscreenState extends State<registeravatarscreen> {
 
                           _selections[index] = true;
                           if (index > 0) {
-                            avatarimage = Image(
+                            imagetobeuploaded = null;
+
+                            switch (index) {
+                              case 1:
+                                {
+                                  urltobeset = urls.avatar1url;
+                                }
+                                break;
+                              case 2:
+                                {
+                                  urltobeset = urls.avatar2url;
+                                }
+                                break;
+                              case 3:
+                                {
+                                  urltobeset = urls.avatar3url;
+                                }
+                                break;
+                              case 4:
+                                {
+                                  urltobeset = urls.avatar4url;
+                                }
+                                break;
+                              case 5:
+                                {
+                                  urltobeset = urls.avatar5url;
+                                }
+                                break;
+                              case 6:
+                                {
+                                  urltobeset = urls.avatar6url;
+                                }
+                                break;
+                              case 7:
+                                {
+                                  urltobeset = urls.avatar7url;
+                                }
+                                break;
+                            }
+
+                            avatarshowimage = Image(
                               image: AssetImage('images/avatar$index.jpg'),
                             );
                           } else {
-                            pickimage();
+                            pick();
                           }
                           _avatarbuttons[index] = myAvatarButton(
                               AssetImage('images/avatar$index.jpg'), true);
@@ -161,8 +192,34 @@ class _registeravatarscreenState extends State<registeravatarscreen> {
                 Flexible(
                     child: Row(
                   children: [
-                    Flexible(child: myButton(false, 'Skip', () {})),
-                    Flexible(child: myButton(true, 'Add Avatar', () {}))
+                    Flexible(
+                        child: myButton(false, 'Skip', () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return homescreen();
+                      }));
+                    })),
+                    Flexible(
+                        child: myButton(true, 'Add Avatar', () {
+                      if (urltobeset != null) {
+                        SetUserInfo.updateAvatar(urltobeset);
+
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return homescreen();
+                        }));
+                      } else if (imagetobeuploaded != null) {
+                        //TODO: upload image and get path,then set that path in setUserInfo.setAvatar
+
+                        getandupdateurl(imagetobeuploaded);
+
+                        print('Avatar updated!!');
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return homescreen();
+                        }));
+                      }
+                    }))
                   ],
                 ))
               ],

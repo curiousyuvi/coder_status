@@ -1,4 +1,4 @@
-import 'package:codersstatus/authenticate.dart';
+import 'package:codersstatus/firebase_layer/authenticate.dart';
 import 'package:codersstatus/components/colorscheme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';

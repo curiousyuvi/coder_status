@@ -16,15 +16,14 @@ import 'package:email_auth/email_auth.dart';
 
 void main() => runApp(
       MaterialApp(
-        home: registeremailidscreen1('example name','examplecodername'),
+        home: registeremailidscreen1('example name', 'examplecodername'),
       ),
     );
 
 class registeremailidscreen1 extends StatefulWidget {
-  registeremailidscreen1(String name,String codername){
-    _registeremailidscreen1State.name=name;
-    _registeremailidscreen1State.codername=codername;
-
+  registeremailidscreen1(String name, String codername) {
+    _registeremailidscreen1State.name = name;
+    _registeremailidscreen1State.codername = codername;
   }
 
   @override
@@ -32,8 +31,8 @@ class registeremailidscreen1 extends StatefulWidget {
 }
 
 class _registeremailidscreen1State extends State<registeremailidscreen1> {
-  static String name='';
-  static String codername='';
+  static String name = '';
+  static String codername = '';
 
   String emailid = '';
   final _formkey = GlobalKey<FormState>();
@@ -43,10 +42,11 @@ class _registeremailidscreen1State extends State<registeremailidscreen1> {
       _formkey.currentState.save();
       sendOTP();
       Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return registeremailidscreen2(name,codername,emailid);
+        return registeremailidscreen2(name, codername, emailid);
       }));
     }
   }
+
   void sendOTP() async {
     EmailAuth.sessionName = "Email Register";
     var res = await EmailAuth.sendOtp(receiverMail: emailid);
@@ -88,8 +88,7 @@ class _registeremailidscreen1State extends State<registeremailidscreen1> {
                   height: 10,
                 ),
                 Flexible(
-                    child: Text(
-                        'An OTP will be sent to your given Email',
+                    child: Text('An OTP will be sent to your given Email',
                         style: TextStyle(
                             color: colorschemeclass.darkgrey,
                             fontSize: 15,
@@ -107,8 +106,7 @@ class _registeremailidscreen1State extends State<registeremailidscreen1> {
                         (val) => !val.contains('@')
                             ? 'Please enter a valid email'
                             : null)),
-                Flexible(
-                    child: myButton(false, 'Send OTP', _submit)),
+                Flexible(child: myButton(true, 'Send OTP', _submit)),
               ],
             ),
           ),

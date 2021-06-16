@@ -1,4 +1,7 @@
 import 'package:codersstatus/components/colorscheme.dart';
+import 'package:codersstatus/components/urls.dart';
+import 'package:codersstatus/firebase_layer/setUserInfo.dart';
+import 'package:codersstatus/registeravatarscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -11,11 +14,12 @@ import 'homescreen.dart';
 import 'registernamescreen.dart';
 import 'registercodernamescreen.dart';
 import 'registeremailidscreen1.dart';
-import 'createuser.dart';
+import 'package:codersstatus/firebase_layer/createuser.dart';
 
 void main() => runApp(
       MaterialApp(
-        home: registerpasswordscreen('example name','examplecodername','example@email'),
+        home: registerpasswordscreen(
+            'example name', 'examplecodername', 'example@email'),
       ),
     );
 
@@ -43,100 +47,109 @@ class _registerpasswordscreenState extends State<registerpasswordscreen> {
     print("Register initiated!!");
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
-      print(name+' '+codername+' '+emailid+' '+password);
+      print(name + ' ' + codername + ' ' + emailid + ' ' + password);
       setState(() {
-        isloading =true;
+        isloading = true;
       });
 
-      createAccount(name, codername, emailid, password)
-      .then((user){
-        if(user!=null)
-          {
-            print('account created');
-          }
-        else
-          {
-            print('not');
-          }
-      });
+      createAccount(name, codername, emailid, password).then((user) {
+        if (user != null) {
+          print('account created');
 
-      Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return homescreen();
-      }));
+          SetUserInfo.setUserCredentials(name, codername, urls.avatar1url);
+
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return registeravatarscreen();
+          }));
+        } else {
+          print('email id already exists');
+          setState(() {
+            isloading = false;
+          });
+        }
+      });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return isloading? Scaffold(body: Center(child: CircularProgressIndicator(),),):Scaffold(
-      backgroundColor: colorschemeclass.dark,
-      body: SafeArea(
-        child: Container(
-          padding: EdgeInsets.all(16),
-          child: Form(
-            key: _formkey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Flexible(
-                  child: Hero(
-                    tag: 'splashscreenImage',
-                    child: Image(
-                      width: 300,
-                      image: AssetImage('images/appiconnoback.png'),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 50,
-                ),
-                Flexible(
-                    child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    'Choose Password',
-                    style: TextStyle(
-                        color: Colors.white, fontSize: 25, fontFamily: 'young'),
-                  ),
-                )),
-                Flexible(
-                    child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                      'Use a combination of letters, digits and special characters',
-                      style: TextStyle(
-                          color: colorschemeclass.darkgrey,
-                          fontSize: 15,
-                          fontFamily: 'young'),
-                      textAlign: TextAlign.center),
-                )),
-                Flexible(
-                    child: myTextEormField(
-                        Icon(Icons.vpn_key), 'password', true, (val) {
-                  setState(() {
-                    password = val;
-                  });
-                },
-                        TextInputType.visiblePassword,
-                        (val) => val.trim().length < 6
-                            ? 'Password must contain atleast 6 characters'
-                            : null)),
-                Flexible(
-                    child: myTextEormField(
-                        Icon(Icons.vpn_key),
-                        'confirm password',
-                        true,
-                        (val) {},
-                        TextInputType.visiblePassword,
-                        (val) => val != password
-                            ? 'Password doesn\'t match'
-                            : null)),
-                Flexible(child: myButton(true, 'Next', _submit))
-              ],
+    return isloading
+        ? Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(),
             ),
-          ),
-        ),
-      ),
-    );
+          )
+        : Scaffold(
+            backgroundColor: colorschemeclass.dark,
+            body: SafeArea(
+              child: Container(
+                padding: EdgeInsets.all(16),
+                child: Form(
+                  key: _formkey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        child: Hero(
+                          tag: 'splashscreenImage',
+                          child: Image(
+                            width: 300,
+                            image: AssetImage('images/appiconnoback.png'),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 50,
+                      ),
+                      Flexible(
+                          child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          'Choose Password',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 25,
+                              fontFamily: 'young'),
+                        ),
+                      )),
+                      Flexible(
+                          child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                            'Use a combination of letters, digits and special characters',
+                            style: TextStyle(
+                                color: colorschemeclass.darkgrey,
+                                fontSize: 15,
+                                fontFamily: 'young'),
+                            textAlign: TextAlign.center),
+                      )),
+                      Flexible(
+                          child: myTextEormField(
+                              Icon(Icons.vpn_key), 'password', true, (val) {
+                        setState(() {
+                          password = val;
+                        });
+                      },
+                              TextInputType.visiblePassword,
+                              (val) => val.trim().length < 6
+                                  ? 'Password must contain atleast 6 characters'
+                                  : null)),
+                      Flexible(
+                          child: myTextEormField(
+                              Icon(Icons.vpn_key),
+                              'confirm password',
+                              true,
+                              (val) {},
+                              TextInputType.visiblePassword,
+                              (val) => val != password
+                                  ? 'Password doesn\'t match'
+                                  : null)),
+                      Flexible(child: myButton(true, 'Next', _submit))
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          );
   }
 }
