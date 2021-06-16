@@ -99,7 +99,10 @@ class _registeravatarscreenState extends State<registeravatarscreen> {
                       color: Colors.white, fontFamily: 'young', fontSize: 25),
                 )),
                 SizedBox(height: 20),
-                myCircleAvatar(avatarimage: avatarshowimage),
+                Container(
+                    height: 200,
+                    width: 200,
+                    child: myCircleAvatar(avatarimage: avatarshowimage)),
                 SizedBox(height: 20),
                 Flexible(
                   child: SingleChildScrollView(
