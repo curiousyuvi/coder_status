@@ -26,9 +26,9 @@ class myButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Material(
-        elevation: 15,
+        elevation: 8,
         color: buttoncolor,
-        shadowColor: buttoncolor.withOpacity(0.7),
+        shadowColor: buttoncolor,
         borderRadius: BorderRadius.circular(5),
         child: MaterialButton(
           onPressed: dofunction,
