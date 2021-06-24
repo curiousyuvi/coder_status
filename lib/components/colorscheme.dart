@@ -9,5 +9,8 @@ class colorschemeclass {
   static Color darkgrey = Color(0xff5a5e5a);
   static Color dark = Color(0xff141514);
   static Color unactivatedblack = Colors.black45;
-
+  static Color codeforcespurple = Color(0xffb07cff);
+  static Color codechefred = Color(0xffff665b);
+  static Color spojblue = Color(0xff68a7ff);
+  static Color atcoderyellow = Color(0xfffbf33d);
 }

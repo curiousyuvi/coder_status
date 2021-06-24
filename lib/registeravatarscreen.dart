@@ -6,6 +6,7 @@ import 'package:codersstatus/firebase_layer/logoutuser.dart';
 import 'package:codersstatus/firebase_layer/setUserInfo.dart';
 import 'package:codersstatus/firebase_layer/uploadAvatar.dart';
 import 'package:codersstatus/homescreen.dart';
+import 'package:codersstatus/registerbadgesscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -212,14 +213,12 @@ class _registeravatarscreenState extends State<registeravatarscreen> {
                           return homescreen();
                         }));
                       } else if (imagetobeuploaded != null) {
-                        //TODO: upload image and get path,then set that path in setUserInfo.setAvatar
-
                         getandupdateurl(imagetobeuploaded);
 
                         print('Avatar updated!!');
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
-                          return homescreen();
+                          return registerbadgesscreen();
                         }));
                       }
                     }))

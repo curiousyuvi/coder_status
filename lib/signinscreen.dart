@@ -44,7 +44,7 @@ class _signinscreenState extends State<signinscreen> {
       setState(() {
         isloading = true;
       });
-      login(emailid, password).then((user) {
+      login(emailid.trim(), password.trim()).then((user) {
         if (user != null) {
           print('login succesfull');
           setState(() {
@@ -97,43 +97,39 @@ class _signinscreenState extends State<signinscreen> {
                         ),
                       ),
                       Flexible(child: coderstatusheading(context)),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.07,
-                      ),
                       Flexible(
-                        child: Container(
-                          width: double.infinity,
-                          height: MediaQuery.of(context).size.height * 0.1,
-                          child: myTextEormField(
-                              Icon(Icons.email), 'Email Id', false, (val) {
-                            emailid = val;
-                          },
-                              TextInputType.emailAddress,
-                              (val) => !val.contains('@')
-                                  ? 'Please enter a valid email'
-                                  : null),
+                        child: SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.07,
                         ),
                       ),
-                      Flexible(
-                        child: Container(
-                          width: double.infinity,
-                          height: MediaQuery.of(context).size.height * 0.1,
-                          child: myTextEormField(
-                              Icon(Icons.vpn_key), 'Password', true, (val) {
-                            password = val;
-                          },
-                              TextInputType.visiblePassword,
-                              (val) => val.trim().length < 6
-                                  ? 'Please enter a valid password'
-                                  : null),
-                        ),
+                      Container(
+                        width: double.infinity,
+                        height: MediaQuery.of(context).size.height * 0.1,
+                        child: myTextEormField(
+                            Icon(Icons.email), 'Email Id', false, (val) {
+                          emailid = val;
+                        },
+                            TextInputType.emailAddress,
+                            (val) => !val.contains('@')
+                                ? 'Please enter a valid email'
+                                : null),
                       ),
-                      Flexible(
-                        child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 8),
-                          height: MediaQuery.of(context).size.height * 0.09,
-                          child: myButton(true, 'Log in', _submit),
-                        ),
+                      Container(
+                        width: double.infinity,
+                        height: MediaQuery.of(context).size.height * 0.1,
+                        child: myTextEormField(
+                            Icon(Icons.vpn_key), 'Password', true, (val) {
+                          password = val;
+                        },
+                            TextInputType.visiblePassword,
+                            (val) => val.trim().length < 6
+                                ? 'Please enter a valid password'
+                                : null),
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 8),
+                        height: MediaQuery.of(context).size.height * 0.09,
+                        child: myButton(true, 'Log in', _submit),
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.025,

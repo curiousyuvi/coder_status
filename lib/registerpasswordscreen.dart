@@ -56,7 +56,8 @@ class _registerpasswordscreenState extends State<registerpasswordscreen> {
         if (user != null) {
           print('account created');
 
-          SetUserInfo.setUserCredentials(name, codername, urls.avatar1url);
+          SetUserInfo.setUserCredentials(
+              name, codername, urls.avatar1url, null, null, null, null);
 
           Navigator.push(context, MaterialPageRoute(builder: (context) {
             return registeravatarscreen();

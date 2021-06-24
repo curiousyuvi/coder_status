@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class GetUserInfo {
-  static Future getUserName() async {
+  static Future<String> getUserName() async {
     FirebaseAuth _auth = FirebaseAuth.instance;
     final user = _auth.currentUser;
     final uid = user.uid;
@@ -17,7 +17,7 @@ class GetUserInfo {
     return name;
   }
 
-  static Future getUserCoderName() async {
+  static Future<String> getUserCoderName() async {
     FirebaseAuth _auth = FirebaseAuth.instance;
     final user = _auth.currentUser;
     final uid = user.uid;
@@ -29,7 +29,7 @@ class GetUserInfo {
     return codername;
   }
 
-  static Future getUserAvatarUrl() async {
+  static Future<String> getUserAvatarUrl() async {
     FirebaseAuth _auth = FirebaseAuth.instance;
     final user = _auth.currentUser;
     final uid = user.uid;
@@ -39,5 +39,19 @@ class GetUserInfo {
     String avatarurl = mapofdocument.data()['avatarurl'];
     print(avatarurl);
     return avatarurl;
+  }
+
+  static Future<List<String>> getUserHandles() async {
+    FirebaseAuth _auth = FirebaseAuth.instance;
+    final user = _auth.currentUser;
+    final uid = user.uid;
+    final mapofdocument =
+        await FirebaseFirestore.instance.collection("users").doc(uid).get();
+
+    String codeforces = mapofdocument.data()['codeforces'];
+    String codechef = mapofdocument.data()['codechef'];
+    String atcoder = mapofdocument.data()['atcoder'];
+    String spoj = mapofdocument.data()['spoj'];
+    return [codeforces, codechef, atcoder, spoj];
   }
 }
