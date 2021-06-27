@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:splashscreen/splashscreen.dart';
-import 'homescreen.dart';
+import 'mydashboardscreen.dart';
 import 'signinscreen.dart';
 
 Future main() async {

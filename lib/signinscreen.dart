@@ -1,6 +1,8 @@
 import 'package:codersstatus/components/colorscheme.dart';
+import 'package:codersstatus/components/loadingScreen.dart';
 import 'package:codersstatus/forgotpasswordscreen.dart';
 import 'package:codersstatus/homescreen.dart';
+import 'package:codersstatus/mydashboardscreen.dart';
 import 'package:codersstatus/firebase_layer/loginuser.dart';
 import 'package:codersstatus/registeravatarscreen.dart';
 import 'package:codersstatus/registernamescreen.dart';
@@ -51,7 +53,7 @@ class _signinscreenState extends State<signinscreen> {
             isloading = false;
           });
           Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return homescreen();
+            return HomeScreen();
           }));
         } else {
           setState(() {
@@ -73,11 +75,7 @@ class _signinscreenState extends State<signinscreen> {
   @override
   Widget build(BuildContext context) {
     return isloading
-        ? Scaffold(
-            body: Center(
-              child: CircularProgressIndicator(),
-            ),
-          )
+        ? LoadingScreen('Logging In...')
         : Scaffold(
             body: SafeArea(
               child: Container(

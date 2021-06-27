@@ -10,7 +10,7 @@ import 'components/constants.dart';
 import 'components/myTextFormField.dart';
 import 'components/coderstatusheading.dart';
 import 'components/myButton.dart';
-import 'homescreen.dart';
+import 'mydashboardscreen.dart';
 import 'package:email_auth/email_auth.dart';
 
 void main() => runApp(
@@ -37,8 +37,6 @@ class _registeremailidscreen2State extends State<registeremailidscreen2> {
   static String emailid = '';
   String otp = '';
   final _formkey = GlobalKey<FormState>();
-
-
 
   bool verifyOTP(String OTP) {
     var res = EmailAuth.validate(receiverMail: emailid, userOTP: OTP);

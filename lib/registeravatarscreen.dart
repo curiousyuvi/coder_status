@@ -6,6 +6,7 @@ import 'package:codersstatus/firebase_layer/logoutuser.dart';
 import 'package:codersstatus/firebase_layer/setUserInfo.dart';
 import 'package:codersstatus/firebase_layer/uploadAvatar.dart';
 import 'package:codersstatus/homescreen.dart';
+import 'package:codersstatus/mydashboardscreen.dart';
 import 'package:codersstatus/registerbadgesscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -200,7 +201,7 @@ class _registeravatarscreenState extends State<registeravatarscreen> {
                         child: myButton(false, 'Skip', () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
-                        return homescreen();
+                        return HomeScreen();
                       }));
                     })),
                     Flexible(
@@ -210,7 +211,7 @@ class _registeravatarscreenState extends State<registeravatarscreen> {
 
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
-                          return homescreen();
+                          return HomeScreen();
                         }));
                       } else if (imagetobeuploaded != null) {
                         getandupdateurl(imagetobeuploaded);

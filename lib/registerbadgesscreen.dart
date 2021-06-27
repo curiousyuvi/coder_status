@@ -3,6 +3,7 @@ import 'package:codersstatus/components/myButton.dart';
 import 'package:codersstatus/components/myTextFormField.dart';
 import 'package:codersstatus/firebase_layer/setUserInfo.dart';
 import 'package:codersstatus/homescreen.dart';
+import 'package:codersstatus/mydashboardscreen.dart';
 import 'package:flutter/material.dart';
 
 class registerbadgesscreen extends StatefulWidget {
@@ -27,7 +28,7 @@ class _registerbadgesscreenState extends State<registerbadgesscreen> {
       await SetUserInfo.updateHandles(codeforces, codechef, atcoder, spoj);
 
       Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return homescreen();
+        return HomeScreen();
       }));
     }
   }

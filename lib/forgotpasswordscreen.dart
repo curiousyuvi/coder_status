@@ -1,5 +1,5 @@
 import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/homescreen.dart';
+import 'package:codersstatus/mydashboardscreen.dart';
 import 'package:codersstatus/firebase_layer/loginuser.dart';
 import 'package:codersstatus/registernamescreen.dart';
 import 'package:codersstatus/resetpassword.dart';

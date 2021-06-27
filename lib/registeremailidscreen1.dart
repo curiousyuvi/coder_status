@@ -11,7 +11,7 @@ import 'components/constants.dart';
 import 'components/myTextFormField.dart';
 import 'components/coderstatusheading.dart';
 import 'components/myButton.dart';
-import 'homescreen.dart';
+import 'mydashboardscreen.dart';
 import 'package:email_auth/email_auth.dart';
 
 void main() => runApp(
