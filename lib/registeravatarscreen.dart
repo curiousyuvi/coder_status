@@ -64,14 +64,14 @@ class _registeravatarscreenState extends State<registeravatarscreen> {
     false
   ];
   List<Widget> _avatarbuttons = [
-    myAvatarButton(AssetImage('images/avatar0.jpg'), false),
-    myAvatarButton(AssetImage('images/avatar1.jpg'), true),
-    myAvatarButton(AssetImage('images/avatar2.jpg'), false),
-    myAvatarButton(AssetImage('images/avatar3.jpg'), false),
-    myAvatarButton(AssetImage('images/avatar4.jpg'), false),
-    myAvatarButton(AssetImage('images/avatar5.jpg'), false),
-    myAvatarButton(AssetImage('images/avatar6.jpg'), false),
-    myAvatarButton(AssetImage('images/avatar7.jpg'), false),
+    myAvatarButton(Image(image: AssetImage('images/avatar0.jpg')), false),
+    myAvatarButton(Image(image: AssetImage('images/avatar1.jpg')), true),
+    myAvatarButton(Image(image: AssetImage('images/avatar2.jpg')), false),
+    myAvatarButton(Image(image: AssetImage('images/avatar3.jpg')), false),
+    myAvatarButton(Image(image: AssetImage('images/avatar4.jpg')), false),
+    myAvatarButton(Image(image: AssetImage('images/avatar5.jpg')), false),
+    myAvatarButton(Image(image: AssetImage('images/avatar6.jpg')), false),
+    myAvatarButton(Image(image: AssetImage('images/avatar7.jpg')), false),
   ];
 
   @override
@@ -118,21 +118,29 @@ class _registeravatarscreenState extends State<registeravatarscreen> {
                             _selections[i] = false;
                           }
                           _avatarbuttons[0] = myAvatarButton(
-                              AssetImage('images/avatar0.jpg'), false);
+                              Image(image: AssetImage('images/avatar0.jpg')),
+                              false);
                           _avatarbuttons[1] = myAvatarButton(
-                              AssetImage('images/avatar1.jpg'), false);
+                              Image(image: AssetImage('images/avatar1.jpg')),
+                              false);
                           _avatarbuttons[2] = myAvatarButton(
-                              AssetImage('images/avatar2.jpg'), false);
+                              Image(image: AssetImage('images/avatar2.jpg')),
+                              false);
                           _avatarbuttons[3] = myAvatarButton(
-                              AssetImage('images/avatar3.jpg'), false);
+                              Image(image: AssetImage('images/avatar3.jpg')),
+                              false);
                           _avatarbuttons[4] = myAvatarButton(
-                              AssetImage('images/avatar4.jpg'), false);
+                              Image(image: AssetImage('images/avatar4.jpg')),
+                              false);
                           _avatarbuttons[5] = myAvatarButton(
-                              AssetImage('images/avatar5.jpg'), false);
+                              Image(image: AssetImage('images/avatar5.jpg')),
+                              false);
                           _avatarbuttons[6] = myAvatarButton(
-                              AssetImage('images/avatar6.jpg'), false);
+                              Image(image: AssetImage('images/avatar6.jpg')),
+                              false);
                           _avatarbuttons[7] = myAvatarButton(
-                              AssetImage('images/avatar7.jpg'), false);
+                              Image(image: AssetImage('images/avatar7.jpg')),
+                              false);
 
                           _selections[index] = true;
                           if (index > 0) {
@@ -183,7 +191,9 @@ class _registeravatarscreenState extends State<registeravatarscreen> {
                             pick();
                           }
                           _avatarbuttons[index] = myAvatarButton(
-                              AssetImage('images/avatar$index.jpg'), true);
+                              Image(
+                                  image: AssetImage('images/avatar$index.jpg')),
+                              true);
                         });
                       },
                       renderBorder: false,

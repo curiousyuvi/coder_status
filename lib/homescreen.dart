@@ -1,5 +1,6 @@
 import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/components/loadingScreen.dart';
+import 'package:codersstatus/components/myAvatarButton.dart';
 import 'package:codersstatus/components/urls.dart';
 import 'package:codersstatus/firebase_layer/getUserInfo.dart';
 import 'package:codersstatus/functions/getRating.dart';
@@ -16,6 +17,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  bool avatarIconOnOff = true;
   int idx = 2;
   String name = 'name', codername = 'codername', avatarurl = urls.avatar1url;
   List<String> userhandles, userrating;
@@ -49,15 +51,23 @@ class _HomeScreenState extends State<HomeScreen> {
                       onTap: (val) {
                         setState(() {
                           idx = val;
+
+                          if (val == 2) {
+                            avatarIconOnOff = true;
+                          } else {
+                            avatarIconOnOff = false;
+                          }
                         });
                       },
                       items: [
                         BottomNavigationBarItem(icon: Icon(Icons.list)),
                         BottomNavigationBarItem(icon: Icon(Icons.search)),
                         BottomNavigationBarItem(
-                            icon: CircleAvatar(
-                          backgroundImage: NetworkImage(avatarurl),
-                        )),
+                            icon: myAvatarButton(
+                                Image(
+                                  image: NetworkImage(avatarurl),
+                                ),
+                                avatarIconOnOff)),
                         BottomNavigationBarItem(icon: Icon(Icons.people)),
                         BottomNavigationBarItem(icon: Icon(Icons.settings)),
                       ]),
@@ -65,19 +75,42 @@ class _HomeScreenState extends State<HomeScreen> {
                     return CupertinoTabView(builder: (context) {
                       switch (index) {
                         case 0:
-                          return CupertinoPageScaffold(child: SettingScreen());
+                          {
+                            avatarIconOnOff = false;
+                            return CupertinoPageScaffold(
+                                child: SettingScreen());
+                          }
                         case 1:
-                          return CupertinoPageScaffold(child: SettingScreen());
+                          {
+                            avatarIconOnOff = false;
+                            return CupertinoPageScaffold(
+                                child: SettingScreen());
+                          }
                         case 2:
-                          return CupertinoPageScaffold(
-                              child: mydashboardscreen(name, codername,
-                                  avatarurl, userhandles, userrating));
+                          {
+                            avatarIconOnOff = true;
+                            return CupertinoPageScaffold(
+                                child: mydashboardscreen(name, codername,
+                                    avatarurl, userhandles, userrating));
+                          }
                         case 3:
-                          return CupertinoPageScaffold(child: SettingScreen());
+                          {
+                            avatarIconOnOff = false;
+                            return CupertinoPageScaffold(
+                                child: SettingScreen());
+                          }
                         case 4:
-                          return CupertinoPageScaffold(child: SettingScreen());
+                          {
+                            avatarIconOnOff = false;
+                            return CupertinoPageScaffold(
+                                child: SettingScreen());
+                          }
                         default:
-                          return CupertinoPageScaffold(child: SettingScreen());
+                          {
+                            avatarIconOnOff = false;
+                            return CupertinoPageScaffold(
+                                child: SettingScreen());
+                          }
                       }
                     });
                   });
@@ -98,15 +131,23 @@ class _HomeScreenState extends State<HomeScreen> {
               onTap: (val) {
                 setState(() {
                   idx = val;
+
+                  if (val == 2) {
+                    avatarIconOnOff = true;
+                  } else {
+                    avatarIconOnOff = false;
+                  }
                 });
               },
               items: [
                 BottomNavigationBarItem(icon: Icon(Icons.list)),
                 BottomNavigationBarItem(icon: Icon(Icons.search)),
                 BottomNavigationBarItem(
-                    icon: CircleAvatar(
-                  backgroundImage: NetworkImage(avatarurl),
-                )),
+                    icon: myAvatarButton(
+                        Image(
+                          image: NetworkImage(avatarurl),
+                        ),
+                        avatarIconOnOff)),
                 BottomNavigationBarItem(icon: Icon(Icons.people)),
                 BottomNavigationBarItem(icon: Icon(Icons.settings)),
               ]),
@@ -114,19 +155,38 @@ class _HomeScreenState extends State<HomeScreen> {
             return CupertinoTabView(builder: (context) {
               switch (index) {
                 case 0:
-                  return CupertinoPageScaffold(child: SettingScreen());
+                  {
+                    avatarIconOnOff = false;
+                    return CupertinoPageScaffold(child: SettingScreen());
+                  }
                 case 1:
-                  return CupertinoPageScaffold(child: SettingScreen());
+                  {
+                    avatarIconOnOff = false;
+                    return CupertinoPageScaffold(child: SettingScreen());
+                  }
                 case 2:
-                  return CupertinoPageScaffold(
-                      child: mydashboardscreen(
-                          name, codername, avatarurl, userhandles, userrating));
+                  {
+                    avatarIconOnOff = true;
+
+                    return CupertinoPageScaffold(
+                        child: mydashboardscreen(name, codername, avatarurl,
+                            userhandles, userrating));
+                  }
                 case 3:
-                  return CupertinoPageScaffold(child: SettingScreen());
+                  {
+                    avatarIconOnOff = false;
+                    return CupertinoPageScaffold(child: SettingScreen());
+                  }
                 case 4:
-                  return CupertinoPageScaffold(child: SettingScreen());
+                  {
+                    avatarIconOnOff = false;
+                    return CupertinoPageScaffold(child: SettingScreen());
+                  }
                 default:
-                  return CupertinoPageScaffold(child: SettingScreen());
+                  {
+                    avatarIconOnOff = false;
+                    return CupertinoPageScaffold(child: SettingScreen());
+                  }
               }
             });
           });

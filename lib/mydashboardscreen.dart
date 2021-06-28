@@ -67,65 +67,71 @@ class _mydashboardscreenState extends State<mydashboardscreen> {
                   ),
                 ),
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.03,
-              ),
-              Container(
-                  height: MediaQuery.of(context).size.height * 0.25,
-                  width: MediaQuery.of(context).size.height * 0.25,
-                  child: myFadeInCircleAvatar(avatarurl)),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.025,
-              ),
-              Text(
-                name,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: 'young',
-                    fontWeight: FontWeight.bold,
-                    fontSize: MediaQuery.of(context).size.height * 0.035),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.007,
-              ),
-              Text(
-                '@' + codername,
-                style: TextStyle(
-                    color: colorschemeclass.lightgrey,
-                    fontFamily: 'young',
-                    fontSize: MediaQuery.of(context).size.height * 0.025),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.02,
-              ),
-              Wrap(
+              Column(
                 children: [
-                  userrating[0] != '0'
-                      ? myTile(
-                          AssetImage('images/codeforcestile.png'),
-                          colorschemeclass.codeforcespurple,
-                          userrating[0] + ' pts')
-                      : SizedBox(),
-                  userrating[1] != '0'
-                      ? myTile(
-                          AssetImage('images/codecheftile.png'),
-                          colorschemeclass.codechefbrown,
-                          userrating[1] + ' pts')
-                      : SizedBox(),
-                  userrating[2] != '0'
-                      ? myTile(AssetImage('images/atcodertile.png'),
-                          colorschemeclass.atcodergrey, userrating[2] + ' pts')
-                      : SizedBox(),
-                  userrating[3] != '0'
-                      ? myTile(AssetImage('images/spojtile.png'),
-                          colorschemeclass.spojblue, userrating[3] + ' pts')
-                      : SizedBox(),
-                  /*myTile(AssetImage('images/githubtile.png'),
-                              Colors.white, '26 reps')*/
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.03,
+                  ),
+                  Container(
+                      height: MediaQuery.of(context).size.height * 0.25,
+                      width: MediaQuery.of(context).size.height * 0.25,
+                      child: myFadeInCircleAvatar(avatarurl)),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.025,
+                  ),
+                  Text(
+                    name,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'young',
+                        fontWeight: FontWeight.bold,
+                        fontSize: MediaQuery.of(context).size.height * 0.035),
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.007,
+                  ),
+                  Text(
+                    '@' + codername,
+                    style: TextStyle(
+                        color: colorschemeclass.lightgrey,
+                        fontFamily: 'young',
+                        fontSize: MediaQuery.of(context).size.height * 0.025),
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
+                  ),
+                  Wrap(
+                    children: [
+                      userrating[0] != '0'
+                          ? myTile(
+                              AssetImage('images/codeforcestile.png'),
+                              colorschemeclass.codeforcespurple,
+                              userrating[0] + ' pts')
+                          : SizedBox(),
+                      userrating[1] != '0'
+                          ? myTile(
+                              AssetImage('images/codecheftile.png'),
+                              colorschemeclass.codechefbrown,
+                              userrating[1] + ' pts')
+                          : SizedBox(),
+                      userrating[2] != '0'
+                          ? myTile(
+                              AssetImage('images/atcodertile.png'),
+                              colorschemeclass.atcodergrey,
+                              userrating[2] + ' pts')
+                          : SizedBox(),
+                      userrating[3] != '0'
+                          ? myTile(AssetImage('images/spojtile.png'),
+                              colorschemeclass.spojblue, userrating[3] + ' pts')
+                          : SizedBox(),
+                      /*myTile(AssetImage('images/githubtile.png'),
+                                  Colors.white, '26 reps')*/
+                    ],
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
+                  ),
                 ],
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.02,
               ),
             ],
           ),
