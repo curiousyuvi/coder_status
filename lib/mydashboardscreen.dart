@@ -59,12 +59,7 @@ class _mydashboardscreenState extends State<mydashboardscreen> {
                 width: double.infinity,
                 height: MediaQuery.of(context).size.height * 0.07,
                 child: Center(
-                  child: GestureDetector(
-                    onTap: () {
-                      logout(context);
-                    },
-                    child: Image(image: AssetImage('images/appiconnoback.png')),
-                  ),
+                  child: Image(image: AssetImage('images/appiconnoback.png')),
                 ),
               ),
               Column(

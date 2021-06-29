@@ -3,6 +3,7 @@ import 'package:codersstatus/components/myButton.dart';
 import 'package:codersstatus/components/mySettingNonExpansionTile.dart';
 import 'package:codersstatus/components/mySettingsExpansionTile.dart';
 import 'package:codersstatus/components/myChildListTile.dart';
+import 'package:codersstatus/firebase_layer/logoutuser.dart';
 
 import 'package:flutter/material.dart';
 
@@ -93,13 +94,18 @@ class _SettingScreenState extends State<SettingScreen> {
                     colorschemeclass.dangerred),
               ],
             ),
-            mySettingsNonExpansionTile(
-                Icon(
-                  Icons.logout,
-                  color: colorschemeclass.lightgrey,
-                ),
-                'Log Out',
-                colorschemeclass.dangerred),
+            GestureDetector(
+              onTap: () {
+                logout(context);
+              },
+              child: mySettingsNonExpansionTile(
+                  Icon(
+                    Icons.logout,
+                    color: colorschemeclass.lightgrey,
+                  ),
+                  'Log Out',
+                  colorschemeclass.dangerred),
+            ),
           ]),
         ),
       ),
