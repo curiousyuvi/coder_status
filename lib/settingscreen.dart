@@ -1,4 +1,9 @@
+import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/components/myButton.dart';
+import 'package:codersstatus/components/mySettingNonExpansionTile.dart';
+import 'package:codersstatus/components/mySettingsExpansionTile.dart';
+import 'package:codersstatus/components/myChildListTile.dart';
+
 import 'package:flutter/material.dart';
 
 class SettingScreen extends StatefulWidget {
@@ -9,39 +14,95 @@ class SettingScreen extends StatefulWidget {
 }
 
 class _SettingScreenState extends State<SettingScreen> {
-  int counter = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Container(
-          width: double.infinity,
-          height: double.infinity,
-          padding: EdgeInsets.all(16),
-          child: Center(
-              child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                counter.toString(),
-                style: TextStyle(color: Colors.white),
+        body: SafeArea(
+      child: Container(
+        width: double.infinity,
+        height: double.infinity,
+        padding: EdgeInsets.all(24),
+        child: SingleChildScrollView(
+          child: Column(children: [
+            Container(
+              width: double.infinity,
+              child: Text(
+                'Settings',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'young',
+                    fontSize: MediaQuery.of(context).size.height * 0.07),
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.02,
-              ),
-              Container(
-                width: double.infinity,
-                height: MediaQuery.of(context).size.height * 0.1,
-                child: myButton(true, 'hello', () {
-                  setState(() {
-                    counter++;
-                  });
-                }),
-              )
-            ],
-          )),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.04,
+            ),
+            mySettingsExpansionTile(
+              Icon(Icons.edit),
+              'Edit Profile',
+              [
+                myChildListTile(
+                    Icon(
+                      Icons.image,
+                      color: colorschemeclass.dark,
+                    ),
+                    'Change Avatar'),
+                myChildListTile(
+                    Icon(
+                      Icons.person,
+                      color: colorschemeclass.dark,
+                    ),
+                    'Change Name'),
+                myChildListTile(
+                    Icon(
+                      Icons.alternate_email,
+                      color: colorschemeclass.dark,
+                    ),
+                    'Change Codername'),
+              ],
+            ),
+            mySettingsNonExpansionTile(
+                Icon(
+                  Icons.dashboard,
+                  color: colorschemeclass.lightgrey,
+                ),
+                'User Handles'),
+            mySettingsNonExpansionTile(
+                Icon(
+                  Icons.info,
+                  color: colorschemeclass.lightgrey,
+                ),
+                'About Developer'),
+            mySettingsExpansionTile(
+              Icon(Icons.edit),
+              'Account & Security',
+              [
+                myChildListTile(
+                    Icon(
+                      Icons.lock,
+                      color: colorschemeclass.dark,
+                    ),
+                    'Change Password'),
+                myChildListTile(
+                    Icon(
+                      Icons.delete,
+                      color: colorschemeclass.dangerred,
+                    ),
+                    'Delete Account',
+                    colorschemeclass.dangerred),
+              ],
+            ),
+            mySettingsNonExpansionTile(
+                Icon(
+                  Icons.logout,
+                  color: colorschemeclass.lightgrey,
+                ),
+                'Log Out',
+                colorschemeclass.dangerred),
+          ]),
         ),
       ),
-    );
+    ));
   }
 }
