@@ -6,11 +6,14 @@ class mySettingsNonExpansionTile extends StatelessWidget {
   Icon leadingIcon;
   String title;
   Color tilecolor;
+  Color extrusioncolor;
   mySettingsNonExpansionTile(Icon leadingIcon, String title,
-      [Color tilecolor = colorschemeclass.unactivatedblack]) {
+      [Color tilecolor = colorschemeclass.unactivatedblack,
+      Color extrusioncolor = colorschemeclass.darkgrey]) {
     this.leadingIcon = leadingIcon;
     this.title = title;
     this.tilecolor = tilecolor;
+    this.extrusioncolor = extrusioncolor;
   }
 
   @override
@@ -41,7 +44,7 @@ class mySettingsNonExpansionTile extends StatelessWidget {
                       boxShadow: [
                         BoxShadow(
                           spreadRadius: 0,
-                          color: colorschemeclass.lightgrey.withOpacity(0.3),
+                          color: extrusioncolor.withOpacity(0.5),
                           offset: Offset(0, 4),
                           blurRadius: 0,
                         )

@@ -1,5 +1,5 @@
 import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/components/myAppBar.dart';
+import 'package:codersstatus/components/myAppBarWithBack.dart';
 import 'package:codersstatus/components/myOutlineButton.dart';
 import 'package:codersstatus/components/urls.dart';
 import 'package:codersstatus/firebase_layer/deleteuser.dart';
@@ -74,8 +74,8 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
             backgroundColor: colorschemeclass.dark,
             appBar: PreferredSize(
               preferredSize:
-                  Size.fromHeight(MediaQuery.of(context).size.height * 0.12),
-              child: myAppBar('Delete Account'),
+                  Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
+              child: myAppBarWithBack('Delete Account'),
             ),
             body: SafeArea(
               child: Container(
@@ -183,7 +183,7 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
                       Container(
                           padding: EdgeInsets.all(8),
                           height: MediaQuery.of(context).size.height * 0.11,
-                          child: myOutlineButton(colorschemeclass.dangerred,
+                          child: myButton(colorschemeclass.dangerred,
                               'Delete Account', _submit))
                     ],
                   ),

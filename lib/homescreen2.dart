@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/components/loadingScreen.dart';
 import 'package:codersstatus/components/myAvatarButton.dart';
@@ -24,6 +26,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
       userrating = [null, null, null, null];
   bool isFirstTime = true;
   List<Widget> screenList;
+  CupertinoTabController tabController;
 
   final GlobalKey<NavigatorState> firstTabNavKey = GlobalKey<NavigatorState>();
   final GlobalKey<NavigatorState> secondTabNavKey = GlobalKey<NavigatorState>();
@@ -51,7 +54,28 @@ class _HomeScreen2State extends State<HomeScreen2> {
     isFirstTime = false;
   }
 
-  CupertinoTabController tabController;
+  Future<bool> _onWillPop() {
+    return showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text('Are you sure?'),
+            content: Text('Do you want to exit an App'),
+            actions: <Widget>[
+              FlatButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: Text('No'),
+              ),
+              FlatButton(
+                onPressed: () => exit(0),
+                /*Navigator.of(context).pop(true)*/
+                child: Text('Yes'),
+              ),
+            ],
+          ),
+        ) ??
+        false;
+  }
+
   @override
   void initState() {
     super.initState();

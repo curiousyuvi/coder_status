@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:codersstatus/components/colorscheme.dart';
+import 'colorscheme.dart';
+
 //Add this as parent to myAppBar :
 //PreferredSize( preferredSize: Size.fromHeight(MediaQuery.of(context).size.height * 0.12),
 
-class myAppBar extends StatelessWidget {
+class myAppBarWithBack extends StatelessWidget {
   String title;
-  myAppBar(String title) {
+  myAppBarWithBack(String title) {
     this.title = title;
   }
 
@@ -13,6 +14,13 @@ class myAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: colorschemeclass.dark,
+      leading: GestureDetector(
+        onTap: () {
+          Navigator.pop(context);
+        },
+        child:
+            Icon(Icons.arrow_back_ios_sharp, color: colorschemeclass.lightgrey),
+      ),
       centerTitle: true,
       title: Text(
         title,

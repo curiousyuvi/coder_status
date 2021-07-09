@@ -15,7 +15,7 @@ import 'components/myTextFormField.dart';
 import 'components/myButton.dart';
 import 'mydashboardscreen.dart';
 import 'package:codersstatus/firebase_layer/createuser.dart';
-import 'components/myAppBar.dart';
+import 'components/myAppBarWithBack.dart';
 
 class updatePasswordScreen extends StatefulWidget {
   @override
@@ -83,8 +83,8 @@ class _updatePasswordScreenState extends State<updatePasswordScreen> {
         : Scaffold(
             appBar: PreferredSize(
               preferredSize:
-                  Size.fromHeight(MediaQuery.of(context).size.height * 0.12),
-              child: myAppBar('Update Password'),
+                  Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
+              child: myAppBarWithBack('Update Password'),
             ),
             backgroundColor: colorschemeclass.dark,
             body: SafeArea(

@@ -1,4 +1,5 @@
 import 'package:codersstatus/components/colorscheme.dart';
+import 'package:codersstatus/components/myAppBarWithBack.dart';
 import 'package:codersstatus/components/myAppBar.dart';
 import 'package:codersstatus/components/myButton.dart';
 import 'package:codersstatus/components/mySettingNonExpansionTile.dart';
@@ -23,7 +24,7 @@ class _SettingScreenState extends State<SettingScreen> {
     return Scaffold(
         appBar: PreferredSize(
           preferredSize:
-              Size.fromHeight(MediaQuery.of(context).size.height * 0.12),
+              Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
           child: myAppBar('Settings'),
         ),
         body: SafeArea(
@@ -119,6 +120,7 @@ class _SettingScreenState extends State<SettingScreen> {
                         color: colorschemeclass.lightgrey,
                       ),
                       'Log Out',
+                      colorschemeclass.dangerred,
                       colorschemeclass.dangerred),
                 ),
               ]),
