@@ -97,16 +97,19 @@ class _registeremailidscreen1State extends State<registeremailidscreen1> {
                 SizedBox(
                   height: 10,
                 ),
-                Flexible(
-                    child: myTextEormField(
-                        Icon(Icons.email_sharp), 'email id', false, (val) {
+                myTextEormField(Icon(Icons.email_sharp), 'email id', false,
+                    (val) {
                   emailid = val;
                 },
-                        TextInputType.emailAddress,
-                        (val) => !val.contains('@')
-                            ? 'Please enter a valid email'
-                            : null)),
-                Flexible(child: myButton(true, 'Send OTP', _submit)),
+                    TextInputType.emailAddress,
+                    (val) => !val.contains('@')
+                        ? 'Please enter a valid email'
+                        : null),
+                Container(
+                    padding: EdgeInsets.all(8),
+                    height: MediaQuery.of(context).size.height * 0.11,
+                    child: myButton(
+                        colorschemeclass.primarygreen, 'Next', _submit))
               ],
             ),
           ),

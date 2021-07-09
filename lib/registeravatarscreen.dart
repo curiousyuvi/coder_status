@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/components/myButton.dart';
+import 'package:codersstatus/components/myOutlineButton.dart';
 import 'package:codersstatus/components/urls.dart';
 import 'package:codersstatus/firebase_layer/logoutuser.dart';
 import 'package:codersstatus/firebase_layer/setUserInfo.dart';
@@ -208,31 +209,37 @@ class _registeravatarscreenState extends State<registeravatarscreen> {
                     child: Row(
                   children: [
                     Flexible(
-                        child: myButton(false, 'Skip', () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return HomeScreen();
-                      }));
-                    })),
-                    Flexible(
-                        child: myButton(true, 'Add Avatar', () {
-                      if (urltobeset != null) {
-                        SetUserInfo.updateAvatar(urltobeset);
-
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return HomeScreen();
-                        }));
-                      } else if (imagetobeuploaded != null) {
-                        getandupdateurl(imagetobeuploaded);
-
-                        print('Avatar updated!!');
+                        child: Container(
+                      child: myOutlineButton(colorschemeclass.lightgrey, 'Skip',
+                          () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
                           return registerbadgesscreen();
                         }));
-                      }
-                    }))
+                      }),
+                    )),
+                    Flexible(
+                        child: Container(
+                      child: myButton(
+                          colorschemeclass.primarygreen, 'Add Avatar', () {
+                        if (urltobeset != null) {
+                          SetUserInfo.updateAvatar(urltobeset);
+
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return registerbadgesscreen();
+                          }));
+                        } else if (imagetobeuploaded != null) {
+                          getandupdateurl(imagetobeuploaded);
+
+                          print('Avatar updated!!');
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return registerbadgesscreen();
+                          }));
+                        }
+                      }),
+                    ))
                   ],
                 ))
               ],

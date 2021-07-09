@@ -1,6 +1,9 @@
 import 'package:codersstatus/components/colorscheme.dart';
+import 'package:codersstatus/components/myOutlineButton.dart';
 import 'package:codersstatus/components/urls.dart';
 import 'package:codersstatus/firebase_layer/setUserInfo.dart';
+import 'package:codersstatus/firebase_layer/updatepassword.dart';
+import 'package:codersstatus/firebase_layer/validatepassword.dart';
 import 'package:codersstatus/registeravatarscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,65 +14,62 @@ import 'components/constants.dart';
 import 'components/myTextFormField.dart';
 import 'components/myButton.dart';
 import 'mydashboardscreen.dart';
-import 'registernamescreen.dart';
-import 'registercodernamescreen.dart';
-import 'registeremailidscreen1.dart';
 import 'package:codersstatus/firebase_layer/createuser.dart';
+import 'components/myAppBar.dart';
 
-void main() => runApp(
-      MaterialApp(
-        home: registerpasswordscreen(
-            'example name', 'examplecodername', 'example@email'),
-      ),
-    );
-
-class registerpasswordscreen extends StatefulWidget {
-  registerpasswordscreen(String name, String codername, String emailid) {
-    _registerpasswordscreenState.name = name;
-    _registerpasswordscreenState.codername = codername;
-    _registerpasswordscreenState.emailid = emailid;
-  }
-
+class updatePasswordScreen extends StatefulWidget {
   @override
-  _registerpasswordscreenState createState() => _registerpasswordscreenState();
+  _updatePasswordScreenState createState() => _updatePasswordScreenState();
 }
 
-class _registerpasswordscreenState extends State<registerpasswordscreen> {
-  static String name = '';
-  static String codername = '';
-  static String emailid = '';
-  String password = '';
+class _updatePasswordScreenState extends State<updatePasswordScreen> {
+  String oldPass = '';
+  String newPass = '';
   bool isloading = false;
+  bool oldpasswordmatch = false;
 
   final _formkey = GlobalKey<FormState>();
 
-  void _submit() {
+  void _submit() async {
     print("Register initiated!!");
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
-      print(name + ' ' + codername + ' ' + emailid + ' ' + password);
       setState(() {
         isloading = true;
       });
 
-      createAccount(name, codername, emailid, password).then((user) {
-        if (user != null) {
-          print('account created');
+      try {
+        await updatePassword(oldPass, newPass);
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          backgroundColor: colorschemeclass.primarygreen,
+          content: Row(
+            children: [
+              Icon(Icons.check, color: colorschemeclass.lightgrey),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.01,
+              ),
+              Text('Password Updated Successfully')
+            ],
+          ),
+        ));
+      } catch (e) {
+        print(e);
+      }
 
-          SetUserInfo.setUserCredentials(
-              name, codername, urls.avatar1url, null, null, null, null);
-
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return registeravatarscreen();
-          }));
-        } else {
-          print('email id already exists');
-          setState(() {
-            isloading = false;
-          });
-        }
+      setState(() {
+        isloading = false;
       });
     }
+  }
+
+  void setValidatePasswordBool(String oldpassword) async {
+    oldpasswordmatch = await validatePassword(oldpassword);
+  }
+
+  void updateValidatePasswordBool(String oldpassword) async {
+    setState(() {
+      setValidatePasswordBool(oldpassword);
+    });
   }
 
   @override
@@ -81,6 +81,11 @@ class _registerpasswordscreenState extends State<registerpasswordscreen> {
             ),
           )
         : Scaffold(
+            appBar: PreferredSize(
+              preferredSize:
+                  Size.fromHeight(MediaQuery.of(context).size.height * 0.12),
+              child: myAppBar('Update Password'),
+            ),
             backgroundColor: colorschemeclass.dark,
             body: SafeArea(
               child: Container(
@@ -90,29 +95,6 @@ class _registerpasswordscreenState extends State<registerpasswordscreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Flexible(
-                        child: Hero(
-                          tag: 'splashscreenImage',
-                          child: Image(
-                            width: 300,
-                            image: AssetImage('images/appiconnoback.png'),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 50,
-                      ),
-                      Flexible(
-                          child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          'Choose Password',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 25,
-                              fontFamily: 'young'),
-                        ),
-                      )),
                       Flexible(
                           child: Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -124,10 +106,22 @@ class _registerpasswordscreenState extends State<registerpasswordscreen> {
                                 fontFamily: 'young'),
                             textAlign: TextAlign.center),
                       )),
-                      myTextEormField(Icon(Icons.vpn_key), 'password', true,
+                      myTextEormField(
+                          Icon(Icons.vpn_key),
+                          'old password',
+                          true,
+                          (val) {},
+                          TextInputType.visiblePassword, (oldpassword) {
+                        oldPass = oldpassword;
+                        updateValidatePasswordBool(oldpassword);
+                        return oldpasswordmatch
+                            ? null
+                            : 'Old password is incorrect';
+                      }),
+                      myTextEormField(Icon(Icons.vpn_key), 'new password', true,
                           (val) {
                         setState(() {
-                          password = val;
+                          newPass = val;
                         });
                       },
                           TextInputType.visiblePassword,
@@ -136,11 +130,11 @@ class _registerpasswordscreenState extends State<registerpasswordscreen> {
                               : null),
                       myTextEormField(
                           Icon(Icons.vpn_key),
-                          'confirm password',
+                          'confirm new password',
                           true,
                           (val) {},
                           TextInputType.visiblePassword,
-                          (val) => val != password
+                          (val) => val != newPass
                               ? 'Password doesn\'t match'
                               : null),
                       Container(

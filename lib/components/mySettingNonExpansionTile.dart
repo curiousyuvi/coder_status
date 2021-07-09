@@ -7,7 +7,7 @@ class mySettingsNonExpansionTile extends StatelessWidget {
   String title;
   Color tilecolor;
   mySettingsNonExpansionTile(Icon leadingIcon, String title,
-      [Color tilecolor = colorschemeclass.darkgrey]) {
+      [Color tilecolor = colorschemeclass.unactivatedblack]) {
     this.leadingIcon = leadingIcon;
     this.title = title;
     this.tilecolor = tilecolor;
@@ -37,13 +37,13 @@ class mySettingsNonExpansionTile extends StatelessWidget {
                               TextStyle(color: colorschemeclass.lightgrey))),
                   child: DecoratedBox(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(15),
                       boxShadow: [
                         BoxShadow(
                           spreadRadius: 0,
-                          color: colorschemeclass.darkgrey.withOpacity(0.5),
-                          offset: Offset(0, 6),
-                          blurRadius: 10,
+                          color: colorschemeclass.lightgrey.withOpacity(0.3),
+                          offset: Offset(0, 4),
+                          blurRadius: 0,
                         )
                       ],
                     ),
@@ -56,7 +56,7 @@ class mySettingsNonExpansionTile extends StatelessWidget {
                           title,
                           style: TextStyle(
                               fontSize:
-                                  MediaQuery.of(context).size.height * 0.03,
+                                  MediaQuery.of(context).size.height * 0.025,
                               fontWeight: FontWeight.bold),
                         ),
                       ),

@@ -19,10 +19,9 @@ void main() => runApp(
     );
 
 class registercodernamescreen extends StatefulWidget {
-  registercodernamescreen(String name){
-    _registercodernamescreenState.name=name;
+  registercodernamescreen(String name) {
+    _registercodernamescreenState.name = name;
   }
-
 
   @override
   _registercodernamescreenState createState() =>
@@ -30,7 +29,7 @@ class registercodernamescreen extends StatefulWidget {
 }
 
 class _registercodernamescreenState extends State<registercodernamescreen> {
-  static String name='';
+  static String name = '';
   String codername = '';
   final _formkey = GlobalKey<FormState>();
 
@@ -38,12 +37,10 @@ class _registercodernamescreenState extends State<registercodernamescreen> {
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
       Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return registeremailidscreen1(name,codername);
+        return registeremailidscreen1(name, codername);
       }));
     }
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -90,17 +87,19 @@ class _registercodernamescreenState extends State<registercodernamescreen> {
                     textAlign: TextAlign.center,
                   ),
                 )),
-                Flexible(
-                    child: myTextEormField(
-                        Icon(Icons.alternate_email), 'codername', false, (val) {
+                myTextEormField(Icon(Icons.alternate_email), 'codername', false,
+                    (val) {
                   codername = val;
                 },
-                        TextInputType.text,
-                        (val) =>
-                            (val.trim().contains(' ') || val.trim().length < 5)
-                                ? 'Codername can only be consist a single word'
-                                : null)),
-                Flexible(child: myButton(true, 'Next', _submit))
+                    TextInputType.text,
+                    (val) => (val.trim().contains(' ') || val.trim().length < 5)
+                        ? 'Codername can only be consist a single word'
+                        : null),
+                Container(
+                    padding: EdgeInsets.all(8),
+                    height: MediaQuery.of(context).size.height * 0.11,
+                    child: myButton(
+                        colorschemeclass.primarygreen, 'Next', _submit))
               ],
             ),
           ),

@@ -37,27 +37,28 @@ class mySettingsExpansionTile extends StatelessWidget {
                               TextStyle(color: colorschemeclass.lightgrey))),
                   child: DecoratedBox(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(15),
                       boxShadow: [
                         BoxShadow(
                           spreadRadius: 0,
                           color: colorschemeclass.darkgrey.withOpacity(0.5),
-                          offset: Offset(0, 6),
-                          blurRadius: 10,
+                          offset: Offset(0, 4),
+                          blurRadius: 0,
                         )
                       ],
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(15),
                       child: ExpansionTile(
-                        collapsedBackgroundColor: colorschemeclass.darkgrey,
+                        collapsedBackgroundColor:
+                            colorschemeclass.unactivatedblack,
                         backgroundColor: colorschemeclass.lightgrey,
                         leading: leadingIcon,
                         title: Text(
                           title,
                           style: TextStyle(
                               fontSize:
-                                  MediaQuery.of(context).size.height * 0.03,
+                                  MediaQuery.of(context).size.height * 0.025,
                               fontWeight: FontWeight.bold),
                         ),
                         children: children,

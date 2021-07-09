@@ -93,16 +93,17 @@ class _registeremailidscreen2State extends State<registeremailidscreen2> {
                 SizedBox(
                   height: 10,
                 ),
-                Flexible(
-                    child: myTextEormField(Icon(Icons.lock), 'OTP', true,
-                        (val) {
+                myTextEormField(Icon(Icons.lock), 'OTP', true, (val) {
                   otp = val;
                 },
-                        TextInputType.visiblePassword,
-                        (val) => !verifyOTP(val.trim())
-                            ? 'OTP doesn\'t match'
-                            : null)),
-                Flexible(child: myButton(true, 'Next', _submit))
+                    TextInputType.visiblePassword,
+                    (val) =>
+                        !verifyOTP(val.trim()) ? 'OTP doesn\'t match' : null),
+                Container(
+                    padding: EdgeInsets.all(8),
+                    height: MediaQuery.of(context).size.height * 0.11,
+                    child: myButton(
+                        colorschemeclass.primarygreen, 'Next', _submit))
               ],
             ),
           ),

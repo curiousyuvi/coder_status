@@ -23,7 +23,7 @@ class myChildListTile extends StatelessWidget {
           title,
           style: TextStyle(
               color: fontcolor,
-              fontSize: MediaQuery.of(context).size.height * 0.025,
+              fontSize: MediaQuery.of(context).size.height * 0.02,
               fontWeight: FontWeight.bold),
         ),
       ),

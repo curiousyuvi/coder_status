@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 
 class GetRating {
   static Future<String> getCodeforcesRating(String userhandle) async {
+    if (userhandle == null) return '0';
     print(userhandle);
     final response = await http.Client()
         .get(Uri.parse('https://codeforces.com/profile/$userhandle'));
@@ -27,6 +28,7 @@ class GetRating {
   }
 
   static Future<String> getCodechefRating(String userhandle) async {
+    if (userhandle == null) return '0';
     print(userhandle);
     final response = await http.Client()
         .get(Uri.parse('https://www.codechef.com/users/$userhandle'));
@@ -49,6 +51,7 @@ class GetRating {
   }
 
   static Future<String> getAtcoderRating(String userhandle) async {
+    if (userhandle == null) return '0';
     print(userhandle);
     final response = await http.Client()
         .get(Uri.parse('https://atcoder.jp/users/$userhandle'));
@@ -74,6 +77,7 @@ class GetRating {
   }
 
   static Future<String> getSpojRating(String userhandle) async {
+    if (userhandle == null) return '0';
     print(userhandle);
     final response = await http.Client()
         .get(Uri.parse('https://www.spoj.com/users/$userhandle/'));

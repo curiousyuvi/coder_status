@@ -5,13 +5,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
-import 'package:splashscreen/splashscreen.dart';
-import 'mydashboardscreen.dart';
-import 'signinscreen.dart';
+import 'package:flutter/services.dart';
 
 Future main() async {
-  await WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
   runApp(myApp());
 }
@@ -22,24 +22,15 @@ class myApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          accentColor: colorschemeclass.primarygreen,
-          primaryColor: colorschemeclass.primarygreen,
-          scaffoldBackgroundColor: colorschemeclass.dark,
-          textTheme: TextTheme(
-              bodyText1: TextStyle(fontFamily: 'young', color: Colors.white),
-              headline1: TextStyle(fontFamily: 'young', color: Colors.white))),
-      home: SplashScreen(
-        seconds: 3,
-        navigateAfterSeconds: Authenticate(),
-        imageBackground: AssetImage('images/matrix_gif.gif'),
-        photoSize: 120,
-        image: Image(
-          image: AssetImage('images/appiconnoback.png'),
-        ),
-        backgroundColor: colorschemeclass.dark,
-      ),
-    );
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+            accentColor: colorschemeclass.primarygreen,
+            primaryColor: colorschemeclass.primarygreen,
+            scaffoldBackgroundColor: colorschemeclass.dark,
+            textTheme: TextTheme(
+                bodyText1: TextStyle(fontFamily: 'young', color: Colors.white),
+                headline1:
+                    TextStyle(fontFamily: 'young', color: Colors.white))),
+        home: Authenticate());
   }
 }

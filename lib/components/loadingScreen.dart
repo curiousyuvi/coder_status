@@ -1,9 +1,12 @@
+import 'package:codersstatus/registeremailidscreen2.dart';
 import 'package:flutter/material.dart';
 
 class LoadingScreen extends StatelessWidget {
+  AssetImage mainimage;
   String heading;
 
-  LoadingScreen([String heading = 'Loading...']) {
+  LoadingScreen(AssetImage mainimage, String heading) {
+    this.mainimage = mainimage;
     this.heading = heading;
   }
 
@@ -14,7 +17,9 @@ class LoadingScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image(image: AssetImage('images/cat_gif.gif')),
+            Container(
+                width: MediaQuery.of(context).size.width * 0.5,
+                child: Image(image: mainimage)),
             Text(
               heading,
               style: TextStyle(

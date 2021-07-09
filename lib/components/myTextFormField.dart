@@ -9,6 +9,7 @@ class myTextEormField extends StatelessWidget {
   Function onchangedfunction;
   TextInputType textinputtype;
   Function validation;
+  Color bordercolor;
 
   myTextEormField(
       Icon tficon,
@@ -16,13 +17,15 @@ class myTextEormField extends StatelessWidget {
       bool isobscure,
       Function onchangedfunction,
       TextInputType textinputtype,
-      Function validation) {
+      Function validation,
+      [Color bordercolor = colorschemeclass.primarygreen]) {
     this.tficon = tficon;
     this.tfhintText = tfhintText;
     this.isobscure = isobscure;
     this.onchangedfunction = onchangedfunction;
     this.textinputtype = textinputtype;
     this.validation = validation;
+    this.bordercolor = bordercolor;
   }
 
   @override
@@ -33,7 +36,7 @@ class myTextEormField extends StatelessWidget {
         validator: validation,
         onChanged: onchangedfunction,
         keyboardType: textinputtype,
-        cursorColor: colorschemeclass.primarygreen,
+        cursorColor: bordercolor,
         obscureText: isobscure,
         style: TextStyle(
             color: Colors.white,
@@ -41,7 +44,12 @@ class myTextEormField extends StatelessWidget {
             fontSize: 15,
             fontWeight: FontWeight.normal),
         decoration: myInputDecoration.copyWith(
-            hintText: tfhintText, prefixIcon: tficon),
+          hintText: tfhintText,
+          prefixIcon: tficon,
+          focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(5),
+              borderSide: BorderSide(color: bordercolor, width: 2)),
+        ),
       ),
     );
   }

@@ -75,7 +75,7 @@ class _signinscreenState extends State<signinscreen> {
   @override
   Widget build(BuildContext context) {
     return isloading
-        ? LoadingScreen('Logging In...')
+        ? LoadingScreen(AssetImage('images/gears_gw.gif'), 'Logging In...')
         : Scaffold(
             body: SafeArea(
               child: Container(
@@ -127,7 +127,8 @@ class _signinscreenState extends State<signinscreen> {
                       Container(
                         padding: EdgeInsets.symmetric(horizontal: 8),
                         height: MediaQuery.of(context).size.height * 0.09,
-                        child: myButton(true, 'Log in', _submit),
+                        child: myButton(
+                            colorschemeclass.primarygreen, 'Log in', _submit),
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.025,

@@ -26,7 +26,7 @@ class registernamescreen extends StatefulWidget {
 }
 
 class _registernamescreenState extends State<registernamescreen> {
-  static String name='';
+  static String name = '';
   final _formkey = GlobalKey<FormState>();
 
   void _submit() {
@@ -83,13 +83,15 @@ class _registernamescreenState extends State<registernamescreen> {
                     textAlign: TextAlign.center,
                   ),
                 )),
-                Flexible(
-                    child: myTextEormField(
-                        Icon(Icons.person), 'Full Name', false, (val) {
+                myTextEormField(Icon(Icons.person), 'Full Name', false, (val) {
                   name = val;
                 }, TextInputType.name,
-                        (val) => val.length < 5 ? 'Name is too short' : null)),
-                Flexible(child: myButton(true, 'Next', _submit))
+                    (val) => val.length < 5 ? 'Name is too short' : null),
+                Container(
+                    padding: EdgeInsets.all(8),
+                    height: MediaQuery.of(context).size.height * 0.11,
+                    child: myButton(
+                        colorschemeclass.primarygreen, 'Next', _submit))
               ],
             ),
           ),

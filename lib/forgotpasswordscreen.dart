@@ -106,7 +106,9 @@ class _forgotpasswordscreenState extends State<forgotpasswordscreen> {
                         (val) => !val.contains('@')
                             ? 'Please enter a valid email'
                             : null)),
-                Flexible(child: myButton(true, 'Send Request', _submit)),
+                Flexible(
+                    child: myButton(colorschemeclass.primarygreen,
+                        'Send Request', _submit)),
               ],
             ),
           ),

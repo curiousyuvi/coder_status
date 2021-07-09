@@ -8,41 +8,50 @@ class myButton extends StatelessWidget {
   Color titlecolor;
   String title;
 
-  myButton(bool prominent, String title, Function dofunction) {
+  myButton(Color buttoncolor, String title, Function dofunction) {
     this.prominent = prominent;
     this.title = title;
     this.dofunction = dofunction;
-    if (prominent) {
-      buttoncolor = colorschemeclass.primarygreen;
-      titlecolor = Colors.white;
-    } else {
-      buttoncolor = Colors.white;
-      titlecolor = colorschemeclass.unactivatedblack;
-    }
+    titlecolor = colorschemeclass.lightgrey;
+    this.buttoncolor = buttoncolor;
   }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Material(
-        elevation: 8,
-        color: buttoncolor,
-        shadowColor: buttoncolor,
-        borderRadius: BorderRadius.circular(5),
-        child: MaterialButton(
-          onPressed: dofunction,
-          minWidth: double.infinity,
-          height: double.infinity,
-          child: Text(
-            title,
-            style: TextStyle(
-                color: titlecolor,
-                fontFamily: 'young',
-                fontWeight: FontWeight.bold,
-                fontSize: 15),
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      child: Stack(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(5),
+            child: Container(
+              height: MediaQuery.of(context).size.height * 0.076,
+              width: double.infinity,
+              color: buttoncolor.withOpacity(0.3),
+            ),
           ),
-        ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(5),
+            child: Container(
+              color: buttoncolor,
+              height: MediaQuery.of(context).size.height * 0.07,
+              width: double.infinity,
+              child: FlatButton(
+                onPressed: dofunction,
+                minWidth: double.infinity,
+                height: double.infinity,
+                child: Text(
+                  title,
+                  style: TextStyle(
+                      color: titlecolor,
+                      fontFamily: 'young',
+                      fontWeight: FontWeight.bold,
+                      fontSize: MediaQuery.of(context).size.height * 0.025),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
