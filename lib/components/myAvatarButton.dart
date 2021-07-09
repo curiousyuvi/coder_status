@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class myAvatarButton extends StatelessWidget {
   Image avatarimage;
   double borderwidth = 2;
-  Color bordercolor = Colors.white;
+  Color bordercolor = colorschemeclass.lightgrey;
 
   myAvatarButton(Image avatarimage, bool onoff) {
     this.avatarimage = avatarimage;
@@ -16,24 +16,21 @@ class myAvatarButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-        height: 60,
-        width: 60,
-        decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                color: bordercolor.withOpacity(0.5),
-                blurRadius: borderwidth,
-              )
-            ],
-            border: Border.all(color: bordercolor, width: borderwidth),
-            shape: BoxShape.circle,
-            image: DecorationImage(
-              image: avatarimage.image,
-            )),
-      ),
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.057,
+      width: MediaQuery.of(context).size.height * 0.057,
+      decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: bordercolor.withOpacity(0.5),
+              blurRadius: borderwidth,
+            )
+          ],
+          border: Border.all(color: bordercolor, width: borderwidth),
+          shape: BoxShape.circle,
+          image: DecorationImage(
+            image: avatarimage.image,
+          )),
     );
   }
 }

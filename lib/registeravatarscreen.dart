@@ -6,7 +6,6 @@ import 'package:codersstatus/components/urls.dart';
 import 'package:codersstatus/firebase_layer/logoutuser.dart';
 import 'package:codersstatus/firebase_layer/setUserInfo.dart';
 import 'package:codersstatus/firebase_layer/uploadAvatar.dart';
-import 'package:codersstatus/homescreen.dart';
 import 'package:codersstatus/mydashboardscreen.dart';
 import 'package:codersstatus/registerbadgesscreen.dart';
 import 'package:flutter/cupertino.dart';
