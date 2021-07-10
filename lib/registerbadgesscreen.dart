@@ -1,5 +1,5 @@
 import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/components/loadingScreen.dart';
+import 'package:codersstatus/components/ratingLoadingScreen.dart';
 import 'package:codersstatus/components/myButton.dart';
 import 'package:codersstatus/components/myTextFormField.dart';
 import 'package:codersstatus/firebase_layer/setUserInfo.dart';
@@ -41,7 +41,7 @@ class _registerbadgesscreenState extends State<registerbadgesscreen> {
   @override
   Widget build(BuildContext context) {
     return isloading
-        ? LoadingScreen(AssetImage('images/gears_gw.gif'), 'loading...')
+        ? RatingsLoadingScreen('Setting up User handles...')
         : Scaffold(
             backgroundColor: colorschemeclass.dark,
             body: SafeArea(

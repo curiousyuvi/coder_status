@@ -1,7 +1,8 @@
 import 'dart:io';
 
 import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/components/loadingScreen.dart';
+import 'package:codersstatus/components/generalLoadingScreen.dart';
+import 'package:codersstatus/components/ratingLoadingScreen.dart';
 import 'package:codersstatus/components/myAvatarButton.dart';
 import 'package:codersstatus/components/urls.dart';
 import 'package:codersstatus/firebase_layer/getUserInfo.dart';
@@ -45,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
     userrating[2] = await GetRating.getAtcoderRating(userhandles[2]);
     userrating[3] = await GetRating.getSpojRating(userhandles[3]);
     screenList = [
-      SettingScreen(),
+      GeneralLoadingScreen('Fetching user\'s General...'),
       SettingScreen(),
       mydashboardscreen(name, codername, avatarurl, userhandles, userrating),
       SettingScreen(),
@@ -151,8 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       }),
                 );
               } else {
-                return LoadingScreen(AssetImage('images/loading_rating.gif'),
-                    'Fetching user\'s ratings...');
+                return RatingsLoadingScreen('Fetching user\'s ratings...');
               }
             })
         : WillPopScope(

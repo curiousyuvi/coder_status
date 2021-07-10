@@ -1,4 +1,4 @@
-import 'package:codersstatus/components/loadingScreen.dart';
+import 'package:codersstatus/components/ratingLoadingScreen.dart';
 import 'package:codersstatus/components/myButton.dart';
 import 'package:codersstatus/components/myCircleAvatar.dart';
 import 'package:codersstatus/components/myFadeInCircleAvatar.dart';

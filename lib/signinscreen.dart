@@ -1,5 +1,6 @@
 import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/components/loadingScreen.dart';
+import 'package:codersstatus/components/generalLoadingScreen.dart';
+import 'package:codersstatus/components/ratingLoadingScreen.dart';
 import 'package:codersstatus/forgotpasswordscreen.dart';
 import 'package:codersstatus/homescreen.dart';
 import 'package:codersstatus/mydashboardscreen.dart';
@@ -75,7 +76,7 @@ class _signinscreenState extends State<signinscreen> {
   @override
   Widget build(BuildContext context) {
     return isloading
-        ? LoadingScreen(AssetImage('images/gears_gw.gif'), 'Logging In...')
+        ? GeneralLoadingScreen('Logging in the user...')
         : Scaffold(
             body: SafeArea(
               child: Container(
