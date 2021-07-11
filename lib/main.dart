@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,7 +14,7 @@ Future main() async {
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
-  runApp(myApp());
+  runApp(Phoenix(child: myApp()));
 }
 
 class myApp extends StatelessWidget {
