@@ -1,4 +1,5 @@
 import 'package:codersstatus/components/colorscheme.dart';
+import 'package:codersstatus/components/generalLoadingScreen.dart';
 import 'package:codersstatus/components/myAppBarWithBack.dart';
 import 'package:codersstatus/components/myOutlineButton.dart';
 import 'package:codersstatus/components/urls.dart';
@@ -65,11 +66,7 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
   @override
   Widget build(BuildContext context) {
     return isloading
-        ? Scaffold(
-            body: Center(
-              child: CircularProgressIndicator(),
-            ),
-          )
+        ? GeneralLoadingScreen('Deleting Account...')
         : Scaffold(
             backgroundColor: colorschemeclass.dark,
             appBar: PreferredSize(

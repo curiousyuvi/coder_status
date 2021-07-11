@@ -107,8 +107,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     if (isFirstRouteInCurrentTab) {
                       // if not on the 'main' tab
                       if (tabController.index != 2) {
-                        // select 'main' tab
-                        tabController.index = 2;
+                        {
+                          // select 'main' tab
+                          tabController.index = 2;
+                        }
+
                         // back button handled by app
                         return false;
                       }

@@ -23,7 +23,7 @@ class GetRating {
       }
     } else {
       print('Request failed with status: ${response.statusCode}.');
-      return null;
+      return '0';
     }
   }
 
@@ -46,7 +46,7 @@ class GetRating {
       }
     } else {
       print('Request failed with status: ${response.statusCode}.');
-      return null;
+      return '0';
     }
   }
 
@@ -72,7 +72,7 @@ class GetRating {
       }
     } else {
       print('Request failed with status: ${response.statusCode}.');
-      return null;
+      return '0';
     }
   }
 
@@ -98,7 +98,7 @@ class GetRating {
       }
     } else {
       print('Request failed with status: ${response.statusCode}.');
-      return null;
+      return '0';
     }
   }
 }

@@ -1,4 +1,5 @@
 import 'package:codersstatus/components/colorscheme.dart';
+import 'package:codersstatus/components/generalLoadingScreen.dart';
 import 'package:codersstatus/components/myOutlineButton.dart';
 import 'package:codersstatus/components/urls.dart';
 import 'package:codersstatus/firebase_layer/setUserInfo.dart';
@@ -75,11 +76,7 @@ class _updatePasswordScreenState extends State<updatePasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return isloading
-        ? Scaffold(
-            body: Center(
-              child: CircularProgressIndicator(),
-            ),
-          )
+        ? GeneralLoadingScreen('Updating password...')
         : Scaffold(
             appBar: PreferredSize(
               preferredSize:
