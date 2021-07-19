@@ -1,3 +1,4 @@
+import 'package:codersstatus/components/myFtoast.dart';
 import 'package:codersstatus/components/ratingLoadingScreen.dart';
 import 'package:codersstatus/components/myButton.dart';
 import 'package:codersstatus/components/myCircleAvatar.dart';
@@ -62,10 +63,8 @@ class _mydashboardscreenState extends State<mydashboardscreen> {
                 child: Center(
                   child: GestureDetector(
                       onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return TestScreen();
-                        }));
+                        showFToast(this.context, 'TOAST GENERATED SUCCESSFULLY',
+                            false);
                       },
                       child:
                           Image(image: AssetImage('images/appiconnoback.png'))),
