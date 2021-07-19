@@ -7,6 +7,7 @@ import 'package:codersstatus/firebase_layer/getUserInfo.dart';
 import 'package:codersstatus/firebase_layer/logoutuser.dart';
 import 'package:codersstatus/functions/getRating.dart';
 import 'package:codersstatus/registerbadgesscreen.dart';
+import 'package:codersstatus/test.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:codersstatus/components/colorscheme.dart';
@@ -59,7 +60,15 @@ class _mydashboardscreenState extends State<mydashboardscreen> {
                 width: double.infinity,
                 height: MediaQuery.of(context).size.height * 0.07,
                 child: Center(
-                  child: Image(image: AssetImage('images/appiconnoback.png')),
+                  child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return TestScreen();
+                        }));
+                      },
+                      child:
+                          Image(image: AssetImage('images/appiconnoback.png'))),
                 ),
               ),
               Column(
