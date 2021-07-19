@@ -81,16 +81,6 @@ class _updatePasswordScreenState extends State<updatePasswordScreen> {
     }
   }
 
-  void setValidatePasswordBool(String oldpassword) async {
-    oldpasswordmatch = await validatePassword(oldpassword);
-  }
-
-  void updateValidatePasswordBool(String oldpassword) async {
-    setState(() {
-      setValidatePasswordBool(oldpassword);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
