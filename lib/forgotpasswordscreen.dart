@@ -1,34 +1,29 @@
 import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/mydashboardscreen.dart';
-import 'package:codersstatus/firebase_layer/loginuser.dart';
-import 'package:codersstatus/registernamescreen.dart';
-import 'package:codersstatus/resetpassword.dart';
+import 'package:codersstatus/components/myFtoast.dart';
+import 'package:codersstatus/firebase_layer/resetpassword.dart';
 import 'package:codersstatus/signinscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'components/constants.dart';
 import 'components/myTextFormField.dart';
-import 'components/coderstatusheading.dart';
 import 'components/myButton.dart';
 
 void main() => runApp(
       MaterialApp(
-        home: forgotpasswordscreen(),
+        home: Forgotpasswordscreen(),
       ),
     );
 
-class forgotpasswordscreen extends StatefulWidget {
-  const forgotpasswordscreen({Key key}) : super(key: key);
+class Forgotpasswordscreen extends StatefulWidget {
+  const Forgotpasswordscreen({Key key}) : super(key: key);
 
   @override
-  _forgotpasswordscreenState createState() => _forgotpasswordscreenState();
+  _ForgotpasswordscreenState createState() => _ForgotpasswordscreenState();
 }
 
-class _forgotpasswordscreenState extends State<forgotpasswordscreen> {
+class _ForgotpasswordscreenState extends State<Forgotpasswordscreen> {
   //Form State
 
   final _formkey = GlobalKey<FormState>();
@@ -42,17 +37,11 @@ class _forgotpasswordscreenState extends State<forgotpasswordscreen> {
 
       resetpassword(emailid);
 
-      Fluttertoast.showToast(
-          msg: "A paaswod reset link was  succesfully sent to your email",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.CENTER,
-          timeInSecForIosWeb: 3,
-          backgroundColor: colorschemeclass.primarygreen,
-          textColor: Colors.white,
-          fontSize: 16.0);
+      showFToast(this.context,
+          'A paaswod reset link was succesfully sent to your email.', true);
 
       Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return signinscreen();
+        return Signinscreen();
       }));
     }
   }

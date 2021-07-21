@@ -1,7 +1,5 @@
 import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/components/myAppBarWithBack.dart';
 import 'package:codersstatus/components/myAppBar.dart';
-import 'package:codersstatus/components/myButton.dart';
 import 'package:codersstatus/components/mySettingNonExpansionTile.dart';
 import 'package:codersstatus/components/mySettingsExpansionTile.dart';
 import 'package:codersstatus/components/myChildListTile.dart';
@@ -77,7 +75,7 @@ class _SettingScreenState extends State<SettingScreen> {
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
-                          return updatePasswordScreen();
+                          return UpdatePasswordScreen();
                         }));
                       },
                       child: myChildListTile(

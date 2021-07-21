@@ -7,34 +7,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'components/constants.dart';
 import 'components/myTextFormField.dart';
 import 'components/myButton.dart';
-import 'mydashboardscreen.dart';
-import 'registernamescreen.dart';
-import 'registercodernamescreen.dart';
-import 'registeremailidscreen1.dart';
 import 'package:codersstatus/firebase_layer/createuser.dart';
 
 void main() => runApp(
       MaterialApp(
-        home: registerpasswordscreen(
+        home: Registerpasswordscreen(
             'example name', 'examplecodername', 'example@email'),
       ),
     );
 
-class registerpasswordscreen extends StatefulWidget {
-  registerpasswordscreen(String name, String codername, String emailid) {
-    _registerpasswordscreenState.name = name;
-    _registerpasswordscreenState.codername = codername;
-    _registerpasswordscreenState.emailid = emailid;
+class Registerpasswordscreen extends StatefulWidget {
+  Registerpasswordscreen(String name, String codername, String emailid) {
+    _RegisterpasswordscreenState.name = name;
+    _RegisterpasswordscreenState.codername = codername;
+    _RegisterpasswordscreenState.emailid = emailid;
   }
 
   @override
-  _registerpasswordscreenState createState() => _registerpasswordscreenState();
+  _RegisterpasswordscreenState createState() => _RegisterpasswordscreenState();
 }
 
-class _registerpasswordscreenState extends State<registerpasswordscreen> {
+class _RegisterpasswordscreenState extends State<Registerpasswordscreen> {
   static String name = '';
   static String codername = '';
   static String emailid = '';
@@ -60,7 +55,7 @@ class _registerpasswordscreenState extends State<registerpasswordscreen> {
               name, codername, urls.avatar1url, null, null, null, null);
 
           Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return registeravatarscreen();
+            return Registeravatarscreen();
           }));
         } else {
           print('email id already exists');

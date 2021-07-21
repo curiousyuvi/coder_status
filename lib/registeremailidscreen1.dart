@@ -1,36 +1,26 @@
 import 'package:codersstatus/components/colorscheme.dart';
+import 'package:codersstatus/components/myFtoast.dart';
 import 'package:codersstatus/registeremailidscreen2.dart';
-import 'package:codersstatus/registernamescreen.dart';
-import 'package:codersstatus/registerpasswordscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'components/constants.dart';
 import 'components/myTextFormField.dart';
-import 'components/coderstatusheading.dart';
 import 'components/myButton.dart';
-import 'mydashboardscreen.dart';
 import 'package:email_auth/email_auth.dart';
 
-void main() => runApp(
-      MaterialApp(
-        home: registeremailidscreen1('example name', 'examplecodername'),
-      ),
-    );
-
-class registeremailidscreen1 extends StatefulWidget {
-  registeremailidscreen1(String name, String codername) {
-    _registeremailidscreen1State.name = name;
-    _registeremailidscreen1State.codername = codername;
+class Registeremailidscreen1 extends StatefulWidget {
+  Registeremailidscreen1(String name, String codername) {
+    _Registeremailidscreen1State.name = name;
+    _Registeremailidscreen1State.codername = codername;
   }
 
   @override
-  _registeremailidscreen1State createState() => _registeremailidscreen1State();
+  _Registeremailidscreen1State createState() => _Registeremailidscreen1State();
 }
 
-class _registeremailidscreen1State extends State<registeremailidscreen1> {
+class _Registeremailidscreen1State extends State<Registeremailidscreen1> {
   static String name = '';
   static String codername = '';
 
@@ -41,15 +31,16 @@ class _registeremailidscreen1State extends State<registeremailidscreen1> {
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
       sendOTP();
+      showFToast(this.context, 'OTP sent to Email successfully.', true);
       Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return registeremailidscreen2(name, codername, emailid);
+        return Registeremailidscreen2(name, codername, emailid);
       }));
     }
   }
 
   void sendOTP() async {
     EmailAuth.sessionName = "Email Register";
-    var res = await EmailAuth.sendOtp(receiverMail: emailid);
+    await EmailAuth.sendOtp(receiverMail: emailid);
   }
 
   @override

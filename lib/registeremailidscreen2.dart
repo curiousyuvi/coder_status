@@ -1,45 +1,35 @@
 import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/registernamescreen.dart';
+import 'package:codersstatus/components/myFtoast.dart';
 import 'package:codersstatus/registerpasswordscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'components/constants.dart';
 import 'components/myTextFormField.dart';
-import 'components/coderstatusheading.dart';
 import 'components/myButton.dart';
-import 'mydashboardscreen.dart';
 import 'package:email_auth/email_auth.dart';
 
-void main() => runApp(
-      MaterialApp(
-        home: registeremailidscreen2(
-            'example name', 'examplecodername', 'example@email'),
-      ),
-    );
-
-class registeremailidscreen2 extends StatefulWidget {
-  registeremailidscreen2(String name, String codername, String emailid) {
-    _registeremailidscreen2State.name = name;
-    _registeremailidscreen2State.codername = codername;
-    _registeremailidscreen2State.emailid = emailid;
+class Registeremailidscreen2 extends StatefulWidget {
+  Registeremailidscreen2(String name, String codername, String emailid) {
+    _Registeremailidscreen2State.name = name;
+    _Registeremailidscreen2State.codername = codername;
+    _Registeremailidscreen2State.emailid = emailid;
   }
 
   @override
-  _registeremailidscreen2State createState() => _registeremailidscreen2State();
+  _Registeremailidscreen2State createState() => _Registeremailidscreen2State();
 }
 
-class _registeremailidscreen2State extends State<registeremailidscreen2> {
+class _Registeremailidscreen2State extends State<Registeremailidscreen2> {
   static String name = '';
   static String codername = '';
   static String emailid = '';
   String otp = '';
   final _formkey = GlobalKey<FormState>();
 
-  bool verifyOTP(String OTP) {
-    var res = EmailAuth.validate(receiverMail: emailid, userOTP: OTP);
+  bool verifyOTP(String otp) {
+    var res = EmailAuth.validate(receiverMail: emailid, userOTP: otp);
     if (res) {
       return true;
     } else {
@@ -51,8 +41,10 @@ class _registeremailidscreen2State extends State<registeremailidscreen2> {
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
 
+      showFToast(this.context, 'Account created successfully.', true);
+
       Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return registerpasswordscreen(name, codername, emailid);
+        return Registerpasswordscreen(name, codername, emailid);
       }));
     }
   }
@@ -102,8 +94,8 @@ class _registeremailidscreen2State extends State<registeremailidscreen2> {
                 Container(
                     padding: EdgeInsets.all(8),
                     height: MediaQuery.of(context).size.height * 0.11,
-                    child: myButton(
-                        colorschemeclass.primarygreen, 'Next', _submit))
+                    child: myButton(colorschemeclass.primarygreen,
+                        'Create Account', _submit))
               ],
             ),
           ),

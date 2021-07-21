@@ -1,38 +1,31 @@
 import 'dart:io';
 import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/components/myButton.dart';
+import 'package:codersstatus/components/myFtoast.dart';
 import 'package:codersstatus/components/myOutlineButton.dart';
 import 'package:codersstatus/components/urls.dart';
-import 'package:codersstatus/firebase_layer/logoutuser.dart';
 import 'package:codersstatus/firebase_layer/setUserInfo.dart';
 import 'package:codersstatus/firebase_layer/uploadAvatar.dart';
-import 'package:codersstatus/mydashboardscreen.dart';
 import 'package:codersstatus/registerbadgesscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:image_cropper/image_cropper.dart';
-import 'package:image_picker/image_picker.dart';
-import 'components/myAvatarButton.dart';
+import 'components/myAvatarSelection.dart';
 import 'functions/pickImageAndCrop.dart' as pickImageAndCrop;
 import 'components/myCircleAvatar.dart';
 
-void main() => runApp(MaterialApp(
-      home: registeravatarscreen(),
-    ));
-
-class registeravatarscreen extends StatefulWidget {
-  const registeravatarscreen({Key key}) : super(key: key);
+class Registeravatarscreen extends StatefulWidget {
+  const Registeravatarscreen({Key key}) : super(key: key);
 
   @override
-  _registeravatarscreenState createState() => _registeravatarscreenState();
+  _RegisteravatarscreenState createState() => _RegisteravatarscreenState();
 }
 
-class _registeravatarscreenState extends State<registeravatarscreen> {
+class _RegisteravatarscreenState extends State<Registeravatarscreen> {
   Image avatarshowimage = Image(image: NetworkImage(urls.avatar1url));
-  File imagetobeuploaded = null;
+  File imagetobeuploaded;
   String urltobeset = urls.avatar1url;
 
   getandupdateurl(File imagefile) async {
@@ -64,14 +57,14 @@ class _registeravatarscreenState extends State<registeravatarscreen> {
     false
   ];
   List<Widget> _avatarbuttons = [
-    myAvatarButton(Image(image: AssetImage('images/avatar0.jpg')), false),
-    myAvatarButton(Image(image: AssetImage('images/avatar1.jpg')), true),
-    myAvatarButton(Image(image: AssetImage('images/avatar2.jpg')), false),
-    myAvatarButton(Image(image: AssetImage('images/avatar3.jpg')), false),
-    myAvatarButton(Image(image: AssetImage('images/avatar4.jpg')), false),
-    myAvatarButton(Image(image: AssetImage('images/avatar5.jpg')), false),
-    myAvatarButton(Image(image: AssetImage('images/avatar6.jpg')), false),
-    myAvatarButton(Image(image: AssetImage('images/avatar7.jpg')), false),
+    myAvatarSelection(Image(image: AssetImage('images/avatar0.jpg')), false),
+    myAvatarSelection(Image(image: AssetImage('images/avatar1.jpg')), true),
+    myAvatarSelection(Image(image: AssetImage('images/avatar2.jpg')), false),
+    myAvatarSelection(Image(image: AssetImage('images/avatar3.jpg')), false),
+    myAvatarSelection(Image(image: AssetImage('images/avatar4.jpg')), false),
+    myAvatarSelection(Image(image: AssetImage('images/avatar5.jpg')), false),
+    myAvatarSelection(Image(image: AssetImage('images/avatar6.jpg')), false),
+    myAvatarSelection(Image(image: AssetImage('images/avatar7.jpg')), false),
   ];
 
   @override
@@ -117,28 +110,28 @@ class _registeravatarscreenState extends State<registeravatarscreen> {
                           for (int i = 0; i < 8; i++) {
                             _selections[i] = false;
                           }
-                          _avatarbuttons[0] = myAvatarButton(
+                          _avatarbuttons[0] = myAvatarSelection(
                               Image(image: AssetImage('images/avatar0.jpg')),
                               false);
-                          _avatarbuttons[1] = myAvatarButton(
+                          _avatarbuttons[1] = myAvatarSelection(
                               Image(image: AssetImage('images/avatar1.jpg')),
                               false);
-                          _avatarbuttons[2] = myAvatarButton(
+                          _avatarbuttons[2] = myAvatarSelection(
                               Image(image: AssetImage('images/avatar2.jpg')),
                               false);
-                          _avatarbuttons[3] = myAvatarButton(
+                          _avatarbuttons[3] = myAvatarSelection(
                               Image(image: AssetImage('images/avatar3.jpg')),
                               false);
-                          _avatarbuttons[4] = myAvatarButton(
+                          _avatarbuttons[4] = myAvatarSelection(
                               Image(image: AssetImage('images/avatar4.jpg')),
                               false);
-                          _avatarbuttons[5] = myAvatarButton(
+                          _avatarbuttons[5] = myAvatarSelection(
                               Image(image: AssetImage('images/avatar5.jpg')),
                               false);
-                          _avatarbuttons[6] = myAvatarButton(
+                          _avatarbuttons[6] = myAvatarSelection(
                               Image(image: AssetImage('images/avatar6.jpg')),
                               false);
-                          _avatarbuttons[7] = myAvatarButton(
+                          _avatarbuttons[7] = myAvatarSelection(
                               Image(image: AssetImage('images/avatar7.jpg')),
                               false);
 
@@ -190,7 +183,7 @@ class _registeravatarscreenState extends State<registeravatarscreen> {
                           } else {
                             pick();
                           }
-                          _avatarbuttons[index] = myAvatarButton(
+                          _avatarbuttons[index] = myAvatarSelection(
                               Image(
                                   image: AssetImage('images/avatar$index.jpg')),
                               true);
@@ -213,7 +206,7 @@ class _registeravatarscreenState extends State<registeravatarscreen> {
                           () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
-                          return registerbadgesscreen();
+                          return Registerbadgesscreen();
                         }));
                       }),
                     )),
@@ -223,18 +216,20 @@ class _registeravatarscreenState extends State<registeravatarscreen> {
                           colorschemeclass.primarygreen, 'Add Avatar', () {
                         if (urltobeset != null) {
                           SetUserInfo.updateAvatar(urltobeset);
-
+                          showFToast(
+                              this.context, 'Avatar Added Succesfully', true);
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
-                            return registerbadgesscreen();
+                            return Registerbadgesscreen();
                           }));
                         } else if (imagetobeuploaded != null) {
                           getandupdateurl(imagetobeuploaded);
 
-                          print('Avatar updated!!');
+                          showFToast(
+                              this.context, 'Avatar Added Succesfully', true);
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
-                            return registerbadgesscreen();
+                            return Registerbadgesscreen();
                           }));
                         }
                       }),

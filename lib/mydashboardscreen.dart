@@ -1,14 +1,6 @@
 import 'package:codersstatus/components/myFtoast.dart';
-import 'package:codersstatus/components/ratingLoadingScreen.dart';
-import 'package:codersstatus/components/myButton.dart';
-import 'package:codersstatus/components/myCircleAvatar.dart';
 import 'package:codersstatus/components/myFadeInCircleAvatar.dart';
 import 'package:codersstatus/components/urls.dart';
-import 'package:codersstatus/firebase_layer/getUserInfo.dart';
-import 'package:codersstatus/firebase_layer/logoutuser.dart';
-import 'package:codersstatus/functions/getRating.dart';
-import 'package:codersstatus/registerbadgesscreen.dart';
-import 'package:codersstatus/test.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:codersstatus/components/colorscheme.dart';
@@ -17,10 +9,10 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:codersstatus/components/myTile.dart';
 
-class mydashboardscreen extends StatefulWidget {
+class MyDashboardScreen extends StatefulWidget {
   String name = 'name', codername = 'codername', avatarurl = urls.avatar1url;
   List<String> userhandles, userrating;
-  mydashboardscreen(String name, String codername, String avatarurl,
+  MyDashboardScreen(String name, String codername, String avatarurl,
       List<String> userhandles, List<String> userrating) {
     this.name = name;
     this.codername = codername;
@@ -30,14 +22,14 @@ class mydashboardscreen extends StatefulWidget {
   }
 
   @override
-  _mydashboardscreenState createState() => _mydashboardscreenState(
+  _MyDashboardScreenState createState() => _MyDashboardScreenState(
       name, codername, avatarurl, userhandles, userrating);
 }
 
-class _mydashboardscreenState extends State<mydashboardscreen> {
+class _MyDashboardScreenState extends State<MyDashboardScreen> {
   String name = 'name', codername = 'codername', avatarurl = urls.avatar1url;
   List<String> userhandles, userrating;
-  _mydashboardscreenState(String name, String codername, String avatarurl,
+  _MyDashboardScreenState(String name, String codername, String avatarurl,
       List<String> userhandles, List<String> userrating) {
     this.name = name;
     this.codername = codername;

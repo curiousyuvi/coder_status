@@ -178,7 +178,7 @@ class HomeScreenState extends State<HomeScreen> {
     else if (tabItem == "SearchScreen")
       child = SettingScreen();
     else if (tabItem == "MyDashboardScreen")
-      child = mydashboardscreen(
+      child = MyDashboardScreen(
           name, codername, avatarurl, userhandles, userrating);
     else if (tabItem == "PeersScreen")
       child = SettingScreen();

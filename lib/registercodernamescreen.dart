@@ -1,34 +1,24 @@
 import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/registeremailidscreen1.dart';
-import 'package:codersstatus/registernamescreen.dart';
-import 'package:codersstatus/registerpasswordscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'components/constants.dart';
 import 'components/myTextFormField.dart';
-import 'components/coderstatusheading.dart';
 import 'components/myButton.dart';
 
-void main() => runApp(
-      MaterialApp(
-        home: registercodernamescreen('example name'),
-      ),
-    );
-
-class registercodernamescreen extends StatefulWidget {
-  registercodernamescreen(String name) {
-    _registercodernamescreenState.name = name;
+class Registercodernamescreen extends StatefulWidget {
+  Registercodernamescreen(String name) {
+    _RegistercodernamescreenState.name = name;
   }
 
   @override
-  _registercodernamescreenState createState() =>
-      _registercodernamescreenState();
+  _RegistercodernamescreenState createState() =>
+      _RegistercodernamescreenState();
 }
 
-class _registercodernamescreenState extends State<registercodernamescreen> {
+class _RegistercodernamescreenState extends State<Registercodernamescreen> {
   static String name = '';
   String codername = '';
   final _formkey = GlobalKey<FormState>();
@@ -37,7 +27,7 @@ class _registercodernamescreenState extends State<registercodernamescreen> {
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
       Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return registeremailidscreen1(name, codername);
+        return Registeremailidscreen1(name, codername);
       }));
     }
   }

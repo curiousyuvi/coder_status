@@ -1,20 +1,20 @@
 import 'package:codersstatus/components/colorscheme.dart';
+import 'package:codersstatus/components/myFtoast.dart';
 import 'package:codersstatus/components/ratingLoadingScreen.dart';
 import 'package:codersstatus/components/myButton.dart';
 import 'package:codersstatus/components/myTextFormField.dart';
 import 'package:codersstatus/firebase_layer/setUserInfo.dart';
 import 'package:codersstatus/homescreen.dart';
-import 'package:codersstatus/mydashboardscreen.dart';
 import 'package:flutter/material.dart';
 
-class registerbadgesscreen extends StatefulWidget {
-  const registerbadgesscreen({Key key}) : super(key: key);
+class Registerbadgesscreen extends StatefulWidget {
+  const Registerbadgesscreen({Key key}) : super(key: key);
 
   @override
-  _registerbadgesscreenState createState() => _registerbadgesscreenState();
+  _RegisterbadgesscreenState createState() => _RegisterbadgesscreenState();
 }
 
-class _registerbadgesscreenState extends State<registerbadgesscreen> {
+class _RegisterbadgesscreenState extends State<Registerbadgesscreen> {
   String codeforces = null, codechef = null, atcoder = null, spoj = null;
   final _formkey = GlobalKey<FormState>();
   bool isloading = false;
@@ -32,6 +32,7 @@ class _registerbadgesscreenState extends State<registerbadgesscreen> {
         isloading = false;
       });
 
+      showFToast(this.context, 'User Handles Added Succesfully.', true);
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return HomeScreen();
       }));

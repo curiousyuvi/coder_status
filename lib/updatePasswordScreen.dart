@@ -1,31 +1,23 @@
 import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/components/generalLoadingScreen.dart';
 import 'package:codersstatus/components/generalOverlayLoadingScreen.dart';
 import 'package:codersstatus/components/myFtoast.dart';
-import 'package:codersstatus/components/myOutlineButton.dart';
-import 'package:codersstatus/components/urls.dart';
-import 'package:codersstatus/firebase_layer/setUserInfo.dart';
 import 'package:codersstatus/firebase_layer/updatepassword.dart';
 import 'package:codersstatus/firebase_layer/validatepassword.dart';
-import 'package:codersstatus/registeravatarscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'components/constants.dart';
 import 'components/myTextFormField.dart';
 import 'components/myButton.dart';
-import 'mydashboardscreen.dart';
-import 'package:codersstatus/firebase_layer/createuser.dart';
 import 'components/myAppBarWithBack.dart';
 
-class updatePasswordScreen extends StatefulWidget {
+class UpdatePasswordScreen extends StatefulWidget {
   @override
-  _updatePasswordScreenState createState() => _updatePasswordScreenState();
+  _UpdatePasswordScreenState createState() => _UpdatePasswordScreenState();
 }
 
-class _updatePasswordScreenState extends State<updatePasswordScreen> {
+class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
   String oldPass = '';
   String newPass = '';
   bool isloading = false;
@@ -67,7 +59,8 @@ class _updatePasswordScreenState extends State<updatePasswordScreen> {
       try {
         await updatePassword(oldPass, newPass);
         //Toast
-        showFToast(this.context, 'PASSWORD UPDATED SUCCESFULLY.', true);
+        showFToast(this.context, 'Password Updated Successfully.', true);
+        Navigator.pop(context);
       } catch (e) {
         print(e);
       }

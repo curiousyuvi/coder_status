@@ -1,31 +1,27 @@
 import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/registercodernamescreen.dart';
-import 'package:codersstatus/registernamescreen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'components/constants.dart';
 import 'components/myTextFormField.dart';
-import 'components/coderstatusheading.dart';
 import 'components/myButton.dart';
 
 void main() => runApp(
       MaterialApp(
-        home: registernamescreen(),
+        home: Registernamescreen(),
       ),
     );
 
-class registernamescreen extends StatefulWidget {
-  const registernamescreen({Key key}) : super(key: key);
+class Registernamescreen extends StatefulWidget {
+  const Registernamescreen({Key key}) : super(key: key);
 
   @override
-  _registernamescreenState createState() => _registernamescreenState();
+  _RegisternamescreenState createState() => _RegisternamescreenState();
 }
 
-class _registernamescreenState extends State<registernamescreen> {
+class _RegisternamescreenState extends State<Registernamescreen> {
   static String name = '';
   final _formkey = GlobalKey<FormState>();
 
@@ -33,7 +29,7 @@ class _registernamescreenState extends State<registernamescreen> {
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
       Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return registercodernamescreen(name);
+        return Registercodernamescreen(name);
       }));
     }
   }
