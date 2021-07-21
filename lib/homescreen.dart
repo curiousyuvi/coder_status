@@ -93,62 +93,68 @@ class HomeScreenState extends State<HomeScreen> {
                 _buildOffstageNavigator("PeersScreen"),
                 _buildOffstageNavigator("SettingsScreen"),
               ]),
-              bottomNavigationBar: BottomNavigationBar(
-                backgroundColor: colorschemeclass.dark,
-                showSelectedLabels: true,
-                showUnselectedLabels: true,
-                unselectedItemColor: colorschemeclass.lightgrey,
-                unselectedLabelStyle: TextStyle(
-                    color: colorschemeclass.lightgrey,
-                    fontFamily: 'young',
-                    fontSize: MediaQuery.of(context).size.height * 0.017),
-                selectedLabelStyle: TextStyle(
-                    color: colorschemeclass.primarygreen,
-                    fontFamily: 'young',
-                    fontSize: MediaQuery.of(context).size.height * 0.017),
-                unselectedIconTheme: IconThemeData(
-                    opacity: 0.7,
-                    size: MediaQuery.of(context).size.height * 0.045,
-                    color: colorschemeclass.lightgrey),
-                selectedIconTheme: IconThemeData(
-                    opacity: 1,
-                    size: MediaQuery.of(context).size.height * 0.045,
-                    color: colorschemeclass.primarygreen),
-                onTap: (int index) {
-                  _selectTab(pageKeys[index], index);
-                },
-                currentIndex: _selectedIndex,
-                items: [
-                  BottomNavigationBarItem(
-                    icon: (_selectedIndex == 0)
-                        ? Icon(Icons.emoji_events)
-                        : Icon(Icons.emoji_events_outlined),
-                    label: 'Ranking',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: new Icon(CupertinoIcons.search),
-                    label: 'Search',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: (_selectedIndex == 2)
-                        ? myAvatarButton(Image.network(avatarurl), true)
-                        : myAvatarButton(Image.network(avatarurl), false),
-                    label: 'Profile',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: (_selectedIndex == 3)
-                        ? Icon(CupertinoIcons.person_3_fill)
-                        : Icon(CupertinoIcons.person_3),
-                    label: 'Peers',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: (_selectedIndex == 4)
-                        ? Icon(Icons.settings)
-                        : Icon(Icons.settings_outlined),
-                    label: 'Settings',
-                  ),
-                ],
-                type: BottomNavigationBarType.fixed,
+              bottomNavigationBar: Theme(
+                data: ThemeData(
+                    splashColor: Colors.transparent,
+                    primaryColor: colorschemeclass.primarygreen,
+                    accentColor: colorschemeclass.primarygreen),
+                child: BottomNavigationBar(
+                  backgroundColor: colorschemeclass.dark,
+                  showSelectedLabels: true,
+                  showUnselectedLabels: true,
+                  unselectedItemColor: colorschemeclass.lightgrey,
+                  unselectedLabelStyle: TextStyle(
+                      color: colorschemeclass.lightgrey,
+                      fontFamily: 'young',
+                      fontSize: MediaQuery.of(context).size.height * 0.017),
+                  selectedLabelStyle: TextStyle(
+                      color: colorschemeclass.primarygreen,
+                      fontFamily: 'young',
+                      fontSize: MediaQuery.of(context).size.height * 0.017),
+                  unselectedIconTheme: IconThemeData(
+                      opacity: 0.7,
+                      size: MediaQuery.of(context).size.height * 0.045,
+                      color: colorschemeclass.lightgrey),
+                  selectedIconTheme: IconThemeData(
+                      opacity: 1,
+                      size: MediaQuery.of(context).size.height * 0.045,
+                      color: colorschemeclass.primarygreen),
+                  onTap: (int index) {
+                    _selectTab(pageKeys[index], index);
+                  },
+                  currentIndex: _selectedIndex,
+                  items: [
+                    BottomNavigationBarItem(
+                      icon: (_selectedIndex == 0)
+                          ? Icon(Icons.emoji_events)
+                          : Icon(Icons.emoji_events_outlined),
+                      label: 'Ranking',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: new Icon(CupertinoIcons.search),
+                      label: 'Search',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: (_selectedIndex == 2)
+                          ? myAvatarButton(Image.network(avatarurl), true)
+                          : myAvatarButton(Image.network(avatarurl), false),
+                      label: 'Profile',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: (_selectedIndex == 3)
+                          ? Icon(CupertinoIcons.person_3_fill)
+                          : Icon(CupertinoIcons.person_3),
+                      label: 'Peers',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: (_selectedIndex == 4)
+                          ? Icon(Icons.settings)
+                          : Icon(Icons.settings_outlined),
+                      label: 'Settings',
+                    ),
+                  ],
+                  type: BottomNavigationBarType.fixed,
+                ),
               ),
             ),
           );
