@@ -63,8 +63,8 @@ class _mydashboardscreenState extends State<mydashboardscreen> {
                 child: Center(
                   child: GestureDetector(
                       onTap: () {
-                        showFToast(this.context, 'TOAST GENERATED SUCCESSFULLY',
-                            false);
+                        showFToast(this.context,
+                            'PASSWORD GENERATED SUCCESSFULLY.', false);
                       },
                       child:
                           Image(image: AssetImage('images/appiconnoback.png'))),

@@ -17,8 +17,8 @@ class myAvatarButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.057,
-      width: MediaQuery.of(context).size.height * 0.057,
+      height: MediaQuery.of(context).size.height * 0.05,
+      width: MediaQuery.of(context).size.height * 0.05,
       decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(

@@ -1,6 +1,7 @@
 import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/components/generalLoadingScreen.dart';
 import 'package:codersstatus/components/generalOverlayLoadingScreen.dart';
+import 'package:codersstatus/components/myFtoast.dart';
 import 'package:codersstatus/components/myOutlineButton.dart';
 import 'package:codersstatus/components/urls.dart';
 import 'package:codersstatus/firebase_layer/setUserInfo.dart';
@@ -33,6 +34,11 @@ class _updatePasswordScreenState extends State<updatePasswordScreen> {
   final _formkey = GlobalKey<FormState>();
 
   void _submit() async {
+    FocusScopeNode currentFocus = FocusScope.of(context);
+
+    if (!currentFocus.hasPrimaryFocus) {
+      currentFocus.unfocus();
+    }
     OverlayState overlayState = Overlay.of(context);
     OverlayEntry overlayEntry1;
     overlayEntry1 = OverlayEntry(builder: (context) {
@@ -60,18 +66,8 @@ class _updatePasswordScreenState extends State<updatePasswordScreen> {
 
       try {
         await updatePassword(oldPass, newPass);
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          backgroundColor: colorschemeclass.primarygreen,
-          content: Row(
-            children: [
-              Icon(Icons.check, color: colorschemeclass.lightgrey),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.01,
-              ),
-              Text('Password Updated Successfully')
-            ],
-          ),
-        ));
+        //Toast
+        showFToast(this.context, 'PASSWORD UPDATED SUCCESFULLY.', true);
       } catch (e) {
         print(e);
       }
@@ -83,70 +79,80 @@ class _updatePasswordScreenState extends State<updatePasswordScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize:
-            Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
-        child: myAppBarWithBack('Update Password'),
-      ),
-      backgroundColor: colorschemeclass.dark,
-      body: SafeArea(
-        child: Container(
-          padding: EdgeInsets.all(16),
-          child: Form(
-            key: _formkey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Flexible(
-                    child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                      'Use a combination of letters, digits and special characters',
-                      style: TextStyle(
-                          color: colorschemeclass.darkgrey,
-                          fontSize: 15,
-                          fontFamily: 'young'),
-                      textAlign: TextAlign.center),
-                )),
-                myTextEormField(
-                    Icon(Icons.vpn_key),
-                    'old password',
-                    true,
-                    (val) {
-                      setState(() {
-                        oldPass = val;
-                      });
-                    },
-                    TextInputType.visiblePassword,
-                    (oldpassword) {
-                      return oldpasswordmatch
-                          ? null
-                          : 'Old password doesn\'t match';
-                    }),
-                myTextEormField(Icon(Icons.vpn_key), 'new password', true,
-                    (val) {
-                  setState(() {
-                    newPass = val;
-                  });
-                },
-                    TextInputType.visiblePassword,
-                    (val) => val.trim().length < 6
-                        ? 'Password must contain atleast 6 characters'
-                        : null),
-                myTextEormField(
-                    Icon(Icons.vpn_key),
-                    'confirm new password',
-                    true,
-                    (val) {},
-                    TextInputType.visiblePassword,
-                    (val) => val != newPass ? 'Password doesn\'t match' : null),
-                Container(
-                    padding: EdgeInsets.all(8),
-                    height: MediaQuery.of(context).size.height * 0.11,
-                    child: myButton(colorschemeclass.primarygreen,
-                        'Update Password', _submit))
-              ],
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+
+        if (!currentFocus.hasPrimaryFocus) {
+          currentFocus.unfocus();
+        }
+      },
+      child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize:
+              Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
+          child: myAppBarWithBack('Update Password'),
+        ),
+        backgroundColor: colorschemeclass.dark,
+        body: SafeArea(
+          child: Container(
+            padding: EdgeInsets.all(16),
+            child: Form(
+              key: _formkey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Flexible(
+                      child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                        'Use a combination of letters, digits and special characters',
+                        style: TextStyle(
+                            color: colorschemeclass.darkgrey,
+                            fontSize: 15,
+                            fontFamily: 'young'),
+                        textAlign: TextAlign.center),
+                  )),
+                  myTextEormField(
+                      Icon(Icons.vpn_key),
+                      'old password',
+                      true,
+                      (val) {
+                        setState(() {
+                          oldPass = val;
+                        });
+                      },
+                      TextInputType.visiblePassword,
+                      (oldpassword) {
+                        return oldpasswordmatch
+                            ? null
+                            : 'Old password doesn\'t match';
+                      }),
+                  myTextEormField(Icon(Icons.vpn_key), 'new password', true,
+                      (val) {
+                    setState(() {
+                      newPass = val;
+                    });
+                  },
+                      TextInputType.visiblePassword,
+                      (val) => val.trim().length < 6
+                          ? 'Password must contain atleast 6 characters'
+                          : null),
+                  myTextEormField(
+                      Icon(Icons.vpn_key),
+                      'confirm new password',
+                      true,
+                      (val) {},
+                      TextInputType.visiblePassword,
+                      (val) =>
+                          val != newPass ? 'Password doesn\'t match' : null),
+                  Container(
+                      padding: EdgeInsets.all(8),
+                      height: MediaQuery.of(context).size.height * 0.11,
+                      child: myButton(colorschemeclass.primarygreen,
+                          'Update Password', _submit))
+                ],
+              ),
             ),
           ),
         ),

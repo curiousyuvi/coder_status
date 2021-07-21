@@ -73,13 +73,15 @@ void showFToast(BuildContext mycontext, String headine, bool alert) {
               SizedBox(
                 width: MediaQuery.of(mycontext).size.width * 0.06,
               ),
-              Text(
-                headine,
-                style: TextStyle(
-                    color: colorschemeclass.lightgrey,
-                    fontFamily: 'young',
-                    fontWeight: FontWeight.bold,
-                    fontSize: MediaQuery.of(mycontext).size.height * 0.02),
+              Flexible(
+                child: Text(
+                  headine,
+                  style: TextStyle(
+                      color: colorschemeclass.lightgrey,
+                      fontFamily: 'young',
+                      fontWeight: FontWeight.bold,
+                      fontSize: MediaQuery.of(mycontext).size.height * 0.018),
+                ),
               )
             ],
           ),
