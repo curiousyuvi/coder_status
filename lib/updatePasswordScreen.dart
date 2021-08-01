@@ -1,8 +1,8 @@
 import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/components/generalOverlayLoadingScreen.dart';
-import 'package:codersstatus/components/myFtoast.dart';
-import 'package:codersstatus/firebase_layer/updatepassword.dart';
-import 'package:codersstatus/firebase_layer/validatepassword.dart';
+import 'package:codersstatus/components/showAnimatedToast.dart';
+import 'package:codersstatus/firebase_layer/updatePassword.dart';
+import 'package:codersstatus/firebase_layer/validatePassword.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -59,7 +59,7 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
       try {
         await updatePassword(oldPass, newPass);
         //Toast
-        showFToast(this.context, 'Password Updated Successfully.', true);
+        showAnimatedToast(this.context, 'Password Updated Successfully.', true);
         Navigator.pop(context);
       } catch (e) {
         print(e);

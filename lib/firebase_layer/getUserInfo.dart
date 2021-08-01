@@ -1,5 +1,5 @@
-import 'package:codersstatus/mydashboardscreen.dart';
-import 'package:codersstatus/signinscreen.dart';
+import 'package:codersstatus/myDashboardScreen.dart';
+import 'package:codersstatus/signinScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -53,5 +53,12 @@ class GetUserInfo {
     String atcoder = mapofdocument.data()['atcoder'];
     String spoj = mapofdocument.data()['spoj'];
     return [codeforces, codechef, atcoder, spoj];
+  }
+
+  static getUserEmail() {
+    FirebaseAuth _auth = FirebaseAuth.instance;
+
+    String email = _auth.currentUser.email;
+    return email;
   }
 }

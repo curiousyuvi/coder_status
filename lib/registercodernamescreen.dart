@@ -1,5 +1,6 @@
 import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/registeremailidscreen1.dart';
+import 'package:codersstatus/registerAvatarScreen.dart';
+import 'package:codersstatus/registerEmailidScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -27,7 +28,7 @@ class _RegistercodernamescreenState extends State<Registercodernamescreen> {
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
       Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return Registeremailidscreen1(name, codername);
+        return Registeravatarscreen(name, codername);
       }));
     }
   }

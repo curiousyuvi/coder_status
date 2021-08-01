@@ -1,10 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/components/generalLoadingScreen.dart';
-import 'package:codersstatus/components/myFtoast.dart';
-import 'package:codersstatus/forgotpasswordscreen.dart';
+import 'package:codersstatus/components/showAnimatedToast.dart';
+import 'package:codersstatus/forgotPasswordscreen.dart';
 import 'package:codersstatus/homescreen.dart';
-import 'package:codersstatus/firebase_layer/loginuser.dart';
-import 'package:codersstatus/registernamescreen.dart';
+import 'package:codersstatus/firebase_layer/loginUser.dart';
+import 'package:codersstatus/registerEmailidScreen.dart';
+import 'package:codersstatus/verifyEmailScreen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -35,7 +38,7 @@ class _SigninscreenState extends State<Signinscreen> {
   String password = '';
   bool isloading = false;
 
-  void _submit() {
+  void _submit() async {
     print('login pressed!!!');
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
@@ -43,21 +46,33 @@ class _SigninscreenState extends State<Signinscreen> {
       setState(() {
         isloading = true;
       });
-      login(emailid.trim(), password.trim()).then((user) {
+      login(emailid.trim(), password.trim()).then((user) async {
         if (user != null) {
-          showFToast(this.context, 'Log In successfull.', true);
-          setState(() {
-            isloading = false;
+          bool flag;
+          await FirebaseFirestore.instance
+              .collection('users')
+              .doc(user.uid)
+              .get()
+              .then((doc) {
+            flag = doc.exists;
           });
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return HomeScreen();
-          }));
+          if (flag) {
+            Navigator.pushAndRemoveUntil(context,
+                MaterialPageRoute(builder: (context) {
+              return HomeScreen();
+            }), ModalRoute.withName('/home'));
+          } else {
+            Navigator.pushAndRemoveUntil(context,
+                MaterialPageRoute(builder: (context) {
+              return VerifyEmailScreen();
+            }), ModalRoute.withName('/emailVerify'));
+          }
         } else {
           setState(() {
             isloading = false;
           });
 
-          showFToast(
+          showAnimatedToast(
               this.context, 'Email or Password or both are incorrect.', false);
         }
       });
@@ -130,7 +145,7 @@ class _SigninscreenState extends State<Signinscreen> {
                             onTap: () {
                               Navigator.push(context,
                                   MaterialPageRoute(builder: (context) {
-                                return Registernamescreen();
+                                return RegisterEmailidScreen();
                               }));
                             },
                             child: Text(

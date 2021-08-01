@@ -1,7 +1,7 @@
 import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/components/myFtoast.dart';
-import 'package:codersstatus/firebase_layer/resetpassword.dart';
-import 'package:codersstatus/signinscreen.dart';
+import 'package:codersstatus/components/showAnimatedToast.dart';
+import 'package:codersstatus/firebase_layer/resetPassword.dart';
+import 'package:codersstatus/signinScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -37,7 +37,7 @@ class _ForgotpasswordscreenState extends State<Forgotpasswordscreen> {
 
       resetpassword(emailid);
 
-      showFToast(this.context,
+      showAnimatedToast(this.context,
           'A paaswod reset link was succesfully sent to your email.', true);
 
       Navigator.push(context, MaterialPageRoute(builder: (context) {

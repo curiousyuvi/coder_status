@@ -1,4 +1,4 @@
-import 'package:codersstatus/components/myFtoast.dart';
+import 'package:codersstatus/components/showAnimatedToast.dart';
 import 'package:codersstatus/components/myFadeInCircleAvatar.dart';
 import 'package:codersstatus/components/urls.dart';
 import 'package:flutter/cupertino.dart';
@@ -55,7 +55,7 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
                 child: Center(
                   child: GestureDetector(
                       onTap: () {
-                        showFToast(this.context,
+                        showAnimatedToast(this.context,
                             'PASSWORD GENERATED SUCCESSFULLY.', false);
                       },
                       child:

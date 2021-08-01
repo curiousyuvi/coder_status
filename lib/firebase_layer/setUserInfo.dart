@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:codersstatus/mydashboardscreen.dart';
-import 'package:codersstatus/signinscreen.dart';
+import 'package:codersstatus/myDashboardScreen.dart';
+import 'package:codersstatus/signinScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -11,8 +11,8 @@ class SetUserInfo {
       String avatarurl,
       String codeforces,
       String codechef,
-      String atcoder,
-      String spoj) async {
+      String spoj,
+      String atcoder) async {
     FirebaseAuth _auth = FirebaseAuth.instance;
     final user = _auth.currentUser;
     final uid = user.uid;
@@ -23,7 +23,8 @@ class SetUserInfo {
       "codeforces": codeforces,
       "codechef": codechef,
       "atcoder": atcoder,
-      "spoj": spoj
+      "spoj": spoj,
+      "searchKey": [name[0].toUpperCase(), codername[0].toUpperCase()]
     });
   }
 

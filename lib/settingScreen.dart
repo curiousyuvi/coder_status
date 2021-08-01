@@ -4,7 +4,7 @@ import 'package:codersstatus/components/mySettingNonExpansionTile.dart';
 import 'package:codersstatus/components/mySettingsExpansionTile.dart';
 import 'package:codersstatus/components/myChildListTile.dart';
 import 'package:codersstatus/deleteAccountScreen.dart';
-import 'package:codersstatus/firebase_layer/logoutuser.dart';
+import 'package:codersstatus/firebase_layer/logoutUser.dart';
 import 'package:codersstatus/updatePasswordScreen.dart';
 
 import 'package:flutter/material.dart';

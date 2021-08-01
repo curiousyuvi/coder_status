@@ -1,9 +1,9 @@
 import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/components/generalOverlayLoadingScreen.dart';
 import 'package:codersstatus/components/myAppBarWithBack.dart';
-import 'package:codersstatus/firebase_layer/deleteuser.dart';
-import 'package:codersstatus/firebase_layer/logoutuser.dart';
-import 'package:codersstatus/firebase_layer/validatepassword.dart';
+import 'package:codersstatus/firebase_layer/deleteUser.dart';
+import 'package:codersstatus/firebase_layer/logoutUser.dart';
+import 'package:codersstatus/firebase_layer/validatePassword.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';

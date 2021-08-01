@@ -1,5 +1,6 @@
 import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/components/myFtoast.dart';
+import 'package:codersstatus/components/generalLoadingScreen.dart';
+import 'package:codersstatus/components/showAnimatedToast.dart';
 import 'package:codersstatus/components/ratingLoadingScreen.dart';
 import 'package:codersstatus/components/myButton.dart';
 import 'package:codersstatus/components/myTextFormField.dart';
@@ -8,13 +9,21 @@ import 'package:codersstatus/homescreen.dart';
 import 'package:flutter/material.dart';
 
 class Registerbadgesscreen extends StatefulWidget {
-  const Registerbadgesscreen({Key key}) : super(key: key);
+  Registerbadgesscreen(String name, String codername, String avatarurl) {
+    _RegisterbadgesscreenState.name = name;
+    _RegisterbadgesscreenState.codername = codername;
+    _RegisterbadgesscreenState.avatarurl = avatarurl;
+  }
 
   @override
   _RegisterbadgesscreenState createState() => _RegisterbadgesscreenState();
 }
 
 class _RegisterbadgesscreenState extends State<Registerbadgesscreen> {
+  static String name = '';
+  static String codername = '';
+  static String avatarurl = '';
+
   String codeforces = null, codechef = null, atcoder = null, spoj = null;
   final _formkey = GlobalKey<FormState>();
   bool isloading = false;
@@ -22,17 +31,17 @@ class _RegisterbadgesscreenState extends State<Registerbadgesscreen> {
   void _submit() async {
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
-      print(codeforces + " " + codechef + " " + atcoder + " " + spoj);
       setState(() {
         isloading = true;
       });
 
-      await SetUserInfo.updateHandles(codeforces, codechef, atcoder, spoj);
+      await SetUserInfo.setUserCredentials(
+          name, codername, avatarurl, codeforces, codechef, spoj, atcoder);
       setState(() {
         isloading = false;
       });
 
-      showFToast(this.context, 'User Handles Added Succesfully.', true);
+      showAnimatedToast(this.context, 'Account Created Succesfully.', true);
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return HomeScreen();
       }));
@@ -42,7 +51,7 @@ class _RegisterbadgesscreenState extends State<Registerbadgesscreen> {
   @override
   Widget build(BuildContext context) {
     return isloading
-        ? RatingsLoadingScreen('Setting up User handles...')
+        ? GeneralLoadingScreen('Creating Account...')
         : Scaffold(
             backgroundColor: colorschemeclass.dark,
             body: SafeArea(

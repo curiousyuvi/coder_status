@@ -4,8 +4,9 @@ import 'package:codersstatus/components/ratingLoadingScreen.dart';
 import 'package:codersstatus/components/urls.dart';
 import 'package:codersstatus/firebase_layer/getUserInfo.dart';
 import 'package:codersstatus/functions/getRating.dart';
-import 'package:codersstatus/mydashboardscreen.dart';
-import 'package:codersstatus/settingscreen.dart';
+import 'package:codersstatus/myDashboardScreen.dart';
+import 'package:codersstatus/searchScreen.dart';
+import 'package:codersstatus/settingScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -69,7 +70,7 @@ class HomeScreenState extends State<HomeScreen> {
         ? FutureBuilder(
             future: readyUserData(),
             builder: (context, snapshot) {
-              return RatingsLoadingScreen('FETCHING USER\'S RATINGS');
+              return RatingsLoadingScreen('fetching User\'s ratings');
             })
         : WillPopScope(
             onWillPop: () async {
@@ -176,7 +177,7 @@ class HomeScreenState extends State<HomeScreen> {
     if (tabItem == "RankingScreen")
       child = SettingScreen();
     else if (tabItem == "SearchScreen")
-      child = SettingScreen();
+      child = SearchScreen();
     else if (tabItem == "MyDashboardScreen")
       child = MyDashboardScreen(
           name, codername, avatarurl, userhandles, userrating);

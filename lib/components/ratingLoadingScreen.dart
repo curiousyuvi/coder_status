@@ -1,5 +1,5 @@
 import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/registeremailidscreen2.dart';
+import 'package:codersstatus/verifyEmailScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 

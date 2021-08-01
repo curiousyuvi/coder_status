@@ -1,6 +1,8 @@
 import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/components/myFtoast.dart';
-import 'package:codersstatus/registerpasswordscreen.dart';
+import 'package:codersstatus/components/showAnimatedToast.dart';
+import 'package:codersstatus/firebase_layer/emailVerification.dart';
+import 'package:codersstatus/verifyEmailScreen.dart';
+import 'package:codersstatus/registerPasswordScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -8,43 +10,22 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'components/myTextFormField.dart';
 import 'components/myButton.dart';
-import 'package:email_auth/email_auth.dart';
 
-class Registeremailidscreen2 extends StatefulWidget {
-  Registeremailidscreen2(String name, String codername, String emailid) {
-    _Registeremailidscreen2State.name = name;
-    _Registeremailidscreen2State.codername = codername;
-    _Registeremailidscreen2State.emailid = emailid;
-  }
-
+class RegisterEmailidScreen extends StatefulWidget {
   @override
-  _Registeremailidscreen2State createState() => _Registeremailidscreen2State();
+  _RegisterEmailidScreenState createState() => _RegisterEmailidScreenState();
 }
 
-class _Registeremailidscreen2State extends State<Registeremailidscreen2> {
-  static String name = '';
-  static String codername = '';
-  static String emailid = '';
-  String otp = '';
+class _RegisterEmailidScreenState extends State<RegisterEmailidScreen> {
+  String emailid = '';
   final _formkey = GlobalKey<FormState>();
 
-  bool verifyOTP(String otp) {
-    var res = EmailAuth.validate(receiverMail: emailid, userOTP: otp);
-    if (res) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  void _submit() {
+  void _submit() async {
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
 
-      showFToast(this.context, 'Account created successfully.', true);
-
       Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return Registerpasswordscreen(name, codername, emailid);
+        return Registerpasswordscreen(emailid);
       }));
     }
   }
@@ -76,7 +57,17 @@ class _Registeremailidscreen2State extends State<Registeremailidscreen2> {
                   ),
                 ),
                 Flexible(
-                    child: Text('Enter the OTP you received on your email',
+                    child: Text(
+                  'Enter Email Id',
+                  style: TextStyle(
+                      color: Colors.white, fontSize: 25, fontFamily: 'young'),
+                )),
+                SizedBox(
+                  height: 10,
+                ),
+                Flexible(
+                    child: Text(
+                        'A verification link will be sent to your given Email',
                         style: TextStyle(
                             color: colorschemeclass.darkgrey,
                             fontSize: 15,
@@ -85,17 +76,19 @@ class _Registeremailidscreen2State extends State<Registeremailidscreen2> {
                 SizedBox(
                   height: 10,
                 ),
-                myTextEormField(Icon(Icons.lock), 'OTP', true, (val) {
-                  otp = val;
+                myTextEormField(Icon(Icons.email_sharp), 'email id', false,
+                    (val) {
+                  emailid = val;
                 },
-                    TextInputType.visiblePassword,
-                    (val) =>
-                        !verifyOTP(val.trim()) ? 'OTP doesn\'t match' : null),
+                    TextInputType.emailAddress,
+                    (val) => !val.contains('@')
+                        ? 'Please enter a valid email'
+                        : null),
                 Container(
                     padding: EdgeInsets.all(8),
                     height: MediaQuery.of(context).size.height * 0.11,
-                    child: myButton(colorschemeclass.primarygreen,
-                        'Create Account', _submit))
+                    child: myButton(
+                        colorschemeclass.primarygreen, 'Next', _submit))
               ],
             ),
           ),

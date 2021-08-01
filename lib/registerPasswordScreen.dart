@@ -1,7 +1,11 @@
 import 'package:codersstatus/components/colorscheme.dart';
+import 'package:codersstatus/components/showAnimatedToast.dart';
 import 'package:codersstatus/components/urls.dart';
+import 'package:codersstatus/firebase_layer/emailVerification.dart';
 import 'package:codersstatus/firebase_layer/setUserInfo.dart';
-import 'package:codersstatus/registeravatarscreen.dart';
+import 'package:codersstatus/registerAvatarScreen.dart';
+import 'package:codersstatus/signinScreen.dart';
+import 'package:codersstatus/verifyEmailScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -13,15 +17,12 @@ import 'package:codersstatus/firebase_layer/createuser.dart';
 
 void main() => runApp(
       MaterialApp(
-        home: Registerpasswordscreen(
-            'example name', 'examplecodername', 'example@email'),
+        home: Registerpasswordscreen('example@email'),
       ),
     );
 
 class Registerpasswordscreen extends StatefulWidget {
-  Registerpasswordscreen(String name, String codername, String emailid) {
-    _RegisterpasswordscreenState.name = name;
-    _RegisterpasswordscreenState.codername = codername;
+  Registerpasswordscreen(String emailid) {
     _RegisterpasswordscreenState.emailid = emailid;
   }
 
@@ -30,8 +31,6 @@ class Registerpasswordscreen extends StatefulWidget {
 }
 
 class _RegisterpasswordscreenState extends State<Registerpasswordscreen> {
-  static String name = '';
-  static String codername = '';
   static String emailid = '';
   String password = '';
   bool isloading = false;
@@ -42,26 +41,31 @@ class _RegisterpasswordscreenState extends State<Registerpasswordscreen> {
     print("Register initiated!!");
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
-      print(name + ' ' + codername + ' ' + emailid + ' ' + password);
+      print(emailid + ' ' + password);
       setState(() {
         isloading = true;
       });
 
-      createAccount(name, codername, emailid, password).then((user) {
+      createAccount(emailid, password).then((user) {
         if (user != null) {
           print('account created');
 
-          SetUserInfo.setUserCredentials(
-              name, codername, urls.avatar1url, null, null, null, null);
+          sendVerificationEmail(emailid);
+          showAnimatedToast(
+              this.context, 'Verification mail sent to your Email', true);
 
           Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return Registeravatarscreen();
+            return VerifyEmailScreen();
           }));
         } else {
-          print('email id already exists');
           setState(() {
             isloading = false;
           });
+          showAnimatedToast(
+              this.context, 'Email already exists, head to sign in', false);
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return Signinscreen();
+          }));
         }
       });
     }
