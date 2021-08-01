@@ -24,7 +24,6 @@ class _SearchScreenState extends State<SearchScreen> {
         queryResultSet = [];
         tempSearchStore = [];
       });
-      return;
     }
 
     var capitalizedValue = value.toUpperCase();
@@ -32,25 +31,30 @@ class _SearchScreenState extends State<SearchScreen> {
     if (queryResultSet.length == 0 && value.length == 1) {
       QuerySnapshot querySnapshot =
           await SearchDatabase().searchByName(capitalizedValue);
+      queryResultSet = [];
       querySnapshot.docs.forEach((element) {
         queryResultSet.add(element.data());
       });
       print(queryResultSet.length);
     } else {
-      tempSearchStore = [];
-      queryResultSet.forEach((element) {
-        if (element['name']
-                .toString()
-                .toUpperCase()
-                .startsWith(capitalizedValue) ||
-            element['codername']
-                .toString()
-                .toUpperCase()
-                .startsWith(capitalizedValue)) {
-          setState(() {
+      setState(() {
+        tempSearchStore = [];
+        listOfUserTiles = [];
+        queryResultSet.forEach((element) {
+          if (element['name']
+                  .toString()
+                  .toUpperCase()
+                  .startsWith(capitalizedValue) ||
+              element['codername']
+                  .toString()
+                  .toUpperCase()
+                  .startsWith(capitalizedValue)) {
             tempSearchStore.add(element);
-          });
-        }
+            listOfUserTiles.add(MyUserTile(
+                element['avatarurl'], element['name'], element['codername']));
+          }
+        });
+        print(tempSearchStore.length);
       });
     }
   }
@@ -81,12 +85,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       ),
                     ),
                   )
-                : Column(
-                    children: tempSearchStore.map((element) {
-                      return MyUserTile(element['avatarurl'], element['name'],
-                          element['codername']);
-                    }).toList(),
-                  )
+                : Column(children: listOfUserTiles)
           ],
         ),
       )),

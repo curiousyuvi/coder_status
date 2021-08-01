@@ -70,7 +70,7 @@ class HomeScreenState extends State<HomeScreen> {
         ? FutureBuilder(
             future: readyUserData(),
             builder: (context, snapshot) {
-              return RatingsLoadingScreen('fetching User\'s ratings');
+              return RatingsLoadingScreen('Fetching User\'s ratings');
             })
         : WillPopScope(
             onWillPop: () async {
