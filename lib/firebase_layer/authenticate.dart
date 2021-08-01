@@ -13,28 +13,43 @@ class Authenticate extends StatelessWidget {
 
   bool flag = false;
 
+  Future updateFlag() async {
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(_auth.currentUser.uid)
+        .get()
+        .then((doc) {
+      flag = doc.exists;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    if (_auth.currentUser != null) {
-      if (_auth.currentUser.emailVerified) {
-        bool flag;
-        FirebaseFirestore.instance
-            .collection('users')
-            .doc(_auth.currentUser.uid)
-            .get()
-            .then((doc) {
-          flag = doc.exists;
-        });
-        if (flag) {
-          return HomeScreen();
+    return FutureBuilder(
+      future: updateFlag(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          if (_auth.currentUser != null) {
+            if (_auth.currentUser.emailVerified) {
+              if (flag) {
+                return HomeScreen();
+              } else {
+                return Registernamescreen();
+              }
+            } else {
+              return VerifyEmailScreen();
+            }
+          } else {
+            return Signinscreen();
+          }
         } else {
-          return Registernamescreen();
+          return Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
         }
-      } else {
-        return VerifyEmailScreen();
-      }
-    } else {
-      return Signinscreen();
-    }
+      },
+    );
   }
 }
