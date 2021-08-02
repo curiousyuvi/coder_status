@@ -25,6 +25,8 @@ dependencies:
   flutter_restart: ^0.0.3
   rive: ^0.7.22
   flutter_phoenix: ^1.0.0
+  rect_getter: ^1.0.0
+  glassmorphism_ui: ^0.2.0
 
 dev_dependencies:
   flutter_test:

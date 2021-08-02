@@ -1,5 +1,9 @@
+import 'package:codersstatus/components/atcoderDialog.dart';
+import 'package:codersstatus/components/codechefDialog.dart';
+import 'package:codersstatus/components/codeforcesDialog.dart';
 import 'package:codersstatus/components/showAnimatedToast.dart';
 import 'package:codersstatus/components/myFadeInCircleAvatar.dart';
+import 'package:codersstatus/components/spojDialog.dart';
 import 'package:codersstatus/components/urls.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +12,7 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:codersstatus/components/myTile.dart';
+import 'package:rect_getter/rect_getter.dart';
 
 class MyDashboardScreen extends StatefulWidget {
   String name = 'name', codername = 'codername', avatarurl = urls.avatar1url;
@@ -27,6 +32,10 @@ class MyDashboardScreen extends StatefulWidget {
 }
 
 class _MyDashboardScreenState extends State<MyDashboardScreen> {
+  var globalKey1 = RectGetter.createGlobalKey();
+  var globalKey2 = RectGetter.createGlobalKey();
+  var globalKey3 = RectGetter.createGlobalKey();
+  var globalKey4 = RectGetter.createGlobalKey();
   String name = 'name', codername = 'codername', avatarurl = urls.avatar1url;
   List<String> userhandles, userrating;
   _MyDashboardScreenState(String name, String codername, String avatarurl,
@@ -53,13 +62,7 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
                 width: double.infinity,
                 height: MediaQuery.of(context).size.height * 0.07,
                 child: Center(
-                  child: GestureDetector(
-                      onTap: () {
-                        showAnimatedToast(this.context,
-                            'PASSWORD GENERATED SUCCESSFULLY.', false);
-                      },
-                      child:
-                          Image(image: AssetImage('images/appiconnoback.png'))),
+                  child: Image(image: AssetImage('images/appiconnoback.png')),
                 ),
               ),
               Column(
@@ -98,26 +101,76 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
                   Wrap(
                     children: [
                       userrating[0] != '0'
-                          ? myTile(
-                              AssetImage('images/codeforcestile.png'),
-                              colorschemeclass.codeforcespurple,
-                              userrating[0] + ' pts')
+                          ? RectGetter(
+                              key: globalKey1,
+                              child: GestureDetector(
+                                onTap: () {
+                                  var rect =
+                                      RectGetter.getRectFromKey(globalKey1);
+                                  print(rect.toString());
+                                  showCodeforcesDialog(this.context, rect,
+                                      userhandles[0], userrating[0]);
+                                },
+                                child: myTile(
+                                    AssetImage('images/codeforcestile.png'),
+                                    colorschemeclass.codeforcespurple,
+                                    userrating[0] + ' pts'),
+                              ),
+                            )
                           : SizedBox(),
                       userrating[1] != '0'
-                          ? myTile(
-                              AssetImage('images/codecheftile.png'),
-                              colorschemeclass.codechefbrown,
-                              userrating[1] + ' pts')
+                          ? RectGetter(
+                              key: globalKey2,
+                              child: GestureDetector(
+                                onTap: () {
+                                  var rect =
+                                      RectGetter.getRectFromKey(globalKey2);
+                                  print(rect.toString());
+                                  showCodechefDialog(this.context, rect,
+                                      userhandles[1], userrating[1]);
+                                },
+                                child: myTile(
+                                    AssetImage('images/codecheftile.png'),
+                                    colorschemeclass.codechefbrown,
+                                    userrating[1] + ' pts'),
+                              ),
+                            )
                           : SizedBox(),
                       userrating[2] != '0'
-                          ? myTile(
-                              AssetImage('images/atcodertile.png'),
-                              colorschemeclass.atcodergrey,
-                              userrating[2] + ' pts')
+                          ? RectGetter(
+                              key: globalKey3,
+                              child: GestureDetector(
+                                onTap: () {
+                                  var rect =
+                                      RectGetter.getRectFromKey(globalKey3);
+                                  print(rect.toString());
+                                  showAtcoderDialog(this.context, rect,
+                                      userhandles[2], userrating[2]);
+                                },
+                                child: myTile(
+                                    AssetImage('images/atcodertile.png'),
+                                    colorschemeclass.atcodergrey,
+                                    userrating[2] + ' pts'),
+                              ),
+                            )
                           : SizedBox(),
                       userrating[3] != '0'
-                          ? myTile(AssetImage('images/spojtile.png'),
-                              colorschemeclass.spojblue, userrating[3] + ' pts')
+                          ? RectGetter(
+                              key: globalKey4,
+                              child: GestureDetector(
+                                onTap: () {
+                                  var rect =
+                                      RectGetter.getRectFromKey(globalKey4);
+                                  print(rect.toString());
+                                  showSpojDialog(this.context, rect,
+                                      userhandles[3], userrating[3]);
+                                },
+                                child: myTile(
+                                    AssetImage('images/spojtile.png'),
+                                    colorschemeclass.spojblue,
+                                    userrating[3] + ' pts'),
+                              ),
+                            )
                           : SizedBox(),
                       /*myTile(AssetImage('images/githubtile.png'),
                                   Colors.white, '26 reps')*/
