@@ -35,6 +35,7 @@ class _RegisterbioscreenState extends State<Registerbioscreen> {
   final _formkey = GlobalKey<FormState>();
 
   void _submit() {
+    FocusScopeNode currentFocus = FocusScope.of(context);
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
       Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -45,91 +46,100 @@ class _RegisterbioscreenState extends State<Registerbioscreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: ColorSchemeClass.dark,
-      body: SafeArea(
-        child: Container(
-          padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
-          child: Form(
-            key: _formkey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Flexible(
-                  child: Hero(
-                    tag: 'appIcon',
-                    child: Image(
-                      width: MediaQuery.of(context).size.width * 0.45,
-                      image: AssetImage('images/appiconnoback.png'),
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+
+        if (!currentFocus.hasPrimaryFocus) {
+          currentFocus.unfocus();
+        }
+      },
+      child: Scaffold(
+        backgroundColor: ColorSchemeClass.dark,
+        body: SafeArea(
+          child: Container(
+            padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
+            child: Form(
+              key: _formkey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Flexible(
+                    child: Hero(
+                      tag: 'appIcon',
+                      child: Image(
+                        width: MediaQuery.of(context).size.width * 0.45,
+                        image: AssetImage('images/appiconnoback.png'),
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.05,
-                ),
-                Flexible(
-                    child: Padding(
-                  padding:
-                      EdgeInsets.all(MediaQuery.of(context).size.width * 0.02),
-                  child: Text(
-                    'Write a small Bio about you',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: MediaQuery.of(context).size.height * 0.033,
-                        fontFamily: 'young'),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.05,
                   ),
-                )),
-                Flexible(
-                    child: Padding(
-                  padding:
-                      EdgeInsets.all(MediaQuery.of(context).size.width * 0.02),
-                  child: Text(
-                    '*Example: Hey there, I love Competitive Programming',
-                    style: TextStyle(
-                        color: ColorSchemeClass.darkgrey,
-                        fontSize: MediaQuery.of(context).size.height * 0.021,
-                        fontFamily: 'young'),
-                    textAlign: TextAlign.center,
-                  ),
-                )),
-                MyPassageTextEormField('Bio', (val) {
-                  bio = val.toString().trim();
-                },
-                    (val) => val.toString().trim().length > 100
-                        ? 'Bio should be under 100 characters'
-                        : null),
-                Row(
-                  children: [
-                    Flexible(
-                      child: Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 0,
-                              vertical:
-                                  MediaQuery.of(context).size.height * 0.022),
-                          height: MediaQuery.of(context).size.height * 0.12,
-                          child: MyOutlineButton(
-                              ColorSchemeClass.lightgrey, 'Skip', () {
-                            bio = 'Hey there, I love Competitive Programming';
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) {
-                              return Registerbadgesscreen(
-                                  name, codername, avatarurl, bio);
-                            }));
-                          })),
+                  Flexible(
+                      child: Padding(
+                    padding: EdgeInsets.all(
+                        MediaQuery.of(context).size.width * 0.02),
+                    child: Text(
+                      'Write a small Bio about you',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: MediaQuery.of(context).size.height * 0.033,
+                          fontFamily: 'young'),
                     ),
-                    Flexible(
-                      child: Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 0,
-                              vertical:
-                                  MediaQuery.of(context).size.height * 0.022),
-                          height: MediaQuery.of(context).size.height * 0.115,
-                          child: MyButton(
-                              ColorSchemeClass.primarygreen, 'Next', _submit)),
+                  )),
+                  Flexible(
+                      child: Padding(
+                    padding: EdgeInsets.all(
+                        MediaQuery.of(context).size.width * 0.02),
+                    child: Text(
+                      '*Example: Hey there, I love Competitive Programming',
+                      style: TextStyle(
+                          color: ColorSchemeClass.darkgrey,
+                          fontSize: MediaQuery.of(context).size.height * 0.021,
+                          fontFamily: 'young'),
+                      textAlign: TextAlign.center,
                     ),
-                  ],
-                )
-              ],
+                  )),
+                  MyPassageTextEormField('Bio', (val) {
+                    bio = val.toString().trim();
+                  },
+                      (val) => val.toString().trim().length > 100
+                          ? 'Bio should be under 100 characters'
+                          : null),
+                  Row(
+                    children: [
+                      Flexible(
+                        child: Container(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 0,
+                                vertical:
+                                    MediaQuery.of(context).size.height * 0.022),
+                            height: MediaQuery.of(context).size.height * 0.12,
+                            child: MyOutlineButton(
+                                ColorSchemeClass.lightgrey, 'Skip', () {
+                              bio = 'Hey there, I love Competitive Programming';
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return Registerbadgesscreen(
+                                    name, codername, avatarurl, bio);
+                              }));
+                            })),
+                      ),
+                      Flexible(
+                        child: Container(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 0,
+                                vertical:
+                                    MediaQuery.of(context).size.height * 0.022),
+                            height: MediaQuery.of(context).size.height * 0.115,
+                            child: MyButton(ColorSchemeClass.primarygreen,
+                                'Next', _submit)),
+                      ),
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         ),

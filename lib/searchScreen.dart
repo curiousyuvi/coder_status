@@ -61,34 +61,46 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-          child: Expanded(
-        child: Column(
-          children: [
-            MyTextEormField(Icon(CupertinoIcons.search), 'Search', false,
-                (val) {
-              initateSearch(val);
-            }, TextInputType.name, (val) {}),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.03,
-            ),
-            tempSearchStore.length == 0
-                ? Expanded(
-                    child: Center(
-                      child: Text(
-                        'Enter the Username to search',
-                        style: TextStyle(
-                            color: ColorSchemeClass.lightgrey,
-                            fontFamily: 'young',
-                            fontWeight: FontWeight.bold),
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+
+        if (!currentFocus.hasPrimaryFocus) {
+          currentFocus.unfocus();
+        }
+      },
+      child: Scaffold(
+        body: SafeArea(
+            child: Container(
+          width: double.infinity,
+          height: double.infinity,
+          child: Column(
+            children: [
+              MyTextEormField(Icon(CupertinoIcons.search), 'Search', false,
+                  (val) {
+                initateSearch(val);
+              }, TextInputType.name, (val) {}),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.03,
+              ),
+              tempSearchStore.length == 0
+                  ? Expanded(
+                      child: Center(
+                        child: Text(
+                          'Enter the Username to search',
+                          style: TextStyle(
+                              color: ColorSchemeClass.lightgrey,
+                              fontFamily: 'young',
+                              fontWeight: FontWeight.bold),
+                        ),
                       ),
-                    ),
-                  )
-                : Column(children: listOfUserTiles)
-          ],
-        ),
-      )),
+                    )
+                  : SingleChildScrollView(
+                      child: Column(children: listOfUserTiles))
+            ],
+          ),
+        )),
+      ),
     );
   }
 }

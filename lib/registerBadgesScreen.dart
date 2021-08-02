@@ -31,6 +31,7 @@ class _RegisterbadgesscreenState extends State<Registerbadgesscreen> {
   bool isloading = false;
 
   void _submit() async {
+    FocusScopeNode currentFocus = FocusScope.of(context);
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
       setState(() {
@@ -55,165 +56,189 @@ class _RegisterbadgesscreenState extends State<Registerbadgesscreen> {
   Widget build(BuildContext context) {
     return isloading
         ? GeneralLoadingScreen('Creating Account...')
-        : Scaffold(
-            backgroundColor: ColorSchemeClass.dark,
-            body: SafeArea(
-                child: Container(
-              width: double.infinity,
-              height: double.infinity,
-              padding:
-                  EdgeInsets.all(MediaQuery.of(context).size.width * 0.015),
-              child: SingleChildScrollView(
-                child: Form(
-                  key: _formkey,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.1,
+        : GestureDetector(
+            onTap: () {
+              FocusScopeNode currentFocus = FocusScope.of(context);
+
+              if (!currentFocus.hasPrimaryFocus) {
+                currentFocus.unfocus();
+              }
+            },
+            child: Scaffold(
+                backgroundColor: ColorSchemeClass.dark,
+                body: SafeArea(
+                    child: Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  padding:
+                      EdgeInsets.all(MediaQuery.of(context).size.width * 0.015),
+                  child: SingleChildScrollView(
+                    child: Form(
+                      key: _formkey,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.1,
+                          ),
+                          Hero(
+                            tag: 'appIcon',
+                            child: Image(
+                              image: AssetImage('images/appiconnoback.png'),
+                              height: MediaQuery.of(context).size.height * 0.1,
+                            ),
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.02,
+                          ),
+                          Text(
+                            'Add Your User Handles',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontFamily: 'young',
+                                fontWeight: FontWeight.bold,
+                                fontSize:
+                                    MediaQuery.of(context).size.height * 0.045),
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.02,
+                          ),
+                          Text(
+                            '*If you are not on a particular platform you can leave that field empty.',
+                            style: TextStyle(
+                                color: ColorSchemeClass.lightgrey,
+                                fontFamily: 'young',
+                                fontSize:
+                                    MediaQuery.of(context).size.height * 0.02),
+                            textAlign: TextAlign.center,
+                          ),
+                          SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * 0.02),
+                          Container(
+                              width: double.infinity,
+                              height: MediaQuery.of(context).size.height * 0.1,
+                              child: Row(
+                                children: [
+                                  Image(
+                                      image: AssetImage(
+                                          'images/codeforceswhitelogo.png'),
+                                      width: MediaQuery.of(context).size.width *
+                                          0.15),
+                                  Flexible(
+                                    child: MyTextEormField(
+                                        Icon(Icons.alternate_email),
+                                        'codeforces_handle',
+                                        false, (val) {
+                                      codeforces = val;
+                                    },
+                                        TextInputType.name,
+                                        (val) => val
+                                                .trim()
+                                                .toString()
+                                                .contains(' ')
+                                            ? 'User handle should\'nt contain spaces'
+                                            : null),
+                                  )
+                                ],
+                              )),
+                          Container(
+                              width: double.infinity,
+                              height: MediaQuery.of(context).size.height * 0.1,
+                              child: Row(
+                                children: [
+                                  Image(
+                                      image: AssetImage(
+                                          'images/codechefwhitelogo.png'),
+                                      width: MediaQuery.of(context).size.width *
+                                          0.15),
+                                  Flexible(
+                                    child: MyTextEormField(
+                                        Icon(Icons.alternate_email),
+                                        'codechef_handle',
+                                        false, (val) {
+                                      codechef = val;
+                                    },
+                                        TextInputType.name,
+                                        (val) => val
+                                                .trim()
+                                                .toString()
+                                                .contains(' ')
+                                            ? 'User handle should\'nt contain spaces'
+                                            : null),
+                                  )
+                                ],
+                              )),
+                          Container(
+                              width: double.infinity,
+                              height: MediaQuery.of(context).size.height * 0.1,
+                              child: Row(
+                                children: [
+                                  Image(
+                                      image: AssetImage(
+                                          'images/atcoderwhitelogo.png'),
+                                      width: MediaQuery.of(context).size.width *
+                                          0.15),
+                                  Flexible(
+                                    child: MyTextEormField(
+                                        Icon(Icons.alternate_email),
+                                        'atcoder_handle',
+                                        false, (val) {
+                                      atcoder = val;
+                                    },
+                                        TextInputType.name,
+                                        (val) => val
+                                                .trim()
+                                                .toString()
+                                                .contains(' ')
+                                            ? 'User handle should\'nt contain spaces'
+                                            : null),
+                                  )
+                                ],
+                              )),
+                          Container(
+                              width: double.infinity,
+                              height: MediaQuery.of(context).size.height * 0.1,
+                              child: Row(
+                                children: [
+                                  Image(
+                                    image:
+                                        AssetImage('images/spojwhitelogo.png'),
+                                    width: MediaQuery.of(context).size.width *
+                                        0.15,
+                                  ),
+                                  Flexible(
+                                    child: MyTextEormField(
+                                        Icon(Icons.alternate_email),
+                                        'spoj_handle',
+                                        false, (val) {
+                                      spoj = val;
+                                    },
+                                        TextInputType.name,
+                                        (val) => val
+                                                .trim()
+                                                .toString()
+                                                .contains(' ')
+                                            ? 'User handle should\'nt contain spaces'
+                                            : null),
+                                  )
+                                ],
+                              )),
+                          Container(
+                            padding: EdgeInsets.symmetric(
+                                horizontal:
+                                    MediaQuery.of(context).size.width * 0.02,
+                                vertical:
+                                    MediaQuery.of(context).size.height * 0.01),
+                            height: MediaQuery.of(context).size.height * 0.09,
+                            child: MyButton(ColorSchemeClass.primarygreen,
+                                'Create Account', _submit),
+                          ),
+                        ],
                       ),
-                      Hero(
-                        tag: 'appIcon',
-                        child: Image(
-                          image: AssetImage('images/appiconnoback.png'),
-                          height: MediaQuery.of(context).size.height * 0.1,
-                        ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.02,
-                      ),
-                      Text(
-                        'Add Your User Handles',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: 'young',
-                            fontWeight: FontWeight.bold,
-                            fontSize:
-                                MediaQuery.of(context).size.height * 0.045),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.02,
-                      ),
-                      Text(
-                        '*If you are not on a particular platform you can leave that field empty.',
-                        style: TextStyle(
-                            color: ColorSchemeClass.lightgrey,
-                            fontFamily: 'young',
-                            fontSize:
-                                MediaQuery.of(context).size.height * 0.02),
-                        textAlign: TextAlign.center,
-                      ),
-                      SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.02),
-                      Container(
-                          width: double.infinity,
-                          height: MediaQuery.of(context).size.height * 0.1,
-                          child: Row(
-                            children: [
-                              Image(
-                                  image: AssetImage(
-                                      'images/codeforceswhitelogo.png'),
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.15),
-                              Flexible(
-                                child: MyTextEormField(
-                                    Icon(Icons.alternate_email),
-                                    'codeforces_handle',
-                                    false, (val) {
-                                  codeforces = val;
-                                },
-                                    TextInputType.name,
-                                    (val) => val.trim().toString().contains(' ')
-                                        ? 'User handle should\'nt contain spaces'
-                                        : null),
-                              )
-                            ],
-                          )),
-                      Container(
-                          width: double.infinity,
-                          height: MediaQuery.of(context).size.height * 0.1,
-                          child: Row(
-                            children: [
-                              Image(
-                                  image: AssetImage(
-                                      'images/codechefwhitelogo.png'),
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.15),
-                              Flexible(
-                                child: MyTextEormField(
-                                    Icon(Icons.alternate_email),
-                                    'codechef_handle',
-                                    false, (val) {
-                                  codechef = val;
-                                },
-                                    TextInputType.name,
-                                    (val) => val.trim().toString().contains(' ')
-                                        ? 'User handle should\'nt contain spaces'
-                                        : null),
-                              )
-                            ],
-                          )),
-                      Container(
-                          width: double.infinity,
-                          height: MediaQuery.of(context).size.height * 0.1,
-                          child: Row(
-                            children: [
-                              Image(
-                                  image:
-                                      AssetImage('images/atcoderwhitelogo.png'),
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.15),
-                              Flexible(
-                                child: MyTextEormField(
-                                    Icon(Icons.alternate_email),
-                                    'atcoder_handle',
-                                    false, (val) {
-                                  atcoder = val;
-                                },
-                                    TextInputType.name,
-                                    (val) => val.trim().toString().contains(' ')
-                                        ? 'User handle should\'nt contain spaces'
-                                        : null),
-                              )
-                            ],
-                          )),
-                      Container(
-                          width: double.infinity,
-                          height: MediaQuery.of(context).size.height * 0.1,
-                          child: Row(
-                            children: [
-                              Image(
-                                image: AssetImage('images/spojwhitelogo.png'),
-                                width: MediaQuery.of(context).size.width * 0.15,
-                              ),
-                              Flexible(
-                                child: MyTextEormField(
-                                    Icon(Icons.alternate_email),
-                                    'spoj_handle',
-                                    false, (val) {
-                                  spoj = val;
-                                },
-                                    TextInputType.name,
-                                    (val) => val.trim().toString().contains(' ')
-                                        ? 'User handle should\'nt contain spaces'
-                                        : null),
-                              )
-                            ],
-                          )),
-                      Container(
-                        padding: EdgeInsets.symmetric(
-                            horizontal:
-                                MediaQuery.of(context).size.width * 0.02,
-                            vertical:
-                                MediaQuery.of(context).size.height * 0.01),
-                        height: MediaQuery.of(context).size.height * 0.09,
-                        child: MyButton(ColorSchemeClass.primarygreen,
-                            'Create Account', _submit),
-                      ),
-                    ],
+                    ),
                   ),
-                ),
-              ),
-            )));
+                ))),
+          );
   }
 }

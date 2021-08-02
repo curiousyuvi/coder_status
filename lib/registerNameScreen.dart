@@ -26,6 +26,7 @@ class _RegisternamescreenState extends State<Registernamescreen> {
   final _formkey = GlobalKey<FormState>();
 
   void _submit() {
+    FocusScopeNode currentFocus = FocusScope.of(context);
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
       Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -36,69 +37,79 @@ class _RegisternamescreenState extends State<Registernamescreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: ColorSchemeClass.dark,
-      body: SafeArea(
-        child: Container(
-          padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
-          child: Form(
-            key: _formkey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Flexible(
-                  child: Hero(
-                    tag: 'appIcon',
-                    child: Image(
-                      width: MediaQuery.of(context).size.width * 0.45,
-                      image: AssetImage('images/appiconnoback.png'),
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+
+        if (!currentFocus.hasPrimaryFocus) {
+          currentFocus.unfocus();
+        }
+      },
+      child: Scaffold(
+        backgroundColor: ColorSchemeClass.dark,
+        body: SafeArea(
+          child: Container(
+            padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
+            child: Form(
+              key: _formkey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Flexible(
+                    child: Hero(
+                      tag: 'appIcon',
+                      child: Image(
+                        width: MediaQuery.of(context).size.width * 0.45,
+                        image: AssetImage('images/appiconnoback.png'),
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.05,
-                ),
-                Flexible(
-                    child: Padding(
-                  padding:
-                      EdgeInsets.all(MediaQuery.of(context).size.width * 0.02),
-                  child: Text(
-                    'Enter Your Full Name',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: MediaQuery.of(context).size.height * 0.033,
-                        fontFamily: 'young'),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.05,
                   ),
-                )),
-                Flexible(
-                    child: Padding(
-                  padding:
-                      EdgeInsets.all(MediaQuery.of(context).size.width * 0.02),
-                  child: Text(
-                    '*Example: Light Yagami',
-                    style: TextStyle(
-                        color: ColorSchemeClass.darkgrey,
-                        fontSize: MediaQuery.of(context).size.height * 0.023,
-                        fontFamily: 'young'),
-                    textAlign: TextAlign.center,
+                  Flexible(
+                      child: Padding(
+                    padding: EdgeInsets.all(
+                        MediaQuery.of(context).size.width * 0.02),
+                    child: Text(
+                      'Enter Your Full Name',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: MediaQuery.of(context).size.height * 0.033,
+                          fontFamily: 'young'),
+                    ),
+                  )),
+                  Flexible(
+                      child: Padding(
+                    padding: EdgeInsets.all(
+                        MediaQuery.of(context).size.width * 0.02),
+                    child: Text(
+                      '*Example: Light Yagami',
+                      style: TextStyle(
+                          color: ColorSchemeClass.darkgrey,
+                          fontSize: MediaQuery.of(context).size.height * 0.023,
+                          fontFamily: 'young'),
+                      textAlign: TextAlign.center,
+                    ),
+                  )),
+                  MyTextEormField(Icon(Icons.person), 'Full Name', false,
+                      (val) {
+                    name = val.toString().trim();
+                  },
+                      TextInputType.name,
+                      (val) => val.toString().trim().length < 5
+                          ? 'Name is too short'
+                          : null),
+                  Container(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: MediaQuery.of(context).size.width * 0.03,
+                        vertical: MediaQuery.of(context).size.height * 0.01),
+                    height: MediaQuery.of(context).size.height * 0.09,
+                    child: MyButton(
+                        ColorSchemeClass.primarygreen, 'Next', _submit),
                   ),
-                )),
-                MyTextEormField(Icon(Icons.person), 'Full Name', false, (val) {
-                  name = val.toString().trim();
-                },
-                    TextInputType.name,
-                    (val) => val.toString().trim().length < 5
-                        ? 'Name is too short'
-                        : null),
-                Container(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: MediaQuery.of(context).size.width * 0.03,
-                      vertical: MediaQuery.of(context).size.height * 0.01),
-                  height: MediaQuery.of(context).size.height * 0.09,
-                  child:
-                      MyButton(ColorSchemeClass.primarygreen, 'Next', _submit),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

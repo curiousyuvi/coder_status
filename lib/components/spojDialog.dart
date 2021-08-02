@@ -30,12 +30,12 @@ showSpojDialog(
                     child: Stack(
                       children: [
                         GlassContainer(
-                          width: MediaQuery.of(context).size.width * 0.42,
+                          width: MediaQuery.of(context).size.width * 0.38,
                           height: MediaQuery.of(context).size.height * 0.1265,
                           borderRadius: BorderRadius.circular(10),
                         ),
                         Container(
-                          width: MediaQuery.of(context).size.width * 0.42,
+                          width: MediaQuery.of(context).size.width * 0.38,
                           height: MediaQuery.of(context).size.height * 0.157,
                           decoration: BoxDecoration(
                               image: DecorationImage(
@@ -50,30 +50,33 @@ showSpojDialog(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Row(
-                                  children: [
-                                    Text(
-                                      'Platform : ',
-                                      style: TextStyle(
-                                          color: ColorSchemeClass.lightgrey,
-                                          fontFamily: 'young',
-                                          fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.018),
-                                    ),
-                                    Text(
-                                      'SPOJ',
-                                      style: TextStyle(
-                                          color: ColorSchemeClass.spojblue,
-                                          fontFamily: 'young',
-                                          fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.02,
-                                          fontWeight: FontWeight.bold),
-                                    )
-                                  ],
+                                FittedBox(
+                                  fit: BoxFit.scaleDown,
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        'Platform : ',
+                                        style: TextStyle(
+                                            color: ColorSchemeClass.lightgrey,
+                                            fontFamily: 'young',
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.018),
+                                      ),
+                                      Text(
+                                        'SPOJ',
+                                        style: TextStyle(
+                                            color: ColorSchemeClass.spojblue,
+                                            fontFamily: 'young',
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.02,
+                                            fontWeight: FontWeight.bold),
+                                      )
+                                    ],
+                                  ),
                                 ),
                                 SizedBox(
                                     height: MediaQuery.of(context).size.height *

@@ -30,6 +30,7 @@ class _ForgotpasswordscreenState extends State<Forgotpasswordscreen> {
   String emailid = '';
 
   void _submit() {
+    FocusScopeNode currentFocus = FocusScope.of(context);
     print('login pressed!!!');
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
@@ -48,57 +49,66 @@ class _ForgotpasswordscreenState extends State<Forgotpasswordscreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: ColorSchemeClass.dark,
-      body: SafeArea(
-        child: Container(
-          padding: EdgeInsets.all(16),
-          child: Form(
-            key: _formkey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Flexible(
-                  child: Hero(
-                    tag: 'splashscreenImage',
-                    child: Image(
-                      image: AssetImage('images/appiconnoback.png'),
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+
+        if (!currentFocus.hasPrimaryFocus) {
+          currentFocus.unfocus();
+        }
+      },
+      child: Scaffold(
+        backgroundColor: ColorSchemeClass.dark,
+        body: SafeArea(
+          child: Container(
+            padding: EdgeInsets.all(16),
+            child: Form(
+              key: _formkey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Flexible(
+                    child: Hero(
+                      tag: 'splashscreenImage',
+                      child: Image(
+                        image: AssetImage('images/appiconnoback.png'),
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: 50,
-                ),
-                Flexible(
-                    child: Text(
-                  'Enter Email Id',
-                  style: TextStyle(
-                      color: Colors.white, fontSize: 25, fontFamily: 'young'),
-                )),
-                SizedBox(
-                  height: 10,
-                ),
-                Flexible(
-                    child: Text(
-                        'A passowrd reset link will be sent to your given Email',
-                        style: TextStyle(
-                            color: ColorSchemeClass.darkgrey,
-                            fontSize: 15,
-                            fontFamily: 'young'),
-                        textAlign: TextAlign.center)),
-                Flexible(
-                    child: MyTextEormField(Icon(Icons.email), 'Email Id', false,
-                        (val) {
-                  emailid = val;
-                },
-                        TextInputType.emailAddress,
-                        (val) => !val.contains('@')
-                            ? 'Please enter a valid email'
-                            : null)),
-                Flexible(
-                    child: MyButton(ColorSchemeClass.primarygreen,
-                        'Send Request', _submit)),
-              ],
+                  SizedBox(
+                    height: 50,
+                  ),
+                  Flexible(
+                      child: Text(
+                    'Enter Email Id',
+                    style: TextStyle(
+                        color: Colors.white, fontSize: 25, fontFamily: 'young'),
+                  )),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Flexible(
+                      child: Text(
+                          'A passowrd reset link will be sent to your given Email',
+                          style: TextStyle(
+                              color: ColorSchemeClass.darkgrey,
+                              fontSize: 15,
+                              fontFamily: 'young'),
+                          textAlign: TextAlign.center)),
+                  Flexible(
+                      child: MyTextEormField(
+                          Icon(Icons.email), 'Email Id', false, (val) {
+                    emailid = val;
+                  },
+                          TextInputType.emailAddress,
+                          (val) => !val.contains('@')
+                              ? 'Please enter a valid email'
+                              : null)),
+                  Flexible(
+                      child: MyButton(ColorSchemeClass.primarygreen,
+                          'Send Request', _submit)),
+                ],
+              ),
             ),
           ),
         ),

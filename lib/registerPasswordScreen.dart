@@ -35,6 +35,7 @@ class _RegisterPasswordScreenState extends State<RegisterPasswordScreen> {
   final _formkey = GlobalKey<FormState>();
 
   void _submit() {
+    FocusScopeNode currentFocus = FocusScope.of(context);
     print("Register initiated!!");
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
@@ -78,85 +79,94 @@ class _RegisterPasswordScreenState extends State<RegisterPasswordScreen> {
               child: CircularProgressIndicator(),
             ),
           )
-        : Scaffold(
-            backgroundColor: ColorSchemeClass.dark,
-            body: SafeArea(
-              child: Container(
-                padding:
-                    EdgeInsets.all(MediaQuery.of(context).size.width * 0.01),
-                child: Form(
-                  key: _formkey,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Flexible(
-                        child: Hero(
-                          tag: 'appIcon',
-                          child: Image(
-                            width: MediaQuery.of(context).size.width * 0.5,
-                            image: AssetImage('images/appiconnoback.png'),
+        : GestureDetector(
+            onTap: () {
+              FocusScopeNode currentFocus = FocusScope.of(context);
+
+              if (!currentFocus.hasPrimaryFocus) {
+                currentFocus.unfocus();
+              }
+            },
+            child: Scaffold(
+              backgroundColor: ColorSchemeClass.dark,
+              body: SafeArea(
+                child: Container(
+                  padding:
+                      EdgeInsets.all(MediaQuery.of(context).size.width * 0.01),
+                  child: Form(
+                    key: _formkey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Flexible(
+                          child: Hero(
+                            tag: 'appIcon',
+                            child: Image(
+                              width: MediaQuery.of(context).size.width * 0.5,
+                              image: AssetImage('images/appiconnoback.png'),
+                            ),
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.05,
-                      ),
-                      Flexible(
-                          child: Padding(
-                        padding: EdgeInsets.all(
-                            MediaQuery.of(context).size.width * 0.02),
-                        child: Text(
-                          'Choose Password',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize:
-                                  MediaQuery.of(context).size.height * 0.035,
-                              fontFamily: 'young'),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.05,
                         ),
-                      )),
-                      Flexible(
-                          child: Padding(
-                        padding: EdgeInsets.all(
-                            MediaQuery.of(context).size.width * 0.02),
-                        child: Text(
-                            'Use a combination of letters, digits and special characters',
+                        Flexible(
+                            child: Padding(
+                          padding: EdgeInsets.all(
+                              MediaQuery.of(context).size.width * 0.02),
+                          child: Text(
+                            'Choose Password',
                             style: TextStyle(
-                                color: ColorSchemeClass.darkgrey,
+                                color: Colors.white,
                                 fontSize:
-                                    MediaQuery.of(context).size.height * 0.02,
+                                    MediaQuery.of(context).size.height * 0.035,
                                 fontFamily: 'young'),
-                            textAlign: TextAlign.center),
-                      )),
-                      MyTextEormField(Icon(Icons.vpn_key), 'password', true,
-                          (val) {
-                        setState(() {
-                          password = val;
-                        });
-                      },
-                          TextInputType.visiblePassword,
-                          (val) => val.trim().length < 6
-                              ? 'Password must contain atleast 6 characters'
-                              : null),
-                      MyTextEormField(
-                          Icon(Icons.vpn_key),
-                          'confirm password',
-                          true,
-                          (val) {},
-                          TextInputType.visiblePassword,
-                          (val) => val != password
-                              ? 'Password doesn\'t match'
-                              : null),
-                      Container(
-                        padding: EdgeInsets.symmetric(
-                            horizontal:
-                                MediaQuery.of(context).size.width * 0.03,
-                            vertical:
-                                MediaQuery.of(context).size.height * 0.01),
-                        height: MediaQuery.of(context).size.height * 0.09,
-                        child: MyButton(
-                            ColorSchemeClass.primarygreen, 'Next', _submit),
-                      ),
-                    ],
+                          ),
+                        )),
+                        Flexible(
+                            child: Padding(
+                          padding: EdgeInsets.all(
+                              MediaQuery.of(context).size.width * 0.02),
+                          child: Text(
+                              'Use a combination of letters, digits and special characters',
+                              style: TextStyle(
+                                  color: ColorSchemeClass.darkgrey,
+                                  fontSize:
+                                      MediaQuery.of(context).size.height * 0.02,
+                                  fontFamily: 'young'),
+                              textAlign: TextAlign.center),
+                        )),
+                        MyTextEormField(Icon(Icons.vpn_key), 'password', true,
+                            (val) {
+                          setState(() {
+                            password = val;
+                          });
+                        },
+                            TextInputType.visiblePassword,
+                            (val) => val.trim().length < 6
+                                ? 'Password must contain atleast 6 characters'
+                                : null),
+                        MyTextEormField(
+                            Icon(Icons.vpn_key),
+                            'confirm password',
+                            true,
+                            (val) {},
+                            TextInputType.visiblePassword,
+                            (val) => val != password
+                                ? 'Password doesn\'t match'
+                                : null),
+                        Container(
+                          padding: EdgeInsets.symmetric(
+                              horizontal:
+                                  MediaQuery.of(context).size.width * 0.03,
+                              vertical:
+                                  MediaQuery.of(context).size.height * 0.01),
+                          height: MediaQuery.of(context).size.height * 0.09,
+                          child: MyButton(
+                              ColorSchemeClass.primarygreen, 'Next', _submit),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
