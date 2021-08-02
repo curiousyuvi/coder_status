@@ -2,7 +2,7 @@ import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/components/myOutlineButton.dart';
 import 'package:codersstatus/components/myPassageTextformField.dart';
 import 'package:codersstatus/registerBadgesScreen.dart';
-import 'package:codersstatus/registercodernamescreen.dart';
+import 'package:codersstatus/registerCodernameScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';

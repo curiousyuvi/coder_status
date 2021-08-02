@@ -7,14 +7,20 @@ class myPassageTextEormField extends StatelessWidget {
   Function onchangedfunction;
   Function validation;
   Color bordercolor;
+  TextEditingController textEditingController;
 
   myPassageTextEormField(
-      String tfhintText, Function onchangedfunction, Function validation,
-      [Color bordercolor = colorschemeclass.primarygreen]) {
+    String tfhintText,
+    Function onchangedfunction,
+    Function validation, [
+    TextEditingController textEditingController = null,
+    Color bordercolor = colorschemeclass.primarygreen,
+  ]) {
     this.tfhintText = tfhintText;
     this.onchangedfunction = onchangedfunction;
     this.validation = validation;
     this.bordercolor = bordercolor;
+    this.textEditingController = textEditingController;
   }
 
   @override
@@ -24,6 +30,7 @@ class myPassageTextEormField extends StatelessWidget {
         horizontal: 8,
       ),
       child: TextFormField(
+        controller: textEditingController,
         maxLines: null,
         validator: validation,
         onChanged: onchangedfunction,

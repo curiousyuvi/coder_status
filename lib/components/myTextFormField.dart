@@ -10,6 +10,7 @@ class myTextEormField extends StatelessWidget {
   TextInputType textinputtype;
   Function validation;
   Color bordercolor;
+  TextEditingController textEditingController;
 
   myTextEormField(
       Icon tficon,
@@ -18,7 +19,8 @@ class myTextEormField extends StatelessWidget {
       Function onchangedfunction,
       TextInputType textinputtype,
       Function validation,
-      [Color bordercolor = colorschemeclass.primarygreen]) {
+      [TextEditingController textEditingController = null,
+      Color bordercolor = colorschemeclass.primarygreen]) {
     this.tficon = tficon;
     this.tfhintText = tfhintText;
     this.isobscure = isobscure;
@@ -26,6 +28,7 @@ class myTextEormField extends StatelessWidget {
     this.textinputtype = textinputtype;
     this.validation = validation;
     this.bordercolor = bordercolor;
+    this.textEditingController = textEditingController;
   }
 
   @override
@@ -33,6 +36,7 @@ class myTextEormField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: TextFormField(
+        controller: textEditingController,
         validator: validation,
         onChanged: onchangedfunction,
         keyboardType: textinputtype,

@@ -48,9 +48,21 @@ class GetUserInfo {
     final mapofdocument =
         await FirebaseFirestore.instance.collection("users").doc(uid).get();
 
-    String name = mapofdocument.data()['bio'];
-    print(name);
-    return name;
+    String bio = mapofdocument.data()['bio'];
+    print(bio);
+    return bio;
+  }
+
+  static getUserSeachKey() async {
+    FirebaseAuth _auth = FirebaseAuth.instance;
+    final user = _auth.currentUser;
+    final uid = user.uid;
+    final mapofdocument =
+        await FirebaseFirestore.instance.collection("users").doc(uid).get();
+
+    var searchKey = mapofdocument.data()['searchKey'];
+
+    return searchKey;
   }
 
   static Future<List<String>> getUserHandles() async {

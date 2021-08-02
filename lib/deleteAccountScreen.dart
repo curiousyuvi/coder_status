@@ -180,6 +180,7 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
                         (password) {
                           return passwordmatch ? null : 'Password is incorrect';
                         },
+                        null,
                         colorschemeclass.dangerred),
                   ),
                   Container(

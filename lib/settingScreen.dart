@@ -4,6 +4,7 @@ import 'package:codersstatus/components/mySettingNonExpansionTile.dart';
 import 'package:codersstatus/components/mySettingsExpansionTile.dart';
 import 'package:codersstatus/components/myChildListTile.dart';
 import 'package:codersstatus/deleteAccountScreen.dart';
+import 'package:codersstatus/editProfileScreen.dart';
 import 'package:codersstatus/firebase_layer/logoutUser.dart';
 import 'package:codersstatus/updatePasswordScreen.dart';
 
@@ -35,37 +36,19 @@ class _SettingScreenState extends State<SettingScreen> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.04,
                 ),
-                mySettingsExpansionTile(
-                  Icon(
-                    Icons.edit,
-                  ),
-                  'Edit Profile',
-                  [
-                    myChildListTile(
-                        Icon(
-                          Icons.image,
-                          color: colorschemeclass.dark,
-                        ),
-                        'Change Avatar'),
-                    myChildListTile(
-                        Icon(
-                          Icons.person,
-                          color: colorschemeclass.dark,
-                        ),
-                        'Change Name'),
-                    myChildListTile(
-                        Icon(
-                          Icons.alternate_email,
-                          color: colorschemeclass.dark,
-                        ),
-                        'Change Codername'),
-                    myChildListTile(
-                        Icon(
-                          Icons.alternate_email,
-                          color: colorschemeclass.dark,
-                        ),
-                        'Change Bio')
-                  ],
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return EditProfileScreen();
+                    }));
+                  },
+                  child: mySettingsNonExpansionTile(
+                      Icon(
+                        Icons.edit,
+                        color: colorschemeclass.lightgrey,
+                      ),
+                      'Edit Profile'),
                 ),
                 mySettingsNonExpansionTile(
                     Icon(

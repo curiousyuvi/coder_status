@@ -1,5 +1,5 @@
 import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/registercodernamescreen.dart';
+import 'package:codersstatus/registerCodernameScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
