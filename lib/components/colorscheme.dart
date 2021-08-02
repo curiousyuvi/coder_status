@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class colorschemeclass {
+class ColorSchemeClass {
   static const Color primarygreen = Color(0xff00de71);
   static const Color secondarygreen = Color(0xffa6f2cd);
   static const Color tertiarygreen = Color(0xffe2faee);

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class myTile extends StatelessWidget {
+class MyTile extends StatelessWidget {
   AssetImage tileimage;
   Color tilecolor;
   String tilestring;
-  myTile(AssetImage tileimage, Color tilecolor, String tilestring) {
+  MyTile(AssetImage tileimage, Color tilecolor, String tilestring) {
     this.tileimage = tileimage;
     this.tilecolor = tilecolor;
     this.tilestring = tilestring;

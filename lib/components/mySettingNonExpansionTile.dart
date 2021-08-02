@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'colorscheme.dart';
 import 'package:codersstatus/components/myChildListTile.dart';
 
-class mySettingsNonExpansionTile extends StatelessWidget {
+class MySettingsNonExpansionTile extends StatelessWidget {
   Icon leadingIcon;
   String title;
   Color tilecolor;
   Color extrusioncolor;
-  mySettingsNonExpansionTile(Icon leadingIcon, String title,
-      [Color tilecolor = colorschemeclass.unactivatedblack,
-      Color extrusioncolor = colorschemeclass.darkgrey]) {
+  MySettingsNonExpansionTile(Icon leadingIcon, String title,
+      [Color tilecolor = ColorSchemeClass.unactivatedblack,
+      Color extrusioncolor = ColorSchemeClass.darkgrey]) {
     this.leadingIcon = leadingIcon;
     this.title = title;
     this.tilecolor = tilecolor;
@@ -32,12 +32,12 @@ class mySettingsNonExpansionTile extends StatelessWidget {
                       splashColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       hoverColor: Colors.transparent,
-                      unselectedWidgetColor: colorschemeclass.lightgrey,
-                      accentColor: colorschemeclass.dark,
+                      unselectedWidgetColor: ColorSchemeClass.lightgrey,
+                      accentColor: ColorSchemeClass.dark,
                       fontFamily: 'young',
                       textTheme: TextTheme(
                           subtitle1:
-                              TextStyle(color: colorschemeclass.lightgrey))),
+                              TextStyle(color: ColorSchemeClass.lightgrey))),
                   child: DecoratedBox(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),

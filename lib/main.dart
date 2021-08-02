@@ -25,9 +25,9 @@ class myApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-            accentColor: colorschemeclass.primarygreen,
-            primaryColor: colorschemeclass.primarygreen,
-            scaffoldBackgroundColor: colorschemeclass.dark,
+            accentColor: ColorSchemeClass.primarygreen,
+            primaryColor: ColorSchemeClass.primarygreen,
+            scaffoldBackgroundColor: ColorSchemeClass.dark,
             textTheme: TextTheme(
                 bodyText1: TextStyle(fontFamily: 'young', color: Colors.white),
                 headline1:

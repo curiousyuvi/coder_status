@@ -2,7 +2,6 @@ import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/components/myOutlineButton.dart';
 import 'package:codersstatus/components/myPassageTextformField.dart';
 import 'package:codersstatus/registerBadgesScreen.dart';
-import 'package:codersstatus/registerCodernameScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -47,7 +46,7 @@ class _RegisterbioscreenState extends State<Registerbioscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: colorschemeclass.dark,
+      backgroundColor: ColorSchemeClass.dark,
       body: SafeArea(
         child: Container(
           padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
@@ -58,7 +57,7 @@ class _RegisterbioscreenState extends State<Registerbioscreen> {
               children: [
                 Flexible(
                   child: Hero(
-                    tag: 'splashscreenImage',
+                    tag: 'appIcon',
                     child: Image(
                       width: MediaQuery.of(context).size.width * 0.45,
                       image: AssetImage('images/appiconnoback.png'),
@@ -87,13 +86,13 @@ class _RegisterbioscreenState extends State<Registerbioscreen> {
                   child: Text(
                     '*Example: Hey there, I love Competitive Programming',
                     style: TextStyle(
-                        color: colorschemeclass.darkgrey,
+                        color: ColorSchemeClass.darkgrey,
                         fontSize: MediaQuery.of(context).size.height * 0.021,
                         fontFamily: 'young'),
                     textAlign: TextAlign.center,
                   ),
                 )),
-                myPassageTextEormField('Bio', (val) {
+                MyPassageTextEormField('Bio', (val) {
                   bio = val.toString().trim();
                 },
                     (val) => val.toString().trim().length > 100
@@ -108,8 +107,8 @@ class _RegisterbioscreenState extends State<Registerbioscreen> {
                               vertical:
                                   MediaQuery.of(context).size.height * 0.022),
                           height: MediaQuery.of(context).size.height * 0.12,
-                          child: myOutlineButton(
-                              colorschemeclass.lightgrey, 'Skip', () {
+                          child: MyOutlineButton(
+                              ColorSchemeClass.lightgrey, 'Skip', () {
                             bio = 'Hey there, I love Competitive Programming';
                             Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {
@@ -125,8 +124,8 @@ class _RegisterbioscreenState extends State<Registerbioscreen> {
                               vertical:
                                   MediaQuery.of(context).size.height * 0.022),
                           height: MediaQuery.of(context).size.height * 0.115,
-                          child: myButton(
-                              colorschemeclass.primarygreen, 'Next', _submit)),
+                          child: MyButton(
+                              ColorSchemeClass.primarygreen, 'Next', _submit)),
                     ),
                   ],
                 )

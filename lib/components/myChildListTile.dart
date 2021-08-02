@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'colorscheme.dart';
 
-class myChildListTile extends StatelessWidget {
+class MyChildListTile extends StatelessWidget {
   Icon leadingicon;
   String title;
   Color fontcolor;
-  myChildListTile(Icon leadingicon, String title,
-      [Color fontcolor = colorschemeclass.dark]) {
+  MyChildListTile(Icon leadingicon, String title,
+      [Color fontcolor = ColorSchemeClass.dark]) {
     this.leadingicon = leadingicon;
     this.title = title;
     this.fontcolor = fontcolor;
@@ -17,7 +17,7 @@ class myChildListTile extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
       child: ListTile(
-        tileColor: colorschemeclass.lightgrey,
+        tileColor: ColorSchemeClass.lightgrey,
         leading: leadingicon,
         title: Text(
           title,

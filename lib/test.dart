@@ -36,7 +36,7 @@ class _TestScreenState extends State<TestScreen> {
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.05,
             ),
-            myButton(Colors.green, 'Submit', () {
+            MyButton(Colors.green, 'Submit', () {
               _submit();
             })
           ],

@@ -1,6 +1,5 @@
 import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/registerAvatarScreen.dart';
-import 'package:codersstatus/registerEmailidScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -36,10 +35,10 @@ class _RegistercodernamescreenState extends State<Registercodernamescreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: colorschemeclass.dark,
+      backgroundColor: ColorSchemeClass.dark,
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.all(16),
+          padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
           child: Form(
             key: _formkey,
             child: Column(
@@ -47,7 +46,7 @@ class _RegistercodernamescreenState extends State<Registercodernamescreen> {
               children: [
                 Flexible(
                   child: Hero(
-                    tag: 'splashscreenImage',
+                    tag: 'appIcon',
                     child: Image(
                       width: MediaQuery.of(context).size.width * 0.45,
                       image: AssetImage('images/appiconnoback.png'),
@@ -76,13 +75,13 @@ class _RegistercodernamescreenState extends State<Registercodernamescreen> {
                   child: Text(
                     'Codername is like a Username,\n*Example: @god_Kira',
                     style: TextStyle(
-                        color: colorschemeclass.darkgrey,
+                        color: ColorSchemeClass.darkgrey,
                         fontSize: MediaQuery.of(context).size.height * 0.022,
                         fontFamily: 'young'),
                     textAlign: TextAlign.center,
                   ),
                 )),
-                myTextEormField(Icon(Icons.alternate_email), 'codername', false,
+                MyTextEormField(Icon(Icons.alternate_email), 'codername', false,
                     (val) {
                   codername = val.toString().trim();
                 },
@@ -97,7 +96,7 @@ class _RegistercodernamescreenState extends State<Registercodernamescreen> {
                       vertical: MediaQuery.of(context).size.height * 0.01),
                   height: MediaQuery.of(context).size.height * 0.09,
                   child:
-                      myButton(colorschemeclass.primarygreen, 'Next', _submit),
+                      MyButton(ColorSchemeClass.primarygreen, 'Next', _submit),
                 ),
               ],
             ),

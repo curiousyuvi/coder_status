@@ -2,11 +2,8 @@ import 'dart:io';
 import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/components/myButton.dart';
 import 'package:codersstatus/components/myOutlineButton.dart';
-import 'package:codersstatus/components/showAnimatedToast.dart';
 import 'package:codersstatus/components/urls.dart';
-import 'package:codersstatus/firebase_layer/setUserInfo.dart';
 import 'package:codersstatus/firebase_layer/uploadAvatar.dart';
-import 'package:codersstatus/registerBadgesScreen.dart';
 import 'package:codersstatus/registerBioScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -30,9 +27,9 @@ class Registeravatarscreen extends StatefulWidget {
 class _RegisteravatarscreenState extends State<Registeravatarscreen> {
   static String name = '';
   static String codername = '';
-  Image avatarshowimage = Image(image: NetworkImage(urls.avatar1url));
+  Image avatarshowimage = Image(image: NetworkImage(Urls.avatar1url));
   File imagetobeuploaded;
-  String urltobeset = urls.avatar1url;
+  String urltobeset = Urls.avatar1url;
   bool isLoading = false;
 
   Future<String> generateUrl(File imagefile) async {
@@ -64,14 +61,14 @@ class _RegisteravatarscreenState extends State<Registeravatarscreen> {
     false
   ];
   List<Widget> _avatarbuttons = [
-    myAvatarSelection(Image(image: AssetImage('images/avatar0.jpg')), false),
-    myAvatarSelection(Image(image: AssetImage('images/avatar1.jpg')), true),
-    myAvatarSelection(Image(image: AssetImage('images/avatar2.jpg')), false),
-    myAvatarSelection(Image(image: AssetImage('images/avatar3.jpg')), false),
-    myAvatarSelection(Image(image: AssetImage('images/avatar4.jpg')), false),
-    myAvatarSelection(Image(image: AssetImage('images/avatar5.jpg')), false),
-    myAvatarSelection(Image(image: AssetImage('images/avatar6.jpg')), false),
-    myAvatarSelection(Image(image: AssetImage('images/avatar7.jpg')), false),
+    MyAvatarSelection(Image(image: AssetImage('images/avatar0.jpg')), false),
+    MyAvatarSelection(Image(image: AssetImage('images/avatar1.jpg')), true),
+    MyAvatarSelection(Image(image: AssetImage('images/avatar2.jpg')), false),
+    MyAvatarSelection(Image(image: AssetImage('images/avatar3.jpg')), false),
+    MyAvatarSelection(Image(image: AssetImage('images/avatar4.jpg')), false),
+    MyAvatarSelection(Image(image: AssetImage('images/avatar5.jpg')), false),
+    MyAvatarSelection(Image(image: AssetImage('images/avatar6.jpg')), false),
+    MyAvatarSelection(Image(image: AssetImage('images/avatar7.jpg')), false),
   ];
 
   @override
@@ -117,7 +114,7 @@ class _RegisteravatarscreenState extends State<Registeravatarscreen> {
                       Container(
                           height: MediaQuery.of(context).size.height * 0.27,
                           width: MediaQuery.of(context).size.height * 0.27,
-                          child: myCircleAvatar(avatarimage: avatarshowimage)),
+                          child: MyCircleAvatar(avatarshowimage)),
                       SizedBox(
                           height: MediaQuery.of(context).size.height * 0.028),
                       Flexible(
@@ -131,42 +128,42 @@ class _RegisteravatarscreenState extends State<Registeravatarscreen> {
                                 for (int i = 0; i < 8; i++) {
                                   _selections[i] = false;
                                 }
-                                _avatarbuttons[0] = myAvatarSelection(
+                                _avatarbuttons[0] = MyAvatarSelection(
                                     Image(
                                         image:
                                             AssetImage('images/avatar0.jpg')),
                                     false);
-                                _avatarbuttons[1] = myAvatarSelection(
+                                _avatarbuttons[1] = MyAvatarSelection(
                                     Image(
                                         image:
                                             AssetImage('images/avatar1.jpg')),
                                     false);
-                                _avatarbuttons[2] = myAvatarSelection(
+                                _avatarbuttons[2] = MyAvatarSelection(
                                     Image(
                                         image:
                                             AssetImage('images/avatar2.jpg')),
                                     false);
-                                _avatarbuttons[3] = myAvatarSelection(
+                                _avatarbuttons[3] = MyAvatarSelection(
                                     Image(
                                         image:
                                             AssetImage('images/avatar3.jpg')),
                                     false);
-                                _avatarbuttons[4] = myAvatarSelection(
+                                _avatarbuttons[4] = MyAvatarSelection(
                                     Image(
                                         image:
                                             AssetImage('images/avatar4.jpg')),
                                     false);
-                                _avatarbuttons[5] = myAvatarSelection(
+                                _avatarbuttons[5] = MyAvatarSelection(
                                     Image(
                                         image:
                                             AssetImage('images/avatar5.jpg')),
                                     false);
-                                _avatarbuttons[6] = myAvatarSelection(
+                                _avatarbuttons[6] = MyAvatarSelection(
                                     Image(
                                         image:
                                             AssetImage('images/avatar6.jpg')),
                                     false);
-                                _avatarbuttons[7] = myAvatarSelection(
+                                _avatarbuttons[7] = MyAvatarSelection(
                                     Image(
                                         image:
                                             AssetImage('images/avatar7.jpg')),
@@ -179,37 +176,37 @@ class _RegisteravatarscreenState extends State<Registeravatarscreen> {
                                   switch (index) {
                                     case 1:
                                       {
-                                        urltobeset = urls.avatar1url;
+                                        urltobeset = Urls.avatar1url;
                                       }
                                       break;
                                     case 2:
                                       {
-                                        urltobeset = urls.avatar2url;
+                                        urltobeset = Urls.avatar2url;
                                       }
                                       break;
                                     case 3:
                                       {
-                                        urltobeset = urls.avatar3url;
+                                        urltobeset = Urls.avatar3url;
                                       }
                                       break;
                                     case 4:
                                       {
-                                        urltobeset = urls.avatar4url;
+                                        urltobeset = Urls.avatar4url;
                                       }
                                       break;
                                     case 5:
                                       {
-                                        urltobeset = urls.avatar5url;
+                                        urltobeset = Urls.avatar5url;
                                       }
                                       break;
                                     case 6:
                                       {
-                                        urltobeset = urls.avatar6url;
+                                        urltobeset = Urls.avatar6url;
                                       }
                                       break;
                                     case 7:
                                       {
-                                        urltobeset = urls.avatar7url;
+                                        urltobeset = Urls.avatar7url;
                                       }
                                       break;
                                   }
@@ -221,7 +218,7 @@ class _RegisteravatarscreenState extends State<Registeravatarscreen> {
                                 } else {
                                   pick();
                                 }
-                                _avatarbuttons[index] = myAvatarSelection(
+                                _avatarbuttons[index] = MyAvatarSelection(
                                     Image(
                                         image: AssetImage(
                                             'images/avatar$index.jpg')),
@@ -241,9 +238,9 @@ class _RegisteravatarscreenState extends State<Registeravatarscreen> {
                         children: [
                           Flexible(
                               child: Container(
-                            child: myOutlineButton(
-                                colorschemeclass.lightgrey, 'Skip', () {
-                              urltobeset = urls.avatar1url;
+                            child: MyOutlineButton(
+                                ColorSchemeClass.lightgrey, 'Skip', () {
+                              urltobeset = Urls.avatar1url;
                               Navigator.push(context,
                                   MaterialPageRoute(builder: (context) {
                                 return Registerbioscreen(
@@ -253,8 +250,8 @@ class _RegisteravatarscreenState extends State<Registeravatarscreen> {
                           )),
                           Flexible(
                               child: Container(
-                            child: myButton(
-                                colorschemeclass.primarygreen, 'Add Avatar',
+                            child: MyButton(
+                                ColorSchemeClass.primarygreen, 'Add Avatar',
                                 () async {
                               if (imagetobeuploaded != null) {
                                 setState(() {

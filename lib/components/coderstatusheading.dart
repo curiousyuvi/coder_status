@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'colorscheme.dart';
 
-Widget coderstatusheading(BuildContext context) {
+Widget CoderstatusHeading(BuildContext context) {
   return Wrap(
     direction: Axis.horizontal,
     children: [
@@ -21,25 +21,25 @@ Widget coderstatusheading(BuildContext context) {
         'STATUS',
         style: TextStyle(
             fontFamily: 'young',
-            color: colorschemeclass.primarygreen,
+            color: ColorSchemeClass.primarygreen,
             fontWeight: FontWeight.bold,
             fontSize: MediaQuery.of(context).size.height * 0.07,
             shadows: [
               Shadow(
                   blurRadius: 10,
-                  color: colorschemeclass.primarygreen.withOpacity(0.2),
+                  color: ColorSchemeClass.primarygreen.withOpacity(0.2),
                   offset: Offset(5.0, 0)),
               Shadow(
                   blurRadius: 10,
-                  color: colorschemeclass.primarygreen.withOpacity(0.2),
+                  color: ColorSchemeClass.primarygreen.withOpacity(0.2),
                   offset: Offset(-5.0, 0)),
               Shadow(
                   blurRadius: 10,
-                  color: colorschemeclass.primarygreen.withOpacity(0.2),
+                  color: ColorSchemeClass.primarygreen.withOpacity(0.2),
                   offset: Offset(0, 5.0)),
               Shadow(
                   blurRadius: 10,
-                  color: colorschemeclass.primarygreen.withOpacity(0.2),
+                  color: ColorSchemeClass.primarygreen.withOpacity(0.2),
                   offset: Offset(0, -5.0)),
               Shadow(
                   // bottomLeft

@@ -15,11 +15,11 @@ class MyUserTile extends StatelessWidget {
         width: MediaQuery.of(context).size.width * 0.9,
         height: MediaQuery.of(context).size.height * 0.08,
         decoration: BoxDecoration(
-            color: colorschemeclass.unactivatedblack,
+            color: ColorSchemeClass.unactivatedblack,
             borderRadius: BorderRadius.circular(100),
             boxShadow: [
               BoxShadow(
-                  color: colorschemeclass.darkgrey.withOpacity(0.3),
+                  color: ColorSchemeClass.darkgrey.withOpacity(0.3),
                   offset: Offset(
                     0,
                     MediaQuery.of(context).size.height * 0.005,
@@ -42,7 +42,7 @@ class MyUserTile extends StatelessWidget {
                 Text(
                   name,
                   style: TextStyle(
-                      color: colorschemeclass.lightgrey,
+                      color: ColorSchemeClass.lightgrey,
                       fontFamily: 'young',
                       fontWeight: FontWeight.bold,
                       fontSize: MediaQuery.of(context).size.height * 0.03),
@@ -53,7 +53,7 @@ class MyUserTile extends StatelessWidget {
                 Text(
                   '@' + codername,
                   style: TextStyle(
-                      color: colorschemeclass.lightgrey.withOpacity(0.6),
+                      color: ColorSchemeClass.lightgrey.withOpacity(0.6),
                       fontFamily: 'young',
                       fontSize: MediaQuery.of(context).size.height * 0.02),
                 )

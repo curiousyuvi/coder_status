@@ -55,7 +55,7 @@ showSpojDialog(
                                     Text(
                                       'Platform : ',
                                       style: TextStyle(
-                                          color: colorschemeclass.lightgrey,
+                                          color: ColorSchemeClass.lightgrey,
                                           fontFamily: 'young',
                                           fontSize: MediaQuery.of(context)
                                                   .size
@@ -65,7 +65,7 @@ showSpojDialog(
                                     Text(
                                       'SPOJ',
                                       style: TextStyle(
-                                          color: colorschemeclass.spojblue,
+                                          color: ColorSchemeClass.spojblue,
                                           fontFamily: 'young',
                                           fontSize: MediaQuery.of(context)
                                                   .size
@@ -85,7 +85,7 @@ showSpojDialog(
                                       Text(
                                         'Username : ',
                                         style: TextStyle(
-                                            color: colorschemeclass.lightgrey,
+                                            color: ColorSchemeClass.lightgrey,
                                             fontFamily: 'young',
                                             fontSize: MediaQuery.of(context)
                                                     .size
@@ -95,7 +95,7 @@ showSpojDialog(
                                       Text(
                                         '@' + spojHandle,
                                         style: TextStyle(
-                                            color: colorschemeclass.spojblue,
+                                            color: ColorSchemeClass.spojblue,
                                             fontFamily: 'young',
                                             fontSize: MediaQuery.of(context)
                                                     .size
@@ -114,7 +114,7 @@ showSpojDialog(
                                     Text(
                                       'Rating : ',
                                       style: TextStyle(
-                                          color: colorschemeclass.lightgrey,
+                                          color: ColorSchemeClass.lightgrey,
                                           fontFamily: 'young',
                                           fontSize: MediaQuery.of(context)
                                                   .size
@@ -124,7 +124,7 @@ showSpojDialog(
                                     Text(
                                       spojRating,
                                       style: TextStyle(
-                                          color: colorschemeclass.spojblue,
+                                          color: ColorSchemeClass.spojblue,
                                           fontFamily: 'young',
                                           fontSize: MediaQuery.of(context)
                                                   .size
@@ -135,7 +135,7 @@ showSpojDialog(
                                     Text(
                                       ' pts',
                                       style: TextStyle(
-                                          color: colorschemeclass.spojblue,
+                                          color: ColorSchemeClass.spojblue,
                                           fontFamily: 'young',
                                           fontSize: MediaQuery.of(context)
                                                   .size

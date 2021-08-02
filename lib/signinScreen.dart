@@ -102,7 +102,7 @@ class _SigninscreenState extends State<Signinscreen> {
                           ),
                         ),
                       ),
-                      Flexible(child: coderstatusheading(context)),
+                      Flexible(child: CoderstatusHeading(context)),
                       Flexible(
                         child: SizedBox(
                           height: MediaQuery.of(context).size.height * 0.07,
@@ -111,7 +111,7 @@ class _SigninscreenState extends State<Signinscreen> {
                       Container(
                         width: double.infinity,
                         height: MediaQuery.of(context).size.height * 0.1,
-                        child: myTextEormField(
+                        child: MyTextEormField(
                             Icon(Icons.email), 'Email Id', false, (val) {
                           emailid = val;
                         },
@@ -123,7 +123,7 @@ class _SigninscreenState extends State<Signinscreen> {
                       Container(
                         width: double.infinity,
                         height: MediaQuery.of(context).size.height * 0.1,
-                        child: myTextEormField(
+                        child: MyTextEormField(
                             Icon(Icons.vpn_key), 'Password', true, (val) {
                           password = val;
                         },
@@ -139,8 +139,8 @@ class _SigninscreenState extends State<Signinscreen> {
                             vertical:
                                 MediaQuery.of(context).size.height * 0.01),
                         height: MediaQuery.of(context).size.height * 0.09,
-                        child: myButton(
-                            colorschemeclass.primarygreen, 'Log in', _submit),
+                        child: MyButton(
+                            ColorSchemeClass.primarygreen, 'Log in', _submit),
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.025,
@@ -156,7 +156,7 @@ class _SigninscreenState extends State<Signinscreen> {
                             child: Text(
                               'Create Account',
                               style: TextStyle(
-                                  color: colorschemeclass.primarygreen,
+                                  color: ColorSchemeClass.primarygreen,
                                   fontFamily: 'young',
                                   fontSize: MediaQuery.of(context).size.height *
                                       0.022,

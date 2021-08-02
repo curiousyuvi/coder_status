@@ -27,7 +27,7 @@ showCodechefDialog(BuildContext context, Rect rect, String codechefHandle,
     listOfStars.add(Icon(
       Icons.star,
       size: MediaQuery.of(context).size.height * 0.018,
-      color: colorschemeclass.codechefbrown,
+      color: ColorSchemeClass.codechefbrown,
     ));
   }
   OverlayState overlayState = Overlay.of(context);
@@ -82,7 +82,7 @@ showCodechefDialog(BuildContext context, Rect rect, String codechefHandle,
                                     Text(
                                       'Platform : ',
                                       style: TextStyle(
-                                          color: colorschemeclass.lightgrey,
+                                          color: ColorSchemeClass.lightgrey,
                                           fontFamily: 'young',
                                           fontSize: MediaQuery.of(context)
                                                   .size
@@ -92,7 +92,7 @@ showCodechefDialog(BuildContext context, Rect rect, String codechefHandle,
                                     Text(
                                       'CODECHEF',
                                       style: TextStyle(
-                                          color: colorschemeclass.codechefbrown,
+                                          color: ColorSchemeClass.codechefbrown,
                                           fontFamily: 'young',
                                           fontSize: MediaQuery.of(context)
                                                   .size
@@ -112,7 +112,7 @@ showCodechefDialog(BuildContext context, Rect rect, String codechefHandle,
                                       Text(
                                         'Username : ',
                                         style: TextStyle(
-                                            color: colorschemeclass.lightgrey,
+                                            color: ColorSchemeClass.lightgrey,
                                             fontFamily: 'young',
                                             fontSize: MediaQuery.of(context)
                                                     .size
@@ -123,7 +123,7 @@ showCodechefDialog(BuildContext context, Rect rect, String codechefHandle,
                                         '@' + codechefHandle,
                                         style: TextStyle(
                                             color:
-                                                colorschemeclass.codechefbrown,
+                                                ColorSchemeClass.codechefbrown,
                                             fontFamily: 'young',
                                             fontSize: MediaQuery.of(context)
                                                     .size
@@ -142,7 +142,7 @@ showCodechefDialog(BuildContext context, Rect rect, String codechefHandle,
                                     Text(
                                       'Rating : ',
                                       style: TextStyle(
-                                          color: colorschemeclass.lightgrey,
+                                          color: ColorSchemeClass.lightgrey,
                                           fontFamily: 'young',
                                           fontSize: MediaQuery.of(context)
                                                   .size
@@ -152,7 +152,7 @@ showCodechefDialog(BuildContext context, Rect rect, String codechefHandle,
                                     Text(
                                       codechefRating,
                                       style: TextStyle(
-                                          color: colorschemeclass.codechefbrown,
+                                          color: ColorSchemeClass.codechefbrown,
                                           fontFamily: 'young',
                                           fontSize: MediaQuery.of(context)
                                                   .size
@@ -163,7 +163,7 @@ showCodechefDialog(BuildContext context, Rect rect, String codechefHandle,
                                     Text(
                                       ' pts',
                                       style: TextStyle(
-                                          color: colorschemeclass.codechefbrown,
+                                          color: ColorSchemeClass.codechefbrown,
                                           fontFamily: 'young',
                                           fontSize: MediaQuery.of(context)
                                                   .size
@@ -181,7 +181,7 @@ showCodechefDialog(BuildContext context, Rect rect, String codechefHandle,
                                     Text(
                                       'Stars : ',
                                       style: TextStyle(
-                                          color: colorschemeclass.lightgrey,
+                                          color: ColorSchemeClass.lightgrey,
                                           fontFamily: 'young',
                                           fontSize: MediaQuery.of(context)
                                                   .size

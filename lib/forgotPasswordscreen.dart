@@ -49,7 +49,7 @@ class _ForgotpasswordscreenState extends State<Forgotpasswordscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: colorschemeclass.dark,
+      backgroundColor: ColorSchemeClass.dark,
       body: SafeArea(
         child: Container(
           padding: EdgeInsets.all(16),
@@ -82,12 +82,12 @@ class _ForgotpasswordscreenState extends State<Forgotpasswordscreen> {
                     child: Text(
                         'A passowrd reset link will be sent to your given Email',
                         style: TextStyle(
-                            color: colorschemeclass.darkgrey,
+                            color: ColorSchemeClass.darkgrey,
                             fontSize: 15,
                             fontFamily: 'young'),
                         textAlign: TextAlign.center)),
                 Flexible(
-                    child: myTextEormField(Icon(Icons.email), 'Email Id', false,
+                    child: MyTextEormField(Icon(Icons.email), 'Email Id', false,
                         (val) {
                   emailid = val;
                 },
@@ -96,7 +96,7 @@ class _ForgotpasswordscreenState extends State<Forgotpasswordscreen> {
                             ? 'Please enter a valid email'
                             : null)),
                 Flexible(
-                    child: myButton(colorschemeclass.primarygreen,
+                    child: MyButton(ColorSchemeClass.primarygreen,
                         'Send Request', _submit)),
               ],
             ),

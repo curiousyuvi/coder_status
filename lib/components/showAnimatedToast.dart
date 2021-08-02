@@ -46,10 +46,10 @@ class _AnimatedToastState extends State<AnimatedToast> {
     this.headline = headline;
     if (alert) {
       leadingIcon = Icons.check_circle;
-      toastColor = colorschemeclass.primarygreen;
+      toastColor = ColorSchemeClass.primarygreen;
     } else {
       leadingIcon = Icons.error;
-      toastColor = colorschemeclass.dangerred;
+      toastColor = ColorSchemeClass.dangerred;
     }
   }
 
@@ -92,7 +92,7 @@ class _AnimatedToastState extends State<AnimatedToast> {
             child: Row(
               children: [
                 Icon(leadingIcon,
-                    color: colorschemeclass.lightgrey,
+                    color: ColorSchemeClass.lightgrey,
                     size: MediaQuery.of(context).size.height * 0.05),
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.06,
@@ -101,7 +101,7 @@ class _AnimatedToastState extends State<AnimatedToast> {
                   child: Text(
                     headline,
                     style: TextStyle(
-                        color: colorschemeclass.lightgrey,
+                        color: ColorSchemeClass.lightgrey,
                         fontFamily: 'young',
                         fontWeight: FontWeight.bold,
                         fontSize: MediaQuery.of(context).size.height * 0.018),

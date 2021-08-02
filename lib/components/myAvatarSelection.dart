@@ -1,15 +1,15 @@
 import 'package:codersstatus/components/colorscheme.dart';
 import 'package:flutter/material.dart';
 
-class myAvatarSelection extends StatelessWidget {
+class MyAvatarSelection extends StatelessWidget {
   Image avatarimage;
   double borderwidth = 2;
-  Color bordercolor = colorschemeclass.lightgrey;
+  Color bordercolor = ColorSchemeClass.lightgrey;
 
-  myAvatarSelection(Image avatarimage, bool onoff) {
+  MyAvatarSelection(Image avatarimage, bool onoff) {
     this.avatarimage = avatarimage;
     if (onoff) {
-      bordercolor = colorschemeclass.primarygreen;
+      bordercolor = ColorSchemeClass.primarygreen;
       borderwidth = 4;
     }
   }

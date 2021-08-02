@@ -24,7 +24,7 @@ class _SettingScreenState extends State<SettingScreen> {
         appBar: PreferredSize(
           preferredSize:
               Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
-          child: myAppBar('Settings'),
+          child: MyAppBar('Settings'),
         ),
         body: SafeArea(
           child: Container(
@@ -43,20 +43,20 @@ class _SettingScreenState extends State<SettingScreen> {
                       return EditProfileScreen();
                     }));
                   },
-                  child: mySettingsNonExpansionTile(
+                  child: MySettingsNonExpansionTile(
                       Icon(
                         Icons.edit,
-                        color: colorschemeclass.lightgrey,
+                        color: ColorSchemeClass.lightgrey,
                       ),
                       'Edit Profile'),
                 ),
-                mySettingsNonExpansionTile(
+                MySettingsNonExpansionTile(
                     Icon(
                       Icons.dashboard,
-                      color: colorschemeclass.lightgrey,
+                      color: ColorSchemeClass.lightgrey,
                     ),
                     'User Handles'),
-                mySettingsExpansionTile(
+                MySettingsExpansionTile(
                   Icon(Icons.security),
                   'Account & Security',
                   [
@@ -67,10 +67,10 @@ class _SettingScreenState extends State<SettingScreen> {
                           return UpdatePasswordScreen();
                         }));
                       },
-                      child: myChildListTile(
+                      child: MyChildListTile(
                           Icon(
                             Icons.lock,
-                            color: colorschemeclass.dark,
+                            color: ColorSchemeClass.dark,
                           ),
                           'Change Password'),
                     ),
@@ -81,34 +81,34 @@ class _SettingScreenState extends State<SettingScreen> {
                           return DeleteAccountScreen();
                         }));
                       },
-                      child: myChildListTile(
+                      child: MyChildListTile(
                           Icon(
                             Icons.delete,
-                            color: colorschemeclass.dangerred,
+                            color: ColorSchemeClass.dangerred,
                           ),
                           'Delete Account',
-                          colorschemeclass.dangerred),
+                          ColorSchemeClass.dangerred),
                     ),
                   ],
                 ),
-                mySettingsNonExpansionTile(
+                MySettingsNonExpansionTile(
                     Icon(
                       Icons.info,
-                      color: colorschemeclass.lightgrey,
+                      color: ColorSchemeClass.lightgrey,
                     ),
                     'About Developer'),
                 GestureDetector(
                   onTap: () {
                     logout(context);
                   },
-                  child: mySettingsNonExpansionTile(
+                  child: MySettingsNonExpansionTile(
                       Icon(
                         Icons.logout,
-                        color: colorschemeclass.lightgrey,
+                        color: ColorSchemeClass.lightgrey,
                       ),
                       'Log Out',
-                      colorschemeclass.dangerred,
-                      colorschemeclass.dangerred),
+                      ColorSchemeClass.dangerred,
+                      ColorSchemeClass.dangerred),
                 ),
               ]),
             ),

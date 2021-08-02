@@ -66,7 +66,7 @@ class _SearchScreenState extends State<SearchScreen> {
           child: Expanded(
         child: Column(
           children: [
-            myTextEormField(Icon(CupertinoIcons.search), 'Search', false,
+            MyTextEormField(Icon(CupertinoIcons.search), 'Search', false,
                 (val) {
               initateSearch(val);
             }, TextInputType.name, (val) {}),
@@ -79,7 +79,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       child: Text(
                         'Enter the Username to search',
                         style: TextStyle(
-                            color: colorschemeclass.lightgrey,
+                            color: ColorSchemeClass.lightgrey,
                             fontFamily: 'young',
                             fontWeight: FontWeight.bold),
                       ),

@@ -1,4 +1,4 @@
-class urls {
+class Urls {
   static String avatar1url =
       "https://firebasestorage.googleapis.com/v0/b/coder-status.appspot.com/o/avatarnone.jpg?alt=media&token=0fd8b66f-7977-4ccc-8f3a-6b1951abdf83";
   static String avatar2url =

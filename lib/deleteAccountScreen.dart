@@ -76,11 +76,11 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
         }
       },
       child: Scaffold(
-        backgroundColor: colorschemeclass.dark,
+        backgroundColor: ColorSchemeClass.dark,
         appBar: PreferredSize(
           preferredSize:
               Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
-          child: myAppBarWithBack('Delete Account'),
+          child: MyAppBarWithBack('Delete Account'),
         ),
         body: SafeArea(
           child: Container(
@@ -92,7 +92,8 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
                 children: [
                   Flexible(
                       child: Padding(
-                    padding: EdgeInsets.all(16),
+                    padding: EdgeInsets.all(
+                        MediaQuery.of(context).size.width * 0.04),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10),
                       child: Container(
@@ -101,8 +102,8 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
                           0.0,
                           0.5,
                         ], colors: [
-                          colorschemeclass.morphdangerred,
-                          colorschemeclass.unactivatedblack,
+                          ColorSchemeClass.morphdangerred,
+                          ColorSchemeClass.unactivatedblack,
                         ])),
                         width: double.infinity,
                         height: MediaQuery.of(context).size.height * 0.16,
@@ -118,7 +119,7 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
                                         0.05,
                                     decoration: BoxDecoration(
                                         shape: BoxShape.circle,
-                                        color: colorschemeclass.dangerred),
+                                        color: ColorSchemeClass.dangerred),
                                     child: Icon(Icons.priority_high)),
                                 SizedBox(
                                   width:
@@ -131,7 +132,7 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
                                       'Account Delete Alert',
                                       textAlign: TextAlign.left,
                                       style: TextStyle(
-                                          color: colorschemeclass.dangerred,
+                                          color: ColorSchemeClass.dangerred,
                                           fontFamily: 'young',
                                           fontWeight: FontWeight.bold,
                                           fontSize: MediaQuery.of(context)
@@ -149,7 +150,7 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
                                         'If you continue further all your\naccount\'s data will be lost.\nYou will have to create a new\naccount from scratch',
                                         textAlign: TextAlign.left,
                                         style: TextStyle(
-                                            color: colorschemeclass.lightgrey,
+                                            color: ColorSchemeClass.lightgrey,
                                             fontFamily: 'young',
                                             fontSize: MediaQuery.of(context)
                                                     .size
@@ -167,9 +168,9 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
                   SizedBox(height: MediaQuery.of(context).size.height * 0.03),
                   Theme(
                     data: ThemeData(
-                        accentColor: colorschemeclass.dangerred,
-                        primaryColor: colorschemeclass.dangerred),
-                    child: myTextEormField(
+                        accentColor: ColorSchemeClass.dangerred,
+                        primaryColor: ColorSchemeClass.dangerred),
+                    child: MyTextEormField(
                         Icon(Icons.vpn_key),
                         'Enter Password',
                         true,
@@ -181,13 +182,16 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
                           return passwordmatch ? null : 'Password is incorrect';
                         },
                         null,
-                        colorschemeclass.dangerred),
+                        ColorSchemeClass.dangerred),
                   ),
                   Container(
-                      padding: EdgeInsets.all(8),
-                      height: MediaQuery.of(context).size.height * 0.11,
-                      child: myButton(colorschemeclass.dangerred,
-                          'Delete Account', _submit))
+                    padding: EdgeInsets.symmetric(
+                        horizontal: MediaQuery.of(context).size.width * 0.03,
+                        vertical: MediaQuery.of(context).size.height * 0.01),
+                    height: MediaQuery.of(context).size.height * 0.09,
+                    child: MyButton(
+                        ColorSchemeClass.dangerred, 'Delete Account', _submit),
+                  ),
                 ],
               ),
             ),

@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'colorscheme.dart';
 
-class myButton extends StatelessWidget {
+class MyButton extends StatelessWidget {
   Function dofunction;
   bool prominent;
   Color buttoncolor;
   Color titlecolor;
   String title;
 
-  myButton(Color buttoncolor, String title, Function dofunction) {
+  MyButton(Color buttoncolor, String title, Function dofunction) {
     this.prominent = prominent;
     this.title = title;
     this.dofunction = dofunction;
-    titlecolor = colorschemeclass.lightgrey;
+    titlecolor = ColorSchemeClass.lightgrey;
     this.buttoncolor = buttoncolor;
   }
 

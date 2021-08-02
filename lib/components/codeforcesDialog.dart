@@ -79,7 +79,7 @@ showCodeforcesDialog(BuildContext context, Rect rect, String codeforcesHandle,
                                     Text(
                                       'Platform : ',
                                       style: TextStyle(
-                                          color: colorschemeclass.lightgrey,
+                                          color: ColorSchemeClass.lightgrey,
                                           fontFamily: 'young',
                                           fontSize: MediaQuery.of(context)
                                                   .size
@@ -90,7 +90,7 @@ showCodeforcesDialog(BuildContext context, Rect rect, String codeforcesHandle,
                                       'CODEFORCES',
                                       style: TextStyle(
                                           color:
-                                              colorschemeclass.codeforcespurple,
+                                              ColorSchemeClass.codeforcespurple,
                                           fontFamily: 'young',
                                           fontSize: MediaQuery.of(context)
                                                   .size
@@ -110,7 +110,7 @@ showCodeforcesDialog(BuildContext context, Rect rect, String codeforcesHandle,
                                       Text(
                                         'Username : ',
                                         style: TextStyle(
-                                            color: colorschemeclass.lightgrey,
+                                            color: ColorSchemeClass.lightgrey,
                                             fontFamily: 'young',
                                             fontSize: MediaQuery.of(context)
                                                     .size
@@ -120,7 +120,7 @@ showCodeforcesDialog(BuildContext context, Rect rect, String codeforcesHandle,
                                       Text(
                                         '@' + codeforcesHandle,
                                         style: TextStyle(
-                                            color: colorschemeclass
+                                            color: ColorSchemeClass
                                                 .codeforcespurple,
                                             fontFamily: 'young',
                                             fontSize: MediaQuery.of(context)
@@ -140,7 +140,7 @@ showCodeforcesDialog(BuildContext context, Rect rect, String codeforcesHandle,
                                     Text(
                                       'Rating : ',
                                       style: TextStyle(
-                                          color: colorschemeclass.lightgrey,
+                                          color: ColorSchemeClass.lightgrey,
                                           fontFamily: 'young',
                                           fontSize: MediaQuery.of(context)
                                                   .size
@@ -151,7 +151,7 @@ showCodeforcesDialog(BuildContext context, Rect rect, String codeforcesHandle,
                                       codeforcesRating,
                                       style: TextStyle(
                                           color:
-                                              colorschemeclass.codeforcespurple,
+                                              ColorSchemeClass.codeforcespurple,
                                           fontFamily: 'young',
                                           fontSize: MediaQuery.of(context)
                                                   .size
@@ -163,7 +163,7 @@ showCodeforcesDialog(BuildContext context, Rect rect, String codeforcesHandle,
                                       ' pts',
                                       style: TextStyle(
                                           color:
-                                              colorschemeclass.codeforcespurple,
+                                              ColorSchemeClass.codeforcespurple,
                                           fontFamily: 'young',
                                           fontSize: MediaQuery.of(context)
                                                   .size
@@ -183,7 +183,7 @@ showCodeforcesDialog(BuildContext context, Rect rect, String codeforcesHandle,
                                       Text(
                                         'Title : ',
                                         style: TextStyle(
-                                            color: colorschemeclass.lightgrey,
+                                            color: ColorSchemeClass.lightgrey,
                                             fontFamily: 'young',
                                             fontSize: MediaQuery.of(context)
                                                     .size
@@ -193,7 +193,7 @@ showCodeforcesDialog(BuildContext context, Rect rect, String codeforcesHandle,
                                       Text(
                                         codeforcesTitle,
                                         style: TextStyle(
-                                            color: colorschemeclass
+                                            color: ColorSchemeClass
                                                 .codeforcespurple,
                                             fontFamily: 'young',
                                             fontSize: MediaQuery.of(context)

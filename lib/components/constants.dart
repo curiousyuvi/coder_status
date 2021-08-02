@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'colorscheme.dart';
 
 InputDecoration myInputDecoration = InputDecoration(
-    fillColor: colorschemeclass.darkgrey,
+    fillColor: ColorSchemeClass.darkgrey,
     filled: true,
     prefixIcon: Icon(
       Icons.transit_enterexit,
-      color: colorschemeclass.lightgrey,
+      color: ColorSchemeClass.lightgrey,
     ),
     focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(5),
-        borderSide: BorderSide(color: colorschemeclass.primarygreen, width: 2)),
+        borderSide: BorderSide(color: ColorSchemeClass.primarygreen, width: 2)),
     enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(5),
     ),
@@ -21,14 +21,14 @@ InputDecoration myInputDecoration = InputDecoration(
         borderRadius: BorderRadius.circular(5),
         borderSide: BorderSide(color: Colors.red, width: 2)),
     hintText: 'Enter a value',
-    hintStyle: TextStyle(color: colorschemeclass.unactivatedblack));
+    hintStyle: TextStyle(color: ColorSchemeClass.unactivatedblack));
 
 InputDecoration myPassageInputDecoration = InputDecoration(
-    fillColor: colorschemeclass.darkgrey,
+    fillColor: ColorSchemeClass.darkgrey,
     filled: true,
     focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(5),
-        borderSide: BorderSide(color: colorschemeclass.primarygreen, width: 2)),
+        borderSide: BorderSide(color: ColorSchemeClass.primarygreen, width: 2)),
     enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(5),
     ),
@@ -39,4 +39,4 @@ InputDecoration myPassageInputDecoration = InputDecoration(
         borderRadius: BorderRadius.circular(5),
         borderSide: BorderSide(color: Colors.red, width: 2)),
     hintText: 'Enter a value',
-    hintStyle: TextStyle(color: colorschemeclass.unactivatedblack));
+    hintStyle: TextStyle(color: ColorSchemeClass.unactivatedblack));

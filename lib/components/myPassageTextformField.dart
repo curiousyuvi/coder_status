@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'colorscheme.dart';
 import 'constants.dart';
 
-class myPassageTextEormField extends StatelessWidget {
+class MyPassageTextEormField extends StatelessWidget {
   String tfhintText;
   Function onchangedfunction;
   Function validation;
   Color bordercolor;
   TextEditingController textEditingController;
 
-  myPassageTextEormField(
+  MyPassageTextEormField(
     String tfhintText,
     Function onchangedfunction,
     Function validation, [
     TextEditingController textEditingController = null,
-    Color bordercolor = colorschemeclass.primarygreen,
+    Color bordercolor = ColorSchemeClass.primarygreen,
   ]) {
     this.tfhintText = tfhintText;
     this.onchangedfunction = onchangedfunction;

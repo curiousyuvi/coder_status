@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'colorscheme.dart';
 
-class myOutlineButton extends StatelessWidget {
+class MyOutlineButton extends StatelessWidget {
   Function dofunction;
   bool prominent;
   Color buttoncolor;
   Color titlecolor;
   String title;
 
-  myOutlineButton(Color buttoncolor, String title, Function dofunction) {
+  MyOutlineButton(Color buttoncolor, String title, Function dofunction) {
     this.prominent = prominent;
     this.title = title;
     this.dofunction = dofunction;

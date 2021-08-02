@@ -1,8 +1,8 @@
 import 'package:codersstatus/components/atcoderDialog.dart';
 import 'package:codersstatus/components/codechefDialog.dart';
 import 'package:codersstatus/components/codeforcesDialog.dart';
-import 'package:codersstatus/components/showAnimatedToast.dart';
-import 'package:codersstatus/components/myFadeInCircleAvatar.dart';
+import 'package:codersstatus/components/myCircleAvatar.dart';
+import 'package:codersstatus/components/myDividerWithTitle.dart';
 import 'package:codersstatus/components/spojDialog.dart';
 import 'package:codersstatus/components/urls.dart';
 import 'package:flutter/cupertino.dart';
@@ -17,7 +17,7 @@ import 'package:rect_getter/rect_getter.dart';
 class MyDashboardScreen extends StatefulWidget {
   String name = 'name',
       codername = 'codername',
-      avatarurl = urls.avatar1url,
+      avatarurl = Urls.avatar1url,
       bio = 'Hey there, I love Competitive Programming';
   List<String> userhandles, userrating;
   MyDashboardScreen(String name, String codername, String avatarurl, String bio,
@@ -42,7 +42,7 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
   var globalKey4 = RectGetter.createGlobalKey();
   String name = 'name',
       codername = 'codername',
-      avatarurl = urls.avatar1url,
+      avatarurl = Urls.avatar1url,
       bio = 'Hey there, I love Competitive Programming';
   List<String> userhandles, userrating;
   _MyDashboardScreenState(String name, String codername, String avatarurl,
@@ -81,9 +81,10 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
                       height: MediaQuery.of(context).size.height * 0.03,
                     ),
                     Container(
-                        height: MediaQuery.of(context).size.height * 0.25,
-                        width: MediaQuery.of(context).size.height * 0.25,
-                        child: myFadeInCircleAvatar(avatarurl)),
+                        height: MediaQuery.of(context).size.height * 0.22,
+                        width: MediaQuery.of(context).size.height * 0.22,
+                        child: MyCircleAvatar(
+                            Image(image: NetworkImage(avatarurl)))),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.025,
                     ),
@@ -101,21 +102,29 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
                     Text(
                       '@' + codername,
                       style: TextStyle(
-                          color: colorschemeclass.lightgrey,
+                          color: ColorSchemeClass.lightgrey,
                           fontFamily: 'young',
                           fontSize: MediaQuery.of(context).size.height * 0.025),
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.02,
                     ),
+                    MyMidDividerWithTitle('Bio'),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.015,
+                    ),
                     Text(
                       bio,
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          color: colorschemeclass.lightgrey,
+                          color: ColorSchemeClass.lightgrey,
                           fontFamily: 'young',
-                          fontSize: MediaQuery.of(context).size.height * 0.025),
+                          fontSize: MediaQuery.of(context).size.height * 0.02),
                     ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.015,
+                    ),
+                    MyMidDividerWithTitle('Badges'),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.02,
                     ),
@@ -132,9 +141,9 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
                                     showCodeforcesDialog(this.context, rect,
                                         userhandles[0], userrating[0]);
                                   },
-                                  child: myTile(
+                                  child: MyTile(
                                       AssetImage('images/codeforcestile.png'),
-                                      colorschemeclass.codeforcespurple,
+                                      ColorSchemeClass.codeforcespurple,
                                       userrating[0] + ' pts'),
                                 ),
                               )
@@ -150,9 +159,9 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
                                     showCodechefDialog(this.context, rect,
                                         userhandles[1], userrating[1]);
                                   },
-                                  child: myTile(
+                                  child: MyTile(
                                       AssetImage('images/codecheftile.png'),
-                                      colorschemeclass.codechefbrown,
+                                      ColorSchemeClass.codechefbrown,
                                       userrating[1] + ' pts'),
                                 ),
                               )
@@ -168,9 +177,9 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
                                     showAtcoderDialog(this.context, rect,
                                         userhandles[2], userrating[2]);
                                   },
-                                  child: myTile(
+                                  child: MyTile(
                                       AssetImage('images/atcodertile.png'),
-                                      colorschemeclass.atcodergrey,
+                                      ColorSchemeClass.atcodergrey,
                                       userrating[2] + ' pts'),
                                 ),
                               )
@@ -186,9 +195,9 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
                                     showSpojDialog(this.context, rect,
                                         userhandles[3], userrating[3]);
                                   },
-                                  child: myTile(
+                                  child: MyTile(
                                       AssetImage('images/spojtile.png'),
-                                      colorschemeclass.spojblue,
+                                      ColorSchemeClass.spojblue,
                                       userrating[3] + ' pts'),
                                 ),
                               )

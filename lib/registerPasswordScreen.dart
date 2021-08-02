@@ -79,7 +79,7 @@ class _RegisterPasswordScreenState extends State<RegisterPasswordScreen> {
             ),
           )
         : Scaffold(
-            backgroundColor: colorschemeclass.dark,
+            backgroundColor: ColorSchemeClass.dark,
             body: SafeArea(
               child: Container(
                 padding:
@@ -91,7 +91,7 @@ class _RegisterPasswordScreenState extends State<RegisterPasswordScreen> {
                     children: [
                       Flexible(
                         child: Hero(
-                          tag: 'splashscreenImage',
+                          tag: 'appIcon',
                           child: Image(
                             width: MediaQuery.of(context).size.width * 0.5,
                             image: AssetImage('images/appiconnoback.png'),
@@ -121,13 +121,13 @@ class _RegisterPasswordScreenState extends State<RegisterPasswordScreen> {
                         child: Text(
                             'Use a combination of letters, digits and special characters',
                             style: TextStyle(
-                                color: colorschemeclass.darkgrey,
+                                color: ColorSchemeClass.darkgrey,
                                 fontSize:
                                     MediaQuery.of(context).size.height * 0.02,
                                 fontFamily: 'young'),
                             textAlign: TextAlign.center),
                       )),
-                      myTextEormField(Icon(Icons.vpn_key), 'password', true,
+                      MyTextEormField(Icon(Icons.vpn_key), 'password', true,
                           (val) {
                         setState(() {
                           password = val;
@@ -137,7 +137,7 @@ class _RegisterPasswordScreenState extends State<RegisterPasswordScreen> {
                           (val) => val.trim().length < 6
                               ? 'Password must contain atleast 6 characters'
                               : null),
-                      myTextEormField(
+                      MyTextEormField(
                           Icon(Icons.vpn_key),
                           'confirm password',
                           true,
@@ -153,8 +153,8 @@ class _RegisterPasswordScreenState extends State<RegisterPasswordScreen> {
                             vertical:
                                 MediaQuery.of(context).size.height * 0.01),
                         height: MediaQuery.of(context).size.height * 0.09,
-                        child: myButton(
-                            colorschemeclass.primarygreen, 'Next', _submit),
+                        child: MyButton(
+                            ColorSchemeClass.primarygreen, 'Next', _submit),
                       ),
                     ],
                   ),

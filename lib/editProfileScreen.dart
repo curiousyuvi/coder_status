@@ -23,9 +23,9 @@ class EditProfileScreen extends StatefulWidget {
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
-  String urltobeset = urls.avatar1url;
+  String urltobeset = Urls.avatar1url;
 
-  Image avatarshowimage = Image(image: NetworkImage(urls.avatar1url));
+  Image avatarshowimage = Image(image: NetworkImage(Urls.avatar1url));
   TextEditingController nameEditingController;
   TextEditingController codernameEditingController;
   TextEditingController bioEditingController;
@@ -79,14 +79,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     false
   ];
   List<Widget> _avatarbuttons = [
-    myAvatarSelection(Image(image: AssetImage('images/avatar0.jpg')), false),
-    myAvatarSelection(Image(image: AssetImage('images/avatar1.jpg')), true),
-    myAvatarSelection(Image(image: AssetImage('images/avatar2.jpg')), false),
-    myAvatarSelection(Image(image: AssetImage('images/avatar3.jpg')), false),
-    myAvatarSelection(Image(image: AssetImage('images/avatar4.jpg')), false),
-    myAvatarSelection(Image(image: AssetImage('images/avatar5.jpg')), false),
-    myAvatarSelection(Image(image: AssetImage('images/avatar6.jpg')), false),
-    myAvatarSelection(Image(image: AssetImage('images/avatar7.jpg')), false),
+    MyAvatarSelection(Image(image: AssetImage('images/avatar0.jpg')), false),
+    MyAvatarSelection(Image(image: AssetImage('images/avatar1.jpg')), true),
+    MyAvatarSelection(Image(image: AssetImage('images/avatar2.jpg')), false),
+    MyAvatarSelection(Image(image: AssetImage('images/avatar3.jpg')), false),
+    MyAvatarSelection(Image(image: AssetImage('images/avatar4.jpg')), false),
+    MyAvatarSelection(Image(image: AssetImage('images/avatar5.jpg')), false),
+    MyAvatarSelection(Image(image: AssetImage('images/avatar6.jpg')), false),
+    MyAvatarSelection(Image(image: AssetImage('images/avatar7.jpg')), false),
   ];
 
   final _formkey = GlobalKey<FormState>();
@@ -116,9 +116,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         appBar: PreferredSize(
           preferredSize:
               Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
-          child: myAppBarWithBack('Edit Profile'),
+          child: MyAppBarWithBack('Edit Profile'),
         ),
-        backgroundColor: colorschemeclass.dark,
+        backgroundColor: ColorSchemeClass.dark,
         body: isFirstTime
             ? FutureBuilder(
                 future: readyUserData(),
@@ -158,8 +158,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                         0.27,
                                     width: MediaQuery.of(context).size.height *
                                         0.27,
-                                    child: myCircleAvatar(
-                                        avatarimage: avatarshowimage)),
+                                    child: MyCircleAvatar(avatarshowimage)),
                                 SizedBox(
                                     height: MediaQuery.of(context).size.height *
                                         0.028),
@@ -173,42 +172,42 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                         for (int i = 0; i < 8; i++) {
                                           _selections[i] = false;
                                         }
-                                        _avatarbuttons[0] = myAvatarSelection(
+                                        _avatarbuttons[0] = MyAvatarSelection(
                                             Image(
                                                 image: AssetImage(
                                                     'images/avatar0.jpg')),
                                             false);
-                                        _avatarbuttons[1] = myAvatarSelection(
+                                        _avatarbuttons[1] = MyAvatarSelection(
                                             Image(
                                                 image: AssetImage(
                                                     'images/avatar1.jpg')),
                                             false);
-                                        _avatarbuttons[2] = myAvatarSelection(
+                                        _avatarbuttons[2] = MyAvatarSelection(
                                             Image(
                                                 image: AssetImage(
                                                     'images/avatar2.jpg')),
                                             false);
-                                        _avatarbuttons[3] = myAvatarSelection(
+                                        _avatarbuttons[3] = MyAvatarSelection(
                                             Image(
                                                 image: AssetImage(
                                                     'images/avatar3.jpg')),
                                             false);
-                                        _avatarbuttons[4] = myAvatarSelection(
+                                        _avatarbuttons[4] = MyAvatarSelection(
                                             Image(
                                                 image: AssetImage(
                                                     'images/avatar4.jpg')),
                                             false);
-                                        _avatarbuttons[5] = myAvatarSelection(
+                                        _avatarbuttons[5] = MyAvatarSelection(
                                             Image(
                                                 image: AssetImage(
                                                     'images/avatar5.jpg')),
                                             false);
-                                        _avatarbuttons[6] = myAvatarSelection(
+                                        _avatarbuttons[6] = MyAvatarSelection(
                                             Image(
                                                 image: AssetImage(
                                                     'images/avatar6.jpg')),
                                             false);
-                                        _avatarbuttons[7] = myAvatarSelection(
+                                        _avatarbuttons[7] = MyAvatarSelection(
                                             Image(
                                                 image: AssetImage(
                                                     'images/avatar7.jpg')),
@@ -221,37 +220,37 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                           switch (index) {
                                             case 1:
                                               {
-                                                urltobeset = urls.avatar1url;
+                                                urltobeset = Urls.avatar1url;
                                               }
                                               break;
                                             case 2:
                                               {
-                                                urltobeset = urls.avatar2url;
+                                                urltobeset = Urls.avatar2url;
                                               }
                                               break;
                                             case 3:
                                               {
-                                                urltobeset = urls.avatar3url;
+                                                urltobeset = Urls.avatar3url;
                                               }
                                               break;
                                             case 4:
                                               {
-                                                urltobeset = urls.avatar4url;
+                                                urltobeset = Urls.avatar4url;
                                               }
                                               break;
                                             case 5:
                                               {
-                                                urltobeset = urls.avatar5url;
+                                                urltobeset = Urls.avatar5url;
                                               }
                                               break;
                                             case 6:
                                               {
-                                                urltobeset = urls.avatar6url;
+                                                urltobeset = Urls.avatar6url;
                                               }
                                               break;
                                             case 7:
                                               {
-                                                urltobeset = urls.avatar7url;
+                                                urltobeset = Urls.avatar7url;
                                               }
                                               break;
                                           }
@@ -263,7 +262,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                         } else {
                                           pick();
                                         }
-                                        _avatarbuttons[index] = myAvatarSelection(
+                                        _avatarbuttons[index] = MyAvatarSelection(
                                             Image(
                                                 image: AssetImage(
                                                     'images/avatar$index.jpg')),
@@ -275,7 +274,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                   ),
                                 ),
                                 Divider(
-                                  color: colorschemeclass.darkgrey,
+                                  color: ColorSchemeClass.darkgrey,
                                 ),
                                 SizedBox(
                                     height: MediaQuery.of(context).size.height *
@@ -284,7 +283,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                 SizedBox(
                                     height: MediaQuery.of(context).size.height *
                                         0.028),
-                                myTextEormField(
+                                MyTextEormField(
                                     Icon(Icons.person),
                                     'Name',
                                     false,
@@ -298,7 +297,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                     height: MediaQuery.of(context).size.height *
                                         0.028),
                                 Divider(
-                                  color: colorschemeclass.darkgrey,
+                                  color: ColorSchemeClass.darkgrey,
                                 ),
                                 SizedBox(
                                     height: MediaQuery.of(context).size.height *
@@ -307,7 +306,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                 SizedBox(
                                     height: MediaQuery.of(context).size.height *
                                         0.028),
-                                myTextEormField(
+                                MyTextEormField(
                                     Icon(Icons.alternate_email),
                                     'Codername',
                                     false,
@@ -325,7 +324,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                     height: MediaQuery.of(context).size.height *
                                         0.028),
                                 Divider(
-                                  color: colorschemeclass.darkgrey,
+                                  color: ColorSchemeClass.darkgrey,
                                 ),
                                 SizedBox(
                                     height: MediaQuery.of(context).size.height *
@@ -334,7 +333,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                 SizedBox(
                                     height: MediaQuery.of(context).size.height *
                                         0.028),
-                                myPassageTextEormField(
+                                MyPassageTextEormField(
                                     'Bio',
                                     (val) {},
                                     (val) => val.toString().trim().length > 100
@@ -345,7 +344,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                     height: MediaQuery.of(context).size.height *
                                         0.028),
                                 Divider(
-                                  color: colorschemeclass.darkgrey,
+                                  color: ColorSchemeClass.darkgrey,
                                 ),
                                 SizedBox(
                                     height: MediaQuery.of(context).size.height *
@@ -360,7 +359,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                               0.01),
                                   height:
                                       MediaQuery.of(context).size.height * 0.09,
-                                  child: myButton(colorschemeclass.primarygreen,
+                                  child: MyButton(ColorSchemeClass.primarygreen,
                                       'Update Profile', _updateProfile),
                                 ),
                               ],

@@ -46,7 +46,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: colorschemeclass.dark,
+      backgroundColor: ColorSchemeClass.dark,
       body: SafeArea(
         child: Container(
           padding: EdgeInsets.all(16),
@@ -70,7 +70,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
               Flexible(
                   child: Text('Check your inbox for the verification Email',
                       style: TextStyle(
-                          color: colorschemeclass.lightgrey,
+                          color: ColorSchemeClass.lightgrey,
                           fontSize: MediaQuery.of(context).size.height * 0.028,
                           fontFamily: 'young'),
                       textAlign: TextAlign.center)),
@@ -84,7 +84,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
               Flexible(
                   child: Text('Waiting for email to be verified',
                       style: TextStyle(
-                          color: colorschemeclass.darkgrey,
+                          color: ColorSchemeClass.darkgrey,
                           fontSize: MediaQuery.of(context).size.height * 0.022,
                           fontFamily: 'young'),
                       textAlign: TextAlign.center)),
@@ -94,7 +94,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
               Container(
                   padding: EdgeInsets.all(8),
                   height: MediaQuery.of(context).size.height * 0.085,
-                  child: myOutlineButton(colorschemeclass.darkgrey,
+                  child: MyOutlineButton(ColorSchemeClass.darkgrey,
                       'Resend Verification email', _submit))
             ],
           ),

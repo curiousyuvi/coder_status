@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'colorscheme.dart';
 import 'package:codersstatus/components/myChildListTile.dart';
 
-class mySettingsExpansionTile extends StatelessWidget {
+class MySettingsExpansionTile extends StatelessWidget {
   Icon leadingIcon;
   String title;
   List<Widget> children;
-  mySettingsExpansionTile(
+  MySettingsExpansionTile(
       Icon leadingIcon, String title, List<Widget> children) {
     this.leadingIcon = leadingIcon;
     this.title = title;
@@ -29,19 +29,19 @@ class mySettingsExpansionTile extends StatelessWidget {
                       splashColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       hoverColor: Colors.transparent,
-                      unselectedWidgetColor: colorschemeclass.lightgrey,
-                      accentColor: colorschemeclass.dark,
+                      unselectedWidgetColor: ColorSchemeClass.lightgrey,
+                      accentColor: ColorSchemeClass.dark,
                       fontFamily: 'young',
                       textTheme: TextTheme(
                           subtitle1:
-                              TextStyle(color: colorschemeclass.lightgrey))),
+                              TextStyle(color: ColorSchemeClass.lightgrey))),
                   child: DecoratedBox(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       boxShadow: [
                         BoxShadow(
                           spreadRadius: 0,
-                          color: colorschemeclass.darkgrey.withOpacity(0.5),
+                          color: ColorSchemeClass.darkgrey.withOpacity(0.5),
                           offset: Offset(0, 4),
                           blurRadius: 0,
                         )
@@ -51,8 +51,8 @@ class mySettingsExpansionTile extends StatelessWidget {
                       borderRadius: BorderRadius.circular(15),
                       child: ExpansionTile(
                         collapsedBackgroundColor:
-                            colorschemeclass.unactivatedblack,
-                        backgroundColor: colorschemeclass.lightgrey,
+                            ColorSchemeClass.unactivatedblack,
+                        backgroundColor: ColorSchemeClass.lightgrey,
                         leading: leadingIcon,
                         title: Text(
                           title,

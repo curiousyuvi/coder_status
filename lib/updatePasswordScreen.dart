@@ -84,12 +84,12 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
         appBar: PreferredSize(
           preferredSize:
               Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
-          child: myAppBarWithBack('Update Password'),
+          child: MyAppBarWithBack('Update Password'),
         ),
-        backgroundColor: colorschemeclass.dark,
+        backgroundColor: ColorSchemeClass.dark,
         body: SafeArea(
           child: Container(
-            padding: EdgeInsets.all(16),
+            padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
             child: Form(
               key: _formkey,
               child: Column(
@@ -97,16 +97,18 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
                 children: [
                   Flexible(
                       child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(
+                        MediaQuery.of(context).size.width * 0.02),
                     child: Text(
                         'Use a combination of letters, digits and special characters',
                         style: TextStyle(
-                            color: colorschemeclass.darkgrey,
-                            fontSize: 15,
+                            color: ColorSchemeClass.darkgrey,
+                            fontSize:
+                                MediaQuery.of(context).size.height * 0.022,
                             fontFamily: 'young'),
                         textAlign: TextAlign.center),
                   )),
-                  myTextEormField(
+                  MyTextEormField(
                       Icon(Icons.vpn_key),
                       'old password',
                       true,
@@ -121,7 +123,7 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
                             ? null
                             : 'Old password doesn\'t match';
                       }),
-                  myTextEormField(Icon(Icons.vpn_key), 'new password', true,
+                  MyTextEormField(Icon(Icons.vpn_key), 'new password', true,
                       (val) {
                     setState(() {
                       newPass = val;
@@ -131,7 +133,7 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
                       (val) => val.trim().length < 6
                           ? 'Password must contain atleast 6 characters'
                           : null),
-                  myTextEormField(
+                  MyTextEormField(
                       Icon(Icons.vpn_key),
                       'confirm new password',
                       true,
@@ -140,10 +142,13 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
                       (val) =>
                           val != newPass ? 'Password doesn\'t match' : null),
                   Container(
-                      padding: EdgeInsets.all(8),
-                      height: MediaQuery.of(context).size.height * 0.11,
-                      child: myButton(colorschemeclass.primarygreen,
-                          'Update Password', _submit))
+                    padding: EdgeInsets.symmetric(
+                        horizontal: MediaQuery.of(context).size.width * 0.03,
+                        vertical: MediaQuery.of(context).size.height * 0.01),
+                    height: MediaQuery.of(context).size.height * 0.09,
+                    child: MyButton(ColorSchemeClass.primarygreen,
+                        'Update Password', _submit),
+                  ),
                 ],
               ),
             ),

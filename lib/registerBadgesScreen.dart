@@ -1,7 +1,6 @@
 import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/components/generalLoadingScreen.dart';
 import 'package:codersstatus/components/showAnimatedToast.dart';
-import 'package:codersstatus/components/ratingLoadingScreen.dart';
 import 'package:codersstatus/components/myButton.dart';
 import 'package:codersstatus/components/myTextFormField.dart';
 import 'package:codersstatus/firebase_layer/setUserInfo.dart';
@@ -27,7 +26,7 @@ class _RegisterbadgesscreenState extends State<Registerbadgesscreen> {
   static String avatarurl = '';
   static String bio = '';
 
-  String codeforces = null, codechef = null, atcoder = null, spoj = null;
+  String codeforces, codechef, atcoder, spoj;
   final _formkey = GlobalKey<FormState>();
   bool isloading = false;
 
@@ -57,7 +56,7 @@ class _RegisterbadgesscreenState extends State<Registerbadgesscreen> {
     return isloading
         ? GeneralLoadingScreen('Creating Account...')
         : Scaffold(
-            backgroundColor: colorschemeclass.dark,
+            backgroundColor: ColorSchemeClass.dark,
             body: SafeArea(
                 child: Container(
               width: double.infinity,
@@ -73,9 +72,12 @@ class _RegisterbadgesscreenState extends State<Registerbadgesscreen> {
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.1,
                       ),
-                      Image(
-                        image: AssetImage('images/appiconnoback.png'),
-                        height: MediaQuery.of(context).size.height * 0.12,
+                      Hero(
+                        tag: 'appIcon',
+                        child: Image(
+                          image: AssetImage('images/appiconnoback.png'),
+                          height: MediaQuery.of(context).size.height * 0.1,
+                        ),
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.02,
@@ -95,7 +97,7 @@ class _RegisterbadgesscreenState extends State<Registerbadgesscreen> {
                       Text(
                         '*If you are not on a particular platform you can leave that field empty.',
                         style: TextStyle(
-                            color: colorschemeclass.lightgrey,
+                            color: ColorSchemeClass.lightgrey,
                             fontFamily: 'young',
                             fontSize:
                                 MediaQuery.of(context).size.height * 0.02),
@@ -109,10 +111,12 @@ class _RegisterbadgesscreenState extends State<Registerbadgesscreen> {
                           child: Row(
                             children: [
                               Image(
-                                  image:
-                                      AssetImage('images/codeforcesnobc.png')),
+                                  image: AssetImage(
+                                      'images/codeforceswhitelogo.png'),
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.15),
                               Flexible(
-                                child: myTextEormField(
+                                child: MyTextEormField(
                                     Icon(Icons.alternate_email),
                                     'codeforces_handle',
                                     false, (val) {
@@ -131,9 +135,12 @@ class _RegisterbadgesscreenState extends State<Registerbadgesscreen> {
                           child: Row(
                             children: [
                               Image(
-                                  image: AssetImage('images/codechefnobc.png')),
+                                  image: AssetImage(
+                                      'images/codechefwhitelogo.png'),
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.15),
                               Flexible(
-                                child: myTextEormField(
+                                child: MyTextEormField(
                                     Icon(Icons.alternate_email),
                                     'codechef_handle',
                                     false, (val) {
@@ -152,9 +159,12 @@ class _RegisterbadgesscreenState extends State<Registerbadgesscreen> {
                           child: Row(
                             children: [
                               Image(
-                                  image: AssetImage('images/atcodernobc.png')),
+                                  image:
+                                      AssetImage('images/atcoderwhitelogo.png'),
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.15),
                               Flexible(
-                                child: myTextEormField(
+                                child: MyTextEormField(
                                     Icon(Icons.alternate_email),
                                     'atcoder_handle',
                                     false, (val) {
@@ -172,9 +182,12 @@ class _RegisterbadgesscreenState extends State<Registerbadgesscreen> {
                           height: MediaQuery.of(context).size.height * 0.1,
                           child: Row(
                             children: [
-                              Image(image: AssetImage('images/spojnobc.png')),
+                              Image(
+                                image: AssetImage('images/spojwhitelogo.png'),
+                                width: MediaQuery.of(context).size.width * 0.15,
+                              ),
                               Flexible(
-                                child: myTextEormField(
+                                child: MyTextEormField(
                                     Icon(Icons.alternate_email),
                                     'spoj_handle',
                                     false, (val) {
@@ -194,7 +207,7 @@ class _RegisterbadgesscreenState extends State<Registerbadgesscreen> {
                             vertical:
                                 MediaQuery.of(context).size.height * 0.01),
                         height: MediaQuery.of(context).size.height * 0.09,
-                        child: myButton(colorschemeclass.primarygreen,
+                        child: MyButton(ColorSchemeClass.primarygreen,
                             'Create Account', _submit),
                       ),
                     ],

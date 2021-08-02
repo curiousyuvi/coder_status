@@ -19,7 +19,7 @@ class HomeScreenState extends State<HomeScreen> {
   bool isFirstTimeFlag = true;
   String name = 'name',
       codername = 'codername',
-      avatarurl = urls.avatar1url,
+      avatarurl = Urls.avatar1url,
       bio = 'Hey there, I love Competitive Programming';
   List<String> userhandles = [null, null, null, null],
       userrating = [null, null, null, null];
@@ -101,29 +101,29 @@ class HomeScreenState extends State<HomeScreen> {
               bottomNavigationBar: Theme(
                 data: ThemeData(
                     splashColor: Colors.transparent,
-                    primaryColor: colorschemeclass.primarygreen,
-                    accentColor: colorschemeclass.primarygreen),
+                    primaryColor: ColorSchemeClass.primarygreen,
+                    accentColor: ColorSchemeClass.primarygreen),
                 child: BottomNavigationBar(
-                  backgroundColor: colorschemeclass.dark,
+                  backgroundColor: ColorSchemeClass.dark,
                   showSelectedLabels: true,
                   showUnselectedLabels: true,
-                  unselectedItemColor: colorschemeclass.lightgrey,
+                  unselectedItemColor: ColorSchemeClass.lightgrey,
                   unselectedLabelStyle: TextStyle(
-                      color: colorschemeclass.lightgrey,
+                      color: ColorSchemeClass.lightgrey,
                       fontFamily: 'young',
                       fontSize: MediaQuery.of(context).size.height * 0.017),
                   selectedLabelStyle: TextStyle(
-                      color: colorschemeclass.primarygreen,
+                      color: ColorSchemeClass.primarygreen,
                       fontFamily: 'young',
                       fontSize: MediaQuery.of(context).size.height * 0.017),
                   unselectedIconTheme: IconThemeData(
                       opacity: 0.7,
                       size: MediaQuery.of(context).size.height * 0.045,
-                      color: colorschemeclass.lightgrey),
+                      color: ColorSchemeClass.lightgrey),
                   selectedIconTheme: IconThemeData(
                       opacity: 1,
                       size: MediaQuery.of(context).size.height * 0.045,
-                      color: colorschemeclass.primarygreen),
+                      color: ColorSchemeClass.primarygreen),
                   onTap: (int index) {
                     _selectTab(pageKeys[index], index);
                   },
@@ -141,8 +141,8 @@ class HomeScreenState extends State<HomeScreen> {
                     ),
                     BottomNavigationBarItem(
                       icon: (_selectedIndex == 2)
-                          ? myAvatarButton(Image.network(avatarurl), true)
-                          : myAvatarButton(Image.network(avatarurl), false),
+                          ? MyAvatarButton(Image.network(avatarurl), true)
+                          : MyAvatarButton(Image.network(avatarurl), false),
                       label: 'Profile',
                     ),
                     BottomNavigationBarItem(

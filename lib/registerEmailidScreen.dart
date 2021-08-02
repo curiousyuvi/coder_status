@@ -33,7 +33,7 @@ class _RegisterEmailidScreenState extends State<RegisterEmailidScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: colorschemeclass.dark,
+      backgroundColor: ColorSchemeClass.dark,
       body: SafeArea(
         child: Container(
           padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
@@ -71,14 +71,14 @@ class _RegisterEmailidScreenState extends State<RegisterEmailidScreen> {
                     child: Text(
                         'A verification link will be sent to your given Email',
                         style: TextStyle(
-                            color: colorschemeclass.darkgrey,
+                            color: ColorSchemeClass.darkgrey,
                             fontSize: 15,
                             fontFamily: 'young'),
                         textAlign: TextAlign.center)),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
                 ),
-                myTextEormField(Icon(Icons.email_sharp), 'email id', false,
+                MyTextEormField(Icon(Icons.email_sharp), 'email id', false,
                     (val) {
                   emailid = val;
                 },
@@ -92,7 +92,7 @@ class _RegisterEmailidScreenState extends State<RegisterEmailidScreen> {
                       vertical: MediaQuery.of(context).size.height * 0.01),
                   height: MediaQuery.of(context).size.height * 0.09,
                   child:
-                      myButton(colorschemeclass.primarygreen, 'Next', _submit),
+                      MyButton(ColorSchemeClass.primarygreen, 'Next', _submit),
                 ),
               ],
             ),

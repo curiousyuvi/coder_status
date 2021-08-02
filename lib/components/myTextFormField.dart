@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'colorscheme.dart';
 import 'constants.dart';
 
-class myTextEormField extends StatelessWidget {
+class MyTextEormField extends StatelessWidget {
   Icon tficon;
   String tfhintText;
   bool isobscure;
@@ -12,7 +12,7 @@ class myTextEormField extends StatelessWidget {
   Color bordercolor;
   TextEditingController textEditingController;
 
-  myTextEormField(
+  MyTextEormField(
       Icon tficon,
       String tfhintText,
       bool isobscure,
@@ -20,7 +20,7 @@ class myTextEormField extends StatelessWidget {
       TextInputType textinputtype,
       Function validation,
       [TextEditingController textEditingController = null,
-      Color bordercolor = colorschemeclass.primarygreen]) {
+      Color bordercolor = ColorSchemeClass.primarygreen]) {
     this.tficon = tficon;
     this.tfhintText = tfhintText;
     this.isobscure = isobscure;

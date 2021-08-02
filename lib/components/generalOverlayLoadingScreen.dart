@@ -1,5 +1,4 @@
 import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/verifyEmailScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 
@@ -13,7 +12,7 @@ class GeneralOverlayLoadingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: colorschemeclass.dark.withOpacity(0.3),
+      backgroundColor: ColorSchemeClass.dark.withOpacity(0.3),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

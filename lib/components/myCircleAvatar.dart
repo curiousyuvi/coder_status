@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:codersstatus/components/colorscheme.dart';
 
-class myCircleAvatar extends StatelessWidget {
-  const myCircleAvatar({
-    Key key,
-    @required this.avatarimage,
-  }) : super(key: key);
-
-  final Image avatarimage;
+class MyCircleAvatar extends StatelessWidget {
+  Image avatarimage;
+  MyCircleAvatar(this.avatarimage);
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +12,9 @@ class myCircleAvatar extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
           boxShadow: [
-            BoxShadow(color: colorschemeclass.primarygreen, blurRadius: 20)
+            BoxShadow(color: ColorSchemeClass.primarygreen, blurRadius: 20)
           ],
-          border: Border.all(color: colorschemeclass.primarygreen, width: 5),
+          border: Border.all(color: ColorSchemeClass.primarygreen, width: 5),
           shape: BoxShape.circle,
           image:
               DecorationImage(fit: BoxFit.fitWidth, image: avatarimage.image)),

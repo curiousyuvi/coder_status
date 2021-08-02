@@ -56,7 +56,7 @@ showAtcoderDialog(BuildContext context, Rect rect, String atcoderHandle,
                                     Text(
                                       'Platform : ',
                                       style: TextStyle(
-                                          color: colorschemeclass.lightgrey,
+                                          color: ColorSchemeClass.lightgrey,
                                           fontFamily: 'young',
                                           fontSize: MediaQuery.of(context)
                                                   .size
@@ -66,7 +66,7 @@ showAtcoderDialog(BuildContext context, Rect rect, String atcoderHandle,
                                     Text(
                                       'ATCODER',
                                       style: TextStyle(
-                                          color: colorschemeclass.atcodergrey,
+                                          color: ColorSchemeClass.atcodergrey,
                                           fontFamily: 'young',
                                           fontSize: MediaQuery.of(context)
                                                   .size
@@ -86,7 +86,7 @@ showAtcoderDialog(BuildContext context, Rect rect, String atcoderHandle,
                                       Text(
                                         'Username : ',
                                         style: TextStyle(
-                                            color: colorschemeclass.lightgrey,
+                                            color: ColorSchemeClass.lightgrey,
                                             fontFamily: 'young',
                                             fontSize: MediaQuery.of(context)
                                                     .size
@@ -96,7 +96,7 @@ showAtcoderDialog(BuildContext context, Rect rect, String atcoderHandle,
                                       Text(
                                         '@' + atcoderHandle,
                                         style: TextStyle(
-                                            color: colorschemeclass.atcodergrey,
+                                            color: ColorSchemeClass.atcodergrey,
                                             fontFamily: 'young',
                                             fontSize: MediaQuery.of(context)
                                                     .size
@@ -115,7 +115,7 @@ showAtcoderDialog(BuildContext context, Rect rect, String atcoderHandle,
                                     Text(
                                       'Rating : ',
                                       style: TextStyle(
-                                          color: colorschemeclass.lightgrey,
+                                          color: ColorSchemeClass.lightgrey,
                                           fontFamily: 'young',
                                           fontSize: MediaQuery.of(context)
                                                   .size
@@ -125,7 +125,7 @@ showAtcoderDialog(BuildContext context, Rect rect, String atcoderHandle,
                                     Text(
                                       atcoderRating,
                                       style: TextStyle(
-                                          color: colorschemeclass.atcodergrey,
+                                          color: ColorSchemeClass.atcodergrey,
                                           fontFamily: 'young',
                                           fontSize: MediaQuery.of(context)
                                                   .size
@@ -136,7 +136,7 @@ showAtcoderDialog(BuildContext context, Rect rect, String atcoderHandle,
                                     Text(
                                       ' pts',
                                       style: TextStyle(
-                                          color: colorschemeclass.atcodergrey,
+                                          color: ColorSchemeClass.atcodergrey,
                                           fontFamily: 'young',
                                           fontSize: MediaQuery.of(context)
                                                   .size

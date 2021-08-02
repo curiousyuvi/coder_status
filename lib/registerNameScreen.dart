@@ -37,10 +37,10 @@ class _RegisternamescreenState extends State<Registernamescreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: colorschemeclass.dark,
+      backgroundColor: ColorSchemeClass.dark,
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.all(16),
+          padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
           child: Form(
             key: _formkey,
             child: Column(
@@ -48,7 +48,7 @@ class _RegisternamescreenState extends State<Registernamescreen> {
               children: [
                 Flexible(
                   child: Hero(
-                    tag: 'splashscreenImage',
+                    tag: 'appIcon',
                     child: Image(
                       width: MediaQuery.of(context).size.width * 0.45,
                       image: AssetImage('images/appiconnoback.png'),
@@ -77,13 +77,13 @@ class _RegisternamescreenState extends State<Registernamescreen> {
                   child: Text(
                     '*Example: Light Yagami',
                     style: TextStyle(
-                        color: colorschemeclass.darkgrey,
+                        color: ColorSchemeClass.darkgrey,
                         fontSize: MediaQuery.of(context).size.height * 0.023,
                         fontFamily: 'young'),
                     textAlign: TextAlign.center,
                   ),
                 )),
-                myTextEormField(Icon(Icons.person), 'Full Name', false, (val) {
+                MyTextEormField(Icon(Icons.person), 'Full Name', false, (val) {
                   name = val.toString().trim();
                 },
                     TextInputType.name,
@@ -96,7 +96,7 @@ class _RegisternamescreenState extends State<Registernamescreen> {
                       vertical: MediaQuery.of(context).size.height * 0.01),
                   height: MediaQuery.of(context).size.height * 0.09,
                   child:
-                      myButton(colorschemeclass.primarygreen, 'Next', _submit),
+                      MyButton(ColorSchemeClass.primarygreen, 'Next', _submit),
                 ),
               ],
             ),
