@@ -41,6 +41,18 @@ class GetUserInfo {
     return avatarurl;
   }
 
+  static Future<String> getUserBio() async {
+    FirebaseAuth _auth = FirebaseAuth.instance;
+    final user = _auth.currentUser;
+    final uid = user.uid;
+    final mapofdocument =
+        await FirebaseFirestore.instance.collection("users").doc(uid).get();
+
+    String name = mapofdocument.data()['bio'];
+    print(name);
+    return name;
+  }
+
   static Future<List<String>> getUserHandles() async {
     FirebaseAuth _auth = FirebaseAuth.instance;
     final user = _auth.currentUser;

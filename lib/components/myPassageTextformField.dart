@@ -2,28 +2,17 @@ import 'package:flutter/material.dart';
 import 'colorscheme.dart';
 import 'constants.dart';
 
-class myTextEormField extends StatelessWidget {
-  Icon tficon;
+class myPassageTextEormField extends StatelessWidget {
   String tfhintText;
-  bool isobscure;
   Function onchangedfunction;
-  TextInputType textinputtype;
   Function validation;
   Color bordercolor;
 
-  myTextEormField(
-      Icon tficon,
-      String tfhintText,
-      bool isobscure,
-      Function onchangedfunction,
-      TextInputType textinputtype,
-      Function validation,
+  myPassageTextEormField(
+      String tfhintText, Function onchangedfunction, Function validation,
       [Color bordercolor = colorschemeclass.primarygreen]) {
-    this.tficon = tficon;
     this.tfhintText = tfhintText;
-    this.isobscure = isobscure;
     this.onchangedfunction = onchangedfunction;
-    this.textinputtype = textinputtype;
     this.validation = validation;
     this.bordercolor = bordercolor;
   }
@@ -31,13 +20,16 @@ class myTextEormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 8,
+      ),
       child: TextFormField(
+        maxLines: null,
         validator: validation,
         onChanged: onchangedfunction,
-        keyboardType: textinputtype,
+        keyboardType: TextInputType.name,
         cursorColor: bordercolor,
-        obscureText: isobscure,
+        obscureText: false,
         style: TextStyle(
             color: Colors.white,
             fontFamily: 'young',
@@ -45,7 +37,6 @@ class myTextEormField extends StatelessWidget {
             fontWeight: FontWeight.normal),
         decoration: myPassageInputDecoration.copyWith(
           hintText: tfhintText,
-          prefixIcon: tficon,
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(5),
               borderSide: BorderSide(color: bordercolor, width: 2)),

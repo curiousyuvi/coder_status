@@ -9,6 +9,7 @@ class SetUserInfo {
       String name,
       String codername,
       String avatarurl,
+      String bio,
       String codeforces,
       String codechef,
       String spoj,
@@ -19,6 +20,7 @@ class SetUserInfo {
     return await FirebaseFirestore.instance.collection("users").doc(uid).set({
       "name": name,
       "codername": codername,
+      "bio": bio,
       "avatarurl": avatarurl,
       "codeforces": codeforces,
       "codechef": codechef,

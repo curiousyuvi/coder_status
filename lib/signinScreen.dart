@@ -86,7 +86,8 @@ class _SigninscreenState extends State<Signinscreen> {
         : Scaffold(
             body: SafeArea(
               child: Container(
-                padding: EdgeInsets.all(8),
+                padding:
+                    EdgeInsets.all(MediaQuery.of(context).size.width * 0.02),
                 child: Form(
                   key: _formkey,
                   child: Column(
@@ -132,7 +133,11 @@ class _SigninscreenState extends State<Signinscreen> {
                                 : null),
                       ),
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 8),
+                        padding: EdgeInsets.symmetric(
+                            horizontal:
+                                MediaQuery.of(context).size.width * 0.03,
+                            vertical:
+                                MediaQuery.of(context).size.height * 0.01),
                         height: MediaQuery.of(context).size.height * 0.09,
                         child: myButton(
                             colorschemeclass.primarygreen, 'Log in', _submit),

@@ -15,20 +15,24 @@ import 'package:codersstatus/components/myTile.dart';
 import 'package:rect_getter/rect_getter.dart';
 
 class MyDashboardScreen extends StatefulWidget {
-  String name = 'name', codername = 'codername', avatarurl = urls.avatar1url;
+  String name = 'name',
+      codername = 'codername',
+      avatarurl = urls.avatar1url,
+      bio = 'Hey there, I love Competitive Programming';
   List<String> userhandles, userrating;
-  MyDashboardScreen(String name, String codername, String avatarurl,
+  MyDashboardScreen(String name, String codername, String avatarurl, String bio,
       List<String> userhandles, List<String> userrating) {
     this.name = name;
     this.codername = codername;
     this.avatarurl = avatarurl;
+    this.bio = bio;
     this.userhandles = userhandles;
     this.userrating = userrating;
   }
 
   @override
   _MyDashboardScreenState createState() => _MyDashboardScreenState(
-      name, codername, avatarurl, userhandles, userrating);
+      name, codername, avatarurl, bio, userhandles, userrating);
 }
 
 class _MyDashboardScreenState extends State<MyDashboardScreen> {
@@ -36,13 +40,17 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
   var globalKey2 = RectGetter.createGlobalKey();
   var globalKey3 = RectGetter.createGlobalKey();
   var globalKey4 = RectGetter.createGlobalKey();
-  String name = 'name', codername = 'codername', avatarurl = urls.avatar1url;
+  String name = 'name',
+      codername = 'codername',
+      avatarurl = urls.avatar1url,
+      bio = 'Hey there, I love Competitive Programming';
   List<String> userhandles, userrating;
   _MyDashboardScreenState(String name, String codername, String avatarurl,
-      List<String> userhandles, List<String> userrating) {
+      String bio, List<String> userhandles, List<String> userrating) {
     this.name = name;
     this.codername = codername;
     this.avatarurl = avatarurl;
+    this.bio = bio;
     this.userhandles = userhandles;
     this.userrating = userrating;
   }
@@ -90,6 +98,17 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
                   ),
                   Text(
                     '@' + codername,
+                    style: TextStyle(
+                        color: colorschemeclass.lightgrey,
+                        fontFamily: 'young',
+                        fontSize: MediaQuery.of(context).size.height * 0.025),
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
+                  ),
+                  Text(
+                    bio,
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                         color: colorschemeclass.lightgrey,
                         fontFamily: 'young',

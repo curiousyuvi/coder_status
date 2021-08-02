@@ -1,9 +1,6 @@
 import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/components/showAnimatedToast.dart';
-import 'package:codersstatus/components/urls.dart';
 import 'package:codersstatus/firebase_layer/emailVerification.dart';
-import 'package:codersstatus/firebase_layer/setUserInfo.dart';
-import 'package:codersstatus/registerAvatarScreen.dart';
 import 'package:codersstatus/signinScreen.dart';
 import 'package:codersstatus/verifyEmailScreen.dart';
 import 'package:flutter/cupertino.dart';
@@ -17,20 +14,20 @@ import 'package:codersstatus/firebase_layer/createuser.dart';
 
 void main() => runApp(
       MaterialApp(
-        home: Registerpasswordscreen('example@email'),
+        home: RegisterPasswordScreen('example@email'),
       ),
     );
 
-class Registerpasswordscreen extends StatefulWidget {
-  Registerpasswordscreen(String emailid) {
-    _RegisterpasswordscreenState.emailid = emailid;
+class RegisterPasswordScreen extends StatefulWidget {
+  RegisterPasswordScreen(String emailid) {
+    _RegisterPasswordScreenState.emailid = emailid;
   }
 
   @override
-  _RegisterpasswordscreenState createState() => _RegisterpasswordscreenState();
+  _RegisterPasswordScreenState createState() => _RegisterPasswordScreenState();
 }
 
-class _RegisterpasswordscreenState extends State<Registerpasswordscreen> {
+class _RegisterPasswordScreenState extends State<RegisterPasswordScreen> {
   static String emailid = '';
   String password = '';
   bool isloading = false;
@@ -54,18 +51,20 @@ class _RegisterpasswordscreenState extends State<Registerpasswordscreen> {
           showAnimatedToast(
               this.context, 'Verification mail sent to your Email', true);
 
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
+          Navigator.pushAndRemoveUntil(context,
+              MaterialPageRoute(builder: (context) {
             return VerifyEmailScreen();
-          }));
+          }), ModalRoute.withName('/emailVerify'));
         } else {
           setState(() {
             isloading = false;
           });
           showAnimatedToast(
               this.context, 'Email already exists, head to sign in', false);
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
+          Navigator.pushAndRemoveUntil(context,
+              MaterialPageRoute(builder: (context) {
             return Signinscreen();
-          }));
+          }), ModalRoute.withName('/signin'));
         }
       });
     }
@@ -83,7 +82,8 @@ class _RegisterpasswordscreenState extends State<Registerpasswordscreen> {
             backgroundColor: colorschemeclass.dark,
             body: SafeArea(
               child: Container(
-                padding: EdgeInsets.all(16),
+                padding:
+                    EdgeInsets.all(MediaQuery.of(context).size.width * 0.01),
                 child: Form(
                   key: _formkey,
                   child: Column(
@@ -93,33 +93,37 @@ class _RegisterpasswordscreenState extends State<Registerpasswordscreen> {
                         child: Hero(
                           tag: 'splashscreenImage',
                           child: Image(
-                            width: 300,
+                            width: MediaQuery.of(context).size.width * 0.5,
                             image: AssetImage('images/appiconnoback.png'),
                           ),
                         ),
                       ),
                       SizedBox(
-                        height: 50,
+                        height: MediaQuery.of(context).size.height * 0.05,
                       ),
                       Flexible(
                           child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(
+                            MediaQuery.of(context).size.width * 0.02),
                         child: Text(
                           'Choose Password',
                           style: TextStyle(
                               color: Colors.white,
-                              fontSize: 25,
+                              fontSize:
+                                  MediaQuery.of(context).size.height * 0.035,
                               fontFamily: 'young'),
                         ),
                       )),
                       Flexible(
                           child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(
+                            MediaQuery.of(context).size.width * 0.02),
                         child: Text(
                             'Use a combination of letters, digits and special characters',
                             style: TextStyle(
                                 color: colorschemeclass.darkgrey,
-                                fontSize: 15,
+                                fontSize:
+                                    MediaQuery.of(context).size.height * 0.02,
                                 fontFamily: 'young'),
                             textAlign: TextAlign.center),
                       )),
@@ -143,10 +147,15 @@ class _RegisterpasswordscreenState extends State<Registerpasswordscreen> {
                               ? 'Password doesn\'t match'
                               : null),
                       Container(
-                          padding: EdgeInsets.all(8),
-                          height: MediaQuery.of(context).size.height * 0.11,
-                          child: myButton(
-                              colorschemeclass.primarygreen, 'Next', _submit))
+                        padding: EdgeInsets.symmetric(
+                            horizontal:
+                                MediaQuery.of(context).size.width * 0.03,
+                            vertical:
+                                MediaQuery.of(context).size.height * 0.01),
+                        height: MediaQuery.of(context).size.height * 0.09,
+                        child: myButton(
+                            colorschemeclass.primarygreen, 'Next', _submit),
+                      ),
                     ],
                   ),
                 ),

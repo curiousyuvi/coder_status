@@ -50,44 +50,54 @@ class _RegisternamescreenState extends State<Registernamescreen> {
                   child: Hero(
                     tag: 'splashscreenImage',
                     child: Image(
-                      width: 300,
+                      width: MediaQuery.of(context).size.width * 0.45,
                       image: AssetImage('images/appiconnoback.png'),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: 50,
+                  height: MediaQuery.of(context).size.height * 0.05,
                 ),
                 Flexible(
                     child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding:
+                      EdgeInsets.all(MediaQuery.of(context).size.width * 0.02),
                   child: Text(
                     'Enter Your Full Name',
                     style: TextStyle(
-                        color: Colors.white, fontSize: 25, fontFamily: 'young'),
+                        color: Colors.white,
+                        fontSize: MediaQuery.of(context).size.height * 0.033,
+                        fontFamily: 'young'),
                   ),
                 )),
                 Flexible(
                     child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding:
+                      EdgeInsets.all(MediaQuery.of(context).size.width * 0.02),
                   child: Text(
-                    '*Example: Alan Wil',
+                    '*Example: Light Yagami',
                     style: TextStyle(
                         color: colorschemeclass.darkgrey,
-                        fontSize: 15,
+                        fontSize: MediaQuery.of(context).size.height * 0.023,
                         fontFamily: 'young'),
                     textAlign: TextAlign.center,
                   ),
                 )),
                 myTextEormField(Icon(Icons.person), 'Full Name', false, (val) {
-                  name = val;
-                }, TextInputType.name,
-                    (val) => val.length < 5 ? 'Name is too short' : null),
+                  name = val.toString().trim();
+                },
+                    TextInputType.name,
+                    (val) => val.toString().trim().length < 5
+                        ? 'Name is too short'
+                        : null),
                 Container(
-                    padding: EdgeInsets.all(8),
-                    height: MediaQuery.of(context).size.height * 0.11,
-                    child: myButton(
-                        colorschemeclass.primarygreen, 'Next', _submit))
+                  padding: EdgeInsets.symmetric(
+                      horizontal: MediaQuery.of(context).size.width * 0.03,
+                      vertical: MediaQuery.of(context).size.height * 0.01),
+                  height: MediaQuery.of(context).size.height * 0.09,
+                  child:
+                      myButton(colorschemeclass.primarygreen, 'Next', _submit),
+                ),
               ],
             ),
           ),

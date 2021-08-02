@@ -9,10 +9,12 @@ import 'package:codersstatus/homescreen.dart';
 import 'package:flutter/material.dart';
 
 class Registerbadgesscreen extends StatefulWidget {
-  Registerbadgesscreen(String name, String codername, String avatarurl) {
+  Registerbadgesscreen(
+      String name, String codername, String avatarurl, String bio) {
     _RegisterbadgesscreenState.name = name;
     _RegisterbadgesscreenState.codername = codername;
     _RegisterbadgesscreenState.avatarurl = avatarurl;
+    _RegisterbadgesscreenState.bio = bio;
   }
 
   @override
@@ -23,6 +25,7 @@ class _RegisterbadgesscreenState extends State<Registerbadgesscreen> {
   static String name = '';
   static String codername = '';
   static String avatarurl = '';
+  static String bio = '';
 
   String codeforces = null, codechef = null, atcoder = null, spoj = null;
   final _formkey = GlobalKey<FormState>();
@@ -36,15 +39,16 @@ class _RegisterbadgesscreenState extends State<Registerbadgesscreen> {
       });
 
       await SetUserInfo.setUserCredentials(
-          name, codername, avatarurl, codeforces, codechef, spoj, atcoder);
+          name, codername, avatarurl, bio, codeforces, codechef, spoj, atcoder);
       setState(() {
         isloading = false;
       });
 
       showAnimatedToast(this.context, 'Account Created Succesfully.', true);
-      Navigator.push(context, MaterialPageRoute(builder: (context) {
+      Navigator.pushAndRemoveUntil(context,
+          MaterialPageRoute(builder: (context) {
         return HomeScreen();
-      }));
+      }), ModalRoute.withName('/home'));
     }
   }
 
@@ -58,7 +62,8 @@ class _RegisterbadgesscreenState extends State<Registerbadgesscreen> {
                 child: Container(
               width: double.infinity,
               height: double.infinity,
-              padding: EdgeInsets.all(24),
+              padding:
+                  EdgeInsets.all(MediaQuery.of(context).size.width * 0.015),
               child: SingleChildScrollView(
                 child: Form(
                   key: _formkey,
@@ -183,11 +188,15 @@ class _RegisterbadgesscreenState extends State<Registerbadgesscreen> {
                             ],
                           )),
                       Container(
-                        width: double.infinity,
-                        height: MediaQuery.of(context).size.height * 0.1,
-                        child: myButton(
-                            colorschemeclass.primarygreen, 'Submit', _submit),
-                      )
+                        padding: EdgeInsets.symmetric(
+                            horizontal:
+                                MediaQuery.of(context).size.width * 0.02,
+                            vertical:
+                                MediaQuery.of(context).size.height * 0.01),
+                        height: MediaQuery.of(context).size.height * 0.09,
+                        child: myButton(colorschemeclass.primarygreen,
+                            'Create Account', _submit),
+                      ),
                     ],
                   ),
                 ),

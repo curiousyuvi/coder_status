@@ -17,7 +17,10 @@ class HomeScreen extends StatefulWidget {
 
 class HomeScreenState extends State<HomeScreen> {
   bool isFirstTimeFlag = true;
-  String name = 'name', codername = 'codername', avatarurl = urls.avatar1url;
+  String name = 'name',
+      codername = 'codername',
+      avatarurl = urls.avatar1url,
+      bio = 'Hey there, I love Competitive Programming';
   List<String> userhandles = [null, null, null, null],
       userrating = [null, null, null, null];
   String _currentPage = "MyDashboardScreen";
@@ -52,6 +55,7 @@ class HomeScreenState extends State<HomeScreen> {
     name = await GetUserInfo.getUserName();
     codername = await GetUserInfo.getUserCoderName();
     avatarurl = await GetUserInfo.getUserAvatarUrl();
+    bio = await GetUserInfo.getUserBio();
     userhandles = await GetUserInfo.getUserHandles();
 
     userrating[0] = await GetRating.getCodeforcesRating(userhandles[0]);
@@ -180,7 +184,7 @@ class HomeScreenState extends State<HomeScreen> {
       child = SearchScreen();
     else if (tabItem == "MyDashboardScreen")
       child = MyDashboardScreen(
-          name, codername, avatarurl, userhandles, userrating);
+          name, codername, avatarurl, bio, userhandles, userrating);
     else if (tabItem == "PeersScreen")
       child = SettingScreen();
     else if (tabItem == "SettingsScreen") child = SettingScreen();

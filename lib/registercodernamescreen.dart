@@ -49,48 +49,56 @@ class _RegistercodernamescreenState extends State<Registercodernamescreen> {
                   child: Hero(
                     tag: 'splashscreenImage',
                     child: Image(
-                      width: 300,
+                      width: MediaQuery.of(context).size.width * 0.45,
                       image: AssetImage('images/appiconnoback.png'),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: 50,
+                  height: MediaQuery.of(context).size.height * 0.05,
                 ),
                 Flexible(
                     child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding:
+                      EdgeInsets.all(MediaQuery.of(context).size.width * 0.02),
                   child: Text(
                     'Choose Codername',
                     style: TextStyle(
-                        color: Colors.white, fontSize: 25, fontFamily: 'young'),
+                        color: Colors.white,
+                        fontSize: MediaQuery.of(context).size.height * 0.035,
+                        fontFamily: 'young'),
                   ),
                 )),
                 Flexible(
                     child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding:
+                      EdgeInsets.all(MediaQuery.of(context).size.width * 0.02),
                   child: Text(
-                    'Codername is like a Username ,*Example: @demon_lord',
+                    'Codername is like a Username,\n*Example: @god_Kira',
                     style: TextStyle(
                         color: colorschemeclass.darkgrey,
-                        fontSize: 15,
+                        fontSize: MediaQuery.of(context).size.height * 0.022,
                         fontFamily: 'young'),
                     textAlign: TextAlign.center,
                   ),
                 )),
                 myTextEormField(Icon(Icons.alternate_email), 'codername', false,
                     (val) {
-                  codername = val;
+                  codername = val.toString().trim();
                 },
                     TextInputType.text,
-                    (val) => (val.trim().contains(' ') || val.trim().length < 5)
+                    (val) => (val.toString().trim().contains(' ') ||
+                            val.toString().trim().length < 4)
                         ? 'Codername can only be consist a single word'
                         : null),
                 Container(
-                    padding: EdgeInsets.all(8),
-                    height: MediaQuery.of(context).size.height * 0.11,
-                    child: myButton(
-                        colorschemeclass.primarygreen, 'Next', _submit))
+                  padding: EdgeInsets.symmetric(
+                      horizontal: MediaQuery.of(context).size.width * 0.03,
+                      vertical: MediaQuery.of(context).size.height * 0.01),
+                  height: MediaQuery.of(context).size.height * 0.09,
+                  child:
+                      myButton(colorschemeclass.primarygreen, 'Next', _submit),
+                ),
               ],
             ),
           ),

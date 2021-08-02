@@ -7,6 +7,7 @@ import 'package:codersstatus/components/urls.dart';
 import 'package:codersstatus/firebase_layer/setUserInfo.dart';
 import 'package:codersstatus/firebase_layer/uploadAvatar.dart';
 import 'package:codersstatus/registerBadgesScreen.dart';
+import 'package:codersstatus/registerBioScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -85,34 +86,40 @@ class _RegisteravatarscreenState extends State<Registeravatarscreen> {
             body: Center(
               child: SafeArea(
                 child: Container(
-                  padding: EdgeInsets.all(8),
+                  padding:
+                      EdgeInsets.all(MediaQuery.of(context).size.width * 0.02),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Flexible(
                         child: Padding(
-                          padding: const EdgeInsets.all(16.0),
+                          padding: EdgeInsets.all(
+                              MediaQuery.of(context).size.width * 0.04),
                           child: Image(
                             image: AssetImage('images/appiconnoback.png'),
-                            height: 100,
+                            height: MediaQuery.of(context).size.height * 0.08,
                           ),
                         ),
                       ),
-                      SizedBox(height: 20),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.028),
                       Flexible(
                           child: Text(
                         'Select an Avatar',
                         style: TextStyle(
                             color: Colors.white,
                             fontFamily: 'young',
-                            fontSize: 25),
+                            fontSize:
+                                MediaQuery.of(context).size.height * 0.035),
                       )),
-                      SizedBox(height: 20),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.028),
                       Container(
-                          height: 200,
-                          width: 200,
+                          height: MediaQuery.of(context).size.height * 0.27,
+                          width: MediaQuery.of(context).size.height * 0.27,
                           child: myCircleAvatar(avatarimage: avatarshowimage)),
-                      SizedBox(height: 20),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.028),
                       Flexible(
                         child: SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
@@ -227,7 +234,7 @@ class _RegisteravatarscreenState extends State<Registeravatarscreen> {
                         ),
                       ),
                       SizedBox(
-                        height: 30,
+                        height: MediaQuery.of(context).size.height * 0.042,
                       ),
                       Flexible(
                           child: Row(
@@ -239,7 +246,7 @@ class _RegisteravatarscreenState extends State<Registeravatarscreen> {
                               urltobeset = urls.avatar1url;
                               Navigator.push(context,
                                   MaterialPageRoute(builder: (context) {
-                                return Registerbadgesscreen(
+                                return Registerbioscreen(
                                     name, codername, urltobeset);
                               }));
                             }),
@@ -260,13 +267,13 @@ class _RegisteravatarscreenState extends State<Registeravatarscreen> {
                                 });
                                 Navigator.push(context,
                                     MaterialPageRoute(builder: (context) {
-                                  return Registerbadgesscreen(
+                                  return Registerbioscreen(
                                       name, codername, urltobeset);
                                 }));
                               } else {
                                 Navigator.push(context,
                                     MaterialPageRoute(builder: (context) {
-                                  return Registerbadgesscreen(
+                                  return Registerbioscreen(
                                       name, codername, urltobeset);
                                 }));
                               }

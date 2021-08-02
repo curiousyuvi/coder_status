@@ -25,7 +25,7 @@ class _RegisterEmailidScreenState extends State<RegisterEmailidScreen> {
       _formkey.currentState.save();
 
       Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return Registerpasswordscreen(emailid);
+        return RegisterPasswordScreen(emailid);
       }));
     }
   }
@@ -36,7 +36,7 @@ class _RegisterEmailidScreenState extends State<RegisterEmailidScreen> {
       backgroundColor: colorschemeclass.dark,
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.all(16),
+          padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
           child: Form(
             key: _formkey,
             child: Column(
@@ -46,24 +46,26 @@ class _RegisterEmailidScreenState extends State<RegisterEmailidScreen> {
                   child: Hero(
                     tag: 'splashscreenImage',
                     child: Image(
-                      width: 300,
+                      width: MediaQuery.of(context).size.width * 0.5,
                       image: AssetImage('images/appiconnoback.png'),
                     ),
                   ),
                 ),
                 Flexible(
                   child: SizedBox(
-                    height: 20,
+                    height: MediaQuery.of(context).size.height * 0.03,
                   ),
                 ),
                 Flexible(
                     child: Text(
                   'Enter Email Id',
                   style: TextStyle(
-                      color: Colors.white, fontSize: 25, fontFamily: 'young'),
+                      color: Colors.white,
+                      fontSize: MediaQuery.of(context).size.height * 0.03,
+                      fontFamily: 'young'),
                 )),
                 SizedBox(
-                  height: 10,
+                  height: MediaQuery.of(context).size.height * 0.02,
                 ),
                 Flexible(
                     child: Text(
@@ -74,7 +76,7 @@ class _RegisterEmailidScreenState extends State<RegisterEmailidScreen> {
                             fontFamily: 'young'),
                         textAlign: TextAlign.center)),
                 SizedBox(
-                  height: 10,
+                  height: MediaQuery.of(context).size.height * 0.02,
                 ),
                 myTextEormField(Icon(Icons.email_sharp), 'email id', false,
                     (val) {
@@ -85,10 +87,13 @@ class _RegisterEmailidScreenState extends State<RegisterEmailidScreen> {
                         ? 'Please enter a valid email'
                         : null),
                 Container(
-                    padding: EdgeInsets.all(8),
-                    height: MediaQuery.of(context).size.height * 0.11,
-                    child: myButton(
-                        colorschemeclass.primarygreen, 'Next', _submit))
+                  padding: EdgeInsets.symmetric(
+                      horizontal: MediaQuery.of(context).size.width * 0.03,
+                      vertical: MediaQuery.of(context).size.height * 0.01),
+                  height: MediaQuery.of(context).size.height * 0.09,
+                  child:
+                      myButton(colorschemeclass.primarygreen, 'Next', _submit),
+                ),
               ],
             ),
           ),

@@ -20,38 +20,35 @@ class myButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
-      child: Stack(
-        children: [
-          ClipRRect(
+      child: Container(
+        decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5),
-            child: Container(
-              height: MediaQuery.of(context).size.height * 0.076,
-              width: double.infinity,
-              color: buttoncolor.withOpacity(0.3),
-            ),
+            color: buttoncolor,
+            boxShadow: [
+              BoxShadow(
+                  color: buttoncolor.withOpacity(0.4),
+                  offset: Offset(
+                    0,
+                    MediaQuery.of(context).size.height * 0.007,
+                  ),
+                  spreadRadius: 0,
+                  blurRadius: 0)
+            ]),
+        height: MediaQuery.of(context).size.height * 0.07,
+        width: double.infinity,
+        child: FlatButton(
+          onPressed: dofunction,
+          minWidth: double.infinity,
+          height: double.infinity,
+          child: Text(
+            title,
+            style: TextStyle(
+                color: titlecolor,
+                fontFamily: 'young',
+                fontWeight: FontWeight.bold,
+                fontSize: MediaQuery.of(context).size.height * 0.025),
           ),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(5),
-            child: Container(
-              color: buttoncolor,
-              height: MediaQuery.of(context).size.height * 0.07,
-              width: double.infinity,
-              child: FlatButton(
-                onPressed: dofunction,
-                minWidth: double.infinity,
-                height: double.infinity,
-                child: Text(
-                  title,
-                  style: TextStyle(
-                      color: titlecolor,
-                      fontFamily: 'young',
-                      fontWeight: FontWeight.bold,
-                      fontSize: MediaQuery.of(context).size.height * 0.025),
-                ),
-              ),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
