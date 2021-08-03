@@ -4,7 +4,7 @@ import 'package:codersstatus/components/showAnimatedToast.dart';
 import 'package:codersstatus/components/myButton.dart';
 import 'package:codersstatus/components/myTextFormField.dart';
 import 'package:codersstatus/firebase_layer/setUserInfo.dart';
-import 'package:codersstatus/homescreen.dart';
+import 'package:codersstatus/homeScreen.dart';
 import 'package:flutter/material.dart';
 
 class Registerbadgesscreen extends StatefulWidget {

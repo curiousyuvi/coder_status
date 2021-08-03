@@ -17,12 +17,7 @@ class HomeScreen extends StatefulWidget {
 
 class HomeScreenState extends State<HomeScreen> {
   bool isFirstTimeFlag = true;
-  String name = 'name',
-      codername = 'codername',
-      avatarurl = Urls.avatar1url,
-      bio = 'Hey there, I love Competitive Programming';
-  List<String> userhandles = [null, null, null, null],
-      userrating = [null, null, null, null];
+  String avatarurl = Urls.avatar1url;
   String _currentPage = "MyDashboardScreen";
   List<String> pageKeys = [
     "RankingScreen",
@@ -52,16 +47,7 @@ class HomeScreenState extends State<HomeScreen> {
   }
 
   readyUserData() async {
-    name = await GetUserInfo.getUserName();
-    codername = await GetUserInfo.getUserCoderName();
     avatarurl = await GetUserInfo.getUserAvatarUrl();
-    bio = await GetUserInfo.getUserBio();
-    userhandles = await GetUserInfo.getUserHandles();
-
-    userrating[0] = await GetRating.getCodeforcesRating(userhandles[0]);
-    userrating[1] = await GetRating.getCodechefRating(userhandles[1]);
-    userrating[2] = await GetRating.getAtcoderRating(userhandles[2]);
-    userrating[3] = await GetRating.getSpojRating(userhandles[3]);
 
     setState(() {
       isFirstTimeFlag = false;
@@ -74,7 +60,11 @@ class HomeScreenState extends State<HomeScreen> {
         ? FutureBuilder(
             future: readyUserData(),
             builder: (context, snapshot) {
-              return RatingsLoadingScreen('Fetching User\'s ratings');
+              return Scaffold(
+                body: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              );
             })
         : WillPopScope(
             onWillPop: () async {
@@ -183,8 +173,7 @@ class HomeScreenState extends State<HomeScreen> {
     else if (tabItem == "SearchScreen")
       child = SearchScreen();
     else if (tabItem == "MyDashboardScreen")
-      child = MyDashboardScreen(
-          name, codername, avatarurl, bio, userhandles, userrating);
+      child = MyDashboardScreen();
     else if (tabItem == "PeersScreen")
       child = SettingScreen();
     else if (tabItem == "SettingsScreen") child = SettingScreen();

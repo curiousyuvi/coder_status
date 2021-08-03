@@ -17,7 +17,7 @@ class SetUserInfo {
       String atcoder) async {
     FirebaseAuth _auth = FirebaseAuth.instance;
     final user = _auth.currentUser;
-    final uid = user.uid;
+    final uid = user.uid.toString();
     return await FirebaseFirestore.instance.collection("users").doc(uid).set({
       "name": name,
       "codername": codername,
@@ -27,14 +27,15 @@ class SetUserInfo {
       "codechef": codechef,
       "atcoder": atcoder,
       "spoj": spoj,
-      "searchKey": [name[0].toUpperCase(), codername[0].toUpperCase()]
+      "searchKey": [name[0].toUpperCase(), codername[0].toUpperCase()],
+      "id": uid
     });
   }
 
   static Future updateName(String name) async {
     FirebaseAuth _auth = FirebaseAuth.instance;
     final user = _auth.currentUser;
-    final uid = user.uid;
+    final uid = user.uid.toString();
 
     var searchKey = await GetUserInfo.getUserSeachKey();
 
@@ -64,7 +65,7 @@ class SetUserInfo {
   static Future updateAvatar(String urltobeupdated) async {
     FirebaseAuth _auth = FirebaseAuth.instance;
     final user = _auth.currentUser;
-    final uid = user.uid;
+    final uid = user.uid.toString();
 
     return await FirebaseFirestore.instance
         .collection('users')
@@ -87,7 +88,7 @@ class SetUserInfo {
       String codeforces, String codechef, String atcoder, String spoj) async {
     FirebaseAuth _auth = FirebaseAuth.instance;
     final user = _auth.currentUser;
-    final uid = user.uid;
+    final uid = user.uid.toString();
 
     return await FirebaseFirestore.instance
         .collection('users')

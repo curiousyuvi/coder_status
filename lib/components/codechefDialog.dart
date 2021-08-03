@@ -49,7 +49,8 @@ showCodechefDialog(BuildContext context, Rect rect, String codechefHandle,
               Row(
                 children: [
                   SizedBox(
-                    width: rect.left - MediaQuery.of(context).size.width * 0.06,
+                    width:
+                        rect.left - MediaQuery.of(context).size.width * 0.045,
                   ),
                   GestureDetector(
                     onTap: () {},

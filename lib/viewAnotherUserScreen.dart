@@ -1,8 +1,12 @@
 import 'package:codersstatus/components/atcoderDialog.dart';
 import 'package:codersstatus/components/codechefDialog.dart';
 import 'package:codersstatus/components/codeforcesDialog.dart';
-import 'package:codersstatus/components/myCircleAvatar.dart';
+import 'package:codersstatus/components/myAppBar.dart';
+import 'package:codersstatus/components/myAppBarWithBack.dart';
+import 'package:codersstatus/components/myButton.dart';
 import 'package:codersstatus/components/myDividerWithTitle.dart';
+import 'package:codersstatus/components/myOtherCircleAvatar.dart';
+import 'package:codersstatus/components/myOutlineButton.dart';
 import 'package:codersstatus/components/spojDialog.dart';
 import 'package:codersstatus/components/urls.dart';
 import 'package:codersstatus/firebase_layer/getUserInfo.dart';
@@ -16,12 +20,18 @@ import 'package:flutter/widgets.dart';
 import 'package:codersstatus/components/myTile.dart';
 import 'package:rect_getter/rect_getter.dart';
 
-class MyDashboardScreen extends StatefulWidget {
+class ViewAnotherUserScreen extends StatefulWidget {
+  String uid = '';
+  ViewAnotherUserScreen(String uid) {
+    this.uid = uid;
+  }
+
   @override
-  _MyDashboardScreenState createState() => _MyDashboardScreenState();
+  _ViewAnotherUserScreenState createState() => _ViewAnotherUserScreenState(uid);
 }
 
-class _MyDashboardScreenState extends State<MyDashboardScreen> {
+class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
+  String uid = '';
   var globalKey1 = RectGetter.createGlobalKey();
   var globalKey2 = RectGetter.createGlobalKey();
   var globalKey3 = RectGetter.createGlobalKey();
@@ -32,11 +42,15 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
       bio = 'Hey there, I love Competitive Programming';
   List<String> userhandles = ['0', '0', '0', '0'],
       userrating = ['0', '0', '0', '0'];
+  _ViewAnotherUserScreenState(String uid) {
+    this.uid = uid;
+  }
 
   bool isFirstTime = true;
+  bool isPeered = false;
 
   readyUserData() async {
-    final userDocument = await GetUserInfo.getUserDocument();
+    final userDocument = await GetUserInfo.getUserDocument(uid);
     print('reached -1');
     avatarurl = userDocument['avatarurl'];
     name = userDocument['name'];
@@ -63,66 +77,94 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Container(
-          padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
-          child: Column(
-            children: [
-              Container(
-                padding:
-                    EdgeInsets.all(MediaQuery.of(context).size.width * 0.015),
-                width: double.infinity,
-                height: MediaQuery.of(context).size.height * 0.07,
-                child: Center(
-                  child: Image(image: AssetImage('images/appiconnoback.png')),
-                ),
-              ),
-              isFirstTime
-                  ? FutureBuilder(
-                      future: readyUserData(),
-                      builder: (context, snapshot) {
-                        return Container(
-                          height: MediaQuery.of(context).size.height * 0.7,
-                          child: Center(
-                            child: CircularProgressIndicator(),
-                          ),
-                        );
-                      },
-                    )
-                  : SingleChildScrollView(
-                      child: Column(
+      appBar: PreferredSize(
+        child: MyAppBarWithBack('User'),
+        preferredSize:
+            Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
+      ),
+      body: isFirstTime
+          ? FutureBuilder(
+              future: readyUserData(),
+              builder: (context, snapshot) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              },
+            )
+          : SafeArea(
+              child: SingleChildScrollView(
+                child: Container(
+                  padding:
+                      EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
+                  child: Column(
+                    children: [
+                      Column(
                         children: [
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.03,
                           ),
-                          Container(
-                              height: MediaQuery.of(context).size.height * 0.22,
-                              width: MediaQuery.of(context).size.height * 0.22,
-                              child: MyCircleAvatar(
-                                  Image(image: NetworkImage(avatarurl)))),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.14,
+                                  width:
+                                      MediaQuery.of(context).size.height * 0.14,
+                                  child: MyOtherCircleAvatar(Image(
+                                    image: NetworkImage(avatarurl),
+                                  ))),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.15,
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    name,
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontFamily: 'young',
+                                        fontWeight: FontWeight.bold,
+                                        fontSize:
+                                            MediaQuery.of(context).size.height *
+                                                0.03),
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.007,
+                                  ),
+                                  Text(
+                                    '@' + codername,
+                                    style: TextStyle(
+                                        color: ColorSchemeClass.lightgrey,
+                                        fontFamily: 'young',
+                                        fontSize:
+                                            MediaQuery.of(context).size.height *
+                                                0.02),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
                           SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.025,
+                            height: MediaQuery.of(context).size.height * 0.02,
                           ),
-                          Text(
-                            name,
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontFamily: 'young',
-                                fontWeight: FontWeight.bold,
-                                fontSize:
-                                    MediaQuery.of(context).size.height * 0.035),
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.007,
-                          ),
-                          Text(
-                            '@' + codername,
-                            style: TextStyle(
-                                color: ColorSchemeClass.lightgrey,
-                                fontFamily: 'young',
-                                fontSize:
-                                    MediaQuery.of(context).size.height * 0.025),
-                          ),
+                          isPeered
+                              ? MyOutlineButton(ColorSchemeClass.lightgrey,
+                                  'Remove from Peers', () {
+                                  setState(() {
+                                    isPeered = false;
+                                  });
+                                })
+                              : MyButton(ColorSchemeClass.primarygreen,
+                                  'Add as a Peer', () {
+                                  setState(() {
+                                    isPeered = true;
+                                  });
+                                }),
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.02,
                           ),
@@ -235,11 +277,11 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
                           ),
                         ],
                       ),
-                    ),
-            ],
-          ),
-        ),
-      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
     );
   }
 }

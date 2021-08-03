@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:codersstatus/components/generalLoadingScreen.dart';
 import 'package:codersstatus/firebase_layer/getUserInfo.dart';
-import 'package:codersstatus/homescreen.dart';
+import 'package:codersstatus/homeScreen.dart';
 import 'package:codersstatus/registerNameScreen.dart';
 import 'package:codersstatus/signinScreen.dart';
 import 'package:codersstatus/verifyEmailScreen.dart';

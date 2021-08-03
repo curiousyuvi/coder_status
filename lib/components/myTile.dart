@@ -17,26 +17,26 @@ class MyTile extends StatelessWidget {
         children: [
           Container(
             padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.height * 0.0076,
-                vertical: MediaQuery.of(context).size.height * 0.0153),
-            height: MediaQuery.of(context).size.height * 0.1692,
-            width: MediaQuery.of(context).size.height * 0.1353,
+                horizontal: MediaQuery.of(context).size.width * 0.01,
+                vertical: MediaQuery.of(context).size.width * 0.03),
+            height: MediaQuery.of(context).size.width * 0.33,
+            width: MediaQuery.of(context).size.width * 0.264,
             child: Image(
               image: tileimage,
             ),
           ),
           Container(
-            height: MediaQuery.of(context).size.height * 0.1692,
-            width: MediaQuery.of(context).size.height * 0.1353,
+            height: MediaQuery.of(context).size.width * 0.33,
+            width: MediaQuery.of(context).size.width * 0.264,
             child: Center(
                 child: Column(
               children: [
-                SizedBox(height: MediaQuery.of(context).size.height * 0.124),
+                SizedBox(height: MediaQuery.of(context).size.width * 0.24),
                 Text(tilestring,
                     style: TextStyle(
                         color: tilecolor,
                         fontFamily: 'young',
-                        fontSize: MediaQuery.of(context).size.height * 0.0253,
+                        fontSize: MediaQuery.of(context).size.width * 0.047,
                         fontWeight: FontWeight.bold,
                         shadows: [
                           Shadow(

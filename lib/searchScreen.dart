@@ -50,8 +50,8 @@ class _SearchScreenState extends State<SearchScreen> {
                   .toUpperCase()
                   .startsWith(capitalizedValue)) {
             tempSearchStore.add(element);
-            listOfUserTiles.add(MyUserTile(
-                element['avatarurl'], element['name'], element['codername']));
+            listOfUserTiles.add(MyUserTile(element['id'], element['avatarurl'],
+                element['name'], element['codername']));
           }
         });
         print(tempSearchStore.length);

@@ -5,10 +5,25 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class GetUserInfo {
-  static Future<String> getUserName() async {
-    FirebaseAuth _auth = FirebaseAuth.instance;
-    final user = _auth.currentUser;
-    final uid = user.uid;
+  static getUserDocument([String uid = '']) async {
+    if (uid == '') {
+      FirebaseAuth _auth = FirebaseAuth.instance;
+      final user = _auth.currentUser;
+      uid = user.uid.toString();
+    }
+    final mapofdocument =
+        await FirebaseFirestore.instance.collection("users").doc(uid).get();
+
+    return mapofdocument.data();
+  }
+
+  static Future<String> getUserName([String uid = '']) async {
+    if (uid == '') {
+      FirebaseAuth _auth = FirebaseAuth.instance;
+      final user = _auth.currentUser;
+      uid = user.uid.toString();
+    }
+
     final mapofdocument =
         await FirebaseFirestore.instance.collection("users").doc(uid).get();
 
@@ -17,10 +32,12 @@ class GetUserInfo {
     return name;
   }
 
-  static Future<String> getUserCoderName() async {
-    FirebaseAuth _auth = FirebaseAuth.instance;
-    final user = _auth.currentUser;
-    final uid = user.uid;
+  static Future<String> getUserCoderName([String uid = '']) async {
+    if (uid == '') {
+      FirebaseAuth _auth = FirebaseAuth.instance;
+      final user = _auth.currentUser;
+      uid = user.uid.toString();
+    }
     final mapofdocument =
         await FirebaseFirestore.instance.collection("users").doc(uid).get();
 
@@ -29,10 +46,12 @@ class GetUserInfo {
     return codername;
   }
 
-  static Future<String> getUserAvatarUrl() async {
-    FirebaseAuth _auth = FirebaseAuth.instance;
-    final user = _auth.currentUser;
-    final uid = user.uid;
+  static Future<String> getUserAvatarUrl([String uid = '']) async {
+    if (uid == '') {
+      FirebaseAuth _auth = FirebaseAuth.instance;
+      final user = _auth.currentUser;
+      uid = user.uid.toString();
+    }
     final mapofdocument =
         await FirebaseFirestore.instance.collection("users").doc(uid).get();
 
@@ -41,10 +60,12 @@ class GetUserInfo {
     return avatarurl;
   }
 
-  static Future<String> getUserBio() async {
-    FirebaseAuth _auth = FirebaseAuth.instance;
-    final user = _auth.currentUser;
-    final uid = user.uid;
+  static Future<String> getUserBio([String uid = '']) async {
+    if (uid == '') {
+      FirebaseAuth _auth = FirebaseAuth.instance;
+      final user = _auth.currentUser;
+      uid = user.uid.toString();
+    }
     final mapofdocument =
         await FirebaseFirestore.instance.collection("users").doc(uid).get();
 
@@ -53,10 +74,12 @@ class GetUserInfo {
     return bio;
   }
 
-  static getUserSeachKey() async {
-    FirebaseAuth _auth = FirebaseAuth.instance;
-    final user = _auth.currentUser;
-    final uid = user.uid;
+  static getUserSeachKey([String uid = '']) async {
+    if (uid == '') {
+      FirebaseAuth _auth = FirebaseAuth.instance;
+      final user = _auth.currentUser;
+      uid = user.uid.toString();
+    }
     final mapofdocument =
         await FirebaseFirestore.instance.collection("users").doc(uid).get();
 
@@ -65,10 +88,12 @@ class GetUserInfo {
     return searchKey;
   }
 
-  static Future<List<String>> getUserHandles() async {
-    FirebaseAuth _auth = FirebaseAuth.instance;
-    final user = _auth.currentUser;
-    final uid = user.uid;
+  static Future<List<String>> getUserHandles([String uid = '']) async {
+    if (uid == '') {
+      FirebaseAuth _auth = FirebaseAuth.instance;
+      final user = _auth.currentUser;
+      uid = user.uid.toString();
+    }
     final mapofdocument =
         await FirebaseFirestore.instance.collection("users").doc(uid).get();
 

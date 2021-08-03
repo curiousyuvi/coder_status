@@ -3,7 +3,7 @@ import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/components/generalLoadingScreen.dart';
 import 'package:codersstatus/components/showAnimatedToast.dart';
 import 'package:codersstatus/forgotPasswordscreen.dart';
-import 'package:codersstatus/homescreen.dart';
+import 'package:codersstatus/homeScreen.dart';
 import 'package:codersstatus/firebase_layer/loginUser.dart';
 import 'package:codersstatus/registerEmailidScreen.dart';
 import 'package:codersstatus/verifyEmailScreen.dart';
