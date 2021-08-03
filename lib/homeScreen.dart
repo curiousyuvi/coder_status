@@ -6,6 +6,7 @@ import 'package:codersstatus/firebase_layer/getUserInfo.dart';
 import 'package:codersstatus/functions/getRating.dart';
 import 'package:codersstatus/myDashboardScreen.dart';
 import 'package:codersstatus/peersScreen.dart';
+import 'package:codersstatus/rankingScreen.dart';
 import 'package:codersstatus/searchScreen.dart';
 import 'package:codersstatus/settingScreen.dart';
 import 'package:flutter/cupertino.dart';
@@ -170,7 +171,7 @@ class HomeScreenState extends State<HomeScreen> {
   Widget _buildOffstageNavigator(String tabItem) {
     Widget child;
     if (tabItem == "RankingScreen")
-      child = SettingScreen();
+      child = RankingScreen();
     else if (tabItem == "SearchScreen")
       child = SearchScreen();
     else if (tabItem == "MyDashboardScreen")
