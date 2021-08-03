@@ -5,6 +5,7 @@ import 'package:codersstatus/components/urls.dart';
 import 'package:codersstatus/firebase_layer/getUserInfo.dart';
 import 'package:codersstatus/functions/getRating.dart';
 import 'package:codersstatus/myDashboardScreen.dart';
+import 'package:codersstatus/peersScreen.dart';
 import 'package:codersstatus/searchScreen.dart';
 import 'package:codersstatus/settingScreen.dart';
 import 'package:flutter/cupertino.dart';
@@ -175,7 +176,7 @@ class HomeScreenState extends State<HomeScreen> {
     else if (tabItem == "MyDashboardScreen")
       child = MyDashboardScreen();
     else if (tabItem == "PeersScreen")
-      child = SettingScreen();
+      child = PeersScreen();
     else if (tabItem == "SettingsScreen") child = SettingScreen();
 
     return Offstage(

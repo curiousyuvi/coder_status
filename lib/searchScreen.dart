@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:codersstatus/components/colorscheme.dart';
+import 'package:codersstatus/components/myAppBar.dart';
 import 'package:codersstatus/components/myTextFormField.dart';
 import 'package:codersstatus/components/myUserTile.dart';
 import 'package:codersstatus/firebase_layer/search.dart';
@@ -70,6 +71,11 @@ class _SearchScreenState extends State<SearchScreen> {
         }
       },
       child: Scaffold(
+        appBar: PreferredSize(
+          child: MyAppBar('Search'),
+          preferredSize:
+              Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
+        ),
         body: SafeArea(
             child: Container(
           width: double.infinity,

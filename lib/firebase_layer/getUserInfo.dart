@@ -130,4 +130,15 @@ class GetUserInfo {
     String uid = _auth.currentUser.uid;
     return uid;
   }
+
+  static getUserDocumentChnges() async {
+    FirebaseAuth _auth = FirebaseAuth.instance;
+    final user = _auth.currentUser;
+    final uid = user.uid.toString();
+
+    var documentStream =
+        FirebaseFirestore.instance.collection('users').doc(uid).snapshots();
+
+    return documentStream;
+  }
 }
