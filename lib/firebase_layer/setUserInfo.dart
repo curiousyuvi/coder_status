@@ -18,6 +18,7 @@ class SetUserInfo {
     FirebaseAuth _auth = FirebaseAuth.instance;
     final user = _auth.currentUser;
     final uid = user.uid.toString();
+    List<String> emptyList = [];
     return await FirebaseFirestore.instance.collection("users").doc(uid).set({
       "name": name,
       "codername": codername,
@@ -28,7 +29,8 @@ class SetUserInfo {
       "atcoder": atcoder,
       "spoj": spoj,
       "searchKey": [name[0].toUpperCase(), codername[0].toUpperCase()],
-      "id": uid
+      "id": uid,
+      "peers": emptyList
     });
   }
 
@@ -82,6 +84,22 @@ class SetUserInfo {
         .collection('users')
         .doc(uid)
         .update({'bio': bio});
+  }
+
+  static Future updatePeers(var peers) async {
+    FirebaseAuth _auth = FirebaseAuth.instance;
+    final user = _auth.currentUser;
+    final uid = user.uid;
+
+    if (peers == null) {
+      List<String> emptyList = [];
+      peers = [];
+    }
+
+    return await FirebaseFirestore.instance
+        .collection('users')
+        .doc(uid)
+        .update({'peers': peers});
   }
 
   static Future updateHandles(

@@ -31,7 +31,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
 
   @override
   void initState() {
-    timer = Timer.periodic(Duration(seconds: 5), (timer) async {
+    timer = Timer.periodic(Duration(seconds: 3), (timer) async {
       final flag = await checkEmailVerified();
       if (flag) {
         timer.cancel();

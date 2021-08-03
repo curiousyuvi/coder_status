@@ -87,7 +87,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   ? Expanded(
                       child: Center(
                         child: Text(
-                          'Enter the Username to search',
+                          'Enter Name or Username to search',
                           style: TextStyle(
                               color: ColorSchemeClass.lightgrey,
                               fontFamily: 'young',

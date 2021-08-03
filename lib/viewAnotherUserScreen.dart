@@ -1,7 +1,6 @@
 import 'package:codersstatus/components/atcoderDialog.dart';
 import 'package:codersstatus/components/codechefDialog.dart';
 import 'package:codersstatus/components/codeforcesDialog.dart';
-import 'package:codersstatus/components/myAppBar.dart';
 import 'package:codersstatus/components/myAppBarWithBack.dart';
 import 'package:codersstatus/components/myButton.dart';
 import 'package:codersstatus/components/myDividerWithTitle.dart';
@@ -9,7 +8,9 @@ import 'package:codersstatus/components/myOtherCircleAvatar.dart';
 import 'package:codersstatus/components/myOutlineButton.dart';
 import 'package:codersstatus/components/spojDialog.dart';
 import 'package:codersstatus/components/urls.dart';
+import 'package:codersstatus/editProfileScreen.dart';
 import 'package:codersstatus/firebase_layer/getUserInfo.dart';
+import 'package:codersstatus/firebase_layer/setUserInfo.dart';
 import 'package:codersstatus/functions/getRating.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +40,8 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
   String name = 'name',
       codername = 'codername',
       avatarurl = Urls.avatar1url,
-      bio = 'Hey there, I love Competitive Programming';
+      bio = 'Hey there, I love Competitive Programming',
+      myUid = '';
   List<String> userhandles = ['0', '0', '0', '0'],
       userrating = ['0', '0', '0', '0'];
   _ViewAnotherUserScreenState(String uid) {
@@ -48,8 +50,41 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
 
   bool isFirstTime = true;
   bool isPeered = false;
+  bool isMe = false;
+  bool isLoading = false;
+
+  addInPeers() async {
+    setState(() {
+      isLoading = true;
+    });
+    var peers = await GetUserInfo.getUserPeers();
+    peers.add(uid);
+    await SetUserInfo.updatePeers(peers);
+    setState(() {
+      isLoading = false;
+      isPeered = true;
+    });
+  }
+
+  removeFromPeers() async {
+    setState(() {
+      isLoading = true;
+    });
+    var peers = await GetUserInfo.getUserPeers();
+    int k = peers.indexOf(uid);
+    var newPeers;
+    for (int i = 0; i < peers.length; i++) {
+      if (i != k) newPeers.add(peers[i]);
+    }
+    await SetUserInfo.updatePeers(newPeers);
+    setState(() {
+      isLoading = false;
+      isPeered = false;
+    });
+  }
 
   readyUserData() async {
+    myUid = GetUserInfo.getUserUid();
     final userDocument = await GetUserInfo.getUserDocument(uid);
     print('reached -1');
     avatarurl = userDocument['avatarurl'];
@@ -69,6 +104,17 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
     print('reached 3');
     userrating[3] = await GetRating.getSpojRating(userhandles[3]);
     print('reached 4');
+
+    if (myUid == uid) {
+      isMe = true;
+    } else {
+      var peers = await GetUserInfo.getUserPeers();
+      if (peers.contains(uid)) {
+        isPeered = true;
+      } else {
+        isPeered = false;
+      }
+    }
     setState(() {
       isFirstTime = false;
     });
@@ -152,19 +198,35 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.02,
                           ),
-                          isPeered
-                              ? MyOutlineButton(ColorSchemeClass.lightgrey,
-                                  'Remove from Peers', () {
-                                  setState(() {
-                                    isPeered = false;
-                                  });
+                          isMe
+                              ? MyOutlineButton(
+                                  ColorSchemeClass.lightgrey, 'Edit Profile',
+                                  () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (context) {
+                                    return EditProfileScreen();
+                                  }));
                                 })
-                              : MyButton(ColorSchemeClass.primarygreen,
-                                  'Add as a Peer', () {
-                                  setState(() {
-                                    isPeered = true;
-                                  });
-                                }),
+                              : isLoading
+                                  ? Container(
+                                      width: double.infinity,
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.078,
+                                      child: Center(
+                                        child: CircularProgressIndicator(),
+                                      ),
+                                    )
+                                  : isPeered
+                                      ? MyOutlineButton(
+                                          ColorSchemeClass.lightgrey,
+                                          'Remove from Peers', () {
+                                          removeFromPeers();
+                                        })
+                                      : MyButton(ColorSchemeClass.primarygreen,
+                                          'Add as a Peer', () {
+                                          addInPeers();
+                                        }),
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.02,
                           ),

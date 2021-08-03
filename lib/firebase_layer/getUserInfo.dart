@@ -88,6 +88,19 @@ class GetUserInfo {
     return searchKey;
   }
 
+  static getUserPeers() async {
+    FirebaseAuth _auth = FirebaseAuth.instance;
+    final user = _auth.currentUser;
+    final uid = user.uid.toString();
+
+    final mapofdocument =
+        await FirebaseFirestore.instance.collection("users").doc(uid).get();
+
+    var peers = mapofdocument.data()['peers'];
+
+    return peers;
+  }
+
   static Future<List<String>> getUserHandles([String uid = '']) async {
     if (uid == '') {
       FirebaseAuth _auth = FirebaseAuth.instance;
@@ -109,5 +122,12 @@ class GetUserInfo {
 
     String email = _auth.currentUser.email;
     return email;
+  }
+
+  static getUserUid() {
+    FirebaseAuth _auth = FirebaseAuth.instance;
+
+    String uid = _auth.currentUser.uid;
+    return uid;
   }
 }
