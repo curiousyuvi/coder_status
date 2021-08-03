@@ -72,7 +72,7 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
     });
     var peers = await GetUserInfo.getUserPeers();
     int k = peers.indexOf(uid);
-    var newPeers;
+    var newPeers = [];
     for (int i = 0; i < peers.length; i++) {
       if (i != k) newPeers.add(peers[i]);
     }
