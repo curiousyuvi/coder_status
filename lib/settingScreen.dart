@@ -7,6 +7,7 @@ import 'package:codersstatus/deleteAccountScreen.dart';
 import 'package:codersstatus/editProfileScreen.dart';
 import 'package:codersstatus/firebase_layer/logoutUser.dart';
 import 'package:codersstatus/updatePasswordScreen.dart';
+import 'package:codersstatus/editUserHandlesScreen.dart';
 
 import 'package:flutter/material.dart';
 
@@ -50,12 +51,20 @@ class _SettingScreenState extends State<SettingScreen> {
                       ),
                       'Edit Profile'),
                 ),
-                MySettingsNonExpansionTile(
-                    Icon(
-                      Icons.dashboard,
-                      color: ColorSchemeClass.lightgrey,
-                    ),
-                    'User Handles'),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return EditUserHandlesScreen();
+                    }));
+                  },
+                  child: MySettingsNonExpansionTile(
+                      Icon(
+                        Icons.dashboard,
+                        color: ColorSchemeClass.lightgrey,
+                      ),
+                      'User Handles'),
+                ),
                 MySettingsExpansionTile(
                   Icon(Icons.security),
                   'Account & Security',
