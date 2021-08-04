@@ -57,7 +57,7 @@ class MyUserTile extends StatelessWidget {
                             fontFamily: 'young',
                             fontWeight: FontWeight.bold,
                             fontSize:
-                                MediaQuery.of(context).size.height * 0.03),
+                                MediaQuery.of(context).size.height * 0.025),
                       ),
                     ),
                     SizedBox(
