@@ -44,7 +44,7 @@ class _EditUserHandlesScreenState extends State<EditUserHandlesScreen> {
       });
 
       await SetUserInfo.updateHandles(
-          codechefEditingController.text.trim(),
+          codeforcesEditingController.text.trim(),
           codechefEditingController.text.trim(),
           atcoderEditingController.text.trim(),
           spojEditingController.text.trim());
