@@ -1,4 +1,3 @@
-import 'package:codersstatus/viewAnotherUserScreen.dart';
 import 'package:flutter/material.dart';
 import 'colorscheme.dart';
 
@@ -58,18 +57,23 @@ class MyRankingUserTile extends StatelessWidget {
               ),
               Row(
                 children: [
-                  FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: Text(
-                      '@' + userHandle,
-                      style: TextStyle(
-                          color: ColorSchemeClass.lightgrey,
-                          fontFamily: 'young',
-                          fontSize: MediaQuery.of(context).size.height * 0.02),
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.27,
+                    child: FittedBox(
+                      alignment: Alignment.centerLeft,
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        '@' + userHandle,
+                        style: TextStyle(
+                            color: ColorSchemeClass.lightgrey,
+                            fontFamily: 'young',
+                            fontSize:
+                                MediaQuery.of(context).size.height * 0.02),
+                      ),
                     ),
                   ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.08,
+                    width: MediaQuery.of(context).size.width * 0.03,
                   ),
                   FittedBox(
                     fit: BoxFit.scaleDown,
