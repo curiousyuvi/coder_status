@@ -142,7 +142,7 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.015,
                           ),
-                          MyMidDividerWithTitle('Badges'),
+                          MyMidDividerWithTitle('Ratings'),
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.02,
                           ),

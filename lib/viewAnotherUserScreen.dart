@@ -246,7 +246,7 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.015,
                           ),
-                          MyMidDividerWithTitle('Badges'),
+                          MyMidDividerWithTitle('Ratings'),
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.02,
                           ),
