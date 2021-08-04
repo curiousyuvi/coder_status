@@ -260,7 +260,12 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
                                                     .width *
                                                 0.6,
                                             child: Center(
-                                              child: listOfRatingCards[2],
+                                              child: Container(
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .height *
+                                                      0.155,
+                                                  child: listOfRatingCards[2]),
                                             ),
                                           )
                                         ],
@@ -273,7 +278,12 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
                                             MediaQuery.of(context).size.width *
                                                 0.6,
                                         child: Center(
-                                          child: listOfRatingCards[0],
+                                          child: Container(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.155,
+                                              child: listOfRatingCards[0]),
                                         ),
                                       )
                                 : Container(
