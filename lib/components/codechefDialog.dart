@@ -26,7 +26,7 @@ showCodechefDialog(BuildContext context, Rect rect, String codechefHandle,
   for (int i = 1; i <= codechefStarCount; i++) {
     listOfStars.add(Icon(
       Icons.star,
-      size: MediaQuery.of(context).size.height * 0.018,
+      size: MediaQuery.of(context).size.width * 0.035,
       color: ColorSchemeClass.codechefbrown,
     ));
   }
@@ -57,12 +57,12 @@ showCodechefDialog(BuildContext context, Rect rect, String codechefHandle,
                       children: [
                         GlassContainer(
                           blur: 3,
-                          width: MediaQuery.of(context).size.width * 0.38,
+                          width: MediaQuery.of(context).size.width * 0.42,
                           height: MediaQuery.of(context).size.height * 0.1265,
                           borderRadius: BorderRadius.circular(10),
                         ),
                         Container(
-                          width: MediaQuery.of(context).size.width * 0.38,
+                          width: MediaQuery.of(context).size.width * 0.42,
                           height: MediaQuery.of(context).size.height * 0.157,
                           decoration: BoxDecoration(
                               image: DecorationImage(

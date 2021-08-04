@@ -43,11 +43,12 @@ class _CodeforcesRankingScreenState extends State<CodeforcesRankingScreen> {
       }
     }
     print('initial map data may be skipped');
+
     //getting list of uids of my peers
     var peers = await GetUserInfo.getUserPeers();
 
     //If I have peers only then proceed
-    if (peers.length > 0) {
+    if (peers.length != 0) {
       //loop through all peer uids
       for (int i = 0; i < peers.length; i++) {
         //get document map of uid
@@ -64,38 +65,9 @@ class _CodeforcesRankingScreenState extends State<CodeforcesRankingScreen> {
           //if current peer has rating not equal to zero then add it to ranking data
           if (rating != '0') {
             //if initial list is not empty add to ranking data in descending sort
-            if (listOfUserData.length > 0) {
+            if (listOfUserData.length != 0) {
               for (int j = 0; j < listOfUserData.length; j++) {
-                if (j == (listOfUserData.length - 1)) {
-                  if (j == 0) {
-                    if (double.parse(listOfUserData[0]['rating']) <=
-                        double.parse(rating)) {
-                      listOfUserData.insert(0, {
-                        'avatarurl': peerDocument['avatarurl'],
-                        'userHandle': peerDocument['codeforces'],
-                        'rating': rating
-                      });
-                      print('peer data map added');
-                      break;
-                    } else {
-                      listOfUserData.add({
-                        'avatarurl': peerDocument['avatarurl'],
-                        'userHandle': peerDocument['codeforces'],
-                        'rating': rating
-                      });
-                      print('peer data map added');
-                      break;
-                    }
-                  } else {
-                    listOfUserData.add({
-                      'avatarurl': peerDocument['avatarurl'],
-                      'userHandle': peerDocument['codeforces'],
-                      'rating': rating
-                    });
-                    print('peer data map added');
-                    break;
-                  }
-                } else if (double.parse(listOfUserData[j]['rating']) <=
+                if (double.parse(listOfUserData[j]['rating']) <=
                     double.parse(rating)) {
                   listOfUserData.insert(j, {
                     'avatarurl': peerDocument['avatarurl'],
@@ -104,6 +76,16 @@ class _CodeforcesRankingScreenState extends State<CodeforcesRankingScreen> {
                   });
                   print('peer data map added');
                   break;
+                } else {
+                  if (j == (listOfUserData.length - 1)) {
+                    listOfUserData.add({
+                      'avatarurl': peerDocument['avatarurl'],
+                      'userHandle': peerDocument['codeforces'],
+                      'rating': rating
+                    });
+                    print('peer data map added');
+                    break;
+                  }
                 }
               }
             } else {

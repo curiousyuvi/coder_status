@@ -30,7 +30,7 @@ showSpojDialog(
                     child: Stack(
                       children: [
                         Container(
-                          width: MediaQuery.of(context).size.width * 0.38,
+                          width: MediaQuery.of(context).size.width * 0.42,
                           height: MediaQuery.of(context).size.height * 0.1265,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
@@ -40,12 +40,12 @@ showSpojDialog(
                         ),
                         GlassContainer(
                           blur: 3,
-                          width: MediaQuery.of(context).size.width * 0.38,
+                          width: MediaQuery.of(context).size.width * 0.42,
                           height: MediaQuery.of(context).size.height * 0.1265,
                           borderRadius: BorderRadius.circular(10),
                         ),
                         Container(
-                          width: MediaQuery.of(context).size.width * 0.38,
+                          width: MediaQuery.of(context).size.width * 0.42,
                           height: MediaQuery.of(context).size.height * 0.157,
                           decoration: BoxDecoration(
                               image: DecorationImage(

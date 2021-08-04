@@ -65,36 +65,7 @@ class _AtcoderRankingScreenState extends State<AtcoderRankingScreen> {
             //if initial list is not empty add to ranking data in descending sort
             if (listOfUserData.length > 0) {
               for (int j = 0; j < listOfUserData.length; j++) {
-                if (j == (listOfUserData.length - 1)) {
-                  if (j == 0) {
-                    if (double.parse(listOfUserData[0]['rating']) <=
-                        double.parse(rating)) {
-                      listOfUserData.insert(0, {
-                        'avatarurl': peerDocument['avatarurl'],
-                        'userHandle': peerDocument['atcoder'],
-                        'rating': rating
-                      });
-                      print('peer data map added');
-                      break;
-                    } else {
-                      listOfUserData.add({
-                        'avatarurl': peerDocument['avatarurl'],
-                        'userHandle': peerDocument['atcoder'],
-                        'rating': rating
-                      });
-                      print('peer data map added');
-                      break;
-                    }
-                  } else {
-                    listOfUserData.add({
-                      'avatarurl': peerDocument['avatarurl'],
-                      'userHandle': peerDocument['atcoder'],
-                      'rating': rating
-                    });
-                    print('peer data map added');
-                    break;
-                  }
-                } else if (double.parse(listOfUserData[j]['rating']) <=
+                if (double.parse(listOfUserData[j]['rating']) <=
                     double.parse(rating)) {
                   listOfUserData.insert(j, {
                     'avatarurl': peerDocument['avatarurl'],
@@ -103,6 +74,16 @@ class _AtcoderRankingScreenState extends State<AtcoderRankingScreen> {
                   });
                   print('peer data map added');
                   break;
+                } else {
+                  if (j == (listOfUserData.length - 1)) {
+                    listOfUserData.add({
+                      'avatarurl': peerDocument['avatarurl'],
+                      'userHandle': peerDocument['atcoder'],
+                      'rating': rating
+                    });
+                    print('peer data map added');
+                    break;
+                  }
                 }
               }
             } else {
