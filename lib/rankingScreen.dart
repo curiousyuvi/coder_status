@@ -40,6 +40,17 @@ class _RankingScreenState extends State<RankingScreen> {
                         fontSize: MediaQuery.of(context).size.height * 0.033),
                   ),
                   SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
+                  ),
+                  Text(
+                    'Choose a platform to view a ranklist among your peers',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: ColorSchemeClass.darkgrey,
+                        fontFamily: 'young',
+                        fontSize: MediaQuery.of(context).size.height * 0.023),
+                  ),
+                  SizedBox(
                     height: MediaQuery.of(context).size.height * 0.05,
                   ),
                   GridView.count(
@@ -56,8 +67,6 @@ class _RankingScreenState extends State<RankingScreen> {
                           }));
                         },
                         child: Container(
-                          height: MediaQuery.of(context).size.width * 0.35,
-                          width: MediaQuery.of(context).size.width * 0.35,
                           decoration: BoxDecoration(
                               border: Border.all(
                                   color: ColorSchemeClass.codeforcespurple
@@ -86,8 +95,6 @@ class _RankingScreenState extends State<RankingScreen> {
                           }));
                         },
                         child: Container(
-                          height: MediaQuery.of(context).size.width * 0.35,
-                          width: MediaQuery.of(context).size.width * 0.35,
                           decoration: BoxDecoration(
                               border: Border.all(
                                   color: ColorSchemeClass.codechefbrown
@@ -116,8 +123,6 @@ class _RankingScreenState extends State<RankingScreen> {
                           }));
                         },
                         child: Container(
-                          height: MediaQuery.of(context).size.width * 0.35,
-                          width: MediaQuery.of(context).size.width * 0.35,
                           decoration: BoxDecoration(
                               border: Border.all(
                                   color: ColorSchemeClass.atcodergrey
@@ -146,8 +151,6 @@ class _RankingScreenState extends State<RankingScreen> {
                           }));
                         },
                         child: Container(
-                          height: MediaQuery.of(context).size.width * 0.35,
-                          width: MediaQuery.of(context).size.width * 0.35,
                           decoration: BoxDecoration(
                               border: Border.all(
                                   color: ColorSchemeClass.spojblue

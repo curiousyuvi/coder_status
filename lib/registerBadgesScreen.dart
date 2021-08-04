@@ -26,7 +26,7 @@ class _RegisterbadgesscreenState extends State<Registerbadgesscreen> {
   static String avatarurl = '';
   static String bio = '';
 
-  String codeforces, codechef, atcoder, spoj;
+  String codeforces = '', codechef = '', atcoder = '', spoj = '';
   final _formkey = GlobalKey<FormState>();
   bool isloading = false;
 

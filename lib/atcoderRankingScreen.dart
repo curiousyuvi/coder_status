@@ -18,60 +18,108 @@ class _AtcoderRankingScreenState extends State<AtcoderRankingScreen> {
   var listOfUserData = [];
 
   getPeersList() async {
+    //initializing the lists empty
     listOfUserTiles = [];
     listOfUserData = [];
+
+    //getting my own map data
     var myAvatarurl = await GetUserInfo.getUserAvatarUrl();
     var myUserHandles = await GetUserInfo.getUserHandles();
-    var myRating = await GetRating.getAtcoderRating(myUserHandles[2]);
-    listOfUserData.add({
-      'avatarurl': myAvatarurl,
-      'userHandle': myUserHandles[2],
-      'rating': myRating
-    });
-    print('initial map data added');
+
+    //if I have that handle only then add me to ranking data
+    if (myUserHandles[2] != "") {
+      var myRating = await GetRating.getAtcoderRating(myUserHandles[2]);
+      print('my rating fetched');
+
+      //if I have rating other than 0 only then add me to ranking data
+      if (myRating != '0') {
+        listOfUserData.add({
+          'avatarurl': myAvatarurl,
+          'userHandle': myUserHandles[2],
+          'rating': myRating
+        });
+        print('initial map data added');
+      }
+    }
+    print('initial map data may be skipped');
+    //getting list of uids of my peers
     var peers = await GetUserInfo.getUserPeers();
-    if (peers.length != 0) {
+
+    //If I have peers only then proceed
+    if (peers.length > 0) {
+      //loop through all peer uids
       for (int i = 0; i < peers.length; i++) {
+        //get document map of uid
         var peerDocument = await GetUserInfo.getUserDocument(peers[i]);
-        var rating = await GetRating.getAtcoderRating(peerDocument['atcoder']);
-        for (int j = 0; j < listOfUserData.length; j++) {
-          if (j == (listOfUserData.length - 1)) {
-            if (j == 0) {
-              if (int.parse(listOfUserData[0]['rating']) <= int.parse(rating)) {
-                listOfUserData.insert(0, {
-                  'avatarurl': peerDocument['avatarurl'],
-                  'userHandle': peerDocument['atcoder'],
-                  'rating': rating
-                });
-                break;
-              } else {
-                listOfUserData.add({
-                  'avatarurl': peerDocument['avatarurl'],
-                  'userHandle': peerDocument['atcoder'],
-                  'rating': rating
-                });
-                break;
+        print('peer\'s document fetched');
+
+        //if the peer's document map has user Handle then then add it to ranking data
+        if (peerDocument['atcoder'] != '') {
+          //fetch rating for the current peer
+          var rating =
+              await GetRating.getAtcoderRating(peerDocument['atcoder']);
+          print('peer\'s rating fetched');
+
+          //if current peer has rating not equal to zero then add it to ranking data
+          if (rating != '0') {
+            //if initial list is not empty add to ranking data in descending sort
+            if (listOfUserData.length > 0) {
+              for (int j = 0; j < listOfUserData.length; j++) {
+                if (j == (listOfUserData.length - 1)) {
+                  if (j == 0) {
+                    if (double.parse(listOfUserData[0]['rating']) <=
+                        double.parse(rating)) {
+                      listOfUserData.insert(0, {
+                        'avatarurl': peerDocument['avatarurl'],
+                        'userHandle': peerDocument['atcoder'],
+                        'rating': rating
+                      });
+                      print('peer data map added');
+                      break;
+                    } else {
+                      listOfUserData.add({
+                        'avatarurl': peerDocument['avatarurl'],
+                        'userHandle': peerDocument['atcoder'],
+                        'rating': rating
+                      });
+                      print('peer data map added');
+                      break;
+                    }
+                  } else {
+                    listOfUserData.add({
+                      'avatarurl': peerDocument['avatarurl'],
+                      'userHandle': peerDocument['atcoder'],
+                      'rating': rating
+                    });
+                    print('peer data map added');
+                    break;
+                  }
+                } else if (double.parse(listOfUserData[j]['rating']) <=
+                    double.parse(rating)) {
+                  listOfUserData.insert(j, {
+                    'avatarurl': peerDocument['avatarurl'],
+                    'userHandle': peerDocument['atcoder'],
+                    'rating': rating
+                  });
+                  print('peer data map added');
+                  break;
+                }
               }
             } else {
+              //since initial list is empty
               listOfUserData.add({
                 'avatarurl': peerDocument['avatarurl'],
                 'userHandle': peerDocument['atcoder'],
                 'rating': rating
               });
-              break;
+              print('peer data map added');
             }
-          } else if (int.parse(listOfUserData[j]['rating']) <=
-              int.parse(rating)) {
-            listOfUserData.insert(j, {
-              'avatarurl': peerDocument['avatarurl'],
-              'userHandle': peerDocument['atcoder'],
-              'rating': rating
-            });
-            break;
           }
         }
-        print('peer data map added');
+        print('peer data map may be skipped');
       }
+
+      //converting ranking data into widgets
       for (int j = 0; j < listOfUserData.length; j++) {
         listOfUserTiles.add(MyRankingUserTile(
             listOfUserData[j]['avatarurl'],
@@ -81,6 +129,7 @@ class _AtcoderRankingScreenState extends State<AtcoderRankingScreen> {
       }
       print('widgets added');
     }
+
     setState(() {
       isFirstTime = false;
     });
@@ -111,7 +160,7 @@ class _AtcoderRankingScreenState extends State<AtcoderRankingScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'You haven\'t added any Peers those are on Atcoder',
+                          'You and your peers are not on Atcoder',
                           style: TextStyle(
                               color: ColorSchemeClass.lightgrey,
                               fontFamily: 'young',

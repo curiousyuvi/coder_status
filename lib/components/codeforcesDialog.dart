@@ -46,14 +46,14 @@ showCodeforcesDialog(BuildContext context, Rect rect, String codeforcesHandle,
               Row(
                 children: [
                   SizedBox(
-                    width:
-                        rect.left - MediaQuery.of(context).size.width * 0.045,
+                    width: rect.left - MediaQuery.of(context).size.width * 0.03,
                   ),
                   GestureDetector(
                     onTap: () {},
                     child: Stack(
                       children: [
                         GlassContainer(
+                          blur: 3,
                           width: MediaQuery.of(context).size.width * 0.38,
                           height: MediaQuery.of(context).size.height * 0.1265,
                           borderRadius: BorderRadius.circular(10),
