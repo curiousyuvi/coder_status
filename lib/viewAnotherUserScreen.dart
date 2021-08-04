@@ -317,15 +317,86 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.02,
                         ),
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.32,
-                          width: MediaQuery.of(context).size.width * 0.6,
-                          child: Theme(
-                            data: ThemeData(accentColor: Colors.transparent),
-                            child: GridView.count(
-                                crossAxisCount: 2, children: listOfRatingCards),
-                          ),
-                        )
+                        listOfRatingCards.length == 0
+                            ? Container(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.32,
+                                width: MediaQuery.of(context).size.width * 0.6,
+                                child: Center(
+                                  child: Text(
+                                    'You haven\'t added any User Handles or you don\'t have rating on a platform',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        color: ColorSchemeClass.darkgrey,
+                                        fontFamily: 'young',
+                                        fontSize:
+                                            MediaQuery.of(context).size.height *
+                                                0.02),
+                                  ),
+                                ),
+                              )
+                            : (listOfRatingCards.length % 2 == 1)
+                                ? listOfRatingCards.length == 3
+                                    ? Column(
+                                        children: [
+                                          Container(
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.155,
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.6,
+                                            child: Theme(
+                                              data: ThemeData(
+                                                  accentColor:
+                                                      Colors.transparent),
+                                              child: GridView.count(
+                                                  crossAxisCount: 2,
+                                                  children: listOfRatingCards
+                                                      .sublist(0, 2)),
+                                            ),
+                                          ),
+                                          Container(
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.155,
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.6,
+                                            child: Center(
+                                              child: listOfRatingCards[2],
+                                            ),
+                                          )
+                                        ],
+                                      )
+                                    : Container(
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.155,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.6,
+                                        child: Center(
+                                          child: listOfRatingCards[0],
+                                        ),
+                                      )
+                                : Container(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.32,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.6,
+                                    child: Theme(
+                                      data: ThemeData(
+                                          accentColor: Colors.transparent),
+                                      child: GridView.count(
+                                          crossAxisCount: 2,
+                                          children: listOfRatingCards),
+                                    ),
+                                  )
                       ],
                     ),
                   ],
