@@ -103,16 +103,16 @@ class _CodeforcesRankingScreenState extends State<CodeforcesRankingScreen> {
       }
 
       //converting ranking data into widgets
-      for (int j = 0; j < listOfUserData.length; j++) {
-        listOfUserTiles.add(MyRankingUserTile(
-            listOfUserData[j]['avatarurl'],
-            listOfUserData[j]['userHandle'],
-            listOfUserData[j]['rating'],
-            (j + 1)));
-      }
-      print('widgets added');
-    }
 
+    }
+    for (int j = 0; j < listOfUserData.length; j++) {
+      listOfUserTiles.add(MyRankingUserTile(
+          listOfUserData[j]['avatarurl'],
+          listOfUserData[j]['userHandle'],
+          listOfUserData[j]['rating'],
+          (j + 1)));
+    }
+    print('widgets added');
     setState(() {
       isFirstTime = false;
     });

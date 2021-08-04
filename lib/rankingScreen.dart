@@ -53,124 +53,136 @@ class _RankingScreenState extends State<RankingScreen> {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.05,
                   ),
-                  GridView.count(
-                    shrinkWrap: true,
-                    crossAxisCount: 2,
-                    mainAxisSpacing: MediaQuery.of(context).size.width * 0.1,
-                    crossAxisSpacing: MediaQuery.of(context).size.width * 0.1,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return CodeforcesRankingScreen();
-                          }));
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: ColorSchemeClass.codeforcespurple
-                                      .withOpacity(0.5),
-                                  width: 2),
-                              boxShadow: [
-                                BoxShadow(
+                  Container(
+                    child: GridView.count(
+                      shrinkWrap: true,
+                      crossAxisCount: 2,
+                      mainAxisSpacing: MediaQuery.of(context).size.width * 0.07,
+                      crossAxisSpacing:
+                          MediaQuery.of(context).size.width * 0.07,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return CodeforcesRankingScreen();
+                            }));
+                          },
+                          child: Container(
+                            margin: EdgeInsets.all(
+                                MediaQuery.of(context).size.width * 0.02),
+                            decoration: BoxDecoration(
+                                border: Border.all(
                                     color: ColorSchemeClass.codeforcespurple
-                                        .withOpacity(0.2),
-                                    offset: Offset(
-                                        0,
-                                        MediaQuery.of(context).size.height *
-                                            0.007))
-                              ],
-                              borderRadius: BorderRadius.circular(10),
-                              image: DecorationImage(
-                                  image: AssetImage(
-                                      'images/codeforcesSquare.jpg'))),
+                                        .withOpacity(0.5),
+                                    width: 2),
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: ColorSchemeClass.codeforcespurple
+                                          .withOpacity(0.2),
+                                      offset: Offset(
+                                          0,
+                                          MediaQuery.of(context).size.height *
+                                              0.007))
+                                ],
+                                borderRadius: BorderRadius.circular(10),
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        'images/codeforcesSquare.jpg'))),
+                          ),
                         ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return CodechefRankingScreen();
-                          }));
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: ColorSchemeClass.codechefbrown
-                                      .withOpacity(0.5),
-                                  width: 2),
-                              boxShadow: [
-                                BoxShadow(
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return CodechefRankingScreen();
+                            }));
+                          },
+                          child: Container(
+                            margin: EdgeInsets.all(
+                                MediaQuery.of(context).size.width * 0.02),
+                            decoration: BoxDecoration(
+                                border: Border.all(
                                     color: ColorSchemeClass.codechefbrown
-                                        .withOpacity(0.2),
-                                    offset: Offset(
-                                        0,
-                                        MediaQuery.of(context).size.height *
-                                            0.007))
-                              ],
-                              borderRadius: BorderRadius.circular(10),
-                              image: DecorationImage(
-                                  image:
-                                      AssetImage('images/codechefSquare.jpg'))),
+                                        .withOpacity(0.5),
+                                    width: 2),
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: ColorSchemeClass.codechefbrown
+                                          .withOpacity(0.2),
+                                      offset: Offset(
+                                          0,
+                                          MediaQuery.of(context).size.height *
+                                              0.007))
+                                ],
+                                borderRadius: BorderRadius.circular(10),
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        'images/codechefSquare.jpg'))),
+                          ),
                         ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return AtcoderRankingScreen();
-                          }));
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: ColorSchemeClass.atcodergrey
-                                      .withOpacity(0.5),
-                                  width: 2),
-                              boxShadow: [
-                                BoxShadow(
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return AtcoderRankingScreen();
+                            }));
+                          },
+                          child: Container(
+                            margin: EdgeInsets.all(
+                                MediaQuery.of(context).size.width * 0.02),
+                            decoration: BoxDecoration(
+                                border: Border.all(
                                     color: ColorSchemeClass.atcodergrey
-                                        .withOpacity(0.2),
-                                    offset: Offset(
-                                        0,
-                                        MediaQuery.of(context).size.height *
-                                            0.007))
-                              ],
-                              borderRadius: BorderRadius.circular(10),
-                              image: DecorationImage(
-                                  image:
-                                      AssetImage('images/atcoderSquare.jpg'))),
+                                        .withOpacity(0.5),
+                                    width: 2),
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: ColorSchemeClass.atcodergrey
+                                          .withOpacity(0.2),
+                                      offset: Offset(
+                                          0,
+                                          MediaQuery.of(context).size.height *
+                                              0.007))
+                                ],
+                                borderRadius: BorderRadius.circular(10),
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        'images/atcoderSquare.jpg'))),
+                          ),
                         ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return SpojRankingScreen();
-                          }));
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: ColorSchemeClass.spojblue
-                                      .withOpacity(0.5),
-                                  width: 2),
-                              boxShadow: [
-                                BoxShadow(
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return SpojRankingScreen();
+                            }));
+                          },
+                          child: Container(
+                            margin: EdgeInsets.all(
+                                MediaQuery.of(context).size.width * 0.02),
+                            decoration: BoxDecoration(
+                                border: Border.all(
                                     color: ColorSchemeClass.spojblue
-                                        .withOpacity(0.2),
-                                    offset: Offset(
-                                        0,
-                                        MediaQuery.of(context).size.height *
-                                            0.007))
-                              ],
-                              borderRadius: BorderRadius.circular(10),
-                              image: DecorationImage(
-                                  image: AssetImage('images/spojSquare.jpg'))),
-                        ),
-                      )
-                    ],
+                                        .withOpacity(0.5),
+                                    width: 2),
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: ColorSchemeClass.spojblue
+                                          .withOpacity(0.2),
+                                      offset: Offset(
+                                          0,
+                                          MediaQuery.of(context).size.height *
+                                              0.007))
+                                ],
+                                borderRadius: BorderRadius.circular(10),
+                                image: DecorationImage(
+                                    image:
+                                        AssetImage('images/spojSquare.jpg'))),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ],
               )),
