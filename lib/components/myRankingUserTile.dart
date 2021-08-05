@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rive/rive.dart';
 import 'colorscheme.dart';
 
 class MyRankingUserTile extends StatelessWidget {
@@ -17,17 +18,38 @@ class MyRankingUserTile extends StatelessWidget {
           height: MediaQuery.of(context).size.height * 0.08,
           width: MediaQuery.of(context).size.width * 0.08,
           child: Center(
-            child: FittedBox(
-              fit: BoxFit.scaleDown,
-              child: Text(
-                '#' + rank.toString(),
-                style: TextStyle(
-                    color: ColorSchemeClass.lightgrey,
-                    fontFamily: 'young',
-                    fontWeight: FontWeight.bold,
-                    fontSize: MediaQuery.of(context).size.height * 0.03),
-              ),
-            ),
+            child: rank == 1
+                ? Row(
+                    children: [
+                      Container(
+                          width: MediaQuery.of(context).size.width * 0.06,
+                          height: MediaQuery.of(context).size.width * 0.06,
+                          child: RiveAnimation.asset('assets/crown.riv')),
+                      FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          rank.toString(),
+                          style: TextStyle(
+                              color: ColorSchemeClass.lightgrey,
+                              fontFamily: 'young',
+                              fontWeight: FontWeight.bold,
+                              fontSize:
+                                  MediaQuery.of(context).size.height * 0.03),
+                        ),
+                      ),
+                    ],
+                  )
+                : FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      '#' + rank.toString(),
+                      style: TextStyle(
+                          color: ColorSchemeClass.lightgrey,
+                          fontFamily: 'young',
+                          fontWeight: FontWeight.bold,
+                          fontSize: MediaQuery.of(context).size.height * 0.03),
+                    ),
+                  ),
           ),
         ),
         title: Container(

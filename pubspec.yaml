@@ -38,6 +38,7 @@ flutter:
     - images/
     - assets/cup_animation.riv
     - assets/document_animation.riv
+    - assets/crown.riv
   fonts:
     - family: Young
       fonts:
