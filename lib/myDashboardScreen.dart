@@ -265,8 +265,8 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
                                               child: Container(
                                                   width: MediaQuery.of(context)
                                                           .size
-                                                          .height *
-                                                      0.155,
+                                                          .width *
+                                                      0.3,
                                                   child: listOfRatingCards[2]),
                                             ),
                                           )
@@ -283,8 +283,8 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
                                           child: Container(
                                               width: MediaQuery.of(context)
                                                       .size
-                                                      .height *
-                                                  0.155,
+                                                      .width *
+                                                  0.3,
                                               child: listOfRatingCards[0]),
                                         ),
                                       )
