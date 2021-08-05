@@ -236,33 +236,44 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
                                     ),
                                     ColorSchemeClass.primarygreen)),
                             SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.25,
+                              width: MediaQuery.of(context).size.width * 0.15,
                             ),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Text(
-                                  name,
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontFamily: 'young',
-                                      fontSize:
-                                          MediaQuery.of(context).size.height *
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.4,
+                                  child: FittedBox(
+                                    fit: BoxFit.scaleDown,
+                                    child: Text(
+                                      name,
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontFamily: 'young',
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
                                               0.03),
+                                    ),
+                                  ),
                                 ),
                                 SizedBox(
                                   height: MediaQuery.of(context).size.height *
                                       0.007,
                                 ),
-                                Text(
-                                  '@' + codername,
-                                  style: TextStyle(
-                                      color: ColorSchemeClass.lightgrey,
-                                      fontFamily: 'young',
-                                      fontSize:
-                                          MediaQuery.of(context).size.height *
-                                              0.02),
+                                FittedBox(
+                                  fit: BoxFit.scaleDown,
+                                  child: Text(
+                                    '@' + codername,
+                                    style: TextStyle(
+                                        color: ColorSchemeClass.lightgrey,
+                                        fontFamily: 'young',
+                                        fontSize:
+                                            MediaQuery.of(context).size.height *
+                                                0.02),
+                                  ),
                                 ),
                               ],
                             )
