@@ -3,7 +3,7 @@ import 'package:codersstatus/components/myAppBarWithBack.dart';
 import 'package:codersstatus/components/myRankingUserTile.dart';
 import 'package:codersstatus/components/topThreeRankingCard.dart';
 import 'package:codersstatus/firebase_layer/getUserInfo.dart';
-import 'package:codersstatus/functions/getRating.dart';
+import 'package:codersstatus/functions/getRatingFromAPI.dart';
 import 'package:flutter/material.dart';
 
 class CodeforcesRankingScreen extends StatefulWidget {
@@ -30,7 +30,8 @@ class _CodeforcesRankingScreenState extends State<CodeforcesRankingScreen> {
 
     //if I have that handle only then add me to ranking data
     if (myUserHandles[0] != "") {
-      var myRating = await GetRating.getCodeforcesRating(myUserHandles[0]);
+      var myRating =
+          await GetRatingFromAPI.getCodeforcesRating(myUserHandles[0]);
       print('my rating fetched');
 
       //if I have rating other than 0 only then add me to ranking data
@@ -59,8 +60,8 @@ class _CodeforcesRankingScreenState extends State<CodeforcesRankingScreen> {
         //if the peer's document map has user Handle then then add it to ranking data
         if (peerDocument['codeforces'] != '') {
           //fetch rating for the current peer
-          var rating =
-              await GetRating.getCodeforcesRating(peerDocument['codeforces']);
+          var rating = await GetRatingFromAPI.getCodeforcesRating(
+              peerDocument['codeforces']);
           print('peer\'s rating fetched');
 
           //if current peer has rating not equal to zero then add it to ranking data

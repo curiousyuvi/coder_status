@@ -2,7 +2,7 @@ import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/components/myAppBarWithBack.dart';
 import 'package:codersstatus/components/myRankingUserTile.dart';
 import 'package:codersstatus/firebase_layer/getUserInfo.dart';
-import 'package:codersstatus/functions/getRating.dart';
+import 'package:codersstatus/functions/getRatingFromAPI.dart';
 import 'package:flutter/material.dart';
 
 import 'components/topThreeRankingCard.dart';
@@ -30,7 +30,7 @@ class _AtcoderRankingScreenState extends State<AtcoderRankingScreen> {
 
     //if I have that handle only then add me to ranking data
     if (myUserHandles[2] != "") {
-      var myRating = await GetRating.getAtcoderRating(myUserHandles[2]);
+      var myRating = await GetRatingFromAPI.getAtcoderRating(myUserHandles[2]);
       print('my rating fetched');
 
       //if I have rating other than 0 only then add me to ranking data
@@ -59,7 +59,7 @@ class _AtcoderRankingScreenState extends State<AtcoderRankingScreen> {
         if (peerDocument['atcoder'] != '') {
           //fetch rating for the current peer
           var rating =
-              await GetRating.getAtcoderRating(peerDocument['atcoder']);
+              await GetRatingFromAPI.getAtcoderRating(peerDocument['atcoder']);
           print('peer\'s rating fetched');
 
           //if current peer has rating not equal to zero then add it to ranking data

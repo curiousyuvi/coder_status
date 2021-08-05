@@ -7,7 +7,7 @@ import 'package:codersstatus/components/myRatingCard.dart';
 import 'package:codersstatus/components/spojDialog.dart';
 import 'package:codersstatus/components/urls.dart';
 import 'package:codersstatus/firebase_layer/getUserInfo.dart';
-import 'package:codersstatus/functions/getRating.dart';
+import 'package:codersstatus/functions/getRatingFromAPI.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:codersstatus/components/colorscheme.dart';
@@ -15,6 +15,8 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:rect_getter/rect_getter.dart';
+
+import 'functions/getRatingFromScraping.dart';
 
 class MyDashboardScreen extends StatefulWidget {
   @override
@@ -49,7 +51,8 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
     userhandles[3] = userDocument['spoj'];
 
     if (userhandles[0] != '') {
-      userrating[0] = await GetRating.getCodeforcesRating(userhandles[0]);
+      userrating[0] =
+          await GetRatingFromAPI.getCodeforcesRating(userhandles[0]);
       if (userrating[0] != '0')
         listOfRatingCards.add(RectGetter(
           key: globalKey1,
@@ -67,7 +70,7 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
     }
 
     if (userhandles[1] != '') {
-      userrating[1] = await GetRating.getCodechefRating(userhandles[1]);
+      userrating[1] = await GetRatingFromAPI.getCodechefRating(userhandles[1]);
       if (userrating[1] != '0')
         listOfRatingCards.add(RectGetter(
           key: globalKey2,
@@ -85,7 +88,7 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
     }
 
     if (userhandles[2] != '') {
-      userrating[2] = await GetRating.getAtcoderRating(userhandles[2]);
+      userrating[2] = await GetRatingFromAPI.getAtcoderRating(userhandles[2]);
       if (userrating[2] != '0')
         listOfRatingCards.add(RectGetter(
           key: globalKey3,
@@ -103,7 +106,7 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
     }
 
     if (userhandles[3] != '') {
-      userrating[3] = await GetRating.getSpojRating(userhandles[3]);
+      userrating[3] = await GetRatingFromAPI.getSpojRating(userhandles[3]);
       if (userrating[3] != '0')
         listOfRatingCards.add(RectGetter(
           key: globalKey4,

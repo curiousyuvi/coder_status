@@ -21,7 +21,8 @@ InputDecoration myInputDecoration = InputDecoration(
         borderRadius: BorderRadius.circular(5),
         borderSide: BorderSide(color: Colors.red, width: 2)),
     hintText: 'Enter a value',
-    hintStyle: TextStyle(color: ColorSchemeClass.unactivatedblack));
+    hintStyle:
+        TextStyle(color: ColorSchemeClass.unactivatedblack, fontSize: 17));
 
 InputDecoration myPassageInputDecoration = InputDecoration(
     fillColor: ColorSchemeClass.darkgrey,
@@ -39,4 +40,5 @@ InputDecoration myPassageInputDecoration = InputDecoration(
         borderRadius: BorderRadius.circular(5),
         borderSide: BorderSide(color: Colors.red, width: 2)),
     hintText: 'Enter a value',
-    hintStyle: TextStyle(color: ColorSchemeClass.unactivatedblack));
+    hintStyle:
+        TextStyle(color: ColorSchemeClass.unactivatedblack, fontSize: 17));

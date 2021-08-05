@@ -11,7 +11,7 @@ import 'package:codersstatus/components/urls.dart';
 import 'package:codersstatus/editProfileScreen.dart';
 import 'package:codersstatus/firebase_layer/getUserInfo.dart';
 import 'package:codersstatus/firebase_layer/setUserInfo.dart';
-import 'package:codersstatus/functions/getRating.dart';
+import 'package:codersstatus/functions/getRatingFromAPI.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:codersstatus/components/colorscheme.dart';
@@ -99,7 +99,8 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
     userhandles[3] = userDocument['spoj'];
 
     if (userhandles[0] != '') {
-      userrating[0] = await GetRating.getCodeforcesRating(userhandles[0]);
+      userrating[0] =
+          await GetRatingFromAPI.getCodeforcesRating(userhandles[0]);
       if (userrating[0] != '0')
         listOfRatingCards.add(RectGetter(
           key: globalKey1,
@@ -117,7 +118,7 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
     }
 
     if (userhandles[1] != '') {
-      userrating[1] = await GetRating.getCodechefRating(userhandles[1]);
+      userrating[1] = await GetRatingFromAPI.getCodechefRating(userhandles[1]);
       if (userrating[1] != '0')
         listOfRatingCards.add(RectGetter(
           key: globalKey2,
@@ -135,7 +136,7 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
     }
 
     if (userhandles[2] != '') {
-      userrating[2] = await GetRating.getAtcoderRating(userhandles[2]);
+      userrating[2] = await GetRatingFromAPI.getAtcoderRating(userhandles[2]);
       if (userrating[2] != '0')
         listOfRatingCards.add(RectGetter(
           key: globalKey3,
@@ -153,7 +154,7 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
     }
 
     if (userhandles[3] != '') {
-      userrating[3] = await GetRating.getSpojRating(userhandles[3]);
+      userrating[3] = await GetRatingFromAPI.getSpojRating(userhandles[3]);
       if (userrating[3] != '0')
         listOfRatingCards.add(RectGetter(
           key: globalKey4,
@@ -219,21 +220,23 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
                           height: MediaQuery.of(context).size.height * 0.03,
                         ),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Container(
+                                padding: EdgeInsets.all(
+                                    MediaQuery.of(context).size.width * 0.02),
                                 height:
-                                    MediaQuery.of(context).size.height * 0.14,
+                                    MediaQuery.of(context).size.height * 0.17,
                                 width:
-                                    MediaQuery.of(context).size.height * 0.14,
+                                    MediaQuery.of(context).size.height * 0.17,
                                 child: MyOtherCircleAvatar(
                                     Image(
                                       image: NetworkImage(avatarurl),
                                     ),
-                                    ColorSchemeClass.lightgrey)),
+                                    ColorSchemeClass.primarygreen)),
                             SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.15,
+                              width: MediaQuery.of(context).size.width * 0.25,
                             ),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,

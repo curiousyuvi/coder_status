@@ -34,8 +34,11 @@ class MyTextEormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.of(context).size.width * 0.04,
+          vertical: MediaQuery.of(context).size.width * 0.02),
       child: TextFormField(
+        cursorHeight: 17,
         controller: textEditingController,
         validator: validation,
         onChanged: onchangedfunction,
@@ -45,9 +48,9 @@ class MyTextEormField extends StatelessWidget {
         style: TextStyle(
             color: Colors.white,
             fontFamily: 'young',
-            fontSize: 15,
+            fontSize: 17,
             fontWeight: FontWeight.normal),
-        decoration: myPassageInputDecoration.copyWith(
+        decoration: myInputDecoration.copyWith(
           hintText: tfhintText,
           prefixIcon: tficon,
           focusedBorder: OutlineInputBorder(
