@@ -7,13 +7,16 @@ class MyButton extends StatelessWidget {
   Color buttoncolor;
   Color titlecolor;
   String title;
+  IconData iconData;
 
-  MyButton(Color buttoncolor, String title, Function dofunction) {
+  MyButton(Color buttoncolor, String title, Function dofunction,
+      [IconData iconData = null]) {
     this.prominent = prominent;
     this.title = title;
     this.dofunction = dofunction;
     titlecolor = ColorSchemeClass.lightgrey;
     this.buttoncolor = buttoncolor;
+    this.iconData = iconData;
   }
 
   @override
@@ -36,17 +39,35 @@ class MyButton extends StatelessWidget {
             ]),
         height: MediaQuery.of(context).size.height * 0.07,
         width: double.infinity,
-        child: FlatButton(
+        child: MaterialButton(
           onPressed: dofunction,
           minWidth: double.infinity,
           height: double.infinity,
-          child: Text(
-            title,
-            style: TextStyle(
-                color: titlecolor,
-                fontFamily: 'young',
-                fontWeight: FontWeight.bold,
-                fontSize: MediaQuery.of(context).size.height * 0.025),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              iconData == null
+                  ? SizedBox()
+                  : Row(
+                      children: [
+                        Icon(
+                          iconData,
+                          color: ColorSchemeClass.lightgrey,
+                          size: MediaQuery.of(context).size.height * 0.03,
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.height * 0.025,
+                        )
+                      ],
+                    ),
+              Text(
+                title,
+                style: TextStyle(
+                    color: titlecolor,
+                    fontFamily: 'young',
+                    fontSize: MediaQuery.of(context).size.height * 0.025),
+              ),
+            ],
           ),
         ),
       ),

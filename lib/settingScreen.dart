@@ -6,6 +6,7 @@ import 'package:codersstatus/components/myChildListTile.dart';
 import 'package:codersstatus/deleteAccountScreen.dart';
 import 'package:codersstatus/editProfileScreen.dart';
 import 'package:codersstatus/firebase_layer/logoutUser.dart';
+import 'package:codersstatus/test.dart';
 import 'package:codersstatus/updatePasswordScreen.dart';
 import 'package:codersstatus/editUserHandlesScreen.dart';
 
@@ -100,12 +101,20 @@ class _SettingScreenState extends State<SettingScreen> {
                     ),
                   ],
                 ),
-                MySettingsNonExpansionTile(
-                    Icon(
-                      Icons.info,
-                      color: ColorSchemeClass.lightgrey,
-                    ),
-                    'About Developer'),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return TestScreen();
+                    }));
+                  },
+                  child: MySettingsNonExpansionTile(
+                      Icon(
+                        Icons.info,
+                        color: ColorSchemeClass.lightgrey,
+                      ),
+                      'About Developer'),
+                ),
                 GestureDetector(
                   onTap: () {
                     logout(context);

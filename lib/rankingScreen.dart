@@ -35,7 +35,6 @@ class _RankingScreenState extends State<RankingScreen> {
                     'Choose Platform',
                     style: TextStyle(
                         color: ColorSchemeClass.lightgrey,
-                        fontWeight: FontWeight.bold,
                         fontFamily: 'young',
                         fontSize: MediaQuery.of(context).size.height * 0.033),
                   ),

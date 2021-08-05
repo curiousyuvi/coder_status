@@ -66,7 +66,6 @@ class _PeersScreenState extends State<PeersScreen> {
                           style: TextStyle(
                               color: ColorSchemeClass.lightgrey,
                               fontFamily: 'young',
-                              fontWeight: FontWeight.bold,
                               fontSize:
                                   MediaQuery.of(context).size.height * 0.025),
                         ),
@@ -85,7 +84,6 @@ class _PeersScreenState extends State<PeersScreen> {
                                 decoration: TextDecoration.underline,
                                 color: ColorSchemeClass.primarygreen,
                                 fontFamily: 'young',
-                                fontWeight: FontWeight.bold,
                                 fontSize:
                                     MediaQuery.of(context).size.height * 0.028),
                           ),

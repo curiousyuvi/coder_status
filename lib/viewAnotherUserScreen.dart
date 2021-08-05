@@ -227,9 +227,11 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
                                     MediaQuery.of(context).size.height * 0.14,
                                 width:
                                     MediaQuery.of(context).size.height * 0.14,
-                                child: MyOtherCircleAvatar(Image(
-                                  image: NetworkImage(avatarurl),
-                                ))),
+                                child: MyOtherCircleAvatar(
+                                    Image(
+                                      image: NetworkImage(avatarurl),
+                                    ),
+                                    ColorSchemeClass.lightgrey)),
                             SizedBox(
                               width: MediaQuery.of(context).size.width * 0.15,
                             ),
@@ -242,7 +244,6 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontFamily: 'young',
-                                      fontWeight: FontWeight.bold,
                                       fontSize:
                                           MediaQuery.of(context).size.height *
                                               0.03),
@@ -289,11 +290,11 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
                                         ColorSchemeClass.lightgrey,
                                         'Remove from Peers', () {
                                         removeFromPeers();
-                                      })
+                                      }, Icons.remove_circle_outline)
                                     : MyButton(ColorSchemeClass.primarygreen,
                                         'Add as a Peer', () {
                                         addInPeers();
-                                      }),
+                                      }, Icons.add_circle),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.02,
                         ),
@@ -324,7 +325,7 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
                                 width: MediaQuery.of(context).size.width * 0.6,
                                 child: Center(
                                   child: Text(
-                                    'You haven\'t added any User Handles or you don\'t have rating on a platform',
+                                    'The user hasn\'t added any User Handles or doesn\'t have rating on a platform',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         color: ColorSchemeClass.darkgrey,

@@ -1,5 +1,5 @@
-import 'package:codersstatus/components/myButton.dart';
-import 'package:codersstatus/firebase_layer/validatePassword.dart';
+import 'package:codersstatus/components/topThreeRankingCard.dart';
+import 'package:codersstatus/components/urls.dart';
 import 'package:flutter/material.dart';
 
 class TestScreen extends StatefulWidget {
@@ -10,35 +10,22 @@ class TestScreen extends StatefulWidget {
 }
 
 class _TestScreenState extends State<TestScreen> {
-  String oldPassword = '';
-
-  void _submit() async {
-    final flag = await validatePassword(oldPassword);
-    if (flag)
-      print('Password match!');
-    else
-      print("Password doen't match!!");
-  }
-
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Center(
-        child: Column(
+    return Scaffold(
+      body: SafeArea(
+        child: ListView(
           children: [
-            Material(
-              child: TextField(
-                onChanged: (val) {
-                  oldPassword = val;
-                },
-              ),
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.05,
-            ),
-            MyButton(Colors.green, 'Submit', () {
-              _submit();
-            })
+            TopThreeRankingCard(
+                Urls.avatar4url,
+                Urls.avatar2url,
+                Urls.avatar3url,
+                'curiousyuvi',
+                'rosekamallove',
+                'anupRaj',
+                '1602',
+                '1556',
+                '1448')
           ],
         ),
       ),

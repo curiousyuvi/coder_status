@@ -171,7 +171,6 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
                           style: TextStyle(
                               color: Colors.white,
                               fontFamily: 'young',
-                              fontWeight: FontWeight.bold,
                               fontSize:
                                   MediaQuery.of(context).size.height * 0.035),
                         ),

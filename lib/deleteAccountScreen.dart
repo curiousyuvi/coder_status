@@ -134,7 +134,6 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
                                       style: TextStyle(
                                           color: ColorSchemeClass.dangerred,
                                           fontFamily: 'young',
-                                          fontWeight: FontWeight.bold,
                                           fontSize: MediaQuery.of(context)
                                                   .size
                                                   .height *
@@ -189,8 +188,8 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
                         horizontal: MediaQuery.of(context).size.width * 0.03,
                         vertical: MediaQuery.of(context).size.height * 0.01),
                     height: MediaQuery.of(context).size.height * 0.09,
-                    child: MyButton(
-                        ColorSchemeClass.dangerred, 'Delete Account', _submit),
+                    child: MyButton(ColorSchemeClass.dangerred,
+                        'Delete Account', _submit, Icons.delete),
                   ),
                 ],
               ),

@@ -19,7 +19,6 @@ class MyAppBar extends StatelessWidget {
         style: TextStyle(
             color: ColorSchemeClass.lightgrey,
             fontFamily: 'young',
-            fontWeight: FontWeight.bold,
             fontSize: MediaQuery.of(context).size.height * 0.035),
       ),
     );

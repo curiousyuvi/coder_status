@@ -3,7 +3,8 @@ import 'package:codersstatus/components/colorscheme.dart';
 
 class MyOtherCircleAvatar extends StatelessWidget {
   Image avatarimage;
-  MyOtherCircleAvatar(this.avatarimage);
+  Color borderColor;
+  MyOtherCircleAvatar(this.avatarimage, this.borderColor);
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +12,7 @@ class MyOtherCircleAvatar extends StatelessWidget {
       height: double.infinity,
       width: double.infinity,
       decoration: BoxDecoration(
-          border: Border.all(color: ColorSchemeClass.lightgrey, width: 2),
+          border: Border.all(color: borderColor, width: 4),
           shape: BoxShape.circle,
           image:
               DecorationImage(fit: BoxFit.fitWidth, image: avatarimage.image)),

@@ -7,13 +7,15 @@ class MyOutlineButton extends StatelessWidget {
   Color buttoncolor;
   Color titlecolor;
   String title;
-
-  MyOutlineButton(Color buttoncolor, String title, Function dofunction) {
+  IconData iconData;
+  MyOutlineButton(Color buttoncolor, String title, Function dofunction,
+      [IconData iconData = null]) {
     this.prominent = prominent;
     this.title = title;
     this.dofunction = dofunction;
     titlecolor = buttoncolor;
     this.buttoncolor = buttoncolor;
+    this.iconData = iconData;
   }
 
   @override
@@ -31,13 +33,33 @@ class MyOutlineButton extends StatelessWidget {
           onPressed: dofunction,
           minWidth: double.infinity,
           height: double.infinity,
-          child: Text(
-            title,
-            style: TextStyle(
-                color: titlecolor,
-                fontFamily: 'young',
-                fontWeight: FontWeight.bold,
-                fontSize: MediaQuery.of(context).size.height * 0.025),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              iconData == null
+                  ? SizedBox()
+                  : Row(
+                      children: [
+                        Icon(
+                          iconData,
+                          color: buttoncolor,
+                          size: MediaQuery.of(context).size.height * 0.03,
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.height * 0.025,
+                        )
+                      ],
+                    ),
+              Text(
+                title,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: titlecolor,
+                    fontFamily: 'young',
+                    fontSize: MediaQuery.of(context).size.height * 0.025),
+              ),
+            ],
           ),
         ),
       ),

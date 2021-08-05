@@ -32,23 +32,34 @@ class MyRankingUserTile extends StatelessWidget {
                           style: TextStyle(
                               color: ColorSchemeClass.lightgrey,
                               fontFamily: 'young',
-                              fontWeight: FontWeight.bold,
                               fontSize:
                                   MediaQuery.of(context).size.height * 0.03),
                         ),
                       ),
                     ],
                   )
-                : FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: Text(
-                      '#' + rank.toString(),
-                      style: TextStyle(
-                          color: ColorSchemeClass.lightgrey,
-                          fontFamily: 'young',
-                          fontWeight: FontWeight.bold,
-                          fontSize: MediaQuery.of(context).size.height * 0.03),
-                    ),
+                : Row(
+                    children: [
+                      Icon(
+                        Icons.play_arrow,
+                        size: MediaQuery.of(context).size.width * 0.035,
+                        color: ColorSchemeClass.lightgrey,
+                      ),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.015,
+                      ),
+                      FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          rank.toString(),
+                          style: TextStyle(
+                              color: ColorSchemeClass.lightgrey,
+                              fontFamily: 'young',
+                              fontSize:
+                                  MediaQuery.of(context).size.height * 0.03),
+                        ),
+                      ),
+                    ],
                   ),
           ),
         ),
@@ -104,7 +115,6 @@ class MyRankingUserTile extends StatelessWidget {
                       style: TextStyle(
                           color: ColorSchemeClass.primarygreen,
                           fontFamily: 'young',
-                          fontWeight: FontWeight.bold,
                           fontSize: MediaQuery.of(context).size.height * 0.023),
                     ),
                   ),

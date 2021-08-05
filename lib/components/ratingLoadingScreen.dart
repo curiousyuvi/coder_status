@@ -35,7 +35,6 @@ class RatingsLoadingScreen extends StatelessWidget {
                       style: TextStyle(
                           color: Colors.white,
                           fontFamily: 'young',
-                          fontWeight: FontWeight.bold,
                           fontSize: MediaQuery.of(context).size.height * 0.02),
                     ),
                   ],

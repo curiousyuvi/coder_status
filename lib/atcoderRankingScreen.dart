@@ -5,6 +5,8 @@ import 'package:codersstatus/firebase_layer/getUserInfo.dart';
 import 'package:codersstatus/functions/getRating.dart';
 import 'package:flutter/material.dart';
 
+import 'components/topThreeRankingCard.dart';
+
 class AtcoderRankingScreen extends StatefulWidget {
   const AtcoderRankingScreen({Key key}) : super(key: key);
 
@@ -104,12 +106,35 @@ class _AtcoderRankingScreenState extends State<AtcoderRankingScreen> {
 
     }
 
-    for (int j = 0; j < listOfUserData.length; j++) {
-      listOfUserTiles.add(MyRankingUserTile(
-          listOfUserData[j]['avatarurl'],
-          listOfUserData[j]['userHandle'],
-          listOfUserData[j]['rating'],
-          (j + 1)));
+    if (listOfUserData.length >= 3) {
+      listOfUserTiles.add(TopThreeRankingCard(
+          listOfUserData[0]['avatarurl'],
+          listOfUserData[1]['avatarurl'],
+          listOfUserData[2]['avatarurl'],
+          listOfUserData[0]['userHandle'],
+          listOfUserData[1]['userHandle'],
+          listOfUserData[2]['userHandle'],
+          listOfUserData[0]['rating'],
+          listOfUserData[1]['rating'],
+          listOfUserData[2]['rating']));
+
+      for (int j = 3; j < listOfUserData.length; j++) {
+        listOfUserTiles.add(MyRankingUserTile(
+            listOfUserData[j]['avatarurl'],
+            listOfUserData[j]['userHandle'],
+            listOfUserData[j]['rating'],
+            (j + 1)));
+      }
+      print('widgets added');
+    } else {
+      for (int j = 0; j < listOfUserData.length; j++) {
+        listOfUserTiles.add(MyRankingUserTile(
+            listOfUserData[j]['avatarurl'],
+            listOfUserData[j]['userHandle'],
+            listOfUserData[j]['rating'],
+            (j + 1)));
+      }
+      print('widgets added');
     }
     print('widgets added');
     setState(() {
@@ -146,7 +171,6 @@ class _AtcoderRankingScreenState extends State<AtcoderRankingScreen> {
                           style: TextStyle(
                               color: ColorSchemeClass.lightgrey,
                               fontFamily: 'young',
-                              fontWeight: FontWeight.bold,
                               fontSize:
                                   MediaQuery.of(context).size.height * 0.025),
                         ),
@@ -165,7 +189,6 @@ class _AtcoderRankingScreenState extends State<AtcoderRankingScreen> {
                                 decoration: TextDecoration.underline,
                                 color: ColorSchemeClass.primarygreen,
                                 fontFamily: 'young',
-                                fontWeight: FontWeight.bold,
                                 fontSize:
                                     MediaQuery.of(context).size.height * 0.028),
                           ),
