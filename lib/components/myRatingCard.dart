@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rive/rive.dart';
 
 class MyRatingCard extends StatelessWidget {
   AssetImage tileimage;
@@ -61,6 +62,18 @@ class MyRatingCard extends StatelessWidget {
               ],
             )),
           ),
+        ),
+        Center(
+          child: Container(
+              height: MediaQuery.of(context).size.width * 0.25,
+              width: MediaQuery.of(context).size.width * 0.2,
+              child: Opacity(
+                opacity: 0.5,
+                child: RiveAnimation.asset(
+                  'assets/shine.riv',
+                  fit: BoxFit.cover,
+                ),
+              )),
         ),
       ],
     );
