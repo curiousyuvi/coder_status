@@ -263,17 +263,21 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
                                     height: MediaQuery.of(context).size.height *
                                         0.007,
                                   ),
-                                  FittedBox(
-                                    fit: BoxFit.scaleDown,
-                                    child: Text(
-                                      '@' + codername,
-                                      style: TextStyle(
-                                          color: ColorSchemeClass.lightgrey,
-                                          fontFamily: 'young',
-                                          fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.02),
+                                  Container(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.4,
+                                    child: FittedBox(
+                                      fit: BoxFit.scaleDown,
+                                      child: Text(
+                                        '@' + codername,
+                                        style: TextStyle(
+                                            color: ColorSchemeClass.lightgrey,
+                                            fontFamily: 'young',
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.02),
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -291,7 +295,7 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
                                       MaterialPageRoute(builder: (context) {
                                     return EditProfileScreen();
                                   }));
-                                })
+                                }, Icons.edit)
                               : isLoading
                                   ? Container(
                                       width: double.infinity,

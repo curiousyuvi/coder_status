@@ -46,32 +46,39 @@ class MyUserTile extends StatelessWidget {
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: Text(
-                        name,
-                        style: TextStyle(
-                            color: ColorSchemeClass.lightgrey,
-                            fontFamily: 'young',
-                            fontWeight: FontWeight.bold,
-                            fontSize:
-                                MediaQuery.of(context).size.height * 0.025),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.4,
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          name,
+                          style: TextStyle(
+                              color: ColorSchemeClass.lightgrey,
+                              fontFamily: 'young',
+                              fontWeight: FontWeight.bold,
+                              fontSize:
+                                  MediaQuery.of(context).size.height * 0.025),
+                        ),
                       ),
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.01,
                     ),
-                    FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: Text(
-                        '@' + codername,
-                        style: TextStyle(
-                            color: ColorSchemeClass.lightgrey.withOpacity(0.6),
-                            fontFamily: 'young',
-                            fontSize:
-                                MediaQuery.of(context).size.height * 0.02),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.4,
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          '@' + codername,
+                          style: TextStyle(
+                              color:
+                                  ColorSchemeClass.lightgrey.withOpacity(0.6),
+                              fontFamily: 'young',
+                              fontSize:
+                                  MediaQuery.of(context).size.height * 0.02),
+                        ),
                       ),
                     )
                   ],
