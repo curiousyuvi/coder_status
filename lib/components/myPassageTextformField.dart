@@ -34,7 +34,7 @@ class MyPassageTextEormField extends StatelessWidget {
         maxLines: null,
         validator: validation,
         onChanged: onchangedfunction,
-        keyboardType: TextInputType.name,
+        keyboardType: TextInputType.multiline,
         cursorColor: bordercolor,
         obscureText: false,
         style: TextStyle(

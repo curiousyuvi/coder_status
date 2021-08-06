@@ -8,6 +8,7 @@ import 'package:codersstatus/components/myOtherCircleAvatar.dart';
 import 'package:codersstatus/components/myOutlineButton.dart';
 import 'package:codersstatus/components/spojDialog.dart';
 import 'package:codersstatus/components/urls.dart';
+import 'package:codersstatus/components/viewAnotherUserScreenSkeleton.dart';
 import 'package:codersstatus/editProfileScreen.dart';
 import 'package:codersstatus/firebase_layer/getUserInfo.dart';
 import 'package:codersstatus/firebase_layer/setUserInfo.dart';
@@ -193,241 +194,251 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-        child: MyAppBarWithBack('User'),
-        preferredSize:
-            Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
-      ),
-      body: isFirstTime
-          ? FutureBuilder(
-              future: futureFunction,
-              builder: (context, snapshot) {
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              },
-            )
-          : SafeArea(
+    return isFirstTime
+        ? FutureBuilder(
+            future: futureFunction,
+            builder: (context, snapshot) {
+              return ViewAnotherUserScreenSkeleton();
+            },
+          )
+        : Scaffold(
+            appBar: PreferredSize(
+              child: MyAppBarWithBack('User'),
+              preferredSize:
+                  Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
+            ),
+            body: SafeArea(
               child: Container(
                 padding:
                     EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
                 child: Column(
                   children: [
-                    Column(
-                      children: [
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.03,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Container(
-                                padding: EdgeInsets.all(
-                                    MediaQuery.of(context).size.width * 0.02),
-                                height:
-                                    MediaQuery.of(context).size.height * 0.17,
-                                width:
-                                    MediaQuery.of(context).size.height * 0.17,
-                                child: MyOtherCircleAvatar(
-                                    Image(
-                                      image: NetworkImage(avatarurl),
-                                    ),
-                                    ColorSchemeClass.primarygreen)),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.15,
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Container(
+                    SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.03,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                  padding: EdgeInsets.all(
+                                      MediaQuery.of(context).size.width * 0.02),
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.17,
                                   width:
-                                      MediaQuery.of(context).size.width * 0.4,
-                                  child: FittedBox(
+                                      MediaQuery.of(context).size.height * 0.17,
+                                  child: MyOtherCircleAvatar(
+                                      Image(
+                                        image: NetworkImage(avatarurl),
+                                      ),
+                                      ColorSchemeClass.primarygreen)),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.15,
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.4,
+                                    child: FittedBox(
+                                      fit: BoxFit.scaleDown,
+                                      child: Text(
+                                        name,
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontFamily: 'young',
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.03),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.007,
+                                  ),
+                                  FittedBox(
                                     fit: BoxFit.scaleDown,
                                     child: Text(
-                                      name,
+                                      '@' + codername,
                                       style: TextStyle(
-                                          color: Colors.white,
+                                          color: ColorSchemeClass.lightgrey,
                                           fontFamily: 'young',
                                           fontSize: MediaQuery.of(context)
                                                   .size
                                                   .height *
-                                              0.03),
+                                              0.02),
                                     ),
                                   ),
-                                ),
-                                SizedBox(
-                                  height: MediaQuery.of(context).size.height *
-                                      0.007,
-                                ),
-                                FittedBox(
-                                  fit: BoxFit.scaleDown,
-                                  child: Text(
-                                    '@' + codername,
-                                    style: TextStyle(
-                                        color: ColorSchemeClass.lightgrey,
-                                        fontFamily: 'young',
-                                        fontSize:
-                                            MediaQuery.of(context).size.height *
-                                                0.02),
-                                  ),
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.02,
-                        ),
-                        isMe
-                            ? MyOutlineButton(
-                                ColorSchemeClass.lightgrey, 'Edit Profile', () {
-                                Navigator.push(context,
-                                    MaterialPageRoute(builder: (context) {
-                                  return EditProfileScreen();
-                                }));
-                              })
-                            : isLoading
-                                ? Container(
-                                    width: double.infinity,
-                                    height: MediaQuery.of(context).size.height *
-                                        0.078,
-                                    child: Center(
-                                      child: CircularProgressIndicator(),
-                                    ),
-                                  )
-                                : isPeered
-                                    ? MyOutlineButton(
-                                        ColorSchemeClass.lightgrey,
-                                        'Remove from Peers', () {
-                                        removeFromPeers();
-                                      }, Icons.remove_circle_outline)
-                                    : MyButton(ColorSchemeClass.primarygreen,
-                                        'Add as a Peer', () {
-                                        addInPeers();
-                                      }, Icons.add_circle),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.02,
-                        ),
-                        MyMidDividerWithTitle('Bio'),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.015,
-                        ),
-                        Text(
-                          bio,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: ColorSchemeClass.lightgrey,
-                              fontFamily: 'young',
-                              fontSize:
-                                  MediaQuery.of(context).size.height * 0.02),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.015,
-                        ),
-                        MyMidDividerWithTitle('Ratings'),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.02,
-                        ),
-                        listOfRatingCards.length == 0
-                            ? Container(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.32,
-                                width: MediaQuery.of(context).size.width * 0.6,
-                                child: Center(
-                                  child: Text(
-                                    'The user hasn\'t added any User Handles or doesn\'t have rating on a platform',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        color: ColorSchemeClass.darkgrey,
-                                        fontFamily: 'young',
-                                        fontSize:
-                                            MediaQuery.of(context).size.height *
-                                                0.02),
-                                  ),
-                                ),
+                                ],
                               )
-                            : (listOfRatingCards.length % 2 == 1)
-                                ? listOfRatingCards.length == 3
-                                    ? Column(
-                                        children: [
-                                          Container(
-                                            height: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.155,
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.6,
-                                            child: Theme(
-                                              data: ThemeData(
-                                                  accentColor:
-                                                      Colors.transparent),
-                                              child: GridView.count(
-                                                  crossAxisCount: 2,
-                                                  children: listOfRatingCards
-                                                      .sublist(0, 2)),
-                                            ),
-                                          ),
-                                          Container(
-                                            height: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.155,
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.6,
-                                            child: Center(
-                                              child: Container(
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .height *
-                                                      0.155,
-                                                  child: listOfRatingCards[2]),
-                                            ),
-                                          )
-                                        ],
-                                      )
-                                    : Container(
-                                        height:
-                                            MediaQuery.of(context).size.height *
-                                                0.155,
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.6,
-                                        child: Center(
-                                          child: Container(
-                                              width: MediaQuery.of(context)
+                            ],
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.02,
+                          ),
+                          isMe
+                              ? MyOutlineButton(
+                                  ColorSchemeClass.lightgrey, 'Edit Profile',
+                                  () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (context) {
+                                    return EditProfileScreen();
+                                  }));
+                                })
+                              : isLoading
+                                  ? Container(
+                                      width: double.infinity,
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.078,
+                                      child: Center(
+                                        child: CircularProgressIndicator(),
+                                      ),
+                                    )
+                                  : isPeered
+                                      ? MyOutlineButton(
+                                          ColorSchemeClass.lightgrey,
+                                          'Remove from Peers', () {
+                                          removeFromPeers();
+                                        }, Icons.remove_circle_outline)
+                                      : MyButton(ColorSchemeClass.primarygreen,
+                                          'Add as a Peer', () {
+                                          addInPeers();
+                                        }, Icons.add_circle),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.02,
+                          ),
+                          MyMidDividerWithTitle('Bio'),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.015,
+                          ),
+                          Text(
+                            bio,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: ColorSchemeClass.lightgrey,
+                                fontFamily: 'young',
+                                fontSize:
+                                    MediaQuery.of(context).size.height * 0.02),
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.015,
+                          ),
+                          MyMidDividerWithTitle('Ratings'),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.02,
+                          ),
+                          listOfRatingCards.length == 0
+                              ? Container(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.32,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.6,
+                                  child: Center(
+                                    child: Text(
+                                      'The user hasn\'t added any User Handles or doesn\'t have rating on a platform',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          color: ColorSchemeClass.darkgrey,
+                                          fontFamily: 'young',
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.02),
+                                    ),
+                                  ),
+                                )
+                              : (listOfRatingCards.length % 2 == 1)
+                                  ? listOfRatingCards.length == 3
+                                      ? Column(
+                                          children: [
+                                            Container(
+                                              height: MediaQuery.of(context)
                                                       .size
                                                       .height *
                                                   0.155,
-                                              child: listOfRatingCards[0]),
-                                        ),
-                                      )
-                                : Container(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.32,
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.6,
-                                    child: Theme(
-                                      data: ThemeData(
-                                          accentColor: Colors.transparent),
-                                      child: GridView.count(
-                                          crossAxisCount: 2,
-                                          children: listOfRatingCards),
-                                    ),
-                                  )
-                      ],
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.6,
+                                              child: Theme(
+                                                data: ThemeData(
+                                                    accentColor:
+                                                        Colors.transparent),
+                                                child: GridView.count(
+                                                    crossAxisCount: 2,
+                                                    children: listOfRatingCards
+                                                        .sublist(0, 2)),
+                                              ),
+                                            ),
+                                            Container(
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.155,
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.6,
+                                              child: Center(
+                                                child: Container(
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            0.155,
+                                                    child:
+                                                        listOfRatingCards[2]),
+                                              ),
+                                            )
+                                          ],
+                                        )
+                                      : Container(
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.155,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.6,
+                                          child: Center(
+                                            child: Container(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .height *
+                                                    0.155,
+                                                child: listOfRatingCards[0]),
+                                          ),
+                                        )
+                                  : Container(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.32,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.6,
+                                      child: Theme(
+                                        data: ThemeData(
+                                            accentColor: Colors.transparent),
+                                        child: GridView.count(
+                                            crossAxisCount: 2,
+                                            children: listOfRatingCards),
+                                      ),
+                                    )
+                        ],
+                      ),
                     ),
                   ],
                 ),
               ),
             ),
-    );
+          );
   }
 }

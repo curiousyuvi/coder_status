@@ -22,7 +22,8 @@ class MyButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
+      padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.of(context).size.width * 0.02),
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5),

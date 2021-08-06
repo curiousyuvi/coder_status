@@ -39,6 +39,7 @@ flutter:
     - assets/cup_animation.riv
     - assets/document_animation.riv
     - assets/crown.riv
+    - assets/skeleton-place-holder.riv
   fonts:
     - family: Young
       fonts:

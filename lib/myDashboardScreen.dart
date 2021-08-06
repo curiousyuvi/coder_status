@@ -2,6 +2,7 @@ import 'package:codersstatus/components/atcoderDialog.dart';
 import 'package:codersstatus/components/codechefDialog.dart';
 import 'package:codersstatus/components/codeforcesDialog.dart';
 import 'package:codersstatus/components/myCircleAvatar.dart';
+import 'package:codersstatus/components/myDashboardScreenSkeleton.dart';
 import 'package:codersstatus/components/myDividerWithTitle.dart';
 import 'package:codersstatus/components/myRatingCard.dart';
 import 'package:codersstatus/components/spojDialog.dart';
@@ -15,8 +16,6 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:rect_getter/rect_getter.dart';
-
-import 'functions/getRatingFromScraping.dart';
 
 class MyDashboardScreen extends StatefulWidget {
   @override
@@ -129,185 +128,191 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Container(
-          padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
-          child: Column(
-            children: [
-              Container(
+    return isFirstTime
+        ? FutureBuilder(
+            builder: (context, snapshot) {
+              return MyDashboardScreenSkeleton();
+            },
+            future: readyUserData(),
+          )
+        : Scaffold(
+            body: SafeArea(
+              child: Container(
                 padding:
-                    EdgeInsets.all(MediaQuery.of(context).size.width * 0.015),
-                width: double.infinity,
-                height: MediaQuery.of(context).size.height * 0.07,
-                child: Center(
-                  child: Image(image: AssetImage('images/appiconnoback.png')),
-                ),
-              ),
-              isFirstTime
-                  ? FutureBuilder(
-                      future: readyUserData(),
-                      builder: (context, snapshot) {
-                        return Container(
-                          height: MediaQuery.of(context).size.height * 0.7,
-                          child: Center(
-                            child: CircularProgressIndicator(),
+                    EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(
+                            MediaQuery.of(context).size.width * 0.015),
+                        width: double.infinity,
+                        height: MediaQuery.of(context).size.height * 0.07,
+                        child: Center(
+                          child: Image(
+                              image: AssetImage('images/appiconnoback.png')),
+                        ),
+                      ),
+                      Column(
+                        children: [
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.03,
                           ),
-                        );
-                      },
-                    )
-                  : Column(
-                      children: [
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.03,
-                        ),
-                        Container(
-                            height: MediaQuery.of(context).size.height * 0.22,
-                            width: MediaQuery.of(context).size.height * 0.22,
-                            child: MyCircleAvatar(
-                                Image(image: NetworkImage(avatarurl)))),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.025,
-                        ),
-                        Text(
-                          name,
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: 'young',
-                              fontSize:
-                                  MediaQuery.of(context).size.height * 0.035),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.007,
-                        ),
-                        Text(
-                          '@' + codername,
-                          style: TextStyle(
-                              color: ColorSchemeClass.lightgrey,
-                              fontFamily: 'young',
-                              fontSize:
-                                  MediaQuery.of(context).size.height * 0.025),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.02,
-                        ),
-                        MyMidDividerWithTitle('Bio'),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.015,
-                        ),
-                        Text(
-                          bio,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: ColorSchemeClass.lightgrey,
-                              fontFamily: 'young',
-                              fontSize:
-                                  MediaQuery.of(context).size.height * 0.02),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.015,
-                        ),
-                        MyMidDividerWithTitle('Ratings'),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.01,
-                        ),
-                        listOfRatingCards.length == 0
-                            ? Container(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.32,
-                                width: MediaQuery.of(context).size.width * 0.6,
-                                child: Center(
-                                  child: Text(
-                                    'You haven\'t added any User Handles or you don\'t have rating on a platform',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        color: ColorSchemeClass.darkgrey,
-                                        fontFamily: 'young',
-                                        fontSize:
-                                            MediaQuery.of(context).size.height *
-                                                0.02),
+                          Container(
+                              height: MediaQuery.of(context).size.height * 0.22,
+                              width: MediaQuery.of(context).size.height * 0.22,
+                              child: MyCircleAvatar(
+                                  Image(image: NetworkImage(avatarurl)))),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.025,
+                          ),
+                          Text(
+                            name,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontFamily: 'young',
+                                fontSize:
+                                    MediaQuery.of(context).size.height * 0.035),
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.007,
+                          ),
+                          Text(
+                            '@' + codername,
+                            style: TextStyle(
+                                color: ColorSchemeClass.lightgrey,
+                                fontFamily: 'young',
+                                fontSize:
+                                    MediaQuery.of(context).size.height * 0.025),
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.02,
+                          ),
+                          MyMidDividerWithTitle('Bio'),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.015,
+                          ),
+                          Text(
+                            bio,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: ColorSchemeClass.lightgrey,
+                                fontFamily: 'young',
+                                fontSize:
+                                    MediaQuery.of(context).size.height * 0.02),
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.015,
+                          ),
+                          MyMidDividerWithTitle('Ratings'),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.01,
+                          ),
+                          listOfRatingCards.length == 0
+                              ? Container(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.32,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.6,
+                                  child: Center(
+                                    child: Text(
+                                      'You haven\'t added any User Handles or you don\'t have rating on a platform',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          color: ColorSchemeClass.darkgrey,
+                                          fontFamily: 'young',
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.02),
+                                    ),
                                   ),
-                                ),
-                              )
-                            : (listOfRatingCards.length % 2 == 1)
-                                ? listOfRatingCards.length == 3
-                                    ? Column(
-                                        children: [
-                                          Container(
-                                            height: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.155,
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.6,
-                                            child: Theme(
-                                              data: ThemeData(
-                                                  accentColor:
-                                                      Colors.transparent),
-                                              child: GridView.count(
-                                                  crossAxisCount: 2,
-                                                  children: listOfRatingCards
-                                                      .sublist(0, 2)),
-                                            ),
-                                          ),
-                                          Container(
-                                            height: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.155,
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.6,
-                                            child: Center(
-                                              child: Container(
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.3,
-                                                  child: listOfRatingCards[2]),
-                                            ),
-                                          )
-                                        ],
-                                      )
-                                    : Container(
-                                        height:
-                                            MediaQuery.of(context).size.height *
-                                                0.155,
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.6,
-                                        child: Center(
-                                          child: Container(
+                                )
+                              : (listOfRatingCards.length % 2 == 1)
+                                  ? listOfRatingCards.length == 3
+                                      ? Column(
+                                          children: [
+                                            Container(
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.155,
                                               width: MediaQuery.of(context)
                                                       .size
                                                       .width *
-                                                  0.3,
-                                              child: listOfRatingCards[0]),
-                                        ),
-                                      )
-                                : Container(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.32,
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.6,
-                                    child: Theme(
-                                      data: ThemeData(
-                                          accentColor: Colors.transparent),
-                                      child: GridView.count(
-                                          crossAxisCount: 2,
-                                          children: listOfRatingCards),
-                                    ),
-                                  )
-                      ],
-                    ),
-            ],
-          ),
-        ),
-      ),
-    );
+                                                  0.6,
+                                              child: Theme(
+                                                data: ThemeData(
+                                                    accentColor:
+                                                        Colors.transparent),
+                                                child: GridView.count(
+                                                    crossAxisCount: 2,
+                                                    children: listOfRatingCards
+                                                        .sublist(0, 2)),
+                                              ),
+                                            ),
+                                            Container(
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.155,
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.6,
+                                              child: Center(
+                                                child: Container(
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width *
+                                                            0.3,
+                                                    child:
+                                                        listOfRatingCards[2]),
+                                              ),
+                                            )
+                                          ],
+                                        )
+                                      : Container(
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.155,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.6,
+                                          child: Center(
+                                            child: Container(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.3,
+                                                child: listOfRatingCards[0]),
+                                          ),
+                                        )
+                                  : Container(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.32,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.6,
+                                      child: Theme(
+                                        data: ThemeData(
+                                            accentColor: Colors.transparent),
+                                        child: GridView.count(
+                                            crossAxisCount: 2,
+                                            children: listOfRatingCards),
+                                      ),
+                                    )
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          );
   }
 }
 
