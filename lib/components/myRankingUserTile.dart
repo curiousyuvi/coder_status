@@ -61,7 +61,7 @@ class MyRankingUserTile extends StatelessWidget {
                             child: FittedBox(
                               fit: BoxFit.scaleDown,
                               child: Text(
-                                '12',
+                                rank.toString(),
                                 style: TextStyle(
                                     color: ColorSchemeClass.lightgrey,
                                     fontFamily: 'young',
