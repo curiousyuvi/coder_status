@@ -38,11 +38,19 @@ class _PeersScreenState extends State<PeersScreen> {
     });
   }
 
+  Future futureFunction;
+
+  @override
+  void initState() {
+    super.initState();
+    futureFunction = getPeersList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return isFirstTime
         ? FutureBuilder(
-            future: getPeersList(),
+            future: futureFunction,
             builder: (context, snapshot) {
               return PeersScreenSkeleton();
             },

@@ -126,6 +126,14 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
     });
   }
 
+  Future futureFunction;
+
+  @override
+  void initState() {
+    super.initState();
+    futureFunction = readyUserData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return isFirstTime
@@ -133,7 +141,7 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
             builder: (context, snapshot) {
               return MyDashboardScreenSkeleton();
             },
-            future: readyUserData(),
+            future: futureFunction,
           )
         : Scaffold(
             body: SafeArea(

@@ -53,6 +53,14 @@ class _EditUserHandlesScreenState extends State<EditUserHandlesScreen> {
     }
   }
 
+  Future futureFunction;
+
+  @override
+  void initState() {
+    super.initState();
+    futureFunction = readyUserData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,7 +72,7 @@ class _EditUserHandlesScreenState extends State<EditUserHandlesScreen> {
         backgroundColor: ColorSchemeClass.dark,
         body: isFirstTime
             ? FutureBuilder(
-                future: readyUserData(),
+                future: futureFunction,
                 builder: (context, snapshot) {
                   return Center(
                     child: CircularProgressIndicator(),

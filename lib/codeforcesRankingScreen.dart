@@ -144,6 +144,14 @@ class _CodeforcesRankingScreenState extends State<CodeforcesRankingScreen> {
     });
   }
 
+  Future futureFunction;
+
+  @override
+  void initState() {
+    super.initState();
+    futureFunction = getPeersList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -154,7 +162,7 @@ class _CodeforcesRankingScreenState extends State<CodeforcesRankingScreen> {
       ),
       body: isFirstTime
           ? FutureBuilder(
-              future: getPeersList(),
+              future: futureFunction,
               builder: (context, snapshot) {
                 return Center(
                   child: CircularProgressIndicator(),
