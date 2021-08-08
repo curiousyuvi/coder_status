@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:codersstatus/GetStartedScreen.dart';
-import 'package:codersstatus/components/generalLoadingScreen.dart';
-import 'package:codersstatus/firebase_layer/getUserInfo.dart';
 import 'package:codersstatus/homeScreen.dart';
 import 'package:codersstatus/registerNameScreen.dart';
 import 'package:codersstatus/signinScreen.dart';
@@ -39,13 +37,13 @@ class Authenticate extends StatelessWidget {
               if (flag) {
                 return HomeScreen();
               } else {
-                return GetStartedScreen();
+                return Registernamescreen();
               }
             } else {
               return VerifyEmailScreen();
             }
           } else {
-            return Signinscreen();
+            return GetStartedScreen();
           }
         } else {
           return Scaffold(
