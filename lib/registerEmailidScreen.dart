@@ -1,6 +1,7 @@
 import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/components/showAnimatedToast.dart';
 import 'package:codersstatus/firebase_layer/emailVerification.dart';
+import 'package:codersstatus/signinScreen.dart';
 import 'package:codersstatus/verifyEmailScreen.dart';
 import 'package:codersstatus/registerPasswordScreen.dart';
 import 'package:flutter/cupertino.dart';
@@ -103,6 +104,24 @@ class _RegisterEmailidScreenState extends State<RegisterEmailidScreen> {
                     child: MyButton(
                         ColorSchemeClass.primarygreen, 'Next', _submit),
                   ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
+                  ),
+                  GestureDetector(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return Signinscreen();
+                        }));
+                      },
+                      child: Text(
+                        'Already have an account? Log in',
+                        style: TextStyle(
+                            color: ColorSchemeClass.lightgrey,
+                            fontFamily: 'young',
+                            fontSize: MediaQuery.of(context).size.height * 0.02,
+                            decoration: TextDecoration.underline),
+                      )),
                 ],
               ),
             ),

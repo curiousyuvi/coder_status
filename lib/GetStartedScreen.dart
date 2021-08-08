@@ -5,18 +5,14 @@ import 'package:codersstatus/signinScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 
-void main() {
-  runApp(MaterialApp(home: TestScreen()));
-}
-
-class TestScreen extends StatefulWidget {
-  const TestScreen({Key key}) : super(key: key);
+class GetStartedScreen extends StatefulWidget {
+  const GetStartedScreen({Key key}) : super(key: key);
 
   @override
-  _TestScreenState createState() => _TestScreenState();
+  _GetStartedScreenState createState() => _GetStartedScreenState();
 }
 
-class _TestScreenState extends State<TestScreen> {
+class _GetStartedScreenState extends State<GetStartedScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

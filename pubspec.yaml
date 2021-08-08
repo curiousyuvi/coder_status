@@ -23,7 +23,7 @@ dependencies:
   http: ^0.13.3
   html: ^0.14.0+3
   flutter_restart: ^0.0.3
-  rive: ^0.7.22
+  rive: ^0.7.27
   flutter_phoenix: ^1.0.0
   rect_getter: ^1.0.0
   glassmorphism_ui: ^0.2.0
@@ -41,7 +41,12 @@ flutter:
     - assets/crown.riv
     - assets/skeleton-place-holder.riv
     - assets/shine.riv
+    - assets/cup.riv
+    - assets/boy-scene.riv
   fonts:
     - family: Young
       fonts:
         - asset: fonts/young.ttf
+    - family: Headline
+      fonts:
+        - asset: fonts/Headline.TTF

@@ -316,7 +316,7 @@ packages:
       name: rive
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.7.22"
+    version: "0.7.27"
   sky_engine:
     dependency: transitive
     description: flutter

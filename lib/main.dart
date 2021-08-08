@@ -1,5 +1,5 @@
-import 'package:codersstatus/firebase_layer/authenticate.dart';
 import 'package:codersstatus/components/colorscheme.dart';
+import 'package:codersstatus/test.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +32,6 @@ class myApp extends StatelessWidget {
                 bodyText1: TextStyle(fontFamily: 'young', color: Colors.white),
                 headline1:
                     TextStyle(fontFamily: 'young', color: Colors.white))),
-        home: Authenticate());
+        home: TestScreen());
   }
 }

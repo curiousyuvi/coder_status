@@ -49,7 +49,6 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
     this.uid = uid;
   }
 
-  Future futureFunction;
   bool isFirstTime = true;
   bool isPeered = false;
   bool isMe = false;
@@ -185,6 +184,8 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
       isFirstTime = false;
     });
   }
+
+  Future futureFunction;
 
   @override
   void initState() {

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:codersstatus/GetStartedScreen.dart';
 import 'package:codersstatus/components/generalLoadingScreen.dart';
 import 'package:codersstatus/firebase_layer/getUserInfo.dart';
 import 'package:codersstatus/homeScreen.dart';
@@ -14,13 +15,17 @@ class Authenticate extends StatelessWidget {
   bool flag = false;
 
   Future updateFlag() async {
-    await FirebaseFirestore.instance
-        .collection('users')
-        .doc(_auth.currentUser.uid)
-        .get()
-        .then((doc) {
-      flag = doc.exists;
-    });
+    try {
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(_auth.currentUser.uid)
+          .get()
+          .then((doc) {
+        flag = doc.exists;
+      });
+    } catch (e) {
+      flag = false;
+    }
   }
 
   @override
@@ -34,7 +39,7 @@ class Authenticate extends StatelessWidget {
               if (flag) {
                 return HomeScreen();
               } else {
-                return Registernamescreen();
+                return GetStartedScreen();
               }
             } else {
               return VerifyEmailScreen();
