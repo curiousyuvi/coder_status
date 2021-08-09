@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:codersstatus/GetStartedScreen.dart';
+import 'package:codersstatus/getStartedScreen.dart';
 import 'package:codersstatus/homeScreen.dart';
 import 'package:codersstatus/registerNameScreen.dart';
 import 'package:codersstatus/signinScreen.dart';

@@ -4,6 +4,7 @@ import 'colorscheme.dart';
 
 Widget CoderstatusHeading(BuildContext context) {
   return Wrap(
+    alignment: WrapAlignment.center,
     direction: Axis.horizontal,
     children: [
       Text(
@@ -12,7 +13,7 @@ Widget CoderstatusHeading(BuildContext context) {
             fontFamily: 'young',
             color: Colors.white,
             fontWeight: FontWeight.bold,
-            fontSize: MediaQuery.of(context).size.height * 0.07),
+            fontSize: MediaQuery.of(context).size.height * 0.06),
       ),
       SizedBox(
         width: MediaQuery.of(context).size.width * 0.02,
@@ -23,7 +24,7 @@ Widget CoderstatusHeading(BuildContext context) {
             fontFamily: 'young',
             color: ColorSchemeClass.primarygreen,
             fontWeight: FontWeight.bold,
-            fontSize: MediaQuery.of(context).size.height * 0.07,
+            fontSize: MediaQuery.of(context).size.height * 0.06,
             shadows: [
               Shadow(
                   blurRadius: 10,

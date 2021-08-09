@@ -7,7 +7,6 @@ import 'package:codersstatus/homeScreen.dart';
 import 'package:codersstatus/firebase_layer/loginUser.dart';
 import 'package:codersstatus/registerEmailidScreen.dart';
 import 'package:codersstatus/verifyEmailScreen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -104,7 +103,7 @@ class _SigninscreenState extends State<Signinscreen> {
                       children: [
                         Flexible(
                           child: Hero(
-                            tag: 'splashscreenImage',
+                            tag: 'appIcon',
                             child: Image(
                               image: AssetImage('images/appiconnoback.png'),
                               height: MediaQuery.of(context).size.height * 0.2,
@@ -112,10 +111,8 @@ class _SigninscreenState extends State<Signinscreen> {
                           ),
                         ),
                         Flexible(child: CoderstatusHeading(context)),
-                        Flexible(
-                          child: SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.07,
-                          ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.01,
                         ),
                         Container(
                           width: double.infinity,

@@ -54,7 +54,7 @@ class _RegisterEmailidScreenState extends State<RegisterEmailidScreen> {
                 children: [
                   Flexible(
                     child: Hero(
-                      tag: 'splashscreenImage',
+                      tag: 'appIcon',
                       child: Image(
                         width: MediaQuery.of(context).size.width * 0.5,
                         image: AssetImage('images/appiconnoback.png'),
