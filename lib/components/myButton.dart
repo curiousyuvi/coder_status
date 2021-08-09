@@ -14,7 +14,7 @@ class MyButton extends StatelessWidget {
     this.prominent = prominent;
     this.title = title;
     this.dofunction = dofunction;
-    titlecolor = ColorSchemeClass.lightgrey;
+    titlecolor = Colors.white;
     this.buttoncolor = buttoncolor;
     this.iconData = iconData;
   }

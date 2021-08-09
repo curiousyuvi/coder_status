@@ -33,6 +33,6 @@ class myApp extends StatelessWidget {
                 bodyText1: TextStyle(fontFamily: 'young', color: Colors.white),
                 headline1:
                     TextStyle(fontFamily: 'young', color: Colors.white))),
-        home: Authenticate());
+        home: TestScreen());
   }
 }
