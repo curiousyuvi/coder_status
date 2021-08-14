@@ -114,7 +114,7 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
   }
 
   readyUserRatings() async {
-    final userDocument = await GetUserInfo.getUserDocument();
+    final userDocument = await GetUserInfo.getUserDocument(uid);
 
     userhandles[0] = userDocument['codeforces'];
     userhandles[1] = userDocument['codechef'];

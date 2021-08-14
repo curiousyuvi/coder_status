@@ -255,8 +255,7 @@ class _RankingScreenSkeletonState extends State<RankingScreenSkeleton> {
                         Container(
                           height: MediaQuery.of(context).size.height * 0.05,
                           width: MediaQuery.of(context).size.height * 0.05,
-                          child:
-                              RiveAnimation.asset('assets/crown-rotating.riv'),
+                          child: RiveAnimation.asset('assets/crown.riv'),
                         ),
                         SizedBox(
                             height: MediaQuery.of(context).size.height * 0.02),

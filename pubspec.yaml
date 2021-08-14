@@ -45,7 +45,7 @@ flutter:
     - assets/boy-scene.riv
     - assets/alert.riv
     - assets/check.riv
-    - assets/crown-rotating.riv
+    - assets/crown.riv
     - assets/no-peers.riv
     - assets/search-user.riv
   fonts:
