@@ -6,6 +6,7 @@ import 'package:codersstatus/functions/getRatingFromAPI.dart';
 import 'package:flutter/material.dart';
 
 import 'components/myAppBar.dart';
+import 'components/myButton.dart';
 
 class CodeforcesRankingScreen extends StatefulWidget {
   const CodeforcesRankingScreen({Key key}) : super(key: key);
@@ -188,22 +189,17 @@ class _CodeforcesRankingScreenState extends State<CodeforcesRankingScreen> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.02,
                         ),
-                        GestureDetector(
-                          onTap: () {
+                        Container(
+                          height: MediaQuery.of(context).size.height * 0.05,
+                          width: MediaQuery.of(context).size.width * 0.5,
+                          child: MyButton(
+                              ColorSchemeClass.primarygreen, 'Refresh', () {
                             setState(() {
+                              futureFunction = getPeersList();
                               isFirstTime = true;
                             });
-                          },
-                          child: Text(
-                            'Refresh',
-                            style: TextStyle(
-                                decoration: TextDecoration.underline,
-                                color: ColorSchemeClass.primarygreen,
-                                fontFamily: 'young',
-                                fontSize:
-                                    MediaQuery.of(context).size.height * 0.028),
-                          ),
-                        ),
+                          }, Icons.refresh),
+                        )
                       ],
                     ),
                   ),

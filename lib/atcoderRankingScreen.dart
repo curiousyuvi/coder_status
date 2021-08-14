@@ -5,6 +5,7 @@ import 'package:codersstatus/functions/getRatingFromAPI.dart';
 import 'package:flutter/material.dart';
 
 import 'components/myAppBar.dart';
+import 'components/myButton.dart';
 import 'components/topThreeRankingCard.dart';
 
 class AtcoderRankingScreen extends StatefulWidget {
@@ -185,22 +186,17 @@ class _AtcoderRankingScreenState extends State<AtcoderRankingScreen> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.02,
                         ),
-                        GestureDetector(
-                          onTap: () {
+                        Container(
+                          height: MediaQuery.of(context).size.height * 0.05,
+                          width: MediaQuery.of(context).size.width * 0.5,
+                          child: MyButton(
+                              ColorSchemeClass.primarygreen, 'Refresh', () {
                             setState(() {
+                              futureFunction = getPeersList();
                               isFirstTime = true;
                             });
-                          },
-                          child: Text(
-                            'Refresh',
-                            style: TextStyle(
-                                decoration: TextDecoration.underline,
-                                color: ColorSchemeClass.primarygreen,
-                                fontFamily: 'young',
-                                fontSize:
-                                    MediaQuery.of(context).size.height * 0.028),
-                          ),
-                        ),
+                          }, Icons.refresh),
+                        )
                       ],
                     ),
                   ),

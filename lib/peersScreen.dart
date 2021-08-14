@@ -154,7 +154,7 @@ class _PeersScreenState extends State<PeersScreen> {
                                 futureFunction = getPeersList();
                                 isFirstTime = true;
                               });
-                            }),
+                            }, Icons.refresh),
                           )
                         ],
                       ),
