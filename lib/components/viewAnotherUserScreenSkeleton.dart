@@ -146,18 +146,6 @@ class _ViewAnotherUserScreenSkeletonState
                               fit: BoxFit.cover,
                             ))),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.01,
-                    ),
-                    ClipRRect(
-                        borderRadius: BorderRadius.circular(100),
-                        child: Container(
-                            width: MediaQuery.of(context).size.width * 0.6,
-                            height: MediaQuery.of(context).size.height * 0.02,
-                            child: RiveAnimation.asset(
-                              'assets/skeleton-place-holder.riv',
-                              fit: BoxFit.cover,
-                            ))),
-                    SizedBox(
                       height: MediaQuery.of(context).size.height * 0.015,
                     ),
                     MyMidDividerWithTitle('Ratings'),

@@ -16,6 +16,7 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:rect_getter/rect_getter.dart';
+import 'package:rive/rive.dart';
 
 class MyDashboardScreen extends StatefulWidget {
   @override
@@ -34,7 +35,8 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
   List<String> userhandles = ['', '', '', ''],
       userrating = ['0', '0', '0', '0'];
 
-  bool isFirstTime = true;
+  bool isFirstTimeUserData = true;
+  bool isFirstTimeUserRatings = true;
   List<Widget> listOfRatingCards = [];
 
   readyUserData() async {
@@ -44,6 +46,15 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
     name = userDocument['name'];
     codername = userDocument['codername'];
     bio = userDocument['bio'];
+
+    setState(() {
+      isFirstTimeUserData = false;
+    });
+  }
+
+  readyUserRatings() async {
+    final userDocument = await GetUserInfo.getUserDocument();
+
     userhandles[0] = userDocument['codeforces'];
     userhandles[1] = userDocument['codechef'];
     userhandles[2] = userDocument['atcoder'];
@@ -122,26 +133,28 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
     }
 
     setState(() {
-      isFirstTime = false;
+      isFirstTimeUserRatings = false;
     });
   }
 
-  Future futureFunction;
+  Future futureFunctionUserData;
+  Future futureFunctionUserRatings;
 
   @override
   void initState() {
     super.initState();
-    futureFunction = readyUserData();
+    futureFunctionUserData = readyUserData();
+    futureFunctionUserRatings = readyUserRatings();
   }
 
   @override
   Widget build(BuildContext context) {
-    return isFirstTime
+    return isFirstTimeUserData
         ? FutureBuilder(
             builder: (context, snapshot) {
               return MyDashboardScreenSkeleton();
             },
-            future: futureFunction,
+            future: futureFunctionUserData,
           )
         : Scaffold(
             body: SafeArea(
@@ -216,50 +229,191 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.01,
                           ),
-                          listOfRatingCards.length == 0
-                              ? Container(
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.32,
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.6,
-                                  child: Center(
-                                    child: Text(
-                                      'You haven\'t added any User Handles or you don\'t have rating on a platform',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          color: ColorSchemeClass.darkgrey,
-                                          fontFamily: 'young',
-                                          fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.02),
-                                    ),
-                                  ),
-                                )
-                              : (listOfRatingCards.length % 2 == 1)
-                                  ? listOfRatingCards.length == 3
-                                      ? Column(
-                                          children: [
-                                            Container(
-                                              height: MediaQuery.of(context)
+                          isFirstTimeUserRatings
+                              ? FutureBuilder(
+                                  future: futureFunctionUserRatings,
+                                  builder: (context, snapshot) {
+                                    return Container(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.32,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.6,
+                                      child: Theme(
+                                        data: ThemeData(
+                                            accentColor: Colors.transparent),
+                                        child: GridView.count(
+                                            crossAxisCount: 2,
+                                            children: [
+                                              Container(
+                                                child: Center(
+                                                  child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              5),
+                                                      child: Container(
+                                                          width: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width *
+                                                              0.2,
+                                                          height: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width *
+                                                              0.25,
+                                                          child: RiveAnimation
+                                                              .asset(
+                                                            'assets/skeleton-place-holder.riv',
+                                                            fit: BoxFit.cover,
+                                                          ))),
+                                                ),
+                                              ),
+                                              Container(
+                                                child: Center(
+                                                  child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              5),
+                                                      child: Container(
+                                                          width: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width *
+                                                              0.2,
+                                                          height: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width *
+                                                              0.25,
+                                                          child: RiveAnimation
+                                                              .asset(
+                                                            'assets/skeleton-place-holder.riv',
+                                                            fit: BoxFit.cover,
+                                                          ))),
+                                                ),
+                                              ),
+                                              Container(
+                                                child: Center(
+                                                  child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              5),
+                                                      child: Container(
+                                                          width: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width *
+                                                              0.2,
+                                                          height: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width *
+                                                              0.25,
+                                                          child: RiveAnimation
+                                                              .asset(
+                                                            'assets/skeleton-place-holder.riv',
+                                                            fit: BoxFit.cover,
+                                                          ))),
+                                                ),
+                                              ),
+                                              Container(
+                                                child: Center(
+                                                  child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              5),
+                                                      child: Container(
+                                                          width: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width *
+                                                              0.2,
+                                                          height: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width *
+                                                              0.25,
+                                                          child: RiveAnimation
+                                                              .asset(
+                                                            'assets/skeleton-place-holder.riv',
+                                                            fit: BoxFit.cover,
+                                                          ))),
+                                                ),
+                                              ),
+                                            ]),
+                                      ),
+                                    );
+                                  })
+                              : listOfRatingCards.length == 0
+                                  ? Container(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.32,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.6,
+                                      child: Center(
+                                        child: Text(
+                                          'You haven\'t added any User Handles or you don\'t have rating on a platform',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              color: ColorSchemeClass.darkgrey,
+                                              fontFamily: 'young',
+                                              fontSize: MediaQuery.of(context)
                                                       .size
                                                       .height *
-                                                  0.155,
-                                              width: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  0.6,
-                                              child: Theme(
-                                                data: ThemeData(
-                                                    accentColor:
-                                                        Colors.transparent),
-                                                child: GridView.count(
-                                                    crossAxisCount: 2,
-                                                    children: listOfRatingCards
-                                                        .sublist(0, 2)),
-                                              ),
-                                            ),
-                                            Container(
+                                                  0.02),
+                                        ),
+                                      ),
+                                    )
+                                  : (listOfRatingCards.length % 2 == 1)
+                                      ? listOfRatingCards.length == 3
+                                          ? Column(
+                                              children: [
+                                                Container(
+                                                  height: MediaQuery.of(context)
+                                                          .size
+                                                          .height *
+                                                      0.155,
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.6,
+                                                  child: Theme(
+                                                    data: ThemeData(
+                                                        accentColor:
+                                                            Colors.transparent),
+                                                    child: GridView.count(
+                                                        crossAxisCount: 2,
+                                                        children:
+                                                            listOfRatingCards
+                                                                .sublist(0, 2)),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  height: MediaQuery.of(context)
+                                                          .size
+                                                          .height *
+                                                      0.155,
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.6,
+                                                  child: Center(
+                                                    child: Container(
+                                                        width: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width *
+                                                            0.3,
+                                                        child:
+                                                            listOfRatingCards[
+                                                                2]),
+                                                  ),
+                                                )
+                                              ],
+                                            )
+                                          : Container(
                                               height: MediaQuery.of(context)
                                                       .size
                                                       .height *
@@ -276,43 +430,27 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
                                                                 .width *
                                                             0.3,
                                                     child:
-                                                        listOfRatingCards[2]),
+                                                        listOfRatingCards[0]),
                                               ),
                                             )
-                                          ],
-                                        )
                                       : Container(
                                           height: MediaQuery.of(context)
                                                   .size
                                                   .height *
-                                              0.155,
+                                              0.32,
                                           width: MediaQuery.of(context)
                                                   .size
                                                   .width *
                                               0.6,
-                                          child: Center(
-                                            child: Container(
-                                                width: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    0.3,
-                                                child: listOfRatingCards[0]),
+                                          child: Theme(
+                                            data: ThemeData(
+                                                accentColor:
+                                                    Colors.transparent),
+                                            child: GridView.count(
+                                                crossAxisCount: 2,
+                                                children: listOfRatingCards),
                                           ),
                                         )
-                                  : Container(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.32,
-                                      width: MediaQuery.of(context).size.width *
-                                          0.6,
-                                      child: Theme(
-                                        data: ThemeData(
-                                            accentColor: Colors.transparent),
-                                        child: GridView.count(
-                                            crossAxisCount: 2,
-                                            children: listOfRatingCards),
-                                      ),
-                                    )
                         ],
                       ),
                     ],
