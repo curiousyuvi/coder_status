@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'components/generalLoader.dart';
 import 'components/myTextFormField.dart';
 import 'components/myButton.dart';
 import 'package:codersstatus/firebase_layer/createuser.dart';
@@ -75,9 +76,7 @@ class _RegisterPasswordScreenState extends State<RegisterPasswordScreen> {
   Widget build(BuildContext context) {
     return isloading
         ? Scaffold(
-            body: Center(
-              child: CircularProgressIndicator(),
-            ),
+            body: GeneralLoader(''),
           )
         : GestureDetector(
             onTap: () {

@@ -82,14 +82,12 @@ class _EditUserHandlesScreenState extends State<EditUserHandlesScreen> {
             ? FutureBuilder(
                 future: futureFunction,
                 builder: (context, snapshot) {
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
+                  return GeneralLoader('');
                 },
               )
             : isLoading
                 ? Center(
-                    child: CircularProgressIndicator(),
+                    child: GeneralLoader(''),
                   )
                 : GestureDetector(
                     onTap: () {

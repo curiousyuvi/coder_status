@@ -12,6 +12,8 @@ import 'package:codersstatus/settingScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'components/generalLoader.dart';
+
 class HomeScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => HomeScreenState();
@@ -71,9 +73,7 @@ class HomeScreenState extends State<HomeScreen> {
             future: futureFunction,
             builder: (context, snapshot) {
               return Scaffold(
-                body: Center(
-                  child: CircularProgressIndicator(),
-                ),
+                body: GeneralLoader(''),
               );
             })
         : WillPopScope(

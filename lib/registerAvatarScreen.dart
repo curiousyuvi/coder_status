@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'components/generalLoader.dart';
 import 'components/myAvatarSelection.dart';
 import 'functions/pickImageAndCrop.dart' as pickImageAndCrop;
 import 'components/myCircleAvatar.dart';
@@ -75,9 +76,7 @@ class _RegisteravatarscreenState extends State<Registeravatarscreen> {
   Widget build(BuildContext context) {
     return isLoading
         ? Scaffold(
-            body: Center(
-              child: CircularProgressIndicator(),
-            ),
+            body: GeneralLoader(''),
           )
         : Scaffold(
             body: Center(

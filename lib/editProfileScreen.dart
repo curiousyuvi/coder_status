@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:codersstatus/components/colorscheme.dart';
+import 'package:codersstatus/components/generalLoader.dart';
 import 'package:codersstatus/components/myAvatarSelection.dart';
 import 'package:codersstatus/components/myButton.dart';
 import 'package:codersstatus/components/myCircleAvatar.dart';
@@ -139,15 +140,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             ? FutureBuilder(
                 future: futureFunction,
                 builder: (context, snapshot) {
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
+                  return GeneralLoader('');
                 },
               )
             : isLoading
-                ? Center(
-                    child: CircularProgressIndicator(),
-                  )
+                ? GeneralLoader('')
                 : GestureDetector(
                     onTap: () {
                       FocusScopeNode currentFocus = FocusScope.of(context);
