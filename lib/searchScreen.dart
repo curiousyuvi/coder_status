@@ -28,7 +28,7 @@ class _SearchScreenState extends State<SearchScreen> {
       });
     }
 
-    var capitalizedValue = value.toUpperCase();
+    var capitalizedValue = value.toUpperCase().replaceAll(' ', '');
 
     if (queryResultSet.length == 0 && value.length == 1) {
       QuerySnapshot querySnapshot =
@@ -46,10 +46,12 @@ class _SearchScreenState extends State<SearchScreen> {
           if (element['name']
                   .toString()
                   .toUpperCase()
+                  .replaceAll(' ', '')
                   .startsWith(capitalizedValue) ||
               element['codername']
                   .toString()
                   .toUpperCase()
+                  .replaceAll(' ', '')
                   .startsWith(capitalizedValue)) {
             tempSearchStore.add(element);
             listOfUserTiles.add(MyUserTile(element['id'], element['avatarurl'],
