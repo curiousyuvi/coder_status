@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/components/generalLoader.dart';
 import 'package:codersstatus/components/myAvatarSelection.dart';
-import 'package:codersstatus/components/myButton.dart';
 import 'package:codersstatus/components/myCircleAvatar.dart';
 import 'package:codersstatus/components/myDividerWithTitle.dart';
 import 'package:codersstatus/components/myPassageTextformField.dart';

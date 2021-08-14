@@ -1,9 +1,8 @@
 import 'dart:async';
+import 'package:argon_buttons_flutter/argon_buttons_flutter.dart';
 import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/components/myOutlineButton.dart';
 import 'package:codersstatus/firebase_layer/emailVerification.dart';
 import 'package:codersstatus/firebase_layer/getUserInfo.dart';
-import 'package:codersstatus/registerAvatarScreen.dart';
 import 'package:codersstatus/registerNameScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -35,9 +34,10 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
       final flag = await checkEmailVerified();
       if (flag) {
         timer.cancel();
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
+        Navigator.pushAndRemoveUntil(context,
+            MaterialPageRoute(builder: (context) {
           return Registernamescreen();
-        }));
+        }), ModalRoute.withName('/registerName'));
       }
     });
     super.initState();
@@ -89,13 +89,42 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                           fontFamily: 'young'),
                       textAlign: TextAlign.center)),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.02,
+                height: MediaQuery.of(context).size.height * 0.04,
               ),
-              Container(
-                  padding: EdgeInsets.all(8),
-                  height: MediaQuery.of(context).size.height * 0.085,
-                  child: MyOutlineButton(ColorSchemeClass.darkgrey,
-                      'Resend Verification email', _submit))
+              ArgonTimerButton(
+                initialTimer: 90, // Optional
+                height: 50,
+                width: MediaQuery.of(context).size.width * 0.7,
+                minWidth: MediaQuery.of(context).size.width * 0.7,
+                color: Colors.transparent,
+                borderSide:
+                    BorderSide(color: ColorSchemeClass.lightgrey, width: 2),
+                borderRadius: 5.0,
+                child: Text(
+                  'Resend Verification Email',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: ColorSchemeClass.lightgrey,
+                      fontFamily: 'young',
+                      fontSize: MediaQuery.of(context).size.height * 0.025),
+                ),
+                loader: (timeLeft) {
+                  return Text(
+                    "Resend Verification Email | $timeLeft",
+                    style: TextStyle(
+                      color: ColorSchemeClass.lightgrey,
+                      fontFamily: 'young',
+                      fontSize: MediaQuery.of(context).size.height * 0.025,
+                    ),
+                  );
+                },
+                onTap: (startTimer, btnState) {
+                  if (btnState == ButtonState.Idle) {
+                    startTimer(90);
+                    _submit();
+                  }
+                },
+              )
             ],
           ),
         ),
