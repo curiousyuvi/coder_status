@@ -156,64 +156,64 @@ class _CodeforcesRankingScreenState extends State<CodeforcesRankingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-        child: MyAppBarWithBack('Codeforces Ranking'),
-        preferredSize:
-            Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
-      ),
-      body: isFirstTime
-          ? FutureBuilder(
-              future: futureFunction,
-              builder: (context, snapshot) {
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              },
-            )
-          : listOfUserTiles.length == 0
-              ? Container(
-                  height: MediaQuery.of(context).size.height * 0.7,
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'You and your peers are not on Codeforces',
-                          style: TextStyle(
-                              color: ColorSchemeClass.lightgrey,
-                              fontFamily: 'young',
-                              fontSize:
-                                  MediaQuery.of(context).size.height * 0.025),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.02,
-                        ),
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.05,
-                          width: MediaQuery.of(context).size.width * 0.5,
-                          child: MyButton(
-                              ColorSchemeClass.primarygreen, 'Refresh', () {
-                            setState(() {
-                              futureFunction = getPeersList();
-                              isFirstTime = true;
-                            });
-                          }, Icons.refresh),
-                        )
-                      ],
+    return isFirstTime
+        ? FutureBuilder(
+            future: futureFunction,
+            builder: (context, snapshot) {
+              return Center(
+                child: CodeforcesRankingScreen(),
+              );
+            },
+          )
+        : Scaffold(
+            appBar: PreferredSize(
+              child: MyAppBarWithBack('Codeforces Ranking'),
+              preferredSize:
+                  Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
+            ),
+            body: listOfUserTiles.length == 0
+                ? Container(
+                    height: MediaQuery.of(context).size.height * 0.7,
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'You and your peers are not on Codeforces',
+                            style: TextStyle(
+                                color: ColorSchemeClass.lightgrey,
+                                fontFamily: 'young',
+                                fontSize:
+                                    MediaQuery.of(context).size.height * 0.025),
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.02,
+                          ),
+                          Container(
+                            height: MediaQuery.of(context).size.height * 0.05,
+                            width: MediaQuery.of(context).size.width * 0.5,
+                            child: MyButton(
+                                ColorSchemeClass.primarygreen, 'Refresh', () {
+                              setState(() {
+                                futureFunction = getPeersList();
+                                isFirstTime = true;
+                              });
+                            }, Icons.refresh),
+                          )
+                        ],
+                      ),
+                    ),
+                  )
+                : RefreshIndicator(
+                    backgroundColor: ColorSchemeClass.unactivatedblack,
+                    onRefresh: () async {
+                      await getPeersList();
+                      return 0;
+                    },
+                    child: ListView(
+                      children: listOfUserTiles,
                     ),
                   ),
-                )
-              : RefreshIndicator(
-                  backgroundColor: ColorSchemeClass.unactivatedblack,
-                  onRefresh: () async {
-                    await getPeersList();
-                    return 0;
-                  },
-                  child: ListView(
-                    children: listOfUserTiles,
-                  ),
-                ),
-    );
+          );
   }
 }

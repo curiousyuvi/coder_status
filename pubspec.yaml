@@ -39,7 +39,6 @@ flutter:
     - images/
     - assets/cup_animation.riv
     - assets/document_animation.riv
-    - assets/crown.riv
     - assets/skeleton-place-holder.riv
     - assets/shine.riv
     - assets/cup.riv

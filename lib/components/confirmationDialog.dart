@@ -2,7 +2,6 @@ import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/components/myButton.dart';
 import 'package:codersstatus/components/myOutlineButton.dart';
 import 'package:flutter/material.dart';
-import 'package:rive/rive.dart';
 
 showConfirmationDialog(BuildContext context, String title, String message,
     Function toDoIfConfirmed, bool alertType,

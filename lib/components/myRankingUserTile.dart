@@ -25,7 +25,8 @@ class MyRankingUserTile extends StatelessWidget {
                           Container(
                               width: MediaQuery.of(context).size.width * 0.06,
                               height: MediaQuery.of(context).size.width * 0.06,
-                              child: RiveAnimation.asset('assets/crown.riv')),
+                              child: RiveAnimation.asset(
+                                  'assets/crown-rotating.riv')),
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.015,
                           ),

@@ -1,5 +1,6 @@
 import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/components/myRankingUserTile.dart';
+import 'package:codersstatus/components/rankingScreenSkeleton.dart';
 import 'package:codersstatus/firebase_layer/getUserInfo.dart';
 import 'package:codersstatus/functions/getRatingFromAPI.dart';
 import 'package:flutter/material.dart';
@@ -153,64 +154,64 @@ class _SpojRankingScreenState extends State<SpojRankingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-        child: MyAppBarWithBack('Spoj Ranking'),
-        preferredSize:
-            Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
-      ),
-      body: isFirstTime
-          ? FutureBuilder(
-              future: futureFunction,
-              builder: (context, snapshot) {
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              },
-            )
-          : listOfUserTiles.length == 0
-              ? Container(
-                  height: MediaQuery.of(context).size.height * 0.7,
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'You and your peers are not on Spoj',
-                          style: TextStyle(
-                              color: ColorSchemeClass.lightgrey,
-                              fontFamily: 'young',
-                              fontSize:
-                                  MediaQuery.of(context).size.height * 0.025),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.02,
-                        ),
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.05,
-                          width: MediaQuery.of(context).size.width * 0.5,
-                          child: MyButton(
-                              ColorSchemeClass.primarygreen, 'Refresh', () {
-                            setState(() {
-                              futureFunction = getPeersList();
-                              isFirstTime = true;
-                            });
-                          }, Icons.refresh),
-                        )
-                      ],
+    return isFirstTime
+        ? FutureBuilder(
+            future: futureFunction,
+            builder: (context, snapshot) {
+              return Center(
+                child: RankingScreenSkeleton(),
+              );
+            },
+          )
+        : Scaffold(
+            appBar: PreferredSize(
+              child: MyAppBarWithBack('Spoj Ranking'),
+              preferredSize:
+                  Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
+            ),
+            body: listOfUserTiles.length == 0
+                ? Container(
+                    height: MediaQuery.of(context).size.height * 0.7,
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'You and your peers are not on Spoj',
+                            style: TextStyle(
+                                color: ColorSchemeClass.lightgrey,
+                                fontFamily: 'young',
+                                fontSize:
+                                    MediaQuery.of(context).size.height * 0.025),
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.02,
+                          ),
+                          Container(
+                            height: MediaQuery.of(context).size.height * 0.05,
+                            width: MediaQuery.of(context).size.width * 0.5,
+                            child: MyButton(
+                                ColorSchemeClass.primarygreen, 'Refresh', () {
+                              setState(() {
+                                futureFunction = getPeersList();
+                                isFirstTime = true;
+                              });
+                            }, Icons.refresh),
+                          )
+                        ],
+                      ),
+                    ),
+                  )
+                : RefreshIndicator(
+                    backgroundColor: ColorSchemeClass.unactivatedblack,
+                    onRefresh: () async {
+                      await getPeersList();
+                      return 0;
+                    },
+                    child: ListView(
+                      children: listOfUserTiles,
                     ),
                   ),
-                )
-              : RefreshIndicator(
-                  backgroundColor: ColorSchemeClass.unactivatedblack,
-                  onRefresh: () async {
-                    await getPeersList();
-                    return 0;
-                  },
-                  child: ListView(
-                    children: listOfUserTiles,
-                  ),
-                ),
-    );
+          );
   }
 }
