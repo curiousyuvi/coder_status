@@ -1,4 +1,3 @@
-import 'package:codersstatus/components/myAppBarWithBack.dart';
 import 'package:codersstatus/components/myDividerWithTitle.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +5,8 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:rive/rive.dart';
+
+import 'myAppBar.dart';
 
 class ViewAnotherUserScreenSkeleton extends StatefulWidget {
   @override

@@ -23,14 +23,18 @@ class _PeersScreenState extends State<PeersScreen> {
   getPeersList() async {
     listOfUserTiles = [];
     var peers = await GetUserInfo.getUserPeers();
+
     if (peers.length != 0) {
       for (int i = 0; i < peers.length; i++) {
-        var peerDocument = await GetUserInfo.getUserDocument(peers[i]);
-        listOfUserTiles.add(MyUserTile(
-            peerDocument['id'],
-            peerDocument['avatarurl'],
-            peerDocument['name'],
-            peerDocument['codername']));
+        try {
+          var peerDocument = await GetUserInfo.getUserDocument(peers[i]);
+          print('getting peers list $i');
+          listOfUserTiles.add(MyUserTile(
+              peerDocument['id'],
+              peerDocument['avatarurl'],
+              peerDocument['name'],
+              peerDocument['codername']));
+        } catch (e) {}
       }
     }
     setState(() {

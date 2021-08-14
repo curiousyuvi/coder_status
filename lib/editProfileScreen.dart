@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/components/myAppBarWithBack.dart';
 import 'package:codersstatus/components/myAvatarSelection.dart';
 import 'package:codersstatus/components/myButton.dart';
 import 'package:codersstatus/components/myCircleAvatar.dart';
@@ -13,6 +12,9 @@ import 'package:codersstatus/firebase_layer/setUserInfo.dart';
 import 'package:codersstatus/firebase_layer/uploadAvatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
+import 'package:rive/rive.dart';
+import 'components/confirmationDialog.dart';
+import 'components/myAppBar.dart';
 import 'functions/pickImageAndCrop.dart' as pickImageAndCrop;
 
 class EditProfileScreen extends StatefulWidget {
@@ -125,7 +127,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         appBar: PreferredSize(
           preferredSize:
               Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
-          child: MyAppBarWithBack('Edit Profile'),
+          child: MyAppBarWithBackAndDone('Edit Profile', () {
+            showConfirmationDialog(this.context, 'EDIT PROFILE',
+                'Do you want to save changes to the User Handles?', () {
+              _updateProfile();
+            }, true, RiveAnimation.asset('assets/check.riv'));
+          }),
         ),
         backgroundColor: ColorSchemeClass.dark,
         body: isFirstTime
@@ -380,21 +387,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                       height:
                                           MediaQuery.of(context).size.height *
                                               0.02),
-                                  Container(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal:
-                                            MediaQuery.of(context).size.width *
-                                                0.0135,
-                                        vertical:
-                                            MediaQuery.of(context).size.height *
-                                                0.01),
-                                    height: MediaQuery.of(context).size.height *
-                                        0.09,
-                                    child: MyButton(
-                                        ColorSchemeClass.primarygreen,
-                                        'Update Profile',
-                                        _updateProfile),
-                                  ),
                                 ],
                               ),
                             ),

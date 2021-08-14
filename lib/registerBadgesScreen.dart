@@ -1,5 +1,5 @@
 import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/components/generalLoadingScreen.dart';
+import 'package:codersstatus/components/generalLoader.dart';
 import 'package:codersstatus/components/showAnimatedToast.dart';
 import 'package:codersstatus/components/myButton.dart';
 import 'package:codersstatus/components/myTextFormField.dart';
@@ -55,7 +55,7 @@ class _RegisterbadgesscreenState extends State<Registerbadgesscreen> {
   @override
   Widget build(BuildContext context) {
     return isloading
-        ? GeneralLoadingScreen('Creating Account...')
+        ? GeneralLoader('Creating Account...')
         : GestureDetector(
             onTap: () {
               FocusScopeNode currentFocus = FocusScope.of(context);

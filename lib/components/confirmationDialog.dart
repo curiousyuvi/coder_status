@@ -2,130 +2,146 @@ import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/components/myButton.dart';
 import 'package:codersstatus/components/myOutlineButton.dart';
 import 'package:flutter/material.dart';
-import 'package:glassmorphism_ui/glassmorphism_ui.dart';
+import 'package:rive/rive.dart';
 
-bool showConfirmationDialog(BuildContext context, String title, String message,
-    [Widget displayWidget = const SizedBox()]) {
-  OverlayState overlayState = Overlay.of(context);
-
-  OverlayEntry overlayEntry;
-
-  overlayEntry = OverlayEntry(builder: (context) {
-    return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
-        child: Center(
-          child: GlassContainer(
-            borderRadius: BorderRadius.circular(5),
-            width: double.infinity,
-            child: Padding(
-              padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          overlayEntry.remove();
-                          return false;
-                        },
-                        child: Icon(
-                          Icons.close,
-                          color: ColorSchemeClass.darkgrey,
-                          size: MediaQuery.of(context).size.height * 0.03,
-                        ),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.02,
-                  ),
-                  Container(
+showConfirmationDialog(BuildContext context, String title, String message,
+    Function toDoIfConfirmed, bool alertType,
+    [Widget displayWidget = const SizedBox.shrink()]) async {
+  return await showDialog<bool>(
+      context: context,
+      builder: (context) {
+        return GestureDetector(
+          onTap: () {
+            Navigator.of(context).pop();
+          },
+          child: Scaffold(
+            backgroundColor: ColorSchemeClass.dark.withOpacity(0.5),
+            body: Padding(
+              padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.15),
+              child: Center(
+                child: GestureDetector(
+                  onTap: () {},
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: alertType
+                            ? ColorSchemeClass.primarygreen
+                            : ColorSchemeClass.dangerred,
+                        borderRadius: BorderRadius.circular(10)),
                     width: double.infinity,
-                    child: FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: Text(
-                        title,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: ColorSchemeClass.lightgrey,
-                          fontSize: MediaQuery.of(context).size.height * 0.05,
-                          fontFamily: 'young',
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.02,
-                  ),
-                  Container(
-                      height: MediaQuery.of(context).size.height * 0.15,
-                      child: displayWidget),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.02,
-                  ),
-                  Text(
-                    message,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: ColorSchemeClass.lightgrey,
-                        fontSize: MediaQuery.of(context).size.height * 0.025,
-                        fontFamily: 'young'),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.03,
-                  ),
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.06,
-                    child: FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: Row(
+                    child: Padding(
+                      padding: EdgeInsets.all(
+                          MediaQuery.of(context).size.width * 0.04),
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.min,
                         children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: Icon(
+                                  Icons.close,
+                                  color: Colors.white.withOpacity(0.5),
+                                  size:
+                                      MediaQuery.of(context).size.height * 0.03,
+                                ),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.02,
+                          ),
                           Container(
-                            width: MediaQuery.of(context).size.width * 0.3,
-                            child: MyOutlineButton(
-                              ColorSchemeClass.lightgrey,
-                              'No',
-                              () {
-                                overlayEntry.remove();
-                                return false;
-                              },
+                            width: double.infinity,
+                            child: FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: Text(
+                                title,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize:
+                                        MediaQuery.of(context).size.height *
+                                            0.05,
+                                    fontFamily: 'young',
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
                           ),
                           SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.05,
+                            height: MediaQuery.of(context).size.height * 0.02,
                           ),
                           Container(
-                            width: MediaQuery.of(context).size.width * 0.3,
-                            child: MyButton(
-                              ColorSchemeClass.primarygreen,
-                              'Yes',
-                              () {
-                                overlayEntry.remove();
-                                return true;
-                              },
+                              height: MediaQuery.of(context).size.height * 0.1,
+                              child: displayWidget),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.02,
+                          ),
+                          Text(
+                            message,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize:
+                                    MediaQuery.of(context).size.height * 0.025,
+                                fontFamily: 'young'),
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.03,
+                          ),
+                          Container(
+                            height: MediaQuery.of(context).size.height * 0.06,
+                            child: FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.3,
+                                    child: MyOutlineButton(
+                                      Colors.white,
+                                      'No',
+                                      () {
+                                        Navigator.of(context).pop();
+                                      },
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.05,
+                                  ),
+                                  Container(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.3,
+                                    child: MyButton(Colors.white, 'Yes', () {
+                                      toDoIfConfirmed();
+                                      Navigator.of(context).pop();
+                                    },
+                                        null,
+                                        alertType
+                                            ? ColorSchemeClass.primarygreen
+                                            : ColorSchemeClass.dangerred),
+                                  ),
+                                ],
+                              ),
                             ),
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.03,
                           ),
                         ],
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.03,
-                  ),
-                ],
+                ),
               ),
             ),
           ),
-        ),
-      ),
-    );
-  });
-
-  overlayState.insert(overlayEntry);
+        );
+      });
 }

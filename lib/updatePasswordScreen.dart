@@ -1,5 +1,5 @@
 import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/components/generalOverlayLoadingScreen.dart';
+import 'package:codersstatus/components/confirmationDialog.dart';
 import 'package:codersstatus/components/showAnimatedToast.dart';
 import 'package:codersstatus/firebase_layer/updatePassword.dart';
 import 'package:codersstatus/firebase_layer/validatePassword.dart';
@@ -8,9 +8,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:rive/rive.dart';
+import 'components/generalLoader.dart';
+import 'components/myAppBar.dart';
 import 'components/myTextFormField.dart';
 import 'components/myButton.dart';
-import 'components/myAppBarWithBack.dart';
 
 class UpdatePasswordScreen extends StatefulWidget {
   @override
@@ -20,7 +22,7 @@ class UpdatePasswordScreen extends StatefulWidget {
 class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
   String oldPass = '';
   String newPass = '';
-  bool isloading = false;
+  bool isLoading = false;
   bool oldpasswordmatch = true;
 
   final _formkey = GlobalKey<FormState>();
@@ -31,30 +33,27 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
     if (!currentFocus.hasPrimaryFocus) {
       currentFocus.unfocus();
     }
-    OverlayState overlayState = Overlay.of(context);
-    OverlayEntry overlayEntry1;
-    overlayEntry1 = OverlayEntry(builder: (context) {
-      return GeneralOverlayLoadingScreen('Verifying Old Password');
-    });
-    OverlayEntry overlayEntry2;
-    overlayEntry2 = OverlayEntry(builder: (context) {
-      return GeneralOverlayLoadingScreen('Updating Password');
-    });
 
     //start loader
-    overlayState.insert(overlayEntry1);
+    setState(() {
+      isLoading = true;
+    });
 
     oldpasswordmatch = await validatePassword(oldPass);
     print('bool updated!!');
 
     //stop loader
-    overlayEntry1.remove();
+    setState(() {
+      isLoading = false;
+    });
 
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
 
       //start loader
-      overlayState.insert(overlayEntry2);
+      setState(() {
+        isLoading = true;
+      });
 
       try {
         await updatePassword(oldPass, newPass);
@@ -66,95 +65,116 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
       }
 
       //stop loader
-      overlayEntry2.remove();
+      setState(() {
+        isLoading = false;
+      });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        FocusScopeNode currentFocus = FocusScope.of(context);
+    return Stack(
+      children: [
+        GestureDetector(
+          onTap: () {
+            FocusScopeNode currentFocus = FocusScope.of(context);
 
-        if (!currentFocus.hasPrimaryFocus) {
-          currentFocus.unfocus();
-        }
-      },
-      child: Scaffold(
-        appBar: PreferredSize(
-          preferredSize:
-              Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
-          child: MyAppBarWithBack('Update Password'),
-        ),
-        backgroundColor: ColorSchemeClass.dark,
-        body: SafeArea(
-          child: Container(
-            padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
-            child: Form(
-              key: _formkey,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Flexible(
-                      child: Padding(
-                    padding: EdgeInsets.all(
-                        MediaQuery.of(context).size.width * 0.02),
-                    child: Text(
-                        'Use a combination of letters, digits and special characters',
-                        style: TextStyle(
-                            color: ColorSchemeClass.darkgrey,
-                            fontSize:
-                                MediaQuery.of(context).size.height * 0.022,
-                            fontFamily: 'young'),
-                        textAlign: TextAlign.center),
-                  )),
-                  MyTextEormField(
-                      Icon(Icons.vpn_key),
-                      'old password',
-                      true,
-                      (val) {
+            if (!currentFocus.hasPrimaryFocus) {
+              currentFocus.unfocus();
+            }
+          },
+          child: Scaffold(
+            appBar: PreferredSize(
+              preferredSize:
+                  Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
+              child: MyAppBarWithBack('Update Password'),
+            ),
+            backgroundColor: ColorSchemeClass.dark,
+            body: SafeArea(
+              child: Container(
+                padding:
+                    EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
+                child: Form(
+                  key: _formkey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Flexible(
+                          child: Padding(
+                        padding: EdgeInsets.all(
+                            MediaQuery.of(context).size.width * 0.02),
+                        child: Text(
+                            'Use a combination of letters, digits and special characters',
+                            style: TextStyle(
+                                color: ColorSchemeClass.darkgrey,
+                                fontSize:
+                                    MediaQuery.of(context).size.height * 0.022,
+                                fontFamily: 'young'),
+                            textAlign: TextAlign.center),
+                      )),
+                      MyTextEormField(
+                          Icon(Icons.vpn_key),
+                          'old password',
+                          true,
+                          (val) {
+                            setState(() {
+                              oldPass = val;
+                            });
+                          },
+                          TextInputType.visiblePassword,
+                          (oldpassword) {
+                            return oldpasswordmatch
+                                ? null
+                                : 'Old password doesn\'t match';
+                          }),
+                      MyTextEormField(Icon(Icons.vpn_key), 'new password', true,
+                          (val) {
                         setState(() {
-                          oldPass = val;
+                          newPass = val;
                         });
                       },
-                      TextInputType.visiblePassword,
-                      (oldpassword) {
-                        return oldpasswordmatch
-                            ? null
-                            : 'Old password doesn\'t match';
-                      }),
-                  MyTextEormField(Icon(Icons.vpn_key), 'new password', true,
-                      (val) {
-                    setState(() {
-                      newPass = val;
-                    });
-                  },
-                      TextInputType.visiblePassword,
-                      (val) => val.trim().length < 6
-                          ? 'Password must contain atleast 6 characters'
-                          : null),
-                  MyTextEormField(
-                      Icon(Icons.vpn_key),
-                      'confirm new password',
-                      true,
-                      (val) {},
-                      TextInputType.visiblePassword,
-                      (val) =>
-                          val != newPass ? 'Password doesn\'t match' : null),
-                  Container(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: MediaQuery.of(context).size.width * 0.03,
-                        vertical: MediaQuery.of(context).size.height * 0.01),
-                    height: MediaQuery.of(context).size.height * 0.09,
-                    child: MyButton(ColorSchemeClass.primarygreen,
-                        'Update Password', _submit),
+                          TextInputType.visiblePassword,
+                          (val) => val.trim().length < 6
+                              ? 'Password must contain atleast 6 characters'
+                              : null),
+                      MyTextEormField(
+                          Icon(Icons.vpn_key),
+                          'confirm new password',
+                          true,
+                          (val) {},
+                          TextInputType.visiblePassword,
+                          (val) => val != newPass
+                              ? 'Password doesn\'t match'
+                              : null),
+                      Container(
+                          padding: EdgeInsets.symmetric(
+                              horizontal:
+                                  MediaQuery.of(context).size.width * 0.03,
+                              vertical:
+                                  MediaQuery.of(context).size.height * 0.01),
+                          height: MediaQuery.of(context).size.height * 0.09,
+                          child: MyButton(
+                            ColorSchemeClass.primarygreen,
+                            'Update Password',
+                            () {
+                              showConfirmationDialog(
+                                  this.context,
+                                  'CONFIRM PASSWORD CHANGE',
+                                  'If you accept your account pssword will be changed. Do you want to continue?',
+                                  () {
+                                _submit();
+                              }, true, RiveAnimation.asset('assets/check.riv'));
+                            },
+                          )),
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
           ),
         ),
-      ),
+        isLoading ? GeneralLoaderTransparent('') : SizedBox.shrink()
+      ],
     );
   }
 }

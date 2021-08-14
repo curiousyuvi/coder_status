@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/components/generalLoadingScreen.dart';
+import 'package:codersstatus/components/generalLoader.dart';
 import 'package:codersstatus/components/showAnimatedToast.dart';
 import 'package:codersstatus/forgotPasswordscreen.dart';
 import 'package:codersstatus/homeScreen.dart';
@@ -82,7 +82,7 @@ class _SigninscreenState extends State<Signinscreen> {
   @override
   Widget build(BuildContext context) {
     return isloading
-        ? GeneralLoadingScreen('Logging in the user...')
+        ? GeneralLoader('Logging in the user...')
         : GestureDetector(
             onTap: () {
               FocusScopeNode currentFocus = FocusScope.of(context);
@@ -114,30 +114,22 @@ class _SigninscreenState extends State<Signinscreen> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.01,
                         ),
-                        Container(
-                          width: double.infinity,
-                          height: MediaQuery.of(context).size.height * 0.1,
-                          child: MyTextEormField(
-                              Icon(Icons.email), 'Email Id', false, (val) {
-                            emailid = val;
-                          },
-                              TextInputType.emailAddress,
-                              (val) => !val.contains('@')
-                                  ? 'Please enter a valid email'
-                                  : null),
-                        ),
-                        Container(
-                          width: double.infinity,
-                          height: MediaQuery.of(context).size.height * 0.1,
-                          child: MyTextEormField(
-                              Icon(Icons.vpn_key), 'Password', true, (val) {
-                            password = val;
-                          },
-                              TextInputType.visiblePassword,
-                              (val) => val.trim().length < 6
-                                  ? 'Please enter a valid password'
-                                  : null),
-                        ),
+                        MyTextEormField(Icon(Icons.email), 'Email Id', false,
+                            (val) {
+                          emailid = val;
+                        },
+                            TextInputType.emailAddress,
+                            (val) => !val.contains('@')
+                                ? 'Please enter a valid email'
+                                : null),
+                        MyTextEormField(Icon(Icons.vpn_key), 'Password', true,
+                            (val) {
+                          password = val;
+                        },
+                            TextInputType.visiblePassword,
+                            (val) => val.trim().length < 6
+                                ? 'Please enter a valid password'
+                                : null),
                         Container(
                           padding: EdgeInsets.symmetric(
                               horizontal:

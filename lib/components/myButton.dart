@@ -10,11 +10,11 @@ class MyButton extends StatelessWidget {
   IconData iconData;
 
   MyButton(Color buttoncolor, String title, Function dofunction,
-      [IconData iconData = null]) {
+      [IconData iconData = null, Color titlecolor = Colors.white]) {
     this.prominent = prominent;
     this.title = title;
     this.dofunction = dofunction;
-    titlecolor = Colors.white;
+    this.titlecolor = titlecolor;
     this.buttoncolor = buttoncolor;
     this.iconData = iconData;
   }

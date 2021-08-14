@@ -67,12 +67,9 @@ class MyRatingCard extends StatelessWidget {
           child: Container(
               height: MediaQuery.of(context).size.width * 0.25,
               width: MediaQuery.of(context).size.width * 0.2,
-              child: Opacity(
-                opacity: 0.5,
-                child: RiveAnimation.asset(
-                  'assets/shine.riv',
-                  fit: BoxFit.cover,
-                ),
+              child: RiveAnimation.asset(
+                'assets/shine.riv',
+                fit: BoxFit.cover,
               )),
         ),
       ],

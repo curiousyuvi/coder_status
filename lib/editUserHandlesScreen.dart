@@ -1,6 +1,6 @@
 import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/components/generalLoadingScreen.dart';
-import 'package:codersstatus/components/myAppBarWithBack.dart';
+import 'package:codersstatus/components/confirmationDialog.dart';
+import 'package:codersstatus/components/generalLoader.dart';
 import 'package:codersstatus/components/showAnimatedToast.dart';
 import 'package:codersstatus/components/myButton.dart';
 import 'package:codersstatus/components/myTextFormField.dart';
@@ -9,6 +9,9 @@ import 'package:codersstatus/firebase_layer/setUserInfo.dart';
 import 'package:codersstatus/homeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
+import 'package:rive/rive.dart';
+
+import 'components/myAppBar.dart';
 
 class EditUserHandlesScreen extends StatefulWidget {
   @override
@@ -67,7 +70,12 @@ class _EditUserHandlesScreenState extends State<EditUserHandlesScreen> {
         appBar: PreferredSize(
           preferredSize:
               Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
-          child: MyAppBarWithBack('Edit Profile'),
+          child: MyAppBarWithBackAndDone('Edit Profile', () {
+            showConfirmationDialog(this.context, 'EDIT USER HANDLES',
+                'Do you want to save changes to the User Handles?', () {
+              _submit();
+            }, true, RiveAnimation.asset('assets/check.riv'));
+          }),
         ),
         backgroundColor: ColorSchemeClass.dark,
         body: isFirstTime
@@ -252,21 +260,6 @@ class _EditUserHandlesScreenState extends State<EditUserHandlesScreen> {
                                           )
                                         ],
                                       )),
-                                  Container(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal:
-                                            MediaQuery.of(context).size.width *
-                                                0.02,
-                                        vertical:
-                                            MediaQuery.of(context).size.height *
-                                                0.01),
-                                    height: MediaQuery.of(context).size.height *
-                                        0.09,
-                                    child: MyButton(
-                                        ColorSchemeClass.primarygreen,
-                                        'Update User Handles',
-                                        _submit),
-                                  ),
                                 ],
                               ),
                             ),

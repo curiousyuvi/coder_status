@@ -19,7 +19,7 @@ Future main() async {
 }
 
 class myApp extends StatelessWidget {
-  const myApp({Key key}) : super(key: key);
+  myApp({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +33,6 @@ class myApp extends StatelessWidget {
                 bodyText1: TextStyle(fontFamily: 'young', color: Colors.white),
                 headline1:
                     TextStyle(fontFamily: 'young', color: Colors.white))),
-        home: TestScreen());
+        home: Authenticate());
   }
 }

@@ -43,6 +43,11 @@ flutter:
     - assets/shine.riv
     - assets/cup.riv
     - assets/boy-scene.riv
+    - assets/alert.riv
+    - assets/check.riv
+    - assets/crown-rotating.riv
+    - assets/no-peers.riv
+    - assets/search-user.riv
   fonts:
     - family: Young
       fonts:

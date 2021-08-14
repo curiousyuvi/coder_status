@@ -1,10 +1,10 @@
 import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/components/myAppBarWithBack.dart';
 import 'package:codersstatus/components/myRankingUserTile.dart';
 import 'package:codersstatus/firebase_layer/getUserInfo.dart';
 import 'package:codersstatus/functions/getRatingFromAPI.dart';
 import 'package:flutter/material.dart';
 
+import 'components/myAppBar.dart';
 import 'components/topThreeRankingCard.dart';
 
 class CodechefRankingScreen extends StatefulWidget {

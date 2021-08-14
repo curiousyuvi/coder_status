@@ -1,15 +1,17 @@
 import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/components/generalOverlayLoadingScreen.dart';
-import 'package:codersstatus/components/myAppBarWithBack.dart';
+import 'package:codersstatus/components/confirmationDialog.dart';
+import 'package:codersstatus/components/generalLoader.dart';
 import 'package:codersstatus/firebase_layer/deleteUser.dart';
 import 'package:codersstatus/firebase_layer/logoutUser.dart';
 import 'package:codersstatus/firebase_layer/validatePassword.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
+import 'package:flutter/painting.dart' as gradient;
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
+import 'package:rive/rive.dart';
+import 'components/myAppBar.dart';
 import 'components/myTextFormField.dart';
 import 'components/myButton.dart';
 
@@ -21,6 +23,7 @@ class DeleteAccountScreen extends StatefulWidget {
 class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
   String password = '';
   bool passwordmatch = false;
+  bool isLoading = false;
 
   final _formkey = GlobalKey<FormState>();
 
@@ -30,29 +33,27 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
     if (!currentFocus.hasPrimaryFocus) {
       currentFocus.unfocus();
     }
-    OverlayState overlayState = Overlay.of(context);
-    OverlayEntry overlayEntry1;
-    overlayEntry1 = OverlayEntry(builder: (context) {
-      return GeneralOverlayLoadingScreen('Verifying Password');
-    });
-    OverlayEntry overlayEntry2;
-    overlayEntry2 = OverlayEntry(builder: (context) {
-      return GeneralOverlayLoadingScreen('Deleting Account');
-    });
 
     //start loader
-    overlayState.insert(overlayEntry1);
+    setState(() {
+      isLoading = true;
+    });
 
     passwordmatch = await validatePassword(password);
     print('bool updated!!');
 
     //stop loader
-    overlayEntry1.remove();
+    setState(() {
+      isLoading = false;
+    });
 
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
+
       //start loader
-      overlayState.insert(overlayEntry2);
+      setState(() {
+        isLoading = true;
+      });
       try {
         await deleteUser(password);
         await logout(context);
@@ -62,141 +63,180 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
       }
 
       //end loader
+      setState(() {
+        isLoading = false;
+      });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        FocusScopeNode currentFocus = FocusScope.of(context);
+    return Stack(
+      children: [
+        GestureDetector(
+          onTap: () {
+            FocusScopeNode currentFocus = FocusScope.of(context);
 
-        if (!currentFocus.hasPrimaryFocus) {
-          currentFocus.unfocus();
-        }
-      },
-      child: Scaffold(
-        backgroundColor: ColorSchemeClass.dark,
-        appBar: PreferredSize(
-          preferredSize:
-              Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
-          child: MyAppBarWithBack('Delete Account'),
-        ),
-        body: SafeArea(
-          child: Container(
-            padding: EdgeInsets.all(16),
-            child: Form(
-              key: _formkey,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Flexible(
-                      child: Padding(
-                    padding: EdgeInsets.all(
-                        MediaQuery.of(context).size.width * 0.04),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            gradient: LinearGradient(stops: [
-                          0.0,
-                          0.5,
-                        ], colors: [
-                          ColorSchemeClass.morphdangerred,
-                          ColorSchemeClass.unactivatedblack,
-                        ])),
-                        width: double.infinity,
-                        height: MediaQuery.of(context).size.height * 0.16,
-                        child: Padding(
-                            padding: EdgeInsets.all(
-                                MediaQuery.of(context).size.height * 0.03),
-                            child: Row(
-                              children: [
-                                Container(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.05,
-                                    width: MediaQuery.of(context).size.height *
-                                        0.05,
-                                    decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: ColorSchemeClass.dangerred),
-                                    child: Icon(Icons.priority_high)),
-                                SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.06,
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+            if (!currentFocus.hasPrimaryFocus) {
+              currentFocus.unfocus();
+            }
+          },
+          child: Scaffold(
+            backgroundColor: ColorSchemeClass.dark,
+            appBar: PreferredSize(
+              preferredSize:
+                  Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
+              child: MyAppBarWithBack('Delete Account'),
+            ),
+            body: SafeArea(
+              child: Container(
+                padding: EdgeInsets.all(16),
+                child: Form(
+                  key: _formkey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Flexible(
+                          child: Padding(
+                        padding: EdgeInsets.all(
+                            MediaQuery.of(context).size.width * 0.04),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                gradient: gradient.LinearGradient(stops: [
+                              0.0,
+                              0.5,
+                            ], colors: [
+                              ColorSchemeClass.morphdangerred,
+                              ColorSchemeClass.unactivatedblack,
+                            ])),
+                            width: double.infinity,
+                            height: MediaQuery.of(context).size.height * 0.16,
+                            child: Padding(
+                                padding: EdgeInsets.all(
+                                    MediaQuery.of(context).size.height * 0.03),
+                                child: Row(
                                   children: [
-                                    Text(
-                                      'Account Delete Alert',
-                                      textAlign: TextAlign.left,
-                                      style: TextStyle(
-                                          color: ColorSchemeClass.dangerred,
-                                          fontFamily: 'young',
-                                          fontSize: MediaQuery.of(context)
+                                    Container(
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.05,
+                                        width:
+                                            MediaQuery.of(context).size.height *
+                                                0.05,
+                                        decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: ColorSchemeClass.dangerred),
+                                        child: Icon(Icons.priority_high)),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.06,
+                                    ),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Account Delete Alert',
+                                          textAlign: TextAlign.left,
+                                          style: TextStyle(
+                                              color: ColorSchemeClass.dangerred,
+                                              fontFamily: 'young',
+                                              fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.03),
+                                        ),
+                                        SizedBox(
+                                          height: MediaQuery.of(context)
                                                   .size
                                                   .height *
-                                              0.03),
-                                    ),
-                                    SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height *
                                               0.01,
-                                    ),
-                                    Flexible(
-                                      child: Text(
-                                        'If you continue further all your\naccount\'s data will be lost.\nYou will have to create a new\naccount from scratch',
-                                        textAlign: TextAlign.left,
-                                        style: TextStyle(
-                                            color: ColorSchemeClass.lightgrey,
-                                            fontFamily: 'young',
-                                            fontSize: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.02),
-                                      ),
+                                        ),
+                                        Container(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.5,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.06,
+                                          child: FittedBox(
+                                            alignment: Alignment.centerLeft,
+                                            fit: BoxFit.scaleDown,
+                                            child: Text(
+                                              'If you continue further your account\nwill be deleted permanentally and\n all your account\'s data will be lost.\nYou will have to create a new\naccount from scratch',
+                                              textAlign: TextAlign.left,
+                                              style: TextStyle(
+                                                  color: ColorSchemeClass
+                                                      .lightgrey,
+                                                  fontFamily: 'young',
+                                                  fontSize:
+                                                      MediaQuery.of(context)
+                                                              .size
+                                                              .height *
+                                                          0.02),
+                                            ),
+                                          ),
+                                        )
+                                      ],
                                     )
                                   ],
-                                )
-                              ],
-                            )),
+                                )),
+                          ),
+                        ),
+                      )),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.03),
+                      Theme(
+                        data: ThemeData(
+                            accentColor: ColorSchemeClass.dangerred,
+                            primaryColor: ColorSchemeClass.dangerred),
+                        child: MyTextEormField(
+                            Icon(Icons.vpn_key),
+                            'Enter Password',
+                            true,
+                            (val) {
+                              password = val;
+                            },
+                            TextInputType.visiblePassword,
+                            (password) {
+                              return passwordmatch
+                                  ? null
+                                  : 'Password is incorrect';
+                            },
+                            null,
+                            ColorSchemeClass.dangerred),
                       ),
-                    ),
-                  )),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-                  Theme(
-                    data: ThemeData(
-                        accentColor: ColorSchemeClass.dangerred,
-                        primaryColor: ColorSchemeClass.dangerred),
-                    child: MyTextEormField(
-                        Icon(Icons.vpn_key),
-                        'Enter Password',
-                        true,
-                        (val) {
-                          password = val;
-                        },
-                        TextInputType.visiblePassword,
-                        (password) {
-                          return passwordmatch ? null : 'Password is incorrect';
-                        },
-                        null,
-                        ColorSchemeClass.dangerred),
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                            horizontal:
+                                MediaQuery.of(context).size.width * 0.03,
+                            vertical:
+                                MediaQuery.of(context).size.height * 0.01),
+                        height: MediaQuery.of(context).size.height * 0.09,
+                        child: MyButton(
+                            ColorSchemeClass.dangerred, 'Delete Account', () {
+                          showConfirmationDialog(
+                              this.context,
+                              'CONFIRM ACCOUNT DELETION',
+                              'If you accept your account will be deleted permanently. Do you want to continue?',
+                              () {
+                            _submit();
+                          }, false, RiveAnimation.asset('assets/alert.riv'));
+                        }, Icons.delete),
+                      ),
+                    ],
                   ),
-                  Container(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: MediaQuery.of(context).size.width * 0.03,
-                        vertical: MediaQuery.of(context).size.height * 0.01),
-                    height: MediaQuery.of(context).size.height * 0.09,
-                    child: MyButton(ColorSchemeClass.dangerred,
-                        'Delete Account', _submit, Icons.delete),
-                  ),
-                ],
+                ),
               ),
             ),
           ),
         ),
-      ),
+        isLoading ? GeneralLoaderTransparent('') : SizedBox.shrink()
+      ],
     );
   }
 }

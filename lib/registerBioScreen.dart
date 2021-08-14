@@ -104,7 +104,8 @@ class _RegisterbioscreenState extends State<Registerbioscreen> {
                   MyPassageTextEormField('Bio', (val) {
                     bio = val.toString().trim();
                   },
-                      (val) => val.toString().trim().length > 100
+                      (val) => val.toString().trim().length > 100 ||
+                              val.toString().trim().length == 0
                           ? 'Bio should be under 100 characters'
                           : null),
                   Row(

@@ -1,7 +1,6 @@
 import 'package:codersstatus/components/atcoderDialog.dart';
 import 'package:codersstatus/components/codechefDialog.dart';
 import 'package:codersstatus/components/codeforcesDialog.dart';
-import 'package:codersstatus/components/myAppBarWithBack.dart';
 import 'package:codersstatus/components/myButton.dart';
 import 'package:codersstatus/components/myDividerWithTitle.dart';
 import 'package:codersstatus/components/myOtherCircleAvatar.dart';
@@ -21,6 +20,8 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:codersstatus/components/myRatingCard.dart';
 import 'package:rect_getter/rect_getter.dart';
+
+import 'components/myAppBar.dart';
 
 class ViewAnotherUserScreen extends StatefulWidget {
   String uid = '';
