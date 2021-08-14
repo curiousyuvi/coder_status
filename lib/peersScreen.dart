@@ -1,13 +1,11 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/components/myAppBar.dart';
-import 'package:codersstatus/components/myTextFormField.dart';
 import 'package:codersstatus/components/myUserTile.dart';
 import 'package:codersstatus/components/peerScreenSkeleton.dart';
 import 'package:codersstatus/firebase_layer/getUserInfo.dart';
-import 'package:codersstatus/firebase_layer/search.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:rive/rive.dart';
 
 class PeersScreen extends StatefulWidget {
   const PeersScreen({Key key}) : super(key: key);
@@ -72,6 +70,14 @@ class _PeersScreenState extends State<PeersScreen> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                          Container(
+                            height: MediaQuery.of(context).size.width * 0.9,
+                            width: MediaQuery.of(context).size.width * 0.9,
+                            child: RiveAnimation.asset('assets/no-peers.riv'),
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.02,
+                          ),
                           Text(
                             'You haven\'t added any Peers',
                             style: TextStyle(
@@ -83,9 +89,53 @@ class _PeersScreenState extends State<PeersScreen> {
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.02,
                           ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Text(
+                                'Go to   ',
+                                style: TextStyle(
+                                    color: ColorSchemeClass.lightgrey,
+                                    fontFamily: 'young',
+                                    fontSize:
+                                        MediaQuery.of(context).size.height *
+                                            0.025),
+                              ),
+                              Column(children: [
+                                Icon(
+                                  CupertinoIcons.search,
+                                  color: ColorSchemeClass.primarygreen,
+                                  size: MediaQuery.of(context).size.width * 0.1,
+                                ),
+                                Text(
+                                  'Search',
+                                  style: TextStyle(
+                                      color: ColorSchemeClass.primarygreen,
+                                      fontFamily: 'young',
+                                      fontSize:
+                                          MediaQuery.of(context).size.height *
+                                              0.018),
+                                ),
+                              ]),
+                              Text(
+                                '   to add Peers',
+                                style: TextStyle(
+                                    color: ColorSchemeClass.lightgrey,
+                                    fontFamily: 'young',
+                                    fontSize:
+                                        MediaQuery.of(context).size.height *
+                                            0.025),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.03,
+                          ),
                           GestureDetector(
                             onTap: () {
                               setState(() {
+                                futureFunction = getPeersList();
                                 isFirstTime = true;
                               });
                             },
