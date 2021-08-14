@@ -6,6 +6,7 @@ import 'package:codersstatus/components/myUserTile.dart';
 import 'package:codersstatus/firebase_layer/search.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:rive/rive.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({Key key}) : super(key: key);
@@ -92,12 +93,26 @@ class _SearchScreenState extends State<SearchScreen> {
               tempSearchStore.length == 0
                   ? Expanded(
                       child: Center(
-                        child: Text(
-                          'Enter Name or Username to search',
-                          style: TextStyle(
-                              color: ColorSchemeClass.lightgrey,
-                              fontFamily: 'young',
-                              fontWeight: FontWeight.bold),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Flexible(
+                              child: Container(
+                                height: MediaQuery.of(context).size.width * 0.9,
+                                width: MediaQuery.of(context).size.width * 0.9,
+                                child: RiveAnimation.asset(
+                                    'assets/search-user.riv'),
+                              ),
+                            ),
+                            Text(
+                              'Enter Name or Username to search',
+                              style: TextStyle(
+                                  color: ColorSchemeClass.lightgrey,
+                                  fontFamily: 'young',
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
                         ),
                       ),
                     )
