@@ -350,33 +350,98 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
                                   ? Container(
                                       height:
                                           MediaQuery.of(context).size.height *
-                                              0.32,
-                                      child: Center(
-                                        child: DottedBorder(
-                                          strokeWidth: 1,
-                                          dashPattern: [5, 5],
-                                          color: ColorSchemeClass.darkgrey,
-                                          child: Container(
-                                            padding: EdgeInsets.all(
-                                                MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    0.05),
-                                            child: Text(
-                                              'NO RATINGS',
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                  color:
-                                                      ColorSchemeClass.darkgrey,
-                                                  fontFamily: 'young',
-                                                  fontSize:
-                                                      MediaQuery.of(context)
-                                                              .size
-                                                              .height *
-                                                          0.02),
+                                              0.3,
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          DottedBorder(
+                                            strokeWidth: 1,
+                                            dashPattern: [5, 5],
+                                            color: ColorSchemeClass.lightgrey,
+                                            child: Container(
+                                              padding: EdgeInsets.all(
+                                                  MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.05),
+                                              child: Text(
+                                                'NO RATINGS',
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                    color: ColorSchemeClass
+                                                        .lightgrey,
+                                                    fontFamily: 'young',
+                                                    fontSize:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            0.02),
+                                              ),
                                             ),
                                           ),
-                                        ),
+                                          SizedBox(
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.04,
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Text(
+                                                'Go to   ',
+                                                style: TextStyle(
+                                                    color: ColorSchemeClass
+                                                        .lightgrey,
+                                                    fontFamily: 'young',
+                                                    fontSize:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            0.02),
+                                              ),
+                                              Column(children: [
+                                                Icon(
+                                                  Icons.settings,
+                                                  color: ColorSchemeClass
+                                                      .primarygreen,
+                                                  size: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.08,
+                                                ),
+                                                Text(
+                                                  'Settings',
+                                                  style: TextStyle(
+                                                      color: ColorSchemeClass
+                                                          .primarygreen,
+                                                      fontFamily: 'young',
+                                                      fontSize:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .height *
+                                                              0.016),
+                                                ),
+                                              ]),
+                                              Text(
+                                                '   to add User Handles',
+                                                style: TextStyle(
+                                                    color: ColorSchemeClass
+                                                        .lightgrey,
+                                                    fontFamily: 'young',
+                                                    fontSize:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            0.02),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
                                       ),
                                     )
                                   : (listOfRatingCards.length % 2 == 1)

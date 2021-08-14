@@ -1,8 +1,10 @@
 import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/components/myAppBar.dart';
+import 'package:codersstatus/components/myButton.dart';
 import 'package:codersstatus/components/myUserTile.dart';
 import 'package:codersstatus/components/peerScreenSkeleton.dart';
 import 'package:codersstatus/firebase_layer/getUserInfo.dart';
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
@@ -78,13 +80,23 @@ class _PeersScreenState extends State<PeersScreen> {
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.02,
                           ),
-                          Text(
-                            'You haven\'t added any Peers',
-                            style: TextStyle(
-                                color: ColorSchemeClass.lightgrey,
-                                fontFamily: 'young',
-                                fontSize:
-                                    MediaQuery.of(context).size.height * 0.025),
+                          DottedBorder(
+                            strokeWidth: 1,
+                            dashPattern: [5, 5],
+                            color: ColorSchemeClass.lightgrey,
+                            child: Container(
+                              padding: EdgeInsets.all(
+                                  MediaQuery.of(context).size.width * 0.04),
+                              child: Text(
+                                'You haven\'t added any Peers',
+                                style: TextStyle(
+                                    color: ColorSchemeClass.lightgrey,
+                                    fontFamily: 'young',
+                                    fontSize:
+                                        MediaQuery.of(context).size.height *
+                                            0.02),
+                              ),
+                            ),
                           ),
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.02,
@@ -100,13 +112,14 @@ class _PeersScreenState extends State<PeersScreen> {
                                     fontFamily: 'young',
                                     fontSize:
                                         MediaQuery.of(context).size.height *
-                                            0.025),
+                                            0.02),
                               ),
                               Column(children: [
                                 Icon(
                                   CupertinoIcons.search,
                                   color: ColorSchemeClass.primarygreen,
-                                  size: MediaQuery.of(context).size.width * 0.1,
+                                  size:
+                                      MediaQuery.of(context).size.width * 0.08,
                                 ),
                                 Text(
                                   'Search',
@@ -115,7 +128,7 @@ class _PeersScreenState extends State<PeersScreen> {
                                       fontFamily: 'young',
                                       fontSize:
                                           MediaQuery.of(context).size.height *
-                                              0.018),
+                                              0.016),
                                 ),
                               ]),
                               Text(
@@ -125,30 +138,24 @@ class _PeersScreenState extends State<PeersScreen> {
                                     fontFamily: 'young',
                                     fontSize:
                                         MediaQuery.of(context).size.height *
-                                            0.025),
+                                            0.02),
                               ),
                             ],
                           ),
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.03,
                           ),
-                          GestureDetector(
-                            onTap: () {
+                          Container(
+                            height: MediaQuery.of(context).size.height * 0.05,
+                            width: MediaQuery.of(context).size.width * 0.5,
+                            child: MyButton(
+                                ColorSchemeClass.primarygreen, 'Refresh', () {
                               setState(() {
                                 futureFunction = getPeersList();
                                 isFirstTime = true;
                               });
-                            },
-                            child: Text(
-                              'Refresh',
-                              style: TextStyle(
-                                  decoration: TextDecoration.underline,
-                                  color: ColorSchemeClass.primarygreen,
-                                  fontFamily: 'young',
-                                  fontSize: MediaQuery.of(context).size.height *
-                                      0.028),
-                            ),
-                          ),
+                            }),
+                          )
                         ],
                       ),
                     ),
