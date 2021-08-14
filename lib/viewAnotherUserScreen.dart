@@ -12,6 +12,7 @@ import 'package:codersstatus/editProfileScreen.dart';
 import 'package:codersstatus/firebase_layer/getUserInfo.dart';
 import 'package:codersstatus/firebase_layer/setUserInfo.dart';
 import 'package:codersstatus/functions/getRatingFromAPI.dart';
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:codersstatus/components/colorscheme.dart';
@@ -475,19 +476,31 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
                                       height:
                                           MediaQuery.of(context).size.height *
                                               0.32,
-                                      width: MediaQuery.of(context).size.width *
-                                          0.6,
                                       child: Center(
-                                        child: Text(
-                                          'The user hasn\'t added any User Handles or doesn\'t have rating on a platform',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                              color: ColorSchemeClass.darkgrey,
-                                              fontFamily: 'young',
-                                              fontSize: MediaQuery.of(context)
-                                                      .size
-                                                      .height *
-                                                  0.02),
+                                        child: DottedBorder(
+                                          strokeWidth: 1,
+                                          dashPattern: [5, 5],
+                                          color: ColorSchemeClass.darkgrey,
+                                          child: Container(
+                                            padding: EdgeInsets.all(
+                                                MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.05),
+                                            child: Text(
+                                              'NO RATINGS',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  color:
+                                                      ColorSchemeClass.darkgrey,
+                                                  fontFamily: 'young',
+                                                  fontSize:
+                                                      MediaQuery.of(context)
+                                                              .size
+                                                              .height *
+                                                          0.02),
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     )
