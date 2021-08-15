@@ -95,8 +95,8 @@ class _AboutDeveloperScreenState extends State<AboutDeveloperScreen> {
                     height: MediaQuery.of(context).size.height * 0.04,
                   ),
                   Container(
-                    width: MediaQuery.of(context).size.height * 0.3,
-                    height: MediaQuery.of(context).size.height * 0.2,
+                    width: MediaQuery.of(context).size.height * 0.25,
+                    height: MediaQuery.of(context).size.height * 0.15,
                     child: GridView.count(
                       crossAxisSpacing: 40,
                       mainAxisSpacing: 30,
@@ -234,7 +234,7 @@ class _AboutDeveloperScreenState extends State<AboutDeveloperScreen> {
                                 Icons.mail,
                                 color: ColorSchemeClass.primarygreen,
                                 size:
-                                    MediaQuery.of(context).size.height * 0.055,
+                                    MediaQuery.of(context).size.height * 0.043,
                               )),
                         ),
                       ],
