@@ -9,7 +9,8 @@ Future<User> login(String email, String password) async {
         .user;
 
     if (user != null) {
-      print("login succesfull");
+      final url = user.photoURL;
+      print("login succesfull\n\n\n\n\n$url\n\n\n\n\n");
       return user;
     } else {
       print("Login failed!!");

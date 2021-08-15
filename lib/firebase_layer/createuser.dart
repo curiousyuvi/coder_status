@@ -18,3 +18,11 @@ Future<User> createAccount(String email, String password) async {
     print(e);
   }
 }
+
+Future<User> createAccountWithGoogle() async {
+  FirebaseAuth _auth = FirebaseAuth.instance;
+
+  try {} catch (e) {
+    print(e);
+  }
+}

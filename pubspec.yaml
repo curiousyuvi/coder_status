@@ -31,6 +31,8 @@ dependencies:
   argon_buttons_flutter: ^1.1.0
   url_launcher: ^6.0.9
   font_awesome_flutter: ^9.1.0
+  google_sign_in: ^5.0.3
+  provider: ^5.0.0
 
 dev_dependencies:
   flutter_test:
