@@ -3,7 +3,7 @@ import 'package:codersstatus/components/myAvatarButton.dart';
 import 'package:codersstatus/components/ratingLoadingScreen.dart';
 import 'package:codersstatus/components/urls.dart';
 import 'package:codersstatus/firebase_layer/getUserInfo.dart';
-import 'package:codersstatus/functions/getRatingFromAPI.dart';
+import 'package:codersstatus/functions/getRating.dart';
 import 'package:codersstatus/myDashboardScreen.dart';
 import 'package:codersstatus/peersScreen.dart';
 import 'package:codersstatus/rankingScreen.dart';

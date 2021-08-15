@@ -19,7 +19,8 @@ class GeneralLoader extends StatelessWidget {
             Container(
                 width: MediaQuery.of(context).size.width * 0.3,
                 height: MediaQuery.of(context).size.width * 0.3,
-                child: RiveAnimation.asset('assets/cup.riv')),
+                child: Hero(
+                    tag: 'cup', child: RiveAnimation.asset('assets/cup.riv'))),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.01,
             ),

@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:codersstatus/components/generalLoader.dart';
 import 'package:codersstatus/getStartedScreen.dart';
 import 'package:codersstatus/homeScreen.dart';
 import 'package:codersstatus/registerNameScreen.dart';
-import 'package:codersstatus/signinScreen.dart';
 import 'package:codersstatus/verifyEmailScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -46,11 +46,7 @@ class Authenticate extends StatelessWidget {
             return GetStartedScreen();
           }
         } else {
-          return Scaffold(
-            body: Center(
-              child: CircularProgressIndicator(),
-            ),
-          );
+          return GeneralLoader('');
         }
       },
     );

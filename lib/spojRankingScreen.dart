@@ -2,7 +2,7 @@ import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/components/myRankingUserTile.dart';
 import 'package:codersstatus/components/rankingScreenSkeleton.dart';
 import 'package:codersstatus/firebase_layer/getUserInfo.dart';
-import 'package:codersstatus/functions/getRatingFromAPI.dart';
+import 'package:codersstatus/functions/getRating.dart';
 import 'package:flutter/material.dart';
 
 import 'components/myAppBar.dart';
@@ -32,7 +32,7 @@ class _SpojRankingScreenState extends State<SpojRankingScreen> {
 
     //if I have that handle only then add me to ranking data
     if (myUserHandles[3] != "") {
-      var myRating = await GetRatingFromAPI.getSpojRating(myUserHandles[3]);
+      var myRating = await GetRating.getSpojRating(myUserHandles[3]);
       print('my rating fetched');
 
       //if I have rating other than 0 only then add me to ranking data
@@ -60,8 +60,7 @@ class _SpojRankingScreenState extends State<SpojRankingScreen> {
         //if the peer's document map has user Handle then then add it to ranking data
         if (peerDocument['spoj'] != '') {
           //fetch rating for the current peer
-          var rating =
-              await GetRatingFromAPI.getSpojRating(peerDocument['spoj']);
+          var rating = await GetRating.getSpojRating(peerDocument['spoj']);
           print('peer\'s rating fetched');
 
           //if current peer has rating not equal to zero then add it to ranking data

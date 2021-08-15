@@ -2,9 +2,8 @@ import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/components/myRankingUserTile.dart';
 import 'package:codersstatus/components/rankingScreenSkeleton.dart';
 import 'package:codersstatus/firebase_layer/getUserInfo.dart';
-import 'package:codersstatus/functions/getRatingFromAPI.dart';
+import 'package:codersstatus/functions/getRating.dart';
 import 'package:flutter/material.dart';
-
 import 'components/myAppBar.dart';
 import 'components/myButton.dart';
 import 'components/topThreeRankingCard.dart';
@@ -32,7 +31,7 @@ class _CodechefRankingScreenState extends State<CodechefRankingScreen> {
 
     //if I have that handle only then add me to ranking data
     if (myUserHandles[1] != "") {
-      var myRating = await GetRatingFromAPI.getCodechefRating(myUserHandles[1]);
+      var myRating = await GetRating.getCodechefRating(myUserHandles[1]);
       print('my rating fetched');
 
       //if I have rating other than 0 only then add me to ranking data
@@ -60,8 +59,8 @@ class _CodechefRankingScreenState extends State<CodechefRankingScreen> {
         //if the peer's document map has user Handle then then add it to ranking data
         if (peerDocument['codechef'] != '') {
           //fetch rating for the current peer
-          var rating = await GetRatingFromAPI.getCodechefRating(
-              peerDocument['codechef']);
+          var rating =
+              await GetRating.getCodechefRating(peerDocument['codechef']);
           print('peer\'s rating fetched');
 
           //if current peer has rating not equal to zero then add it to ranking data
