@@ -11,6 +11,7 @@ import 'package:codersstatus/searchScreen.dart';
 import 'package:codersstatus/settingScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'components/generalLoader.dart';
 
@@ -118,11 +119,11 @@ class HomeScreenState extends State<HomeScreen> {
                       fontSize: MediaQuery.of(context).size.height * 0.017),
                   unselectedIconTheme: IconThemeData(
                       opacity: 0.7,
-                      size: MediaQuery.of(context).size.height * 0.045,
+                      size: MediaQuery.of(context).size.height * 0.04,
                       color: ColorSchemeClass.lightgrey),
                   selectedIconTheme: IconThemeData(
                       opacity: 1,
-                      size: MediaQuery.of(context).size.height * 0.045,
+                      size: MediaQuery.of(context).size.height * 0.04,
                       color: ColorSchemeClass.primarygreen),
                   onTap: (int index) {
                     _selectTab(pageKeys[index], index);
@@ -131,12 +132,14 @@ class HomeScreenState extends State<HomeScreen> {
                   items: [
                     BottomNavigationBarItem(
                       icon: (_selectedIndex == 0)
-                          ? Icon(Icons.emoji_events)
+                          ? FaIcon(FontAwesomeIcons.trophy)
                           : Icon(Icons.emoji_events_outlined),
                       label: 'Ranking',
                     ),
                     BottomNavigationBarItem(
-                      icon: new Icon(CupertinoIcons.search),
+                      icon: (_selectedIndex == 1)
+                          ? FaIcon(FontAwesomeIcons.search)
+                          : Icon(Icons.search),
                       label: 'Search',
                     ),
                     BottomNavigationBarItem(
@@ -147,13 +150,13 @@ class HomeScreenState extends State<HomeScreen> {
                     ),
                     BottomNavigationBarItem(
                       icon: (_selectedIndex == 3)
-                          ? Icon(CupertinoIcons.person_3_fill)
+                          ? FaIcon(FontAwesomeIcons.users)
                           : Icon(CupertinoIcons.person_3),
                       label: 'Peers',
                     ),
                     BottomNavigationBarItem(
                       icon: (_selectedIndex == 4)
-                          ? Icon(Icons.settings)
+                          ? FaIcon(FontAwesomeIcons.cog)
                           : Icon(Icons.settings_outlined),
                       label: 'Settings',
                     ),

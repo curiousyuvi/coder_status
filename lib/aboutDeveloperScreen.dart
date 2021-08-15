@@ -1,8 +1,7 @@
 import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/components/myAppBar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/services.dart';
 
@@ -112,13 +111,14 @@ class _AboutDeveloperScreenState extends State<AboutDeveloperScreen> {
                             }
                           },
                           child: Container(
-                            width: MediaQuery.of(context).size.height * 0.07,
-                            height: MediaQuery.of(context).size.height * 0.07,
-                            child: SvgPicture.asset(
-                              'images/github.svg',
-                              color: ColorSchemeClass.primarygreen,
-                            ),
-                          ),
+                              width: MediaQuery.of(context).size.height * 0.07,
+                              height: MediaQuery.of(context).size.height * 0.07,
+                              child: FaIcon(
+                                FontAwesomeIcons.github,
+                                color: ColorSchemeClass.primarygreen,
+                                size:
+                                    MediaQuery.of(context).size.height * 0.043,
+                              )),
                         ),
                         GestureDetector(
                           onTap: () async {
@@ -131,13 +131,14 @@ class _AboutDeveloperScreenState extends State<AboutDeveloperScreen> {
                             }
                           },
                           child: Container(
-                            width: MediaQuery.of(context).size.height * 0.07,
-                            height: MediaQuery.of(context).size.height * 0.07,
-                            child: SvgPicture.asset(
-                              'images/instagram.svg',
-                              color: ColorSchemeClass.primarygreen,
-                            ),
-                          ),
+                              width: MediaQuery.of(context).size.height * 0.07,
+                              height: MediaQuery.of(context).size.height * 0.07,
+                              child: FaIcon(
+                                FontAwesomeIcons.instagram,
+                                color: ColorSchemeClass.primarygreen,
+                                size:
+                                    MediaQuery.of(context).size.height * 0.043,
+                              )),
                         ),
                         GestureDetector(
                           onTap: () async {
@@ -150,13 +151,14 @@ class _AboutDeveloperScreenState extends State<AboutDeveloperScreen> {
                             }
                           },
                           child: Container(
-                            width: MediaQuery.of(context).size.height * 0.07,
-                            height: MediaQuery.of(context).size.height * 0.07,
-                            child: SvgPicture.asset(
-                              'images/linkedin.svg',
-                              color: ColorSchemeClass.primarygreen,
-                            ),
-                          ),
+                              width: MediaQuery.of(context).size.height * 0.07,
+                              height: MediaQuery.of(context).size.height * 0.07,
+                              child: FaIcon(
+                                FontAwesomeIcons.linkedin,
+                                color: ColorSchemeClass.primarygreen,
+                                size:
+                                    MediaQuery.of(context).size.height * 0.043,
+                              )),
                         ),
                         GestureDetector(
                           onTap: () async {
@@ -168,13 +170,14 @@ class _AboutDeveloperScreenState extends State<AboutDeveloperScreen> {
                             }
                           },
                           child: Container(
-                            width: MediaQuery.of(context).size.height * 0.07,
-                            height: MediaQuery.of(context).size.height * 0.07,
-                            child: SvgPicture.asset(
-                              'images/twitter.svg',
-                              color: ColorSchemeClass.primarygreen,
-                            ),
-                          ),
+                              width: MediaQuery.of(context).size.height * 0.07,
+                              height: MediaQuery.of(context).size.height * 0.07,
+                              child: FaIcon(
+                                FontAwesomeIcons.twitter,
+                                color: ColorSchemeClass.primarygreen,
+                                size:
+                                    MediaQuery.of(context).size.height * 0.043,
+                              )),
                         ),
                         GestureDetector(
                           onTap: () async {
@@ -187,13 +190,14 @@ class _AboutDeveloperScreenState extends State<AboutDeveloperScreen> {
                             }
                           },
                           child: Container(
-                            width: MediaQuery.of(context).size.height * 0.07,
-                            height: MediaQuery.of(context).size.height * 0.07,
-                            child: SvgPicture.asset(
-                              'images/facebook.svg',
-                              color: ColorSchemeClass.primarygreen,
-                            ),
-                          ),
+                              width: MediaQuery.of(context).size.height * 0.07,
+                              height: MediaQuery.of(context).size.height * 0.07,
+                              child: FaIcon(
+                                FontAwesomeIcons.facebook,
+                                color: ColorSchemeClass.primarygreen,
+                                size:
+                                    MediaQuery.of(context).size.height * 0.043,
+                              )),
                         ),
                         GestureDetector(
                           onTap: () {
