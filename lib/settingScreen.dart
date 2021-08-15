@@ -1,3 +1,4 @@
+import 'package:codersstatus/aboutDeveloperScreen.dart';
 import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/components/myAppBar.dart';
 import 'package:codersstatus/components/mySettingNonExpansionTile.dart';
@@ -105,7 +106,7 @@ class _SettingScreenState extends State<SettingScreen> {
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return TestScreen();
+                      return AboutDeveloperScreen();
                     }));
                   },
                   child: MySettingsNonExpansionTile(

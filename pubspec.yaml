@@ -29,6 +29,8 @@ dependencies:
   glassmorphism_ui: ^0.2.0
   dotted_border: ^2.0.0+1
   argon_buttons_flutter: ^1.1.0
+  flutter_svg: ^0.22.0
+  url_launcher: ^6.0.9
 
 dev_dependencies:
   flutter_test:
