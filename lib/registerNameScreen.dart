@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'components/myTextFormField.dart';
 import 'components/myButton.dart';
 
@@ -92,7 +93,8 @@ class _RegisternamescreenState extends State<Registernamescreen> {
                       textAlign: TextAlign.center,
                     ),
                   )),
-                  MyTextEormField(Icon(Icons.person), 'Full Name', false,
+                  MyTextEormField(
+                      Icon(FontAwesomeIcons.solidUser), 'Full Name', false,
                       (val) {
                     name = val.toString().trim();
                   },

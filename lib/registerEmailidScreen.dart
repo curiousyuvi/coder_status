@@ -1,14 +1,12 @@
 import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/components/showAnimatedToast.dart';
-import 'package:codersstatus/firebase_layer/emailVerification.dart';
 import 'package:codersstatus/signinScreen.dart';
-import 'package:codersstatus/verifyEmailScreen.dart';
 import 'package:codersstatus/registerPasswordScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'components/myTextFormField.dart';
 import 'components/myButton.dart';
 
@@ -88,7 +86,8 @@ class _RegisterEmailidScreenState extends State<RegisterEmailidScreen> {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.02,
                   ),
-                  MyTextEormField(Icon(Icons.email_sharp), 'email id', false,
+                  MyTextEormField(
+                      Icon(FontAwesomeIcons.solidEnvelope), 'email id', false,
                       (val) {
                     emailid = val;
                   },

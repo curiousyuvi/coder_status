@@ -1,5 +1,6 @@
 import 'package:codersstatus/components/colorscheme.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 
 showCodechefDialog(BuildContext context, Rect rect, String codechefHandle,
@@ -25,7 +26,7 @@ showCodechefDialog(BuildContext context, Rect rect, String codechefHandle,
   List<Icon> listOfStars = [];
   for (int i = 1; i <= codechefStarCount; i++) {
     listOfStars.add(Icon(
-      Icons.star,
+      FontAwesomeIcons.solidStar,
       size: MediaQuery.of(context).size.width * 0.035,
       color: ColorSchemeClass.codechefbrown,
     ));

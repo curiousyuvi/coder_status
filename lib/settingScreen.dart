@@ -12,6 +12,7 @@ import 'package:codersstatus/updatePasswordScreen.dart';
 import 'package:codersstatus/editUserHandlesScreen.dart';
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SettingScreen extends StatefulWidget {
   const SettingScreen({Key key}) : super(key: key);
@@ -48,7 +49,7 @@ class _SettingScreenState extends State<SettingScreen> {
                   },
                   child: MySettingsNonExpansionTile(
                       Icon(
-                        Icons.edit,
+                        FontAwesomeIcons.solidEdit,
                         color: ColorSchemeClass.lightgrey,
                       ),
                       'Edit Profile'),
@@ -62,13 +63,13 @@ class _SettingScreenState extends State<SettingScreen> {
                   },
                   child: MySettingsNonExpansionTile(
                       Icon(
-                        Icons.dashboard,
+                        FontAwesomeIcons.thLarge,
                         color: ColorSchemeClass.lightgrey,
                       ),
                       'User Handles'),
                 ),
                 MySettingsExpansionTile(
-                  Icon(Icons.security),
+                  Icon(FontAwesomeIcons.userLock),
                   'Account & Security',
                   [
                     GestureDetector(
@@ -80,7 +81,7 @@ class _SettingScreenState extends State<SettingScreen> {
                       },
                       child: MyChildListTile(
                           Icon(
-                            Icons.lock,
+                            FontAwesomeIcons.key,
                             color: ColorSchemeClass.dark,
                           ),
                           'Change Password'),
@@ -94,7 +95,7 @@ class _SettingScreenState extends State<SettingScreen> {
                       },
                       child: MyChildListTile(
                           Icon(
-                            Icons.delete,
+                            FontAwesomeIcons.trash,
                             color: ColorSchemeClass.dangerred,
                           ),
                           'Delete Account',
@@ -111,7 +112,7 @@ class _SettingScreenState extends State<SettingScreen> {
                   },
                   child: MySettingsNonExpansionTile(
                       Icon(
-                        Icons.info,
+                        FontAwesomeIcons.info,
                         color: ColorSchemeClass.lightgrey,
                       ),
                       'About Developer'),
@@ -122,7 +123,7 @@ class _SettingScreenState extends State<SettingScreen> {
                   },
                   child: MySettingsNonExpansionTile(
                       Icon(
-                        Icons.logout,
+                        FontAwesomeIcons.signOutAlt,
                         color: ColorSchemeClass.lightgrey,
                       ),
                       'Log Out',

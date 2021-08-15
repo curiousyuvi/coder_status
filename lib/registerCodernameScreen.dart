@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'components/myTextFormField.dart';
 import 'components/myButton.dart';
 
@@ -90,8 +91,8 @@ class _RegistercodernamescreenState extends State<Registercodernamescreen> {
                       textAlign: TextAlign.center,
                     ),
                   )),
-                  MyTextEormField(
-                      Icon(Icons.alternate_email), 'codername', false, (val) {
+                  MyTextEormField(Icon(FontAwesomeIcons.at), 'codername', false,
+                      (val) {
                     codername = val.toString().trim();
                   },
                       TextInputType.text,

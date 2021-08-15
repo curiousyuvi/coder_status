@@ -16,7 +16,7 @@ class _AboutDeveloperScreenState extends State<AboutDeveloperScreen> {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize:
-            Size.fromHeight(MediaQuery.of(context).size.height * 0.12),
+            Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
         child: MyAppBarWithBack('About Developer'),
       ),
       body: Container(
@@ -209,7 +209,7 @@ class _AboutDeveloperScreenState extends State<AboutDeveloperScreen> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Icon(
-                                      Icons.done,
+                                      FontAwesomeIcons.check,
                                       color: Colors.white,
                                     ),
                                     SizedBox(

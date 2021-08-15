@@ -20,6 +20,7 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:codersstatus/components/myRatingCard.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rect_getter/rect_getter.dart';
 import 'package:rive/rive.dart';
 
@@ -310,7 +311,7 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
                                       MaterialPageRoute(builder: (context) {
                                     return EditProfileScreen();
                                   }));
-                                }, Icons.edit)
+                                }, FontAwesomeIcons.solidEdit)
                               : isLoading
                                   ? Container(
                                       width: double.infinity,
@@ -326,11 +327,11 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
                                           ColorSchemeClass.lightgrey,
                                           'Remove from Peers', () {
                                           removeFromPeers();
-                                        }, Icons.remove_circle_outline)
+                                        }, FontAwesomeIcons.minusCircle)
                                       : MyButton(ColorSchemeClass.primarygreen,
                                           'Add as a Peer', () {
                                           addInPeers();
-                                        }, Icons.add_circle),
+                                        }, FontAwesomeIcons.plusCircle),
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.02,
                           ),

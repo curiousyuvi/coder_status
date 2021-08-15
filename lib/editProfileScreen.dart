@@ -12,6 +12,7 @@ import 'package:codersstatus/firebase_layer/setUserInfo.dart';
 import 'package:codersstatus/firebase_layer/uploadAvatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rive/rive.dart';
 import 'components/confirmationDialog.dart';
 import 'components/myAppBar.dart';
@@ -131,7 +132,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             showConfirmationDialog(this.context, 'EDIT PROFILE',
                 'Do you want to save changes to the User Handles?', () {
               _updateProfile();
-            }, true, RiveAnimation.asset('assets/check.riv'));
+            }, true, FontAwesomeIcons.solidEdit);
           }),
         ),
         backgroundColor: ColorSchemeClass.dark,

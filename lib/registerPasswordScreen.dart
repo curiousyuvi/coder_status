@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'components/generalLoader.dart';
 import 'components/myTextFormField.dart';
 import 'components/myButton.dart';
@@ -135,7 +136,8 @@ class _RegisterPasswordScreenState extends State<RegisterPasswordScreen> {
                                   fontFamily: 'young'),
                               textAlign: TextAlign.center),
                         )),
-                        MyTextEormField(Icon(Icons.vpn_key), 'password', true,
+                        MyTextEormField(
+                            Icon(FontAwesomeIcons.key), 'password', true,
                             (val) {
                           setState(() {
                             password = val;
@@ -146,7 +148,7 @@ class _RegisterPasswordScreenState extends State<RegisterPasswordScreen> {
                                 ? 'Password must contain atleast 6 characters'
                                 : null),
                         MyTextEormField(
-                            Icon(Icons.vpn_key),
+                            Icon(FontAwesomeIcons.key),
                             'confirm password',
                             true,
                             (val) {},

@@ -6,21 +6,23 @@ import 'package:codersstatus/components/myTextFormField.dart';
 import 'package:codersstatus/firebase_layer/setUserInfo.dart';
 import 'package:codersstatus/homeScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class Registerbadgesscreen extends StatefulWidget {
-  Registerbadgesscreen(
+class RegisterUserHandleScreen extends StatefulWidget {
+  RegisterUserHandleScreen(
       String name, String codername, String avatarurl, String bio) {
-    _RegisterbadgesscreenState.name = name;
-    _RegisterbadgesscreenState.codername = codername;
-    _RegisterbadgesscreenState.avatarurl = avatarurl;
-    _RegisterbadgesscreenState.bio = bio;
+    _RegisterUserHandleScreenState.name = name;
+    _RegisterUserHandleScreenState.codername = codername;
+    _RegisterUserHandleScreenState.avatarurl = avatarurl;
+    _RegisterUserHandleScreenState.bio = bio;
   }
 
   @override
-  _RegisterbadgesscreenState createState() => _RegisterbadgesscreenState();
+  _RegisterUserHandleScreenState createState() =>
+      _RegisterUserHandleScreenState();
 }
 
-class _RegisterbadgesscreenState extends State<Registerbadgesscreen> {
+class _RegisterUserHandleScreenState extends State<RegisterUserHandleScreen> {
   static String name = '';
   static String codername = '';
   static String avatarurl = '';
@@ -126,7 +128,7 @@ class _RegisterbadgesscreenState extends State<Registerbadgesscreen> {
                                           0.15),
                                   Flexible(
                                     child: MyTextEormField(
-                                        Icon(Icons.alternate_email),
+                                        Icon(FontAwesomeIcons.at),
                                         'codeforces_handle',
                                         false, (val) {
                                       codeforces = val;
@@ -153,7 +155,7 @@ class _RegisterbadgesscreenState extends State<Registerbadgesscreen> {
                                           0.15),
                                   Flexible(
                                     child: MyTextEormField(
-                                        Icon(Icons.alternate_email),
+                                        Icon(FontAwesomeIcons.at),
                                         'codechef_handle',
                                         false, (val) {
                                       codechef = val;
@@ -180,7 +182,7 @@ class _RegisterbadgesscreenState extends State<Registerbadgesscreen> {
                                           0.15),
                                   Flexible(
                                     child: MyTextEormField(
-                                        Icon(Icons.alternate_email),
+                                        Icon(FontAwesomeIcons.at),
                                         'atcoder_handle',
                                         false, (val) {
                                       atcoder = val;
@@ -208,7 +210,7 @@ class _RegisterbadgesscreenState extends State<Registerbadgesscreen> {
                                   ),
                                   Flexible(
                                     child: MyTextEormField(
-                                        Icon(Icons.alternate_email),
+                                        Icon(FontAwesomeIcons.at),
                                         'spoj_handle',
                                         false, (val) {
                                       spoj = val;

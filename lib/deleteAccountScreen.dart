@@ -10,6 +10,7 @@ import 'package:flutter/painting.dart' as gradient;
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rive/rive.dart';
 import 'components/myAppBar.dart';
 import 'components/myTextFormField.dart';
@@ -225,7 +226,7 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
                               'If you accept your account will be deleted permanently. Do you want to continue?',
                               () {
                             _submit();
-                          }, false, RiveAnimation.asset('assets/alert.riv'));
+                          }, false, FontAwesomeIcons.trash);
                         }, Icons.delete),
                       ),
                     ],

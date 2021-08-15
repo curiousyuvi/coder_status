@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:codersstatus/components/colorscheme.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 //Add below as parent to myAppBar :
 //PreferredSize( preferredSize: Size.fromHeight(MediaQuery.of(context).size.height * 0.12),
 
@@ -40,8 +41,11 @@ class MyAppBarWithBack extends StatelessWidget {
         onTap: () {
           Navigator.pop(context);
         },
-        child:
-            Icon(Icons.arrow_back_ios_sharp, color: ColorSchemeClass.lightgrey),
+        child: Center(
+          child: FaIcon(FontAwesomeIcons.angleLeft,
+              size: MediaQuery.of(context).size.height * 0.05,
+              color: ColorSchemeClass.lightgrey),
+        ),
       ),
       centerTitle: true,
       title: Text(
@@ -71,8 +75,11 @@ class MyAppBarWithBackAndDone extends StatelessWidget {
         onTap: () {
           Navigator.pop(context);
         },
-        child:
-            Icon(Icons.arrow_back_ios_sharp, color: ColorSchemeClass.lightgrey),
+        child: Center(
+          child: FaIcon(FontAwesomeIcons.angleLeft,
+              size: MediaQuery.of(context).size.height * 0.05,
+              color: ColorSchemeClass.lightgrey),
+        ),
       ),
       actions: [
         GestureDetector(
@@ -80,9 +87,11 @@ class MyAppBarWithBackAndDone extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.symmetric(
                 horizontal: MediaQuery.of(context).size.height * 0.01),
-            child: Icon(Icons.done,
-                size: MediaQuery.of(context).size.height * 0.05,
-                color: ColorSchemeClass.primarygreen),
+            child: Center(
+              child: FaIcon(FontAwesomeIcons.check,
+                  size: MediaQuery.of(context).size.height * 0.05,
+                  color: ColorSchemeClass.primarygreen),
+            ),
           ),
         )
       ],

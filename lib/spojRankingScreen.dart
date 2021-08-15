@@ -58,47 +58,51 @@ class _SpojRankingScreenState extends State<SpojRankingScreen> {
         print('peer\'s document fetched');
 
         //if the peer's document map has user Handle then then add it to ranking data
-        if (peerDocument['spoj'] != '') {
-          //fetch rating for the current peer
-          var rating = await GetRating.getSpojRating(peerDocument['spoj']);
-          print('peer\'s rating fetched');
+        try {
+          if (peerDocument['spoj'] != '') {
+            //fetch rating for the current peer
+            var rating = await GetRating.getSpojRating(peerDocument['spoj']);
+            print('peer\'s rating fetched');
 
-          //if current peer has rating not equal to zero then add it to ranking data
-          if (rating != '0') {
-            //if initial list is not empty add to ranking data in descending sort
-            if (listOfUserData.length > 0) {
-              for (int j = 0; j < listOfUserData.length; j++) {
-                if (double.parse(listOfUserData[j]['rating']) <=
-                    double.parse(rating)) {
-                  listOfUserData.insert(j, {
-                    'avatarurl': peerDocument['avatarurl'],
-                    'userHandle': peerDocument['spoj'],
-                    'rating': rating
-                  });
-                  print('peer data map added');
-                  break;
-                } else {
-                  if (j == (listOfUserData.length - 1)) {
-                    listOfUserData.add({
+            //if current peer has rating not equal to zero then add it to ranking data
+            if (rating != '0') {
+              //if initial list is not empty add to ranking data in descending sort
+              if (listOfUserData.length > 0) {
+                for (int j = 0; j < listOfUserData.length; j++) {
+                  if (double.parse(listOfUserData[j]['rating']) <=
+                      double.parse(rating)) {
+                    listOfUserData.insert(j, {
                       'avatarurl': peerDocument['avatarurl'],
                       'userHandle': peerDocument['spoj'],
                       'rating': rating
                     });
                     print('peer data map added');
                     break;
+                  } else {
+                    if (j == (listOfUserData.length - 1)) {
+                      listOfUserData.add({
+                        'avatarurl': peerDocument['avatarurl'],
+                        'userHandle': peerDocument['spoj'],
+                        'rating': rating
+                      });
+                      print('peer data map added');
+                      break;
+                    }
                   }
                 }
+              } else {
+                //since initial list is empty
+                listOfUserData.add({
+                  'avatarurl': peerDocument['avatarurl'],
+                  'userHandle': peerDocument['spoj'],
+                  'rating': rating
+                });
+                print('peer data map added');
               }
-            } else {
-              //since initial list is empty
-              listOfUserData.add({
-                'avatarurl': peerDocument['avatarurl'],
-                'userHandle': peerDocument['spoj'],
-                'rating': rating
-              });
-              print('peer data map added');
             }
           }
+        } catch (e) {
+          continue;
         }
         print('peer data map may be skipped');
       }

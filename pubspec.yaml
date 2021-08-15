@@ -40,14 +40,10 @@ flutter:
   uses-material-design: true
   assets:
     - images/
-    - assets/cup_animation.riv
-    - assets/document_animation.riv
     - assets/skeleton-place-holder.riv
     - assets/shine.riv
     - assets/cup.riv
     - assets/boy-scene.riv
-    - assets/alert.riv
-    - assets/check.riv
     - assets/crown.riv
     - assets/no-peers.riv
     - assets/search-user.riv

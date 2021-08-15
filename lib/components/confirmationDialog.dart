@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 showConfirmationDialog(BuildContext context, String title, String message,
     Function toDoIfConfirmed, bool alertType,
-    [Widget displayWidget = const SizedBox.shrink()]) async {
+    [IconData displayIcon = Icons.done]) async {
   return await showDialog<bool>(
       context: context,
       builder: (context) {
@@ -74,9 +74,11 @@ showConfirmationDialog(BuildContext context, String title, String message,
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.02,
                           ),
-                          Container(
-                              height: MediaQuery.of(context).size.height * 0.1,
-                              child: displayWidget),
+                          Icon(
+                            displayIcon,
+                            color: Colors.white,
+                            size: MediaQuery.of(context).size.height * 0.1,
+                          ),
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.02,
                           ),

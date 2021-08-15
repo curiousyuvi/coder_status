@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rive/rive.dart';
 import 'components/generalLoader.dart';
 import 'components/myAppBar.dart';
@@ -163,7 +164,7 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
                                   'If you accept your account pssword will be changed. Do you want to continue?',
                                   () {
                                 _submit();
-                              }, true, RiveAnimation.asset('assets/check.riv'));
+                              }, true, FontAwesomeIcons.key);
                             },
                           )),
                     ],
