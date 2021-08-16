@@ -155,7 +155,11 @@ class _SettingScreenState extends State<SettingScreen> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        logout(context);
+                        showConfirmationDialog(
+                            this.context, 'Log Out', 'Do you want to log out?',
+                            () {
+                          logout(context);
+                        }, false, FontAwesomeIcons.signOutAlt);
                       },
                       child: MySettingsNonExpansionTile(
                           Icon(
