@@ -5,7 +5,7 @@ import 'package:codersstatus/components/myDividerWithTitle.dart';
 import 'package:codersstatus/components/showAnimatedToast.dart';
 import 'package:codersstatus/firebase_layer/googleSignInProvider.dart';
 import 'package:codersstatus/registerCodernameScreen.dart';
-import 'package:codersstatus/signinScreen.dart';
+import 'package:codersstatus/signInEmailScreen.dart';
 import 'package:codersstatus/registerPasswordScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -94,133 +94,11 @@ class _RegisterEmailidScreenState extends State<RegisterEmailidScreen> {
                         ),
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.03,
+                        height: MediaQuery.of(context).size.height * 0.05,
                       ),
                       Flexible(
                           child: Text(
-                        'Sign Up With ',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: MediaQuery.of(context).size.height * 0.03,
-                            fontFamily: 'young'),
-                      )),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.03,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          GestureDetector(
-                            onTap: () async {
-                              final provider = Provider.of<GoogleSigInProvider>(
-                                  context,
-                                  listen: false);
-
-                              setState(() {
-                                isLoading = true;
-                              });
-                              final user = await provider.googleLogin();
-
-                              if (user == null) {
-                                setState(() {
-                                  isLoading = false;
-                                });
-                                showAnimatedToast(this.context,
-                                    'Something went wrong', false);
-                              } else {
-                                bool flag = false;
-                                try {
-                                  await FirebaseFirestore.instance
-                                      .collection('users')
-                                      .doc(user.uid)
-                                      .get()
-                                      .then((doc) {
-                                    flag = doc.exists;
-                                  });
-                                } catch (e) {
-                                  flag = false;
-                                }
-
-                                if (flag) {
-                                  Navigator.pushAndRemoveUntil(context,
-                                      MaterialPageRoute(builder: (context) {
-                                    return HomeScreen();
-                                  }), ModalRoute.withName('/home'));
-                                } else {
-                                  Navigator.pushAndRemoveUntil(context,
-                                      MaterialPageRoute(builder: (context) {
-                                    return Registercodernamescreen(
-                                        user.displayName.toString().trim());
-                                  }), ModalRoute.withName('/home'));
-                                }
-                              }
-                            },
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                FaIcon(
-                                  FontAwesomeIcons.google,
-                                  color: ColorSchemeClass.primarygreen,
-                                  size:
-                                      MediaQuery.of(context).size.height * 0.06,
-                                ),
-                                SizedBox(
-                                  height: MediaQuery.of(context).size.height *
-                                      0.007,
-                                ),
-                                Text(
-                                  'Google',
-                                  style: TextStyle(
-                                    color: ColorSchemeClass.primarygreen,
-                                    fontFamily: 'young',
-                                    fontSize:
-                                        MediaQuery.of(context).size.height *
-                                            0.02,
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.2,
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(
-                                FontAwesomeIcons.github,
-                                color: ColorSchemeClass.primarygreen,
-                                size: MediaQuery.of(context).size.height * 0.06,
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.01,
-                              ),
-                              Text(
-                                'Github',
-                                style: TextStyle(
-                                  color: ColorSchemeClass.primarygreen,
-                                  fontFamily: 'young',
-                                  fontSize:
-                                      MediaQuery.of(context).size.height * 0.02,
-                                ),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.03,
-                      ),
-                      MyMidDividerWithTitle('OR'),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.03,
-                      ),
-                      Flexible(
-                          child: Text(
-                        'Sign Up With Email Id',
+                        'Enter Your Email Id',
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: MediaQuery.of(context).size.height * 0.03,
@@ -265,7 +143,7 @@ class _RegisterEmailidScreenState extends State<RegisterEmailidScreen> {
                           onTap: () {
                             Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {
-                              return Signinscreen();
+                              return SignInEmailScreen();
                             }));
                           },
                           child: Text(

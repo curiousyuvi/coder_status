@@ -1,7 +1,9 @@
 import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/components/myButton.dart';
 import 'package:codersstatus/registerEmailidScreen.dart';
-import 'package:codersstatus/signinScreen.dart';
+import 'package:codersstatus/signInEmailScreen.dart';
+import 'package:codersstatus/signInScreen.dart';
+import 'package:codersstatus/signUpScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 
@@ -66,7 +68,7 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                           () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
-                          return RegisterEmailidScreen();
+                          return SignUpScreen();
                         }));
                       }),
                       SizedBox(
@@ -76,7 +78,7 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                           onTap: () {
                             Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {
-                              return Signinscreen();
+                              return SignInScreen();
                             }));
                           },
                           child: Text(

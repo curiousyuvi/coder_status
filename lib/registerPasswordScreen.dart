@@ -1,7 +1,7 @@
 import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/components/showAnimatedToast.dart';
 import 'package:codersstatus/firebase_layer/emailVerification.dart';
-import 'package:codersstatus/signinScreen.dart';
+import 'package:codersstatus/signInEmailScreen.dart';
 import 'package:codersstatus/verifyEmailScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -66,7 +66,7 @@ class _RegisterPasswordScreenState extends State<RegisterPasswordScreen> {
               this.context, 'Email already exists, head to sign in', false);
           Navigator.pushAndRemoveUntil(context,
               MaterialPageRoute(builder: (context) {
-            return Signinscreen();
+            return SignInEmailScreen();
           }), ModalRoute.withName('/signin'));
         }
       });

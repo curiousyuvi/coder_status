@@ -1,7 +1,7 @@
 import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/components/showAnimatedToast.dart';
 import 'package:codersstatus/firebase_layer/resetPassword.dart';
-import 'package:codersstatus/signinScreen.dart';
+import 'package:codersstatus/signInEmailScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -42,7 +42,7 @@ class _ForgotpasswordscreenState extends State<Forgotpasswordscreen> {
           'A paaswod reset link was succesfully sent to your email.', true);
 
       Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return Signinscreen();
+        return SignInEmailScreen();
       }));
     }
   }

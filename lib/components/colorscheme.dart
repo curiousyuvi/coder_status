@@ -13,7 +13,7 @@ class ColorSchemeClass {
   static const Color codechefbrown = Color(0xffffc19b);
   static const Color spojblue = Color(0xff82c8ff);
   static const Color atcodergrey = Color(0xffdbebff);
-  static const Color dangerred = Color(0xffff0000);
+  static const Color dangerred = Color(0xffDB4437);
   static const Color morphdangerred = Color(0xff561715);
   static const Color morphprimarygreen = Color(0xff155735);
 }
