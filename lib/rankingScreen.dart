@@ -1,9 +1,9 @@
-import 'package:codersstatus/atcoderRankingScreen.dart';
-import 'package:codersstatus/codechefRankingScreen.dart';
-import 'package:codersstatus/codeforcesRankingScreen.dart';
-import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/components/myAppBar.dart';
-import 'package:codersstatus/spojRankingScreen.dart';
+import 'package:coderstatus/atcoderRankingScreen.dart';
+import 'package:coderstatus/codechefRankingScreen.dart';
+import 'package:coderstatus/codeforcesRankingScreen.dart';
+import 'package:coderstatus/components/colorscheme.dart';
+import 'package:coderstatus/components/myAppBar.dart';
+import 'package:coderstatus/spojRankingScreen.dart';
 import 'package:flutter/material.dart';
 
 class RankingScreen extends StatefulWidget {

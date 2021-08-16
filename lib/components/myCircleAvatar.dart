@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:codersstatus/components/colorscheme.dart';
+import 'package:coderstatus/components/colorscheme.dart';
 
 class MyCircleAvatar extends StatelessWidget {
   Image avatarimage;

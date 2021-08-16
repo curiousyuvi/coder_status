@@ -1,4 +1,4 @@
-import 'package:codersstatus/firebase_layer/setUserInfo.dart';
+import 'package:coderstatus/firebase_layer/setUserInfo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 sendVerificationEmail(String email) async {

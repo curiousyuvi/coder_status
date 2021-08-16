@@ -1,4 +1,4 @@
-import 'package:codersstatus/components/myOtherCircleAvatar.dart';
+import 'package:coderstatus/components/myOtherCircleAvatar.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 

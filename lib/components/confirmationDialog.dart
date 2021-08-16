@@ -1,6 +1,6 @@
-import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/components/myButton.dart';
-import 'package:codersstatus/components/myOutlineButton.dart';
+import 'package:coderstatus/components/colorscheme.dart';
+import 'package:coderstatus/components/myButton.dart';
+import 'package:coderstatus/components/myOutlineButton.dart';
 import 'package:flutter/material.dart';
 
 showConfirmationDialog(BuildContext context, String title, String message,

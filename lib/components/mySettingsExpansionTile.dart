@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'colorscheme.dart';
-import 'package:codersstatus/components/myChildListTile.dart';
+import 'package:coderstatus/components/myChildListTile.dart';
 
 class MySettingsExpansionTile extends StatelessWidget {
   Icon leadingIcon;

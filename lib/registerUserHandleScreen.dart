@@ -1,10 +1,10 @@
-import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/components/generalLoader.dart';
-import 'package:codersstatus/components/showAnimatedToast.dart';
-import 'package:codersstatus/components/myButton.dart';
-import 'package:codersstatus/components/myTextFormField.dart';
-import 'package:codersstatus/firebase_layer/setUserInfo.dart';
-import 'package:codersstatus/introSlider.dart';
+import 'package:coderstatus/components/colorscheme.dart';
+import 'package:coderstatus/components/generalLoader.dart';
+import 'package:coderstatus/components/showAnimatedToast.dart';
+import 'package:coderstatus/components/myButton.dart';
+import 'package:coderstatus/components/myTextFormField.dart';
+import 'package:coderstatus/firebase_layer/setUserInfo.dart';
+import 'package:coderstatus/introSlider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

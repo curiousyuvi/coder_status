@@ -1,9 +1,9 @@
-import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/components/confirmationDialog.dart';
-import 'package:codersstatus/components/generalLoader.dart';
-import 'package:codersstatus/firebase_layer/deleteUser.dart';
-import 'package:codersstatus/firebase_layer/logoutUser.dart';
-import 'package:codersstatus/firebase_layer/validatePassword.dart';
+import 'package:coderstatus/components/colorscheme.dart';
+import 'package:coderstatus/components/confirmationDialog.dart';
+import 'package:coderstatus/components/generalLoader.dart';
+import 'package:coderstatus/firebase_layer/deleteUser.dart';
+import 'package:coderstatus/firebase_layer/logoutUser.dart';
+import 'package:coderstatus/firebase_layer/validatePassword.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart' as gradient;

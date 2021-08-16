@@ -1,9 +1,9 @@
-import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/components/myAppBar.dart';
-import 'package:codersstatus/components/myButton.dart';
-import 'package:codersstatus/components/myUserTile.dart';
-import 'package:codersstatus/components/peerScreenSkeleton.dart';
-import 'package:codersstatus/firebase_layer/getUserInfo.dart';
+import 'package:coderstatus/components/colorscheme.dart';
+import 'package:coderstatus/components/myAppBar.dart';
+import 'package:coderstatus/components/myButton.dart';
+import 'package:coderstatus/components/myUserTile.dart';
+import 'package:coderstatus/components/peerScreenSkeleton.dart';
+import 'package:coderstatus/firebase_layer/getUserInfo.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

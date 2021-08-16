@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/components/myAppBar.dart';
-import 'package:codersstatus/components/myTextFormField.dart';
-import 'package:codersstatus/components/myUserTile.dart';
-import 'package:codersstatus/firebase_layer/search.dart';
+import 'package:coderstatus/components/colorscheme.dart';
+import 'package:coderstatus/components/myAppBar.dart';
+import 'package:coderstatus/components/myTextFormField.dart';
+import 'package:coderstatus/components/myUserTile.dart';
+import 'package:coderstatus/firebase_layer/search.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';

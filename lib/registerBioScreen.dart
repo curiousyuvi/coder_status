@@ -1,7 +1,7 @@
-import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/components/myOutlineButton.dart';
-import 'package:codersstatus/components/myPassageTextformField.dart';
-import 'package:codersstatus/registerUserHandleScreen.dart';
+import 'package:coderstatus/components/colorscheme.dart';
+import 'package:coderstatus/components/myOutlineButton.dart';
+import 'package:coderstatus/components/myPassageTextformField.dart';
+import 'package:coderstatus/registerUserHandleScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';

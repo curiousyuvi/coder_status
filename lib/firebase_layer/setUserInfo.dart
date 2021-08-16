@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:codersstatus/firebase_layer/getUserInfo.dart';
+import 'package:coderstatus/firebase_layer/getUserInfo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class SetUserInfo {

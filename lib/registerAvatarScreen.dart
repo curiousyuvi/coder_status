@@ -1,10 +1,10 @@
 import 'dart:io';
-import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/components/myButton.dart';
-import 'package:codersstatus/components/myOutlineButton.dart';
-import 'package:codersstatus/components/urls.dart';
-import 'package:codersstatus/firebase_layer/uploadAvatar.dart';
-import 'package:codersstatus/registerBioScreen.dart';
+import 'package:coderstatus/components/colorscheme.dart';
+import 'package:coderstatus/components/myButton.dart';
+import 'package:coderstatus/components/myOutlineButton.dart';
+import 'package:coderstatus/components/urls.dart';
+import 'package:coderstatus/firebase_layer/uploadAvatar.dart';
+import 'package:coderstatus/registerBioScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';

@@ -1,7 +1,7 @@
-import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/components/myButton.dart';
-import 'package:codersstatus/signInScreen.dart';
-import 'package:codersstatus/signUpScreen.dart';
+import 'package:coderstatus/components/colorscheme.dart';
+import 'package:coderstatus/components/myButton.dart';
+import 'package:coderstatus/signInScreen.dart';
+import 'package:coderstatus/signUpScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 

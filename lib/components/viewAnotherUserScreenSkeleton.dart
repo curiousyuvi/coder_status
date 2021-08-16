@@ -1,4 +1,4 @@
-import 'package:codersstatus/components/myDividerWithTitle.dart';
+import 'package:coderstatus/components/myDividerWithTitle.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';

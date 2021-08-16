@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:argon_buttons_flutter/argon_buttons_flutter.dart';
-import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/firebase_layer/emailVerification.dart';
-import 'package:codersstatus/firebase_layer/getUserInfo.dart';
-import 'package:codersstatus/registerNameScreen.dart';
+import 'package:coderstatus/components/colorscheme.dart';
+import 'package:coderstatus/firebase_layer/emailVerification.dart';
+import 'package:coderstatus/firebase_layer/getUserInfo.dart';
+import 'package:coderstatus/registerNameScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';

@@ -1,4 +1,4 @@
-import 'package:codersstatus/components/generalLoader.dart';
+import 'package:coderstatus/components/generalLoader.dart';
 import 'package:flutter/material.dart';
 
 void main() {

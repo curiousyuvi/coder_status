@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:codersstatus/components/generalLoader.dart';
-import 'package:codersstatus/registerCodernameScreen.dart';
-import 'package:codersstatus/registerEmailidScreen.dart';
-import 'package:codersstatus/signInEmailScreen.dart';
-import 'package:codersstatus/signInScreen.dart';
+import 'package:coderstatus/components/generalLoader.dart';
+import 'package:coderstatus/registerCodernameScreen.dart';
+import 'package:coderstatus/registerEmailidScreen.dart';
+import 'package:coderstatus/signInEmailScreen.dart';
+import 'package:coderstatus/signInScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';

@@ -1,6 +1,6 @@
-import 'package:codersstatus/components/colorscheme.dart';
-import 'package:codersstatus/registerAvatarScreen.dart';
-import 'package:codersstatus/registerBioScreen.dart';
+import 'package:coderstatus/components/colorscheme.dart';
+import 'package:coderstatus/registerAvatarScreen.dart';
+import 'package:coderstatus/registerBioScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

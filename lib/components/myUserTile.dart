@@ -1,4 +1,4 @@
-import 'package:codersstatus/viewAnotherUserScreen.dart';
+import 'package:coderstatus/viewAnotherUserScreen.dart';
 import 'package:flutter/material.dart';
 import 'colorscheme.dart';
 
