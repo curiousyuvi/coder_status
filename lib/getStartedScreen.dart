@@ -1,7 +1,5 @@
 import 'package:codersstatus/components/colorscheme.dart';
 import 'package:codersstatus/components/myButton.dart';
-import 'package:codersstatus/registerEmailidScreen.dart';
-import 'package:codersstatus/signInEmailScreen.dart';
 import 'package:codersstatus/signInScreen.dart';
 import 'package:codersstatus/signUpScreen.dart';
 import 'package:flutter/material.dart';
