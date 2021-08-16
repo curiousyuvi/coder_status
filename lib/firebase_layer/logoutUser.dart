@@ -6,7 +6,9 @@ Future<User> logout(context) async {
   FirebaseAuth _auth = FirebaseAuth.instance;
 
   try {
-    await GoogleSignIn().disconnect();
+    if (_auth.currentUser.photoURL != null) {
+      await GoogleSignIn().disconnect();
+    }
     await _auth.signOut();
     Phoenix.rebirth(context);
   } catch (e) {

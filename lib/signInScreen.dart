@@ -132,7 +132,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize:
-                                    MediaQuery.of(context).size.height * 0.03,
+                                    MediaQuery.of(context).size.width * 0.055,
                                 fontFamily: 'young',
                                 fontWeight: FontWeight.bold),
                           )
