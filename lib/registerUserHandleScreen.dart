@@ -4,7 +4,7 @@ import 'package:codersstatus/components/showAnimatedToast.dart';
 import 'package:codersstatus/components/myButton.dart';
 import 'package:codersstatus/components/myTextFormField.dart';
 import 'package:codersstatus/firebase_layer/setUserInfo.dart';
-import 'package:codersstatus/homeScreen.dart';
+import 'package:codersstatus/introSlider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -49,8 +49,8 @@ class _RegisterUserHandleScreenState extends State<RegisterUserHandleScreen> {
       showAnimatedToast(this.context, 'Account Created Succesfully.', true);
       Navigator.pushAndRemoveUntil(context,
           MaterialPageRoute(builder: (context) {
-        return HomeScreen();
-      }), ModalRoute.withName('/home'));
+        return IntroSlider();
+      }), ModalRoute.withName('/introSlider'));
     }
   }
 
