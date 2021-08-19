@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coderstatus/components/generalLoader.dart';
 import 'package:coderstatus/registerCodernameScreen.dart';
-import 'package:coderstatus/registerEmailidScreen.dart';
 import 'package:coderstatus/signInEmailScreen.dart';
+import 'package:coderstatus/signUpScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -116,27 +116,30 @@ class _SignInScreenState extends State<SignInScreen> {
                       decoration: BoxDecoration(
                           color: ColorSchemeClass.dangerred,
                           borderRadius: BorderRadius.circular(5)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          FaIcon(
-                            FontAwesomeIcons.google,
-                            color: Colors.white,
-                          ),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.08,
-                          ),
-                          Text(
-                            'Sign In With Google',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize:
-                                    MediaQuery.of(context).size.width * 0.055,
-                                fontFamily: 'young',
-                                fontWeight: FontWeight.bold),
-                          )
-                        ],
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            FaIcon(
+                              FontAwesomeIcons.google,
+                              color: Colors.white,
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.08,
+                            ),
+                            Text(
+                              'Sign In With Google',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize:
+                                      MediaQuery.of(context).size.width * 0.055,
+                                  fontFamily: 'young',
+                                  fontWeight: FontWeight.bold),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -159,27 +162,30 @@ class _SignInScreenState extends State<SignInScreen> {
                       decoration: BoxDecoration(
                           color: ColorSchemeClass.primarygreen,
                           borderRadius: BorderRadius.circular(5)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          FaIcon(
-                            FontAwesomeIcons.solidEnvelope,
-                            color: Colors.white,
-                          ),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.08,
-                          ),
-                          Text(
-                            'Sign In With Email',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize:
-                                    MediaQuery.of(context).size.width * 0.055,
-                                fontFamily: 'young',
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            FaIcon(
+                              FontAwesomeIcons.solidEnvelope,
+                              color: Colors.white,
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.08,
+                            ),
+                            Text(
+                              'Sign In With Email',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize:
+                                      MediaQuery.of(context).size.width * 0.055,
+                                  fontFamily: 'young',
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -191,7 +197,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         onTap: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
-                            return RegisterEmailidScreen();
+                            return SignUpScreen();
                           }));
                         },
                         child: Text(

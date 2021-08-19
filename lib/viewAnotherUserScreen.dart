@@ -1,10 +1,8 @@
 import 'package:coderstatus/components/atcoderDialog.dart';
 import 'package:coderstatus/components/codechefDialog.dart';
 import 'package:coderstatus/components/codeforcesDialog.dart';
-import 'package:coderstatus/components/myButton.dart';
+import 'package:coderstatus/components/myButtons.dart';
 import 'package:coderstatus/components/myDividerWithTitle.dart';
-import 'package:coderstatus/components/myOtherCircleAvatar.dart';
-import 'package:coderstatus/components/myOutlineButton.dart';
 import 'package:coderstatus/components/spojDialog.dart';
 import 'package:coderstatus/components/urls.dart';
 import 'package:coderstatus/components/viewAnotherUserScreenSkeleton.dart';
@@ -22,9 +20,9 @@ import 'package:flutter/widgets.dart';
 import 'package:coderstatus/components/myRatingCard.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rect_getter/rect_getter.dart';
-import 'package:rive/rive.dart';
-
 import 'components/myAppBar.dart';
+import 'components/myCircleAvatar.dart';
+import 'myDashboardScreen.dart';
 
 class ViewAnotherUserScreen extends StatefulWidget {
   String uid = '';
@@ -93,7 +91,6 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
   readyUserData() async {
     myUid = GetUserInfo.getUserUid();
     final userDocument = await GetUserInfo.getUserDocument(uid);
-    print('reached -1');
     avatarurl = userDocument['avatarurl'];
     name = userDocument['name'];
     codername = userDocument['codername'];
@@ -130,7 +127,6 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
           child: GestureDetector(
             onTap: () {
               var rect = RectGetter.getRectFromKey(globalKey1);
-              print(rect.toString());
               showCodeforcesDialog(
                   this.context, rect, userhandles[0], userrating[0]);
             },
@@ -148,7 +144,6 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
           child: GestureDetector(
             onTap: () {
               var rect = RectGetter.getRectFromKey(globalKey2);
-              print(rect.toString());
               showCodechefDialog(
                   this.context, rect, userhandles[1], userrating[1]);
             },
@@ -166,7 +161,6 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
           child: GestureDetector(
             onTap: () {
               var rect = RectGetter.getRectFromKey(globalKey3);
-              print(rect.toString());
               showAtcoderDialog(
                   this.context, rect, userhandles[2], userrating[2]);
             },
@@ -184,7 +178,6 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
           child: GestureDetector(
             onTap: () {
               var rect = RectGetter.getRectFromKey(globalKey4);
-              print(rect.toString());
               showSpojDialog(this.context, rect, userhandles[3], userrating[3]);
             },
             child: MyRatingCard(AssetImage('images/spojtile.png'),
@@ -224,263 +217,170 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
                   Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
             ),
             body: SafeArea(
-              child: Container(
-                padding:
-                    EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
-                child: Column(
-                  children: [
-                    SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.03,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Container(
-                                  padding: EdgeInsets.all(
-                                      MediaQuery.of(context).size.width * 0.02),
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.17,
+              child: SingleChildScrollView(
+                child: Container(
+                  padding:
+                      EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
+                  child: Column(
+                    children: [
+                      Column(children: [
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.03,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                                padding: EdgeInsets.all(
+                                    MediaQuery.of(context).size.width * 0.02),
+                                height:
+                                    MediaQuery.of(context).size.height * 0.17,
+                                width:
+                                    MediaQuery.of(context).size.height * 0.17,
+                                child:  MyCircleAvatar(Image.network(avatarurl))),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.15,
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Container(
                                   width:
-                                      MediaQuery.of(context).size.height * 0.17,
-                                  child: MyOtherCircleAvatar(
-                                      Image(
-                                        image: NetworkImage(avatarurl),
-                                      ),
-                                      ColorSchemeClass.primarygreen)),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.15,
-                              ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.4,
-                                    child: FittedBox(
-                                      fit: BoxFit.scaleDown,
-                                      child: Text(
-                                        name,
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontFamily: 'young',
-                                            fontSize: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.03),
-                                      ),
+                                      MediaQuery.of(context).size.width * 0.4,
+                                  child: FittedBox(
+                                    fit: BoxFit.scaleDown,
+                                    child: Text(
+                                      name,
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontFamily: 'young',
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.03),
                                     ),
                                   ),
-                                  SizedBox(
+                                ),
+                                SizedBox(
+                                  height: MediaQuery.of(context).size.height *
+                                      0.007,
+                                ),
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.4,
+                                  child: FittedBox(
+                                    fit: BoxFit.scaleDown,
+                                    child: Text(
+                                      '@' + codername,
+                                      style: TextStyle(
+                                          color: ColorSchemeClass.lightgrey,
+                                          fontFamily: 'young',
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.02),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.02,
+                        ),
+                        isMe
+                            ? MyOutlineButton(
+                                ColorSchemeClass.lightgrey, 'Edit Profile', () {
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) {
+                                  return EditProfileScreen();
+                                }));
+                              }, FontAwesomeIcons.solidEdit)
+                            : isLoading
+                                ? Container(
+                                    width: double.infinity,
                                     height: MediaQuery.of(context).size.height *
-                                        0.007,
-                                  ),
-                                  Container(
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.4,
-                                    child: FittedBox(
-                                      fit: BoxFit.scaleDown,
-                                      child: Text(
-                                        '@' + codername,
-                                        style: TextStyle(
-                                            color: ColorSchemeClass.lightgrey,
-                                            fontFamily: 'young',
-                                            fontSize: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.02),
-                                      ),
+                                        0.078,
+                                    child: Center(
+                                      child: CircularProgressIndicator(),
                                     ),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.02,
-                          ),
-                          isMe
-                              ? MyOutlineButton(
-                                  ColorSchemeClass.lightgrey, 'Edit Profile',
-                                  () {
-                                  Navigator.push(context,
-                                      MaterialPageRoute(builder: (context) {
-                                    return EditProfileScreen();
-                                  }));
-                                }, FontAwesomeIcons.solidEdit)
-                              : isLoading
-                                  ? Container(
-                                      width: double.infinity,
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.078,
-                                      child: Center(
-                                        child: CircularProgressIndicator(),
-                                      ),
-                                    )
-                                  : isPeered
-                                      ? MyOutlineButton(
-                                          ColorSchemeClass.lightgrey,
-                                          'Remove from Peers', () {
-                                          removeFromPeers();
-                                        }, FontAwesomeIcons.minusCircle)
-                                      : MyButton(ColorSchemeClass.primarygreen,
-                                          'Add as a Peer', () {
-                                          addInPeers();
-                                        }, FontAwesomeIcons.plusCircle),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.02,
-                          ),
-                          MyMidDividerWithTitle('Bio'),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.015,
-                          ),
-                          Text(
-                            bio,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                color: ColorSchemeClass.lightgrey,
-                                fontFamily: 'young',
-                                fontSize:
-                                    MediaQuery.of(context).size.height * 0.02),
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.015,
-                          ),
-                          MyMidDividerWithTitle('Ratings'),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.02,
-                          ),
-                          isFirstTimeUserRatings
-                              ? FutureBuilder(
-                                  future: futureFunctionUserRatings,
-                                  builder: (context, snapshot) {
-                                    return Container(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.32,
-                                      width: MediaQuery.of(context).size.width *
-                                          0.6,
-                                      child: Theme(
-                                        data: ThemeData(
-                                            accentColor: Colors.transparent),
-                                        child: GridView.count(
-                                            crossAxisCount: 2,
-                                            children: [
-                                              Container(
-                                                child: Center(
-                                                  child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5),
-                                                      child: Container(
-                                                          width: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width *
-                                                              0.2,
-                                                          height: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width *
-                                                              0.25,
-                                                          child: RiveAnimation
-                                                              .asset(
-                                                            'assets/skeleton-place-holder.riv',
-                                                            fit: BoxFit.cover,
-                                                          ))),
-                                                ),
-                                              ),
-                                              Container(
-                                                child: Center(
-                                                  child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5),
-                                                      child: Container(
-                                                          width: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width *
-                                                              0.2,
-                                                          height: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width *
-                                                              0.25,
-                                                          child: RiveAnimation
-                                                              .asset(
-                                                            'assets/skeleton-place-holder.riv',
-                                                            fit: BoxFit.cover,
-                                                          ))),
-                                                ),
-                                              ),
-                                              Container(
-                                                child: Center(
-                                                  child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5),
-                                                      child: Container(
-                                                          width: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width *
-                                                              0.2,
-                                                          height: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width *
-                                                              0.25,
-                                                          child: RiveAnimation
-                                                              .asset(
-                                                            'assets/skeleton-place-holder.riv',
-                                                            fit: BoxFit.cover,
-                                                          ))),
-                                                ),
-                                              ),
-                                              Container(
-                                                child: Center(
-                                                  child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5),
-                                                      child: Container(
-                                                          width: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width *
-                                                              0.2,
-                                                          height: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width *
-                                                              0.25,
-                                                          child: RiveAnimation
-                                                              .asset(
-                                                            'assets/skeleton-place-holder.riv',
-                                                            fit: BoxFit.cover,
-                                                          ))),
-                                                ),
-                                              ),
-                                            ]),
-                                      ),
-                                    );
-                                  })
-                              : listOfRatingCards.length == 0
-                                  ? Container(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.32,
-                                      child: Center(
-                                        child: DottedBorder(
+                                  )
+                                : isPeered
+                                    ? MyOutlineButton(
+                                        ColorSchemeClass.lightgrey,
+                                        'Remove from Peers', () {
+                                        removeFromPeers();
+                                      }, FontAwesomeIcons.minusCircle)
+                                    : MyButton(ColorSchemeClass.primarygreen,
+                                        'Add as a Peer', () {
+                                        addInPeers();
+                                      }, FontAwesomeIcons.plusCircle),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.02,
+                        ),
+                        MyMidDividerWithTitle('Bio'),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.015,
+                        ),
+                        Text(
+                          bio,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: ColorSchemeClass.lightgrey,
+                              fontFamily: 'young',
+                              fontSize:
+                                  MediaQuery.of(context).size.height * 0.02),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.015,
+                        ),
+                        MyMidDividerWithTitle('Ratings'),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.02,
+                        ),
+                        isFirstTimeUserRatings
+                            ? FutureBuilder(
+                                future: futureFunctionUserRatings,
+                                builder: (context, snapshot) {
+                                  return Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            RantingTileSkeleton(),
+                                            RantingTileSkeleton(),
+                                          ]),
+                                      Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            RantingTileSkeleton(),
+                                            RantingTileSkeleton(),
+                                          ])
+                                    ],
+                                  );
+                                })
+                            : listOfRatingCards.length == 0
+                                ? Container(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.3,
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        DottedBorder(
                                           strokeWidth: 1,
                                           dashPattern: [5, 5],
-                                          color: ColorSchemeClass.darkgrey,
+                                          color: ColorSchemeClass.lightgrey,
                                           child: Container(
                                             padding: EdgeInsets.all(
                                                 MediaQuery.of(context)
@@ -491,8 +391,8 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
                                               'NO RATINGS',
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
-                                                  color:
-                                                      ColorSchemeClass.darkgrey,
+                                                  color: ColorSchemeClass
+                                                      .lightgrey,
                                                   fontFamily: 'young',
                                                   fontSize:
                                                       MediaQuery.of(context)
@@ -502,97 +402,105 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
                                             ),
                                           ),
                                         ),
-                                      ),
-                                    )
-                                  : (listOfRatingCards.length % 2 == 1)
-                                      ? listOfRatingCards.length == 3
-                                          ? Column(
-                                              children: [
-                                                Container(
-                                                  height: MediaQuery.of(context)
-                                                          .size
-                                                          .height *
-                                                      0.155,
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.6,
-                                                  child: Theme(
-                                                    data: ThemeData(
-                                                        accentColor:
-                                                            Colors.transparent),
-                                                    child: GridView.count(
-                                                        crossAxisCount: 2,
-                                                        children:
-                                                            listOfRatingCards
-                                                                .sublist(0, 2)),
-                                                  ),
-                                                ),
-                                                Container(
-                                                  height: MediaQuery.of(context)
-                                                          .size
-                                                          .height *
-                                                      0.155,
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.6,
-                                                  child: Center(
-                                                    child: Container(
-                                                        width: MediaQuery.of(
-                                                                    context)
-                                                                .size
-                                                                .height *
-                                                            0.155,
-                                                        child:
-                                                            listOfRatingCards[
-                                                                2]),
-                                                  ),
-                                                )
-                                              ],
-                                            )
-                                          : Container(
-                                              height: MediaQuery.of(context)
-                                                      .size
-                                                      .height *
-                                                  0.155,
-                                              width: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  0.6,
-                                              child: Center(
-                                                child: Container(
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .height *
-                                                            0.155,
-                                                    child:
-                                                        listOfRatingCards[0]),
-                                              ),
-                                            )
-                                      : Container(
+                                        SizedBox(
                                           height: MediaQuery.of(context)
                                                   .size
                                                   .height *
-                                              0.32,
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.6,
-                                          child: Theme(
-                                            data: ThemeData(
-                                                accentColor:
-                                                    Colors.transparent),
-                                            child: GridView.count(
-                                                crossAxisCount: 2,
-                                                children: listOfRatingCards),
-                                          ),
-                                        )
-                        ],
-                      ),
-                    ),
-                  ],
+                                              0.04,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Text(
+                                              'Go to   ',
+                                              style: TextStyle(
+                                                  color: ColorSchemeClass
+                                                      .lightgrey,
+                                                  fontFamily: 'young',
+                                                  fontSize:
+                                                      MediaQuery.of(context)
+                                                              .size
+                                                              .height *
+                                                          0.02),
+                                            ),
+                                            Column(children: [
+                                              Icon(
+                                                Icons.settings,
+                                                color: ColorSchemeClass
+                                                    .primarygreen,
+                                                size: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.08,
+                                              ),
+                                              Text(
+                                                'Settings',
+                                                style: TextStyle(
+                                                    color: ColorSchemeClass
+                                                        .primarygreen,
+                                                    fontFamily: 'young',
+                                                    fontSize:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            0.016),
+                                              ),
+                                            ]),
+                                            Text(
+                                              '   to add User Handles',
+                                              style: TextStyle(
+                                                  color: ColorSchemeClass
+                                                      .lightgrey,
+                                                  fontFamily: 'young',
+                                                  fontSize:
+                                                      MediaQuery.of(context)
+                                                              .size
+                                                              .height *
+                                                          0.02),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                : listOfRatingCards.length == 1 ||
+                                        listOfRatingCards.length == 2
+                                    ? Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: listOfRatingCards)
+                                        ],
+                                      )
+                                    : Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: listOfRatingCards
+                                                  .sublist(0, 2)),
+                                          Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              mainAxisSize: MainAxisSize.max,
+                                              children:
+                                                  listOfRatingCards.sublist(2))
+                                        ],
+                                      ),
+                      ])
+                    ],
+                  ),
                 ),
               ),
             ),

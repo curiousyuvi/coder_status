@@ -10,8 +10,8 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'components/generalLoader.dart';
-import 'components/myTextFormField.dart';
-import 'components/myButton.dart';
+import 'components/myTextFormFields.dart';
+import 'components/myButtons.dart';
 import 'package:coderstatus/firebase_layer/createuser.dart';
 
 void main() => runApp(
@@ -38,18 +38,14 @@ class _RegisterPasswordScreenState extends State<RegisterPasswordScreen> {
 
   void _submit() {
     FocusScopeNode currentFocus = FocusScope.of(context);
-    print("Register initiated!!");
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
-      print(emailid + ' ' + password);
       setState(() {
         isloading = true;
       });
 
       createAccount(emailid, password).then((user) {
         if (user != null) {
-          print('account created');
-
           sendVerificationEmail(emailid);
           showAnimatedToast(
               this.context, 'Verification mail sent to your Email', true);
@@ -98,31 +94,38 @@ class _RegisterPasswordScreenState extends State<RegisterPasswordScreen> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Flexible(
-                          child: Hero(
-                            tag: 'appIcon',
-                            child: Image(
-                              width: MediaQuery.of(context).size.width * 0.5,
-                              image: AssetImage('images/appiconnoback.png'),
-                            ),
-                          ),
-                        ),
+                        MediaQuery.of(context).viewInsets.bottom == 0
+                            ? Flexible(
+                                child: Hero(
+                                  tag: 'appIcon',
+                                  child: Image(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.5,
+                                    image:
+                                        AssetImage('images/appiconnoback.png'),
+                                  ),
+                                ),
+                              )
+                            : SizedBox.shrink(),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.05,
                         ),
-                        Flexible(
-                            child: Padding(
-                          padding: EdgeInsets.all(
-                              MediaQuery.of(context).size.width * 0.02),
-                          child: Text(
-                            'Choose Password',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize:
-                                    MediaQuery.of(context).size.height * 0.035,
-                                fontFamily: 'young'),
-                          ),
-                        )),
+                        MediaQuery.of(context).viewInsets.bottom == 0
+                            ? Flexible(
+                                child: Padding(
+                                padding: EdgeInsets.all(
+                                    MediaQuery.of(context).size.width * 0.02),
+                                child: Text(
+                                  'Choose Password',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize:
+                                          MediaQuery.of(context).size.height *
+                                              0.035,
+                                      fontFamily: 'young'),
+                                ),
+                              ))
+                            : SizedBox.shrink(),
                         Flexible(
                             child: Padding(
                           padding: EdgeInsets.all(
@@ -136,7 +139,7 @@ class _RegisterPasswordScreenState extends State<RegisterPasswordScreen> {
                                   fontFamily: 'young'),
                               textAlign: TextAlign.center),
                         )),
-                        MyTextEormField(
+                        MyTextFormField(
                             Icon(FontAwesomeIcons.key), 'password', true,
                             (val) {
                           setState(() {
@@ -147,7 +150,7 @@ class _RegisterPasswordScreenState extends State<RegisterPasswordScreen> {
                             (val) => val.trim().length < 6
                                 ? 'Password must contain atleast 6 characters'
                                 : null),
-                        MyTextEormField(
+                        MyTextFormField(
                             Icon(FontAwesomeIcons.key),
                             'confirm password',
                             true,

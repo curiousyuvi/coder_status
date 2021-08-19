@@ -9,11 +9,10 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:rive/rive.dart';
 import 'components/generalLoader.dart';
 import 'components/myAppBar.dart';
-import 'components/myTextFormField.dart';
-import 'components/myButton.dart';
+import 'components/myTextFormFields.dart';
+import 'components/myButtons.dart';
 
 class UpdatePasswordScreen extends StatefulWidget {
   @override
@@ -41,7 +40,6 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
     });
 
     oldpasswordmatch = await validatePassword(oldPass);
-    print('bool updated!!');
 
     //stop loader
     setState(() {
@@ -61,9 +59,7 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
         //Toast
         showAnimatedToast(this.context, 'Password Updated Successfully.', true);
         Navigator.pop(context);
-      } catch (e) {
-        print(e);
-      }
+      } catch (e) {}
 
       //stop loader
       setState(() {
@@ -113,7 +109,9 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
                                 fontFamily: 'young'),
                             textAlign: TextAlign.center),
                       )),
-                      MyTextEormField(
+
+                      SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+                      MyTextFormField(
                           Icon(Icons.vpn_key),
                           'old password',
                           true,
@@ -128,7 +126,8 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
                                 ? null
                                 : 'Old password doesn\'t match';
                           }),
-                      MyTextEormField(Icon(Icons.vpn_key), 'new password', true,
+                           SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+                      MyTextFormField(Icon(Icons.vpn_key), 'new password', true,
                           (val) {
                         setState(() {
                           newPass = val;
@@ -138,7 +137,8 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
                           (val) => val.trim().length < 6
                               ? 'Password must contain atleast 6 characters'
                               : null),
-                      MyTextEormField(
+                               SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+                      MyTextFormField(
                           Icon(Icons.vpn_key),
                           'confirm new password',
                           true,
@@ -147,6 +147,7 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
                           (val) => val != newPass
                               ? 'Password doesn\'t match'
                               : null),
+                               SizedBox(height: MediaQuery.of(context).size.height*0.02,),
                       Container(
                           padding: EdgeInsets.symmetric(
                               horizontal:

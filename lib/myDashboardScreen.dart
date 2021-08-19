@@ -1,7 +1,6 @@
 import 'package:coderstatus/components/atcoderDialog.dart';
 import 'package:coderstatus/components/codechefDialog.dart';
 import 'package:coderstatus/components/codeforcesDialog.dart';
-import 'package:coderstatus/components/myCircleAvatar.dart';
 import 'package:coderstatus/components/myDashboardScreenSkeleton.dart';
 import 'package:coderstatus/components/myDividerWithTitle.dart';
 import 'package:coderstatus/components/myRatingCard.dart';
@@ -18,6 +17,8 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:rect_getter/rect_getter.dart';
 import 'package:rive/rive.dart';
+
+import 'components/myCircleAvatar.dart';
 
 class MyDashboardScreen extends StatefulWidget {
   @override
@@ -42,7 +43,6 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
 
   readyUserData() async {
     final userDocument = await GetUserInfo.getUserDocument();
-    print('reached -1');
     avatarurl = userDocument['avatarurl'];
     name = userDocument['name'];
     codername = userDocument['codername'];
@@ -69,7 +69,6 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
           child: GestureDetector(
             onTap: () {
               var rect = RectGetter.getRectFromKey(globalKey1);
-              print(rect.toString());
               showCodeforcesDialog(
                   this.context, rect, userhandles[0], userrating[0]);
             },
@@ -87,7 +86,6 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
           child: GestureDetector(
             onTap: () {
               var rect = RectGetter.getRectFromKey(globalKey2);
-              print(rect.toString());
               showCodechefDialog(
                   this.context, rect, userhandles[1], userrating[1]);
             },
@@ -105,7 +103,6 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
           child: GestureDetector(
             onTap: () {
               var rect = RectGetter.getRectFromKey(globalKey3);
-              print(rect.toString());
               showAtcoderDialog(
                   this.context, rect, userhandles[2], userrating[2]);
             },
@@ -123,7 +120,6 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
           child: GestureDetector(
             onTap: () {
               var rect = RectGetter.getRectFromKey(globalKey4);
-              print(rect.toString());
               showSpojDialog(this.context, rect, userhandles[3], userrating[3]);
             },
             child: MyRatingCard(AssetImage('images/spojtile.png'),
@@ -182,8 +178,7 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
                           Container(
                               height: MediaQuery.of(context).size.height * 0.22,
                               width: MediaQuery.of(context).size.height * 0.22,
-                              child: MyCircleAvatar(
-                                  Image(image: NetworkImage(avatarurl)))),
+                              child:  MyCircleAvatar(Image.network(avatarurl))),
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.025,
                           ),
@@ -233,116 +228,28 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
                               ? FutureBuilder(
                                   future: futureFunctionUserRatings,
                                   builder: (context, snapshot) {
-                                    return Container(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.32,
-                                      width: MediaQuery.of(context).size.width *
-                                          0.6,
-                                      child: Theme(
-                                        data: ThemeData(
-                                            accentColor: Colors.transparent),
-                                        child: GridView.count(
-                                            crossAxisCount: 2,
+                                    return Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            mainAxisSize: MainAxisSize.max,
                                             children: [
-                                              Container(
-                                                child: Center(
-                                                  child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5),
-                                                      child: Container(
-                                                          width: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width *
-                                                              0.2,
-                                                          height: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width *
-                                                              0.25,
-                                                          child: RiveAnimation
-                                                              .asset(
-                                                            'assets/skeleton-place-holder.riv',
-                                                            fit: BoxFit.cover,
-                                                          ))),
-                                                ),
-                                              ),
-                                              Container(
-                                                child: Center(
-                                                  child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5),
-                                                      child: Container(
-                                                          width: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width *
-                                                              0.2,
-                                                          height: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width *
-                                                              0.25,
-                                                          child: RiveAnimation
-                                                              .asset(
-                                                            'assets/skeleton-place-holder.riv',
-                                                            fit: BoxFit.cover,
-                                                          ))),
-                                                ),
-                                              ),
-                                              Container(
-                                                child: Center(
-                                                  child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5),
-                                                      child: Container(
-                                                          width: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width *
-                                                              0.2,
-                                                          height: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width *
-                                                              0.25,
-                                                          child: RiveAnimation
-                                                              .asset(
-                                                            'assets/skeleton-place-holder.riv',
-                                                            fit: BoxFit.cover,
-                                                          ))),
-                                                ),
-                                              ),
-                                              Container(
-                                                child: Center(
-                                                  child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5),
-                                                      child: Container(
-                                                          width: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width *
-                                                              0.2,
-                                                          height: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width *
-                                                              0.25,
-                                                          child: RiveAnimation
-                                                              .asset(
-                                                            'assets/skeleton-place-holder.riv',
-                                                            fit: BoxFit.cover,
-                                                          ))),
-                                                ),
-                                              ),
+                                              RantingTileSkeleton(),
+                                              RantingTileSkeleton(),
                                             ]),
-                                      ),
+                                        Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              RantingTileSkeleton(),
+                                              RantingTileSkeleton(),
+                                            ])
+                                      ],
                                     );
                                   })
                               : listOfRatingCards.length == 0
@@ -443,90 +350,38 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
                                         ],
                                       ),
                                     )
-                                  : (listOfRatingCards.length % 2 == 1)
-                                      ? listOfRatingCards.length == 3
-                                          ? Column(
-                                              children: [
-                                                Container(
-                                                  height: MediaQuery.of(context)
-                                                          .size
-                                                          .height *
-                                                      0.155,
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.6,
-                                                  child: Theme(
-                                                    data: ThemeData(
-                                                        accentColor:
-                                                            Colors.transparent),
-                                                    child: GridView.count(
-                                                        crossAxisCount: 2,
-                                                        children:
-                                                            listOfRatingCards
-                                                                .sublist(0, 2)),
-                                                  ),
-                                                ),
-                                                Container(
-                                                  height: MediaQuery.of(context)
-                                                          .size
-                                                          .height *
-                                                      0.155,
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.6,
-                                                  child: Center(
-                                                    child: Container(
-                                                        width: MediaQuery.of(
-                                                                    context)
-                                                                .size
-                                                                .width *
-                                                            0.3,
-                                                        child:
-                                                            listOfRatingCards[
-                                                                2]),
-                                                  ),
-                                                )
-                                              ],
-                                            )
-                                          : Container(
-                                              height: MediaQuery.of(context)
-                                                      .size
-                                                      .height *
-                                                  0.155,
-                                              width: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  0.6,
-                                              child: Center(
-                                                child: Container(
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width *
-                                                            0.3,
-                                                    child:
-                                                        listOfRatingCards[0]),
-                                              ),
-                                            )
-                                      : Container(
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.32,
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.6,
-                                          child: Theme(
-                                            data: ThemeData(
-                                                accentColor:
-                                                    Colors.transparent),
-                                            child: GridView.count(
-                                                crossAxisCount: 2,
-                                                children: listOfRatingCards),
-                                          ),
+                                  : listOfRatingCards.length == 1 ||
+                                          listOfRatingCards.length == 2
+                                      ? Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: listOfRatingCards)
+                                          ],
+                                        )
+                                      : Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: listOfRatingCards
+                                                    .sublist(0, 2)),
+                                            Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: listOfRatingCards
+                                                    .sublist(2))
+                                          ],
                                         )
                         ],
                       ),
@@ -536,6 +391,28 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
               ),
             ),
           );
+  }
+}
+
+class RantingTileSkeleton extends StatelessWidget {
+  const RantingTileSkeleton({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.05),
+      child: ClipRRect(
+          borderRadius: BorderRadius.circular(5),
+          child: Container(
+              width: MediaQuery.of(context).size.width * 0.2,
+              height: MediaQuery.of(context).size.width * 0.25,
+              child: RiveAnimation.asset(
+                'assets/skeleton-place-holder.riv',
+                fit: BoxFit.cover,
+              ))),
+    );
   }
 }
 

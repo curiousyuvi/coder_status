@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 Future deleteUser([String password = '']) async {
@@ -22,8 +21,5 @@ Future deleteUser([String password = '']) async {
     var authResult = await user.reauthenticateWithCredential(authCredentials);
     await FirebaseFirestore.instance.collection("users").doc(user.uid).delete();
     authResult.user.delete();
-    print('user deleted succesfully!!!');
-  } catch (e) {
-    print(e);
-  }
+  } catch (e) {}
 }

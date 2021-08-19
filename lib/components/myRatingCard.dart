@@ -13,19 +13,18 @@ class MyRatingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Center(
-          child: Container(
+    return Container(
+      padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.05),
+      child: Stack(
+        children: [
+          Container(
             height: MediaQuery.of(context).size.width * 0.25,
             width: MediaQuery.of(context).size.width * 0.2,
             child: Image(
               image: tileimage,
             ),
           ),
-        ),
-        Center(
-          child: Container(
+          Container(
             height: MediaQuery.of(context).size.width * 0.25,
             width: MediaQuery.of(context).size.width * 0.2,
             child: Center(
@@ -62,17 +61,15 @@ class MyRatingCard extends StatelessWidget {
               ],
             )),
           ),
-        ),
-        Center(
-          child: Container(
+          Container(
               height: MediaQuery.of(context).size.width * 0.25,
               width: MediaQuery.of(context).size.width * 0.2,
               child: RiveAnimation.asset(
                 'assets/shine.riv',
                 fit: BoxFit.cover,
               )),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

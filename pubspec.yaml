@@ -22,7 +22,6 @@ dependencies:
   firebase_storage: ^8.1.3
   http: ^0.13.3
   html: ^0.14.0+3
-  flutter_restart: ^0.0.3
   rive: ^0.7.27
   flutter_phoenix: ^1.0.0
   rect_getter: ^1.0.0
@@ -33,6 +32,7 @@ dependencies:
   font_awesome_flutter: ^9.1.0
   google_sign_in: ^5.0.3
   provider: ^5.0.0
+  internet_connection_checker: ^0.0.1+2
 
 dev_dependencies:
   flutter_test:
@@ -49,6 +49,7 @@ flutter:
     - assets/crown.riv
     - assets/no-peers.riv
     - assets/search-user.riv
+    - assets/cup-crying.riv
   fonts:
     - family: Young
       fonts:

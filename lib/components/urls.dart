@@ -1,16 +1,16 @@
 class Urls {
   static String avatar1url =
-      "https://firebasestorage.googleapis.com/v0/b/coder-status.appspot.com/o/avatarnone.jpg?alt=media&token=0fd8b66f-7977-4ccc-8f3a-6b1951abdf83";
+      "https://firebasestorage.googleapis.com/v0/b/coder-status.appspot.com/o/avatar1.jpg?alt=media&token=aacb9806-2371-4c0a-96ab-a7016f28f1c6";
   static String avatar2url =
-      "https://firebasestorage.googleapis.com/v0/b/coder-status.appspot.com/o/avatarboy1.jpg?alt=media&token=9764db4a-a58b-4488-88d1-b56de92017be";
+      "https://firebasestorage.googleapis.com/v0/b/coder-status.appspot.com/o/avatar2.jpg?alt=media&token=66ed2a5e-6bd8-4530-a5b7-61476402588a";
   static String avatar3url =
-      "https://firebasestorage.googleapis.com/v0/b/coder-status.appspot.com/o/avatarboy2.jpg?alt=media&token=20a54fd5-d0ba-4529-af63-ab65281e2da6";
+      "https://firebasestorage.googleapis.com/v0/b/coder-status.appspot.com/o/avatar3.jpg?alt=media&token=8922d8d7-ebb7-4bff-928a-10f8a99a9862";
   static String avatar4url =
-      "https://firebasestorage.googleapis.com/v0/b/coder-status.appspot.com/o/avatarboy3.jpg?alt=media&token=0ea15abd-77b3-41d8-896b-ad323fe17db4";
+      "https://firebasestorage.googleapis.com/v0/b/coder-status.appspot.com/o/avatar4.jpg?alt=media&token=b8c6dbf9-80a3-4383-af0c-3b610f484367";
   static String avatar5url =
-      "https://firebasestorage.googleapis.com/v0/b/coder-status.appspot.com/o/avatargirl1.jpg?alt=media&token=6f6d7907-e3e1-4f68-b37d-32ea7e5b5436";
+      "https://firebasestorage.googleapis.com/v0/b/coder-status.appspot.com/o/avatar5.jpg?alt=media&token=139a4e30-3952-4177-a1e7-573052398bea";
   static String avatar6url =
-      "https://firebasestorage.googleapis.com/v0/b/coder-status.appspot.com/o/avatargirl2.jpg?alt=media&token=12c812d7-237e-4109-b4ad-477c8456cfec";
+      "https://firebasestorage.googleapis.com/v0/b/coder-status.appspot.com/o/avatar6.jpg?alt=media&token=c5f68226-90a8-4380-8cd0-19db9ecf830f";
   static String avatar7url =
-      "https://firebasestorage.googleapis.com/v0/b/coder-status.appspot.com/o/avatargirl3.jpg?alt=media&token=f6f5910f-d6bd-4045-a26a-31da3dada378";
+      "https://firebasestorage.googleapis.com/v0/b/coder-status.appspot.com/o/avatar7.jpg?alt=media&token=3e0681db-81a3-4a33-b83c-ca6320f85962";
 }

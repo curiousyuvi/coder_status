@@ -3,9 +3,7 @@ import 'package:coderstatus/components/colorscheme.dart';
 import 'package:coderstatus/components/confirmationDialog.dart';
 import 'package:coderstatus/components/generalLoader.dart';
 import 'package:coderstatus/components/myAppBar.dart';
-import 'package:coderstatus/components/mySettingNonExpansionTile.dart';
-import 'package:coderstatus/components/mySettingsExpansionTile.dart';
-import 'package:coderstatus/components/myChildListTile.dart';
+import 'package:coderstatus/components/mySettingTiles.dart';
 import 'package:coderstatus/deleteAccountScreen.dart';
 import 'package:coderstatus/editProfileScreen.dart';
 import 'package:coderstatus/firebase_layer/deleteUser.dart';
@@ -13,7 +11,6 @@ import 'package:coderstatus/firebase_layer/logoutUser.dart';
 import 'package:coderstatus/updatePasswordScreen.dart';
 import 'package:coderstatus/editUserHandlesScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -81,8 +78,7 @@ class _SettingScreenState extends State<SettingScreen> {
                       Icon(FontAwesomeIcons.userLock),
                       'Account & Security',
                       [
-                        FirebaseAuth.instance.currentUser.photoURL == null
-                            ? GestureDetector(
+                        GestureDetector(
                                 onTap: () {
                                   Navigator.push(context,
                                       MaterialPageRoute(builder: (context) {
@@ -95,16 +91,8 @@ class _SettingScreenState extends State<SettingScreen> {
                                       color: ColorSchemeClass.dark,
                                     ),
                                     'Change Password'),
-                              )
-                            : MyChildListTile(
-                                Icon(
-                                  FontAwesomeIcons.key,
-                                  color: ColorSchemeClass.unactivatedblack
-                                      .withOpacity(0.2),
-                                ),
-                                'Change Password',
-                                ColorSchemeClass.unactivatedblack
-                                    .withOpacity(0.2)),
+                              ),
+                           
                         GestureDetector(
                           onTap: () {
                             if (FirebaseAuth.instance.currentUser.photoURL ==

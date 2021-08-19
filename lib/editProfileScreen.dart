@@ -4,8 +4,6 @@ import 'package:coderstatus/components/generalLoader.dart';
 import 'package:coderstatus/components/myAvatarSelection.dart';
 import 'package:coderstatus/components/myCircleAvatar.dart';
 import 'package:coderstatus/components/myDividerWithTitle.dart';
-import 'package:coderstatus/components/myPassageTextformField.dart';
-import 'package:coderstatus/components/myTextFormField.dart';
 import 'package:coderstatus/components/urls.dart';
 import 'package:coderstatus/firebase_layer/getUserInfo.dart';
 import 'package:coderstatus/firebase_layer/setUserInfo.dart';
@@ -13,9 +11,9 @@ import 'package:coderstatus/firebase_layer/uploadAvatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:rive/rive.dart';
 import 'components/confirmationDialog.dart';
 import 'components/myAppBar.dart';
+import 'components/myTextFormFields.dart';
 import 'functions/pickImageAndCrop.dart' as pickImageAndCrop;
 
 class EditProfileScreen extends StatefulWidget {
@@ -309,7 +307,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                       height:
                                           MediaQuery.of(context).size.height *
                                               0.028),
-                                  MyTextEormField(
+                                  MyTextFormField(
                                       Icon(Icons.person),
                                       'Name',
                                       false,
@@ -335,7 +333,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                       height:
                                           MediaQuery.of(context).size.height *
                                               0.028),
-                                  MyTextEormField(
+                                  MyTextFormField(
                                       Icon(Icons.alternate_email),
                                       'Codername',
                                       false,

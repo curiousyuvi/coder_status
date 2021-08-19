@@ -6,7 +6,7 @@ import 'package:coderstatus/firebase_layer/getUserInfo.dart';
 import 'package:coderstatus/functions/getRating.dart';
 import 'package:flutter/material.dart';
 import 'components/myAppBar.dart';
-import 'components/myButton.dart';
+import 'components/myButtons.dart';
 
 class CodeforcesRankingScreen extends StatefulWidget {
   const CodeforcesRankingScreen({Key key}) : super(key: key);
@@ -33,7 +33,6 @@ class _CodeforcesRankingScreenState extends State<CodeforcesRankingScreen> {
     //if I have that handle only then add me to ranking data
     if (myUserHandles[0] != "") {
       var myRating = await GetRating.getCodeforcesRating(myUserHandles[0]);
-      print('my rating fetched');
 
       //if I have rating other than 0 only then add me to ranking data
       if (myRating != '0') {
@@ -42,10 +41,8 @@ class _CodeforcesRankingScreenState extends State<CodeforcesRankingScreen> {
           'userHandle': myUserHandles[0],
           'rating': myRating
         });
-        print('initial map data added');
       }
     }
-    print('initial map data may be skipped');
 
     //getting list of uids of my peers
     var peers = await GetUserInfo.getUserPeers();
@@ -56,7 +53,6 @@ class _CodeforcesRankingScreenState extends State<CodeforcesRankingScreen> {
       for (int i = 0; i < peers.length; i++) {
         //get document map of uid
         var peerDocument = await GetUserInfo.getUserDocument(peers[i]);
-        print('peer\'s document fetched');
 
         //if the peer's document map has user Handle then then add it to ranking data
         try {
@@ -64,7 +60,6 @@ class _CodeforcesRankingScreenState extends State<CodeforcesRankingScreen> {
             //fetch rating for the current peer
             var rating =
                 await GetRating.getCodeforcesRating(peerDocument['codeforces']);
-            print('peer\'s rating fetched');
 
             //if current peer has rating not equal to zero then add it to ranking data
             if (rating != '0') {
@@ -78,7 +73,6 @@ class _CodeforcesRankingScreenState extends State<CodeforcesRankingScreen> {
                       'userHandle': peerDocument['codeforces'],
                       'rating': rating
                     });
-                    print('peer data map added');
                     break;
                   } else {
                     if (j == (listOfUserData.length - 1)) {
@@ -87,7 +81,6 @@ class _CodeforcesRankingScreenState extends State<CodeforcesRankingScreen> {
                         'userHandle': peerDocument['codeforces'],
                         'rating': rating
                       });
-                      print('peer data map added');
                       break;
                     }
                   }
@@ -99,14 +92,12 @@ class _CodeforcesRankingScreenState extends State<CodeforcesRankingScreen> {
                   'userHandle': peerDocument['codeforces'],
                   'rating': rating
                 });
-                print('peer data map added');
               }
             }
           }
         } catch (e) {
           continue;
         }
-        print('peer data map may be skipped');
       }
 
       //converting ranking data into widgets
@@ -132,7 +123,6 @@ class _CodeforcesRankingScreenState extends State<CodeforcesRankingScreen> {
             listOfUserData[j]['rating'],
             (j + 1)));
       }
-      print('widgets added');
     } else {
       for (int j = 0; j < listOfUserData.length; j++) {
         listOfUserTiles.add(MyRankingUserTile(
@@ -141,7 +131,6 @@ class _CodeforcesRankingScreenState extends State<CodeforcesRankingScreen> {
             listOfUserData[j]['rating'],
             (j + 1)));
       }
-      print('widgets added');
     }
 
     setState(() {
@@ -159,64 +148,64 @@ class _CodeforcesRankingScreenState extends State<CodeforcesRankingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return isFirstTime
-        ? FutureBuilder(
-            future: futureFunction,
-            builder: (context, snapshot) {
-              return Center(
-                child: RankingScreenSkeleton(),
-              );
-            },
-          )
-        : Scaffold(
-            appBar: PreferredSize(
-              child: MyAppBarWithBack('Codeforces Ranking'),
-              preferredSize:
-                  Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
-            ),
-            body: listOfUserTiles.length == 0
-                ? Container(
-                    height: MediaQuery.of(context).size.height * 0.7,
-                    child: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'You and your peers are not on Codeforces',
-                            style: TextStyle(
-                                color: ColorSchemeClass.lightgrey,
-                                fontFamily: 'young',
-                                fontSize:
-                                    MediaQuery.of(context).size.height * 0.025),
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.02,
-                          ),
-                          Container(
-                            height: MediaQuery.of(context).size.height * 0.05,
-                            width: MediaQuery.of(context).size.width * 0.5,
-                            child: MyButton(
-                                ColorSchemeClass.primarygreen, 'Refresh', () {
-                              setState(() {
-                                futureFunction = getPeersList();
-                                isFirstTime = true;
-                              });
-                            }, Icons.refresh),
-                          )
-                        ],
-                      ),
-                    ),
-                  )
-                : RefreshIndicator(
-                    backgroundColor: ColorSchemeClass.unactivatedblack,
-                    onRefresh: () async {
-                      await getPeersList();
-                      return 0;
-                    },
-                    child: ListView(
-                      children: listOfUserTiles,
+    return Scaffold(
+      appBar: PreferredSize(
+        child: MyAppBarWithBack('Codeforces Ranking'),
+        preferredSize:
+            Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
+      ),
+      body: isFirstTime
+          ? FutureBuilder(
+              future: futureFunction,
+              builder: (context, snapshot) {
+                return Center(
+                  child: RankingScreenSkeleton(),
+                );
+              },
+            )
+          : listOfUserTiles.length == 0
+              ? Container(
+                  height: MediaQuery.of(context).size.height * 0.7,
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'You and your peers are not on Codeforces',
+                          style: TextStyle(
+                              color: ColorSchemeClass.lightgrey,
+                              fontFamily: 'young',
+                              fontSize:
+                                  MediaQuery.of(context).size.height * 0.025),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.02,
+                        ),
+                        Container(
+                          height: MediaQuery.of(context).size.height * 0.05,
+                          width: MediaQuery.of(context).size.width * 0.5,
+                          child: MyButton(
+                              ColorSchemeClass.primarygreen, 'Refresh', () {
+                            setState(() {
+                              futureFunction = getPeersList();
+                              isFirstTime = true;
+                            });
+                          }, Icons.refresh),
+                        )
+                      ],
                     ),
                   ),
-          );
+                )
+              : RefreshIndicator(
+                  backgroundColor: ColorSchemeClass.unactivatedblack,
+                  onRefresh: () async {
+                    await getPeersList();
+                    return 0;
+                  },
+                  child: ListView(
+                    children: listOfUserTiles,
+                  ),
+                ),
+    );
   }
 }

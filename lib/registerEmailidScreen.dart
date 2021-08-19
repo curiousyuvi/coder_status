@@ -1,10 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coderstatus/components/colorscheme.dart';
 import 'package:coderstatus/components/generalLoader.dart';
-import 'package:coderstatus/components/myDividerWithTitle.dart';
-import 'package:coderstatus/components/showAnimatedToast.dart';
-import 'package:coderstatus/firebase_layer/googleSignInProvider.dart';
-import 'package:coderstatus/registerCodernameScreen.dart';
 import 'package:coderstatus/signInEmailScreen.dart';
 import 'package:coderstatus/registerPasswordScreen.dart';
 import 'package:flutter/cupertino.dart';
@@ -13,10 +8,8 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
-import 'components/myTextFormField.dart';
-import 'components/myButton.dart';
-import 'homeScreen.dart';
+import 'components/myTextFormFields.dart';
+import 'components/myButtons.dart';
 
 class RegisterEmailidScreen extends StatefulWidget {
   @override
@@ -62,37 +55,44 @@ class _RegisterEmailidScreenState extends State<RegisterEmailidScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Flexible(
-                        child: Hero(
-                          tag: 'appIcon',
-                          child: Image(
-                            width: MediaQuery.of(context).size.width * 0.4,
-                            image: AssetImage('images/appiconnoback.png'),
-                          ),
-                        ),
-                      ),
+                      MediaQuery.of(context).viewInsets.bottom == 0
+                          ? Flexible(
+                              child: Hero(
+                                tag: 'appIcon',
+                                child: Image(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.4,
+                                  image: AssetImage('images/appiconnoback.png'),
+                                ),
+                              ),
+                            )
+                          : SizedBox.shrink(),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.01,
                       ),
-                      Flexible(
-                        child: RichText(
-                          text: TextSpan(
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontFamily: 'headline',
-                                  fontSize: MediaQuery.of(context).size.height *
-                                      0.06),
-                              children: [
-                                TextSpan(
-                                  text: 'CODER',
-                                ),
-                                TextSpan(
-                                    text: ' STATUS',
+                      MediaQuery.of(context).viewInsets.bottom == 0
+                          ? Flexible(
+                              child: RichText(
+                                text: TextSpan(
                                     style: TextStyle(
-                                        color: ColorSchemeClass.primarygreen))
-                              ]),
-                        ),
-                      ),
+                                        color: Colors.white,
+                                        fontFamily: 'headline',
+                                        fontSize:
+                                            MediaQuery.of(context).size.height *
+                                                0.06),
+                                    children: [
+                                      TextSpan(
+                                        text: 'CODER',
+                                      ),
+                                      TextSpan(
+                                          text: ' STATUS',
+                                          style: TextStyle(
+                                              color: ColorSchemeClass
+                                                  .primarygreen))
+                                    ]),
+                              ),
+                            )
+                          : SizedBox.shrink(),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.05,
                       ),
@@ -118,14 +118,18 @@ class _RegisterEmailidScreenState extends State<RegisterEmailidScreen> {
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.02,
                       ),
-                      MyTextEormField(Icon(FontAwesomeIcons.solidEnvelope),
+                      
+                      MyTextFormField(Icon(FontAwesomeIcons.solidEnvelope),
                           'email id', false, (val) {
                         emailid = val;
                       },
+
                           TextInputType.emailAddress,
                           (val) => !val.contains('@')
                               ? 'Please enter a valid email'
                               : null),
+                               SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+                               
                       Container(
                         padding: EdgeInsets.symmetric(
                             horizontal:

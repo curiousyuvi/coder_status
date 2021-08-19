@@ -1,6 +1,8 @@
+import 'dart:async';
 import 'package:coderstatus/components/colorscheme.dart';
 import 'package:coderstatus/firebase_layer/authenticate.dart';
 import 'package:coderstatus/firebase_layer/googleSignInProvider.dart';
+import 'package:coderstatus/noInternet.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +10,7 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:provider/provider.dart';
 
 Future main() async {
@@ -16,11 +19,21 @@ Future main() async {
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
-  runApp(Phoenix(child: myApp()));
+  runApp(Phoenix(child: MyApp()));
 }
 
-class myApp extends StatelessWidget {
-  myApp({Key key}) : super(key: key);
+class MyApp extends StatefulWidget {
+  MyApp({Key key}) : super(key: key);
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

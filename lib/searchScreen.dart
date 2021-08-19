@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coderstatus/components/colorscheme.dart';
 import 'package:coderstatus/components/myAppBar.dart';
-import 'package:coderstatus/components/myTextFormField.dart';
+import 'package:coderstatus/components/myTextFormFields.dart';
 import 'package:coderstatus/components/myUserTile.dart';
 import 'package:coderstatus/firebase_layer/search.dart';
 import 'package:flutter/cupertino.dart';
@@ -37,7 +37,6 @@ class _SearchScreenState extends State<SearchScreen> {
       querySnapshot.docs.forEach((element) {
         queryResultSet.add(element.data());
       });
-      print(queryResultSet.length);
     } else {
       setState(() {
         tempSearchStore = [];
@@ -58,7 +57,6 @@ class _SearchScreenState extends State<SearchScreen> {
                 element['name'], element['codername']));
           }
         });
-        print(tempSearchStore.length);
       });
     }
   }
@@ -85,7 +83,7 @@ class _SearchScreenState extends State<SearchScreen> {
           height: double.infinity,
           child: Column(
             children: [
-              MyTextEormField(Icon(CupertinoIcons.search), 'Search', false,
+              MyTextFormField(Icon(CupertinoIcons.search), 'Search', false,
                   (val) {
                 initateSearch(val);
               }, TextInputType.name, (val) {}),
@@ -93,28 +91,33 @@ class _SearchScreenState extends State<SearchScreen> {
                 height: MediaQuery.of(context).size.height * 0.03,
               ),
               tempSearchStore.length == 0
-                  ? Expanded(
+                  ? Flexible(
                       child: Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Flexible(
-                              child: Container(
-                                height: MediaQuery.of(context).size.width * 0.9,
-                                width: MediaQuery.of(context).size.width * 0.9,
-                                child: RiveAnimation.asset(
-                                    'assets/search-user.riv'),
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Flexible(
+                                child: Container(
+                                  height:
+                                      MediaQuery.of(context).size.width * 0.9,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.9,
+                                  child: RiveAnimation.asset(
+                                      'assets/search-user.riv'),
+                                ),
                               ),
-                            ),
-                            Text(
-                              'Enter Name or Username to search',
-                              style: TextStyle(
-                                  color: ColorSchemeClass.lightgrey,
-                                  fontFamily: 'young',
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
+                              Text(
+                                'Enter Name or Username to search',
+                                style: TextStyle(
+                                    color: ColorSchemeClass.lightgrey,
+                                    fontFamily: 'young',
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     )

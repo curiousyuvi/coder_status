@@ -4,9 +4,8 @@ import 'package:coderstatus/components/rankingScreenSkeleton.dart';
 import 'package:coderstatus/firebase_layer/getUserInfo.dart';
 import 'package:coderstatus/functions/getRating.dart';
 import 'package:flutter/material.dart';
-
 import 'components/myAppBar.dart';
-import 'components/myButton.dart';
+import 'components/myButtons.dart';
 import 'components/topThreeRankingCard.dart';
 
 class SpojRankingScreen extends StatefulWidget {
@@ -33,7 +32,6 @@ class _SpojRankingScreenState extends State<SpojRankingScreen> {
     //if I have that handle only then add me to ranking data
     if (myUserHandles[3] != "") {
       var myRating = await GetRating.getSpojRating(myUserHandles[3]);
-      print('my rating fetched');
 
       //if I have rating other than 0 only then add me to ranking data
       if (myRating != '0') {
@@ -42,10 +40,8 @@ class _SpojRankingScreenState extends State<SpojRankingScreen> {
           'userHandle': myUserHandles[3],
           'rating': myRating
         });
-        print('initial map data added');
       }
     }
-    print('initial map data may be skipped');
     //getting list of uids of my peers
     var peers = await GetUserInfo.getUserPeers();
 
@@ -55,14 +51,12 @@ class _SpojRankingScreenState extends State<SpojRankingScreen> {
       for (int i = 0; i < peers.length; i++) {
         //get document map of uid
         var peerDocument = await GetUserInfo.getUserDocument(peers[i]);
-        print('peer\'s document fetched');
 
         //if the peer's document map has user Handle then then add it to ranking data
         try {
           if (peerDocument['spoj'] != '') {
             //fetch rating for the current peer
             var rating = await GetRating.getSpojRating(peerDocument['spoj']);
-            print('peer\'s rating fetched');
 
             //if current peer has rating not equal to zero then add it to ranking data
             if (rating != '0') {
@@ -76,7 +70,6 @@ class _SpojRankingScreenState extends State<SpojRankingScreen> {
                       'userHandle': peerDocument['spoj'],
                       'rating': rating
                     });
-                    print('peer data map added');
                     break;
                   } else {
                     if (j == (listOfUserData.length - 1)) {
@@ -85,7 +78,6 @@ class _SpojRankingScreenState extends State<SpojRankingScreen> {
                         'userHandle': peerDocument['spoj'],
                         'rating': rating
                       });
-                      print('peer data map added');
                       break;
                     }
                   }
@@ -97,14 +89,12 @@ class _SpojRankingScreenState extends State<SpojRankingScreen> {
                   'userHandle': peerDocument['spoj'],
                   'rating': rating
                 });
-                print('peer data map added');
               }
             }
           }
         } catch (e) {
           continue;
         }
-        print('peer data map may be skipped');
       }
 
       //converting ranking data into widgets
@@ -130,7 +120,6 @@ class _SpojRankingScreenState extends State<SpojRankingScreen> {
             listOfUserData[j]['rating'],
             (j + 1)));
       }
-      print('widgets added');
     } else {
       for (int j = 0; j < listOfUserData.length; j++) {
         listOfUserTiles.add(MyRankingUserTile(
@@ -139,9 +128,7 @@ class _SpojRankingScreenState extends State<SpojRankingScreen> {
             listOfUserData[j]['rating'],
             (j + 1)));
       }
-      print('widgets added');
     }
-    print('widgets added');
     setState(() {
       isFirstTime = false;
     });
@@ -157,64 +144,64 @@ class _SpojRankingScreenState extends State<SpojRankingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return isFirstTime
-        ? FutureBuilder(
-            future: futureFunction,
-            builder: (context, snapshot) {
-              return Center(
-                child: RankingScreenSkeleton(),
-              );
-            },
-          )
-        : Scaffold(
-            appBar: PreferredSize(
-              child: MyAppBarWithBack('Spoj Ranking'),
-              preferredSize:
-                  Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
-            ),
-            body: listOfUserTiles.length == 0
-                ? Container(
-                    height: MediaQuery.of(context).size.height * 0.7,
-                    child: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'You and your peers are not on Spoj',
-                            style: TextStyle(
-                                color: ColorSchemeClass.lightgrey,
-                                fontFamily: 'young',
-                                fontSize:
-                                    MediaQuery.of(context).size.height * 0.025),
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.02,
-                          ),
-                          Container(
-                            height: MediaQuery.of(context).size.height * 0.05,
-                            width: MediaQuery.of(context).size.width * 0.5,
-                            child: MyButton(
-                                ColorSchemeClass.primarygreen, 'Refresh', () {
-                              setState(() {
-                                futureFunction = getPeersList();
-                                isFirstTime = true;
-                              });
-                            }, Icons.refresh),
-                          )
-                        ],
-                      ),
-                    ),
-                  )
-                : RefreshIndicator(
-                    backgroundColor: ColorSchemeClass.unactivatedblack,
-                    onRefresh: () async {
-                      await getPeersList();
-                      return 0;
-                    },
-                    child: ListView(
-                      children: listOfUserTiles,
+    return Scaffold(
+      appBar: PreferredSize(
+        child: MyAppBarWithBack('Spoj Ranking'),
+        preferredSize:
+            Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
+      ),
+      body: isFirstTime
+          ? FutureBuilder(
+              future: futureFunction,
+              builder: (context, snapshot) {
+                return Center(
+                  child: RankingScreenSkeleton(),
+                );
+              },
+            )
+          : listOfUserTiles.length == 0
+              ? Container(
+                  height: MediaQuery.of(context).size.height * 0.7,
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'You and your peers are not on Spoj',
+                          style: TextStyle(
+                              color: ColorSchemeClass.lightgrey,
+                              fontFamily: 'young',
+                              fontSize:
+                                  MediaQuery.of(context).size.height * 0.025),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.02,
+                        ),
+                        Container(
+                          height: MediaQuery.of(context).size.height * 0.05,
+                          width: MediaQuery.of(context).size.width * 0.5,
+                          child: MyButton(
+                              ColorSchemeClass.primarygreen, 'Refresh', () {
+                            setState(() {
+                              futureFunction = getPeersList();
+                              isFirstTime = true;
+                            });
+                          }, Icons.refresh),
+                        )
+                      ],
                     ),
                   ),
-          );
+                )
+              : RefreshIndicator(
+                  backgroundColor: ColorSchemeClass.unactivatedblack,
+                  onRefresh: () async {
+                    await getPeersList();
+                    return 0;
+                  },
+                  child: ListView(
+                    children: listOfUserTiles,
+                  ),
+                ),
+    );
   }
 }

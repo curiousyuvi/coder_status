@@ -18,12 +18,13 @@ showAtcoderDialog(BuildContext context, Rect rect, String atcoderHandle,
           child: Column(
             children: [
               SizedBox(
-                height: rect.top - MediaQuery.of(context).size.height * 0.14,
+                height: rect.top - MediaQuery.of(context).size.height * 0.13,
               ),
               Row(
                 children: [
                   SizedBox(
-                    width: rect.left - MediaQuery.of(context).size.width * 0.03,
+                    width:
+                        rect.left - MediaQuery.of(context).size.width * 0.034,
                   ),
                   GestureDetector(
                     onTap: () {},
@@ -61,12 +62,79 @@ showAtcoderDialog(BuildContext context, Rect rect, String atcoderHandle,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                FittedBox(
-                                  fit: BoxFit.scaleDown,
+                                Flexible(
+                                  child: FittedBox(
+                                    fit: BoxFit.scaleDown,
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          'Platform : ',
+                                          style: TextStyle(
+                                              color: ColorSchemeClass.lightgrey,
+                                              fontFamily: 'young',
+                                              fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.018),
+                                        ),
+                                        Text(
+                                          'ATCODER',
+                                          style: TextStyle(
+                                              color:
+                                                  ColorSchemeClass.atcodergrey,
+                                              fontFamily: 'young',
+                                              fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.02,
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.01),
+                                Flexible(
+                                  child: FittedBox(
+                                    fit: BoxFit.scaleDown,
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          'Username : ',
+                                          style: TextStyle(
+                                              color: ColorSchemeClass.lightgrey,
+                                              fontFamily: 'young',
+                                              fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.018),
+                                        ),
+                                        Text(
+                                          '@' + atcoderHandle,
+                                          style: TextStyle(
+                                              color:
+                                                  ColorSchemeClass.atcodergrey,
+                                              fontFamily: 'young',
+                                              fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.02,
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.01),
+                                Flexible(
                                   child: Row(
                                     children: [
                                       Text(
-                                        'Platform : ',
+                                        'Rating : ',
                                         style: TextStyle(
                                             color: ColorSchemeClass.lightgrey,
                                             fontFamily: 'young',
@@ -76,88 +144,29 @@ showAtcoderDialog(BuildContext context, Rect rect, String atcoderHandle,
                                                 0.018),
                                       ),
                                       Text(
-                                        'ATCODER',
+                                        atcoderRating,
                                         style: TextStyle(
                                             color: ColorSchemeClass.atcodergrey,
                                             fontFamily: 'young',
                                             fontSize: MediaQuery.of(context)
                                                     .size
                                                     .height *
-                                                0.02,
+                                                0.025,
                                             fontWeight: FontWeight.bold),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.01),
-                                FittedBox(
-                                  fit: BoxFit.scaleDown,
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        'Username : ',
-                                        style: TextStyle(
-                                            color: ColorSchemeClass.lightgrey,
-                                            fontFamily: 'young',
-                                            fontSize: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.018),
                                       ),
                                       Text(
-                                        '@' + atcoderHandle,
+                                        ' pts',
                                         style: TextStyle(
                                             color: ColorSchemeClass.atcodergrey,
                                             fontFamily: 'young',
                                             fontSize: MediaQuery.of(context)
                                                     .size
                                                     .height *
-                                                0.02,
+                                                0.015,
                                             fontWeight: FontWeight.bold),
                                       )
                                     ],
                                   ),
-                                ),
-                                SizedBox(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.01),
-                                Row(
-                                  children: [
-                                    Text(
-                                      'Rating : ',
-                                      style: TextStyle(
-                                          color: ColorSchemeClass.lightgrey,
-                                          fontFamily: 'young',
-                                          fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.018),
-                                    ),
-                                    Text(
-                                      atcoderRating,
-                                      style: TextStyle(
-                                          color: ColorSchemeClass.atcodergrey,
-                                          fontFamily: 'young',
-                                          fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.025,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Text(
-                                      ' pts',
-                                      style: TextStyle(
-                                          color: ColorSchemeClass.atcodergrey,
-                                          fontFamily: 'young',
-                                          fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.015,
-                                          fontWeight: FontWeight.bold),
-                                    )
-                                  ],
                                 )
                               ],
                             ),

@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 
@@ -15,13 +14,10 @@ class UploadUserAvatar {
         .child(uid + 'avatar' + DateTime.now().toString());
 
     imageUploadTask = imageReference.putFile(avatarImageFile);
-    await imageUploadTask.whenComplete(() {
-      print('Image Uploaded');
-    });
+    await imageUploadTask.whenComplete(() {});
     var dowurl = await imageReference.getDownloadURL();
 
     String url = dowurl.toString();
-    print('url:' + url);
 
     return url;
   }

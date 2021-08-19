@@ -37,9 +37,11 @@ class MyUserTile extends StatelessWidget {
                 ]),
             child: Row(
               children: [
-                CircleAvatar(
-                  backgroundImage: NetworkImage(avatarUrl),
-                  radius: MediaQuery.of(context).size.height * 0.04,
+                Flexible(
+                  child: CircleAvatar(
+                    backgroundImage: NetworkImage(avatarUrl),
+                    radius: MediaQuery.of(context).size.height * 0.04,
+                  ),
                 ),
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.15,
@@ -48,36 +50,40 @@ class MyUserTile extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Container(
-                      width: MediaQuery.of(context).size.width * 0.4,
-                      child: FittedBox(
-                        fit: BoxFit.scaleDown,
-                        child: Text(
-                          name,
-                          style: TextStyle(
-                              color: ColorSchemeClass.lightgrey,
-                              fontFamily: 'young',
-                              fontWeight: FontWeight.bold,
-                              fontSize:
-                                  MediaQuery.of(context).size.height * 0.025),
+                    Flexible(
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.4,
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(
+                            name,
+                            style: TextStyle(
+                                color: ColorSchemeClass.lightgrey,
+                                fontFamily: 'young',
+                                fontWeight: FontWeight.bold,
+                                fontSize: MediaQuery.of(context).size.height *
+                                    0.025),
+                          ),
                         ),
                       ),
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.01,
                     ),
-                    Container(
-                      width: MediaQuery.of(context).size.width * 0.4,
-                      child: FittedBox(
-                        fit: BoxFit.scaleDown,
-                        child: Text(
-                          '@' + codername,
-                          style: TextStyle(
-                              color:
-                                  ColorSchemeClass.lightgrey.withOpacity(0.6),
-                              fontFamily: 'young',
-                              fontSize:
-                                  MediaQuery.of(context).size.height * 0.02),
+                    Flexible(
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.4,
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(
+                            '@' + codername,
+                            style: TextStyle(
+                                color: ColorSchemeClass.lightgrey
+                                    .withOpacity(0.6),
+                                fontFamily: 'young',
+                                fontSize: MediaQuery.of(context).size.height *
+                                    0.02),
+                          ),
                         ),
                       ),
                     )

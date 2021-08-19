@@ -25,13 +25,12 @@ class _AboutDeveloperScreenState extends State<AboutDeveloperScreen> {
         padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
         child: Column(
           children: [
-            Container(
-              width: double.infinity,
-              height: MediaQuery.of(context).size.height * 0.25,
-              child: Center(
-                  child: Image(
-                image: AssetImage('images/meAvatar.png'),
-              )),
+            CircleAvatar(
+              backgroundImage: AssetImage('images/MyAvatar.jpg'),
+              radius: MediaQuery.of(context).size.height * 0.1,
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.03,
             ),
             RichText(
                 textAlign: TextAlign.center,
@@ -97,106 +96,106 @@ class _AboutDeveloperScreenState extends State<AboutDeveloperScreen> {
                     width: MediaQuery.of(context).size.height * 0.25,
                     height: MediaQuery.of(context).size.height * 0.15,
                     child: GridView.count(
-                      crossAxisSpacing: 40,
-                      mainAxisSpacing: 30,
+                      crossAxisSpacing:
+                          MediaQuery.of(context).size.height * 0.05,
+                      mainAxisSpacing:
+                          MediaQuery.of(context).size.height * 0.03,
                       crossAxisCount: 3,
                       children: [
                         GestureDetector(
                           onTap: () async {
                             const url = 'https://github.com/curiousyuvi';
-                            if (await canLaunch(url)) {
-                              await launch(url);
-                            } else {
-                              throw 'Could not launch $url';
-                            }
+
+                            await launch(url);
                           },
                           child: Container(
                               width: MediaQuery.of(context).size.height * 0.07,
                               height: MediaQuery.of(context).size.height * 0.07,
-                              child: FaIcon(
-                                FontAwesomeIcons.github,
-                                color: ColorSchemeClass.primarygreen,
-                                size:
-                                    MediaQuery.of(context).size.height * 0.043,
+                              child: FittedBox(
+                                fit: BoxFit.contain,
+                                child: FaIcon(
+                                  FontAwesomeIcons.github,
+                                  color: ColorSchemeClass.primarygreen,
+                                  size: MediaQuery.of(context).size.height *
+                                      0.043,
+                                ),
                               )),
                         ),
                         GestureDetector(
                           onTap: () async {
                             const url =
                                 'https://www.instagram.com/curiousyuvi/';
-                            if (await canLaunch(url)) {
-                              await launch(url);
-                            } else {
-                              throw 'Could not launch $url';
-                            }
+
+                            await launch(url);
                           },
                           child: Container(
                               width: MediaQuery.of(context).size.height * 0.07,
                               height: MediaQuery.of(context).size.height * 0.07,
-                              child: FaIcon(
-                                FontAwesomeIcons.instagram,
-                                color: ColorSchemeClass.primarygreen,
-                                size:
-                                    MediaQuery.of(context).size.height * 0.043,
+                              child: FittedBox(
+                                fit: BoxFit.contain,
+                                child: FaIcon(
+                                  FontAwesomeIcons.instagram,
+                                  color: ColorSchemeClass.primarygreen,
+                                  size: MediaQuery.of(context).size.height *
+                                      0.043,
+                                ),
                               )),
                         ),
                         GestureDetector(
                           onTap: () async {
                             const url =
                                 'https://www.linkedin.com/in/yuvraj-singh-b85ab71b9/';
-                            if (await canLaunch(url)) {
-                              await launch(url);
-                            } else {
-                              throw 'Could not launch $url';
-                            }
+
+                            await launch(url);
                           },
                           child: Container(
                               width: MediaQuery.of(context).size.height * 0.07,
                               height: MediaQuery.of(context).size.height * 0.07,
-                              child: FaIcon(
-                                FontAwesomeIcons.linkedin,
-                                color: ColorSchemeClass.primarygreen,
-                                size:
-                                    MediaQuery.of(context).size.height * 0.043,
+                              child: FittedBox(
+                                fit: BoxFit.contain,
+                                child: FaIcon(
+                                  FontAwesomeIcons.linkedin,
+                                  color: ColorSchemeClass.primarygreen,
+                                  size: MediaQuery.of(context).size.height *
+                                      0.043,
+                                ),
                               )),
                         ),
                         GestureDetector(
                           onTap: () async {
                             const url = 'https://twitter.com/curiousyuvi007';
-                            if (await canLaunch(url)) {
-                              await launch(url);
-                            } else {
-                              throw 'Could not launch $url';
-                            }
+                            await launch(url);
                           },
                           child: Container(
                               width: MediaQuery.of(context).size.height * 0.07,
                               height: MediaQuery.of(context).size.height * 0.07,
-                              child: FaIcon(
-                                FontAwesomeIcons.twitter,
-                                color: ColorSchemeClass.primarygreen,
-                                size:
-                                    MediaQuery.of(context).size.height * 0.043,
+                              child: FittedBox(
+                                fit: BoxFit.contain,
+                                child: FaIcon(
+                                  FontAwesomeIcons.twitter,
+                                  color: ColorSchemeClass.primarygreen,
+                                  size: MediaQuery.of(context).size.height *
+                                      0.043,
+                                ),
                               )),
                         ),
                         GestureDetector(
                           onTap: () async {
                             const url =
                                 'https://www.facebook.com/profile.php?id=100067497900821';
-                            if (await canLaunch(url)) {
-                              await launch(url);
-                            } else {
-                              throw 'Could not launch $url';
-                            }
+                            await launch(url);
                           },
                           child: Container(
                               width: MediaQuery.of(context).size.height * 0.07,
                               height: MediaQuery.of(context).size.height * 0.07,
-                              child: FaIcon(
-                                FontAwesomeIcons.facebook,
-                                color: ColorSchemeClass.primarygreen,
-                                size:
-                                    MediaQuery.of(context).size.height * 0.043,
+                              child: FittedBox(
+                                fit: BoxFit.contain,
+                                child: FaIcon(
+                                  FontAwesomeIcons.facebook,
+                                  color: ColorSchemeClass.primarygreen,
+                                  size: MediaQuery.of(context).size.height *
+                                      0.043,
+                                ),
                               )),
                         ),
                         GestureDetector(
@@ -234,11 +233,14 @@ class _AboutDeveloperScreenState extends State<AboutDeveloperScreen> {
                           child: Container(
                               width: MediaQuery.of(context).size.height * 0.07,
                               height: MediaQuery.of(context).size.height * 0.07,
-                              child: Icon(
-                                Icons.mail,
-                                color: ColorSchemeClass.primarygreen,
-                                size:
-                                    MediaQuery.of(context).size.height * 0.043,
+                              child: FittedBox(
+                                fit: BoxFit.contain,
+                                child: Icon(
+                                  Icons.mail,
+                                  color: ColorSchemeClass.primarygreen,
+                                  size: MediaQuery.of(context).size.height *
+                                      0.043,
+                                ),
                               )),
                         ),
                       ],

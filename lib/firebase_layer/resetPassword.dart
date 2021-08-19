@@ -5,7 +5,5 @@ resetpassword(String email) async {
 
   try {
     _auth.sendPasswordResetEmail(email: email);
-  } catch (e) {
-    print("error in resetting password");
-  }
+  } catch (e) {}
 }

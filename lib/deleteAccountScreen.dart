@@ -11,10 +11,9 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:rive/rive.dart';
 import 'components/myAppBar.dart';
-import 'components/myTextFormField.dart';
-import 'components/myButton.dart';
+import 'components/myTextFormFields.dart';
+import 'components/myButtons.dart';
 
 class DeleteAccountScreen extends StatefulWidget {
   @override
@@ -41,7 +40,6 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
     });
 
     passwordmatch = await validatePassword(password);
-    print('bool updated!!');
 
     //stop loader
     setState(() {
@@ -59,9 +57,7 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
         await deleteUser(password);
         await logout(context);
         Phoenix.rebirth(context);
-      } catch (e) {
-        print(e);
-      }
+      } catch (e) {}
 
       //end loader
       setState(() {
@@ -195,7 +191,7 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
                         data: ThemeData(
                             accentColor: ColorSchemeClass.dangerred,
                             primaryColor: ColorSchemeClass.dangerred),
-                        child: MyTextEormField(
+                        child: MyTextFormField(
                             Icon(Icons.vpn_key),
                             'Enter Password',
                             true,

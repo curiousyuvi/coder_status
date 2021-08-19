@@ -12,24 +12,17 @@ class RankingScreenSkeleton extends StatefulWidget {
 class _RankingScreenSkeletonState extends State<RankingScreenSkeleton> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-        child: MyAppBarWithBack('Codeforces Ranking'),
-        preferredSize:
-            Size.fromHeight(MediaQuery.of(context).size.height * 0.08),
-      ),
-      body: ListView(
-        children: [
-          TopThreeSkeleton(),
-          MyRankingUserTileSkeleton(4),
-          MyRankingUserTileSkeleton(5),
-          MyRankingUserTileSkeleton(6),
-          MyRankingUserTileSkeleton(7),
-          MyRankingUserTileSkeleton(8),
-          MyRankingUserTileSkeleton(9),
-          MyRankingUserTileSkeleton(10)
-        ],
-      ),
+    return ListView(
+      children: [
+        TopThreeSkeleton(),
+        MyRankingUserTileSkeleton(4),
+        MyRankingUserTileSkeleton(5),
+        MyRankingUserTileSkeleton(6),
+        MyRankingUserTileSkeleton(7),
+        MyRankingUserTileSkeleton(8),
+        MyRankingUserTileSkeleton(9),
+        MyRankingUserTileSkeleton(10)
+      ],
     );
   }
 }

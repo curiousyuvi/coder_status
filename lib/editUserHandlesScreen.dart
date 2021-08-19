@@ -2,8 +2,8 @@ import 'package:coderstatus/components/colorscheme.dart';
 import 'package:coderstatus/components/confirmationDialog.dart';
 import 'package:coderstatus/components/generalLoader.dart';
 import 'package:coderstatus/components/showAnimatedToast.dart';
-import 'package:coderstatus/components/myButton.dart';
-import 'package:coderstatus/components/myTextFormField.dart';
+import 'package:coderstatus/components/myButtons.dart';
+import 'package:coderstatus/components/myTextFormFields.dart';
 import 'package:coderstatus/firebase_layer/getUserInfo.dart';
 import 'package:coderstatus/firebase_layer/setUserInfo.dart';
 import 'package:coderstatus/homeScreen.dart';
@@ -149,7 +149,7 @@ class _EditUserHandlesScreenState extends State<EditUserHandlesScreen> {
                                                       .width *
                                                   0.15),
                                           Flexible(
-                                            child: MyTextEormField(
+                                            child: MyTextFormField(
                                                 Icon(Icons.alternate_email),
                                                 'codeforces_handle',
                                                 false,
@@ -180,7 +180,7 @@ class _EditUserHandlesScreenState extends State<EditUserHandlesScreen> {
                                                       .width *
                                                   0.15),
                                           Flexible(
-                                            child: MyTextEormField(
+                                            child: MyTextFormField(
                                                 Icon(Icons.alternate_email),
                                                 'codechef_handle',
                                                 false,
@@ -211,7 +211,7 @@ class _EditUserHandlesScreenState extends State<EditUserHandlesScreen> {
                                                       .width *
                                                   0.15),
                                           Flexible(
-                                            child: MyTextEormField(
+                                            child: MyTextFormField(
                                                 Icon(Icons.alternate_email),
                                                 'atcoder_handle',
                                                 false,
@@ -243,7 +243,7 @@ class _EditUserHandlesScreenState extends State<EditUserHandlesScreen> {
                                                 0.15,
                                           ),
                                           Flexible(
-                                            child: MyTextEormField(
+                                            child: MyTextFormField(
                                                 Icon(Icons.alternate_email),
                                                 'spoj_handle',
                                                 false,

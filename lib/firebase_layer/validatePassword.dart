@@ -9,7 +9,6 @@ Future<bool> validatePassword(String password) async {
         .reauthenticateWithCredential(authCredentials);
     return authResult.user != null;
   } catch (e) {
-    print(e);
     return false;
   }
 }

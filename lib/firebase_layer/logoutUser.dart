@@ -2,16 +2,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-Future<User> logout(context) async {
+logout(context) async {
   FirebaseAuth _auth = FirebaseAuth.instance;
 
   try {
-    if (_auth.currentUser.photoURL != null) {
-      await GoogleSignIn().disconnect();
-    }
+    GoogleSignIn().disconnect();
     await _auth.signOut();
     Phoenix.rebirth(context);
   } catch (e) {
-    print("error");
+    print(e);
   }
 }

@@ -60,7 +60,7 @@ class _IntroSliderState extends State<IntroSlider> {
               ],
             ),
           ),
-          Expanded(
+          Flexible(
             child: PageView(
               onPageChanged: (index) {
                 setState(() {

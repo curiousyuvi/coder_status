@@ -18,12 +18,13 @@ showSpojDialog(
           child: Column(
             children: [
               SizedBox(
-                height: rect.top - MediaQuery.of(context).size.height * 0.14,
+                height: rect.top - MediaQuery.of(context).size.height * 0.13,
               ),
               Row(
                 children: [
                   SizedBox(
-                    width: rect.left - MediaQuery.of(context).size.width * 0.03,
+                    width:
+                        rect.left - MediaQuery.of(context).size.width * 0.034,
                   ),
                   GestureDetector(
                     onTap: () {},
@@ -60,12 +61,77 @@ showSpojDialog(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                FittedBox(
-                                  fit: BoxFit.scaleDown,
+                                Flexible(
+                                  child: FittedBox(
+                                    fit: BoxFit.scaleDown,
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          'Platform : ',
+                                          style: TextStyle(
+                                              color: ColorSchemeClass.lightgrey,
+                                              fontFamily: 'young',
+                                              fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.018),
+                                        ),
+                                        Text(
+                                          'SPOJ',
+                                          style: TextStyle(
+                                              color: ColorSchemeClass.spojblue,
+                                              fontFamily: 'young',
+                                              fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.02,
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.01),
+                                Flexible(
+                                  child: FittedBox(
+                                    fit: BoxFit.scaleDown,
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          'Username : ',
+                                          style: TextStyle(
+                                              color: ColorSchemeClass.lightgrey,
+                                              fontFamily: 'young',
+                                              fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.018),
+                                        ),
+                                        Text(
+                                          '@' + spojHandle,
+                                          style: TextStyle(
+                                              color: ColorSchemeClass.spojblue,
+                                              fontFamily: 'young',
+                                              fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.02,
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.01),
+                                Flexible(
                                   child: Row(
                                     children: [
                                       Text(
-                                        'Platform : ',
+                                        'Rating : ',
                                         style: TextStyle(
                                             color: ColorSchemeClass.lightgrey,
                                             fontFamily: 'young',
@@ -75,88 +141,29 @@ showSpojDialog(
                                                 0.018),
                                       ),
                                       Text(
-                                        'SPOJ',
+                                        spojRating,
                                         style: TextStyle(
                                             color: ColorSchemeClass.spojblue,
                                             fontFamily: 'young',
                                             fontSize: MediaQuery.of(context)
                                                     .size
                                                     .height *
-                                                0.02,
+                                                0.025,
                                             fontWeight: FontWeight.bold),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.01),
-                                FittedBox(
-                                  fit: BoxFit.scaleDown,
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        'Username : ',
-                                        style: TextStyle(
-                                            color: ColorSchemeClass.lightgrey,
-                                            fontFamily: 'young',
-                                            fontSize: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.018),
                                       ),
                                       Text(
-                                        '@' + spojHandle,
+                                        ' pts',
                                         style: TextStyle(
                                             color: ColorSchemeClass.spojblue,
                                             fontFamily: 'young',
                                             fontSize: MediaQuery.of(context)
                                                     .size
                                                     .height *
-                                                0.02,
+                                                0.015,
                                             fontWeight: FontWeight.bold),
                                       )
                                     ],
                                   ),
-                                ),
-                                SizedBox(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.01),
-                                Row(
-                                  children: [
-                                    Text(
-                                      'Rating : ',
-                                      style: TextStyle(
-                                          color: ColorSchemeClass.lightgrey,
-                                          fontFamily: 'young',
-                                          fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.018),
-                                    ),
-                                    Text(
-                                      spojRating,
-                                      style: TextStyle(
-                                          color: ColorSchemeClass.spojblue,
-                                          fontFamily: 'young',
-                                          fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.025,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Text(
-                                      ' pts',
-                                      style: TextStyle(
-                                          color: ColorSchemeClass.spojblue,
-                                          fontFamily: 'young',
-                                          fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.015,
-                                          fontWeight: FontWeight.bold),
-                                    )
-                                  ],
                                 )
                               ],
                             ),

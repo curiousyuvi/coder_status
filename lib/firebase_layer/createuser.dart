@@ -8,21 +8,15 @@ Future<User> createAccount(String email, String password) async {
             email: email, password: password))
         .user;
     if (user != null) {
-      print("Account Succesfully created!!");
       return user;
     } else {
-      print("Account creation failed!!");
       return user;
     }
-  } catch (e) {
-    print(e);
-  }
+  } catch (e) {}
 }
 
 Future<User> createAccountWithGoogle() async {
   FirebaseAuth _auth = FirebaseAuth.instance;
 
-  try {} catch (e) {
-    print(e);
-  }
+  try {} catch (e) {}
 }

@@ -1,6 +1,6 @@
 import 'package:coderstatus/components/colorscheme.dart';
 import 'package:coderstatus/components/myAppBar.dart';
-import 'package:coderstatus/components/myButton.dart';
+import 'package:coderstatus/components/myButtons.dart';
 import 'package:coderstatus/components/myUserTile.dart';
 import 'package:coderstatus/components/peerScreenSkeleton.dart';
 import 'package:coderstatus/firebase_layer/getUserInfo.dart';
@@ -28,7 +28,6 @@ class _PeersScreenState extends State<PeersScreen> {
       for (int i = 0; i < peers.length; i++) {
         try {
           var peerDocument = await GetUserInfo.getUserDocument(peers[i]);
-          print('getting peers list $i');
           listOfUserTiles.add(MyUserTile(
               peerDocument['id'],
               peerDocument['avatarurl'],
@@ -69,94 +68,97 @@ class _PeersScreenState extends State<PeersScreen> {
                 ? Container(
                     height: MediaQuery.of(context).size.height * 0.7,
                     child: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            height: MediaQuery.of(context).size.width * 0.9,
-                            width: MediaQuery.of(context).size.width * 0.9,
-                            child: RiveAnimation.asset('assets/no-peers.riv'),
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.02,
-                          ),
-                          DottedBorder(
-                            strokeWidth: 1,
-                            dashPattern: [5, 5],
-                            color: ColorSchemeClass.lightgrey,
-                            child: Container(
-                              padding: EdgeInsets.all(
-                                  MediaQuery.of(context).size.width * 0.04),
-                              child: Text(
-                                'You haven\'t added any Peers',
-                                style: TextStyle(
-                                    color: ColorSchemeClass.lightgrey,
-                                    fontFamily: 'young',
-                                    fontSize:
-                                        MediaQuery.of(context).size.height *
-                                            0.02),
-                              ),
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              height: MediaQuery.of(context).size.width * 0.9,
+                              width: MediaQuery.of(context).size.width * 0.9,
+                              child: RiveAnimation.asset('assets/no-peers.riv'),
                             ),
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.02,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Text(
-                                'Go to   ',
-                                style: TextStyle(
-                                    color: ColorSchemeClass.lightgrey,
-                                    fontFamily: 'young',
-                                    fontSize:
-                                        MediaQuery.of(context).size.height *
-                                            0.02),
-                              ),
-                              Column(children: [
-                                Icon(
-                                  CupertinoIcons.search,
-                                  color: ColorSchemeClass.primarygreen,
-                                  size:
-                                      MediaQuery.of(context).size.width * 0.08,
-                                ),
-                                Text(
-                                  'Search',
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.02,
+                            ),
+                            DottedBorder(
+                              strokeWidth: 1,
+                              dashPattern: [5, 5],
+                              color: ColorSchemeClass.lightgrey,
+                              child: Container(
+                                padding: EdgeInsets.all(
+                                    MediaQuery.of(context).size.width * 0.04),
+                                child: Text(
+                                  'You haven\'t added any Peers',
                                   style: TextStyle(
-                                      color: ColorSchemeClass.primarygreen,
+                                      color: ColorSchemeClass.lightgrey,
                                       fontFamily: 'young',
                                       fontSize:
                                           MediaQuery.of(context).size.height *
-                                              0.016),
+                                              0.02),
                                 ),
-                              ]),
-                              Text(
-                                '   to add Peers',
-                                style: TextStyle(
-                                    color: ColorSchemeClass.lightgrey,
-                                    fontFamily: 'young',
-                                    fontSize:
-                                        MediaQuery.of(context).size.height *
-                                            0.02),
                               ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.03,
-                          ),
-                          Container(
-                            height: MediaQuery.of(context).size.height * 0.05,
-                            width: MediaQuery.of(context).size.width * 0.5,
-                            child: MyButton(
-                                ColorSchemeClass.primarygreen, 'Refresh', () {
-                              setState(() {
-                                futureFunction = getPeersList();
-                                isFirstTime = true;
-                              });
-                            }, Icons.refresh),
-                          )
-                        ],
+                            ),
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.02,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Text(
+                                  'Go to   ',
+                                  style: TextStyle(
+                                      color: ColorSchemeClass.lightgrey,
+                                      fontFamily: 'young',
+                                      fontSize:
+                                          MediaQuery.of(context).size.height *
+                                              0.02),
+                                ),
+                                Column(children: [
+                                  Icon(
+                                    CupertinoIcons.search,
+                                    color: ColorSchemeClass.primarygreen,
+                                    size: MediaQuery.of(context).size.width *
+                                        0.08,
+                                  ),
+                                  Text(
+                                    'Search',
+                                    style: TextStyle(
+                                        color: ColorSchemeClass.primarygreen,
+                                        fontFamily: 'young',
+                                        fontSize:
+                                            MediaQuery.of(context).size.height *
+                                                0.016),
+                                  ),
+                                ]),
+                                Text(
+                                  '   to add Peers',
+                                  style: TextStyle(
+                                      color: ColorSchemeClass.lightgrey,
+                                      fontFamily: 'young',
+                                      fontSize:
+                                          MediaQuery.of(context).size.height *
+                                              0.02),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.03,
+                            ),
+                            Container(
+                              height: MediaQuery.of(context).size.height * 0.05,
+                              width: MediaQuery.of(context).size.width * 0.5,
+                              child: MyButton(
+                                  ColorSchemeClass.primarygreen, 'Refresh', () {
+                                setState(() {
+                                  futureFunction = getPeersList();
+                                  isFirstTime = true;
+                                });
+                              }, Icons.refresh),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   )

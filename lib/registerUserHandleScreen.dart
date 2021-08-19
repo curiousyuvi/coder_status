@@ -1,8 +1,8 @@
 import 'package:coderstatus/components/colorscheme.dart';
 import 'package:coderstatus/components/generalLoader.dart';
 import 'package:coderstatus/components/showAnimatedToast.dart';
-import 'package:coderstatus/components/myButton.dart';
-import 'package:coderstatus/components/myTextFormField.dart';
+import 'package:coderstatus/components/myButtons.dart';
+import 'package:coderstatus/components/myTextFormFields.dart';
 import 'package:coderstatus/firebase_layer/setUserInfo.dart';
 import 'package:coderstatus/introSlider.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +46,6 @@ class _RegisterUserHandleScreenState extends State<RegisterUserHandleScreen> {
         isloading = false;
       });
 
-      showAnimatedToast(this.context, 'Account Created Succesfully.', true);
       Navigator.pushAndRemoveUntil(context,
           MaterialPageRoute(builder: (context) {
         return IntroSlider();
@@ -127,7 +126,7 @@ class _RegisterUserHandleScreenState extends State<RegisterUserHandleScreen> {
                                       width: MediaQuery.of(context).size.width *
                                           0.15),
                                   Flexible(
-                                    child: MyTextEormField(
+                                    child: MyTextFormField(
                                         Icon(FontAwesomeIcons.at),
                                         'codeforces_handle',
                                         false, (val) {
@@ -154,7 +153,7 @@ class _RegisterUserHandleScreenState extends State<RegisterUserHandleScreen> {
                                       width: MediaQuery.of(context).size.width *
                                           0.15),
                                   Flexible(
-                                    child: MyTextEormField(
+                                    child: MyTextFormField(
                                         Icon(FontAwesomeIcons.at),
                                         'codechef_handle',
                                         false, (val) {
@@ -181,7 +180,7 @@ class _RegisterUserHandleScreenState extends State<RegisterUserHandleScreen> {
                                       width: MediaQuery.of(context).size.width *
                                           0.15),
                                   Flexible(
-                                    child: MyTextEormField(
+                                    child: MyTextFormField(
                                         Icon(FontAwesomeIcons.at),
                                         'atcoder_handle',
                                         false, (val) {
@@ -209,7 +208,7 @@ class _RegisterUserHandleScreenState extends State<RegisterUserHandleScreen> {
                                         0.15,
                                   ),
                                   Flexible(
-                                    child: MyTextEormField(
+                                    child: MyTextFormField(
                                         Icon(FontAwesomeIcons.at),
                                         'spoj_handle',
                                         false, (val) {

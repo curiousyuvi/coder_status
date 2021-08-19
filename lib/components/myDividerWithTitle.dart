@@ -9,7 +9,7 @@ class MyDividerWithTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Expanded(
+        Flexible(
           flex: 1,
           child: Divider(
             color: ColorSchemeClass.darkgrey,
@@ -23,7 +23,7 @@ class MyDividerWithTitle extends StatelessWidget {
               fontFamily: 'young',
               fontSize: MediaQuery.of(context).size.height * 0.025),
         ),
-        Expanded(
+        Flexible(
           flex: 14,
           child: Divider(
             color: ColorSchemeClass.darkgrey,
@@ -43,7 +43,7 @@ class MyMidDividerWithTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Expanded(
+        Flexible(
           flex: 1,
           child: Divider(
             color: ColorSchemeClass.darkgrey,
@@ -57,7 +57,7 @@ class MyMidDividerWithTitle extends StatelessWidget {
               fontFamily: 'young',
               fontSize: MediaQuery.of(context).size.height * 0.025),
         ),
-        Expanded(
+        Flexible(
           flex: 1,
           child: Divider(
             color: ColorSchemeClass.darkgrey,

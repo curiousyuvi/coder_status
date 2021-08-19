@@ -1,9 +1,6 @@
 import 'package:coderstatus/components/colorscheme.dart';
-import 'package:coderstatus/components/myAvatarButton.dart';
-import 'package:coderstatus/components/ratingLoadingScreen.dart';
 import 'package:coderstatus/components/urls.dart';
 import 'package:coderstatus/firebase_layer/getUserInfo.dart';
-import 'package:coderstatus/functions/getRating.dart';
 import 'package:coderstatus/myDashboardScreen.dart';
 import 'package:coderstatus/peersScreen.dart';
 import 'package:coderstatus/rankingScreen.dart';
@@ -12,8 +9,10 @@ import 'package:coderstatus/settingScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'components/generalLoader.dart';
+import 'components/myAvatarButton.dart';
+import 'noInternet.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -52,6 +51,15 @@ class HomeScreenState extends State<HomeScreen> {
   }
 
   readyUserData() async {
+    if (!await InternetConnectionChecker().hasConnection) {
+      NoInternet(this.context);
+      InternetConnectionChecker().onStatusChange.listen((status) {
+        final hasInternet = status == InternetConnectionStatus.connected;
+
+        NoInternet(this.context);
+      });
+      return;
+    }
     avatarurl = await GetUserInfo.getUserAvatarUrl();
 
     setState(() {
@@ -62,9 +70,15 @@ class HomeScreenState extends State<HomeScreen> {
   Future futureFunction;
 
   @override
-  void initState() {
+  Future<void> initState() {
     super.initState();
     futureFunction = readyUserData();
+
+    InternetConnectionChecker().onStatusChange.listen((status) {
+      final hasInternet = status == InternetConnectionStatus.connected;
+
+      NoInternet(this.context);
+    });
   }
 
   @override

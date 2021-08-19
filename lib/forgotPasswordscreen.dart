@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'components/myTextFormField.dart';
-import 'components/myButton.dart';
+import 'components/myTextFormFields.dart';
+import 'components/myButtons.dart';
 
 void main() => runApp(
       MaterialApp(
@@ -31,10 +31,8 @@ class _ForgotpasswordscreenState extends State<Forgotpasswordscreen> {
 
   void _submit() {
     FocusScopeNode currentFocus = FocusScope.of(context);
-    print('login pressed!!!');
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
-      print(emailid);
 
       resetpassword(emailid);
 
@@ -84,9 +82,7 @@ class _ForgotpasswordscreenState extends State<Forgotpasswordscreen> {
                     style: TextStyle(
                         color: Colors.white, fontSize: 25, fontFamily: 'young'),
                   )),
-                  SizedBox(
-                    height: 10,
-                  ),
+                   SizedBox(height: MediaQuery.of(context).size.height*0.02,),
                   Flexible(
                       child: Text(
                           'A passowrd reset link will be sent to your given Email',
@@ -95,18 +91,18 @@ class _ForgotpasswordscreenState extends State<Forgotpasswordscreen> {
                               fontSize: 15,
                               fontFamily: 'young'),
                           textAlign: TextAlign.center)),
-                  Flexible(
-                      child: MyTextEormField(
-                          Icon(Icons.email), 'Email Id', false, (val) {
+                           SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+                  MyTextFormField(
+                      Icon(Icons.email), 'Email Id', false, (val) {
                     emailid = val;
                   },
-                          TextInputType.emailAddress,
-                          (val) => !val.contains('@')
-                              ? 'Please enter a valid email'
-                              : null)),
-                  Flexible(
-                      child: MyButton(ColorSchemeClass.primarygreen,
-                          'Send Request', _submit)),
+                      TextInputType.emailAddress,
+                      (val) => !val.contains('@')
+                          ? 'Please enter a valid email'
+                          : null),
+                           SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+                  MyButton(ColorSchemeClass.primarygreen,
+                      'Send Request', _submit),
                 ],
               ),
             ),

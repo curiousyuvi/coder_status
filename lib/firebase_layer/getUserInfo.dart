@@ -25,7 +25,6 @@ class GetUserInfo {
         await FirebaseFirestore.instance.collection("users").doc(uid).get();
 
     String name = mapofdocument.data()['name'];
-    print(name);
     return name;
   }
 
@@ -39,7 +38,6 @@ class GetUserInfo {
         await FirebaseFirestore.instance.collection("users").doc(uid).get();
 
     String codername = mapofdocument.data()['codername'];
-    print(codername);
     return codername;
   }
 
@@ -53,7 +51,6 @@ class GetUserInfo {
         await FirebaseFirestore.instance.collection("users").doc(uid).get();
 
     String avatarurl = mapofdocument.data()['avatarurl'];
-    print(avatarurl);
     return avatarurl;
   }
 
@@ -67,7 +64,6 @@ class GetUserInfo {
         await FirebaseFirestore.instance.collection("users").doc(uid).get();
 
     String bio = mapofdocument.data()['bio'];
-    print(bio);
     return bio;
   }
 

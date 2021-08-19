@@ -1,5 +1,5 @@
 import 'package:coderstatus/components/colorscheme.dart';
-import 'package:coderstatus/components/myButton.dart';
+import 'package:coderstatus/components/myButtons.dart';
 import 'package:coderstatus/signInScreen.dart';
 import 'package:coderstatus/signUpScreen.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +36,6 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                   padding:
                       EdgeInsets.all(MediaQuery.of(context).size.width * 0.02),
                   width: double.infinity,
-                  height: MediaQuery.of(context).size.height * 0.4,
                   color: ColorSchemeClass.dark.withOpacity(0.5),
                   child: Column(
                     children: [

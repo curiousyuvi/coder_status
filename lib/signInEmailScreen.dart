@@ -12,8 +12,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'components/myTextFormField.dart';
-import 'components/myButton.dart';
+import 'components/myTextFormFields.dart';
+import 'components/myButtons.dart';
 
 void main() => runApp(
       MaterialApp(
@@ -38,10 +38,8 @@ class _SignInEmailScreenState extends State<SignInEmailScreen> {
 
   void _submit() async {
     FocusScopeNode currentFocus = FocusScope.of(context);
-    print('login pressed!!!');
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
-      print(emailid + ' ' + password);
       setState(() {
         isLoading = true;
       });
@@ -100,7 +98,7 @@ class _SignInEmailScreenState extends State<SignInEmailScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Flexible(
+                      MediaQuery.of(context).viewInsets.bottom==0? Flexible(
                         child: Hero(
                           tag: 'appIcon',
                           child: Image(
@@ -108,11 +106,11 @@ class _SignInEmailScreenState extends State<SignInEmailScreen> {
                             image: AssetImage('images/appiconnoback.png'),
                           ),
                         ),
-                      ),
+                      ):SizedBox.shrink(),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.01,
                       ),
-                      RichText(
+                      MediaQuery.of(context).viewInsets.bottom==0?  RichText(
                         text: TextSpan(
                             style: TextStyle(
                                 color: Colors.white,
@@ -128,14 +126,14 @@ class _SignInEmailScreenState extends State<SignInEmailScreen> {
                                   style: TextStyle(
                                       color: ColorSchemeClass.primarygreen))
                             ]),
-                      ),
+                      ):SizedBox.shrink(),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.04,
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.01,
                       ),
-                      MyTextEormField(Icon(Icons.email), 'Email Id', false,
+                      MyTextFormField(Icon(Icons.email), 'Email Id', false,
                           (val) {
                         emailid = val;
                       },
@@ -143,7 +141,8 @@ class _SignInEmailScreenState extends State<SignInEmailScreen> {
                           (val) => !val.contains('@')
                               ? 'Please enter a valid email'
                               : null),
-                      MyTextEormField(Icon(Icons.vpn_key), 'Password', true,
+                               SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+                      MyTextFormField(Icon(Icons.vpn_key), 'Password', true,
                           (val) {
                         password = val;
                       },
@@ -151,6 +150,7 @@ class _SignInEmailScreenState extends State<SignInEmailScreen> {
                           (val) => val.trim().length < 6
                               ? 'Please enter a valid password'
                               : null),
+                               SizedBox(height: MediaQuery.of(context).size.height*0.02,),
                       Container(
                         padding: EdgeInsets.symmetric(
                             horizontal:
@@ -188,7 +188,6 @@ class _SignInEmailScreenState extends State<SignInEmailScreen> {
                       Flexible(
                         child: GestureDetector(
                             onTap: () {
-                              print('forgot password clicked!!');
                               Navigator.push(context,
                                   MaterialPageRoute(builder: (context) {
                                 return Forgotpasswordscreen();

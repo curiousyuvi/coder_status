@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'colorscheme.dart';
 
 InputDecoration myInputDecoration = InputDecoration(
+  contentPadding: EdgeInsets.all(5),
     fillColor: ColorSchemeClass.darkgrey,
     filled: true,
     prefixIcon: Icon(

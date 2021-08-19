@@ -6,8 +6,8 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'components/myTextFormField.dart';
-import 'components/myButton.dart';
+import 'components/myTextFormFields.dart';
+import 'components/myButtons.dart';
 
 void main() => runApp(
       MaterialApp(
@@ -93,7 +93,8 @@ class _RegisternamescreenState extends State<Registernamescreen> {
                       textAlign: TextAlign.center,
                     ),
                   )),
-                  MyTextEormField(
+                  SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+                  MyTextFormField(
                       Icon(FontAwesomeIcons.solidUser), 'Full Name', false,
                       (val) {
                     name = val.toString().trim();
@@ -102,6 +103,7 @@ class _RegisternamescreenState extends State<Registernamescreen> {
                       (val) => val.toString().trim().length < 5
                           ? 'Name is too short'
                           : null),
+                          SizedBox(height: MediaQuery.of(context).size.height*0.02,),
                   Container(
                     padding: EdgeInsets.symmetric(
                         horizontal: MediaQuery.of(context).size.width * 0.03,

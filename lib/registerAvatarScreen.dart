@@ -1,7 +1,5 @@
 import 'dart:io';
 import 'package:coderstatus/components/colorscheme.dart';
-import 'package:coderstatus/components/myButton.dart';
-import 'package:coderstatus/components/myOutlineButton.dart';
 import 'package:coderstatus/components/urls.dart';
 import 'package:coderstatus/firebase_layer/uploadAvatar.dart';
 import 'package:coderstatus/registerBioScreen.dart';
@@ -12,6 +10,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'components/generalLoader.dart';
 import 'components/myAvatarSelection.dart';
+import 'components/myButtons.dart';
 import 'functions/pickImageAndCrop.dart' as pickImageAndCrop;
 import 'components/myCircleAvatar.dart';
 

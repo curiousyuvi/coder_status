@@ -1,13 +1,12 @@
 import 'package:coderstatus/components/colorscheme.dart';
-import 'package:coderstatus/components/myOutlineButton.dart';
-import 'package:coderstatus/components/myPassageTextformField.dart';
 import 'package:coderstatus/registerUserHandleScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'components/myButton.dart';
+import 'components/myButtons.dart';
+import 'components/myTextFormFields.dart';
 
 void main() => runApp(
       MaterialApp(

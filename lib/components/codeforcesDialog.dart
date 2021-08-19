@@ -35,18 +35,20 @@ showCodeforcesDialog(BuildContext context, Rect rect, String codeforcesHandle,
         overlayEntry.remove();
       },
       child: Container(
+          padding: EdgeInsets.all(0),
           height: double.infinity,
           width: double.infinity,
           color: Colors.transparent,
           child: Column(
             children: [
               SizedBox(
-                height: rect.top - MediaQuery.of(context).size.height * 0.14,
+                height: rect.top - MediaQuery.of(context).size.height * 0.13,
               ),
               Row(
                 children: [
                   SizedBox(
-                    width: rect.left - MediaQuery.of(context).size.width * 0.03,
+                    width:
+                        rect.left - MediaQuery.of(context).size.width * 0.034,
                   ),
                   GestureDetector(
                     onTap: () {},
@@ -75,12 +77,79 @@ showCodeforcesDialog(BuildContext context, Rect rect, String codeforcesHandle,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                FittedBox(
-                                  fit: BoxFit.scaleDown,
+                                Flexible(
+                                  child: FittedBox(
+                                    fit: BoxFit.scaleDown,
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          'Platform : ',
+                                          style: TextStyle(
+                                              color: ColorSchemeClass.lightgrey,
+                                              fontFamily: 'young',
+                                              fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.018),
+                                        ),
+                                        Text(
+                                          'CODEFORCES',
+                                          style: TextStyle(
+                                              color: ColorSchemeClass
+                                                  .codeforcespurple,
+                                              fontFamily: 'young',
+                                              fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.02,
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.01),
+                                Flexible(
+                                  child: FittedBox(
+                                    fit: BoxFit.scaleDown,
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          'Username : ',
+                                          style: TextStyle(
+                                              color: ColorSchemeClass.lightgrey,
+                                              fontFamily: 'young',
+                                              fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.018),
+                                        ),
+                                        Text(
+                                          '@' + codeforcesHandle,
+                                          style: TextStyle(
+                                              color: ColorSchemeClass
+                                                  .codeforcespurple,
+                                              fontFamily: 'young',
+                                              fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.02,
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.01),
+                                Flexible(
                                   child: Row(
                                     children: [
                                       Text(
-                                        'Platform : ',
+                                        'Rating : ',
                                         style: TextStyle(
                                             color: ColorSchemeClass.lightgrey,
                                             fontFamily: 'young',
@@ -90,7 +159,7 @@ showCodeforcesDialog(BuildContext context, Rect rect, String codeforcesHandle,
                                                 0.018),
                                       ),
                                       Text(
-                                        'CODEFORCES',
+                                        codeforcesRating,
                                         style: TextStyle(
                                             color: ColorSchemeClass
                                                 .codeforcespurple,
@@ -98,7 +167,19 @@ showCodeforcesDialog(BuildContext context, Rect rect, String codeforcesHandle,
                                             fontSize: MediaQuery.of(context)
                                                     .size
                                                     .height *
-                                                0.02,
+                                                0.025,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Text(
+                                        ' pts',
+                                        style: TextStyle(
+                                            color: ColorSchemeClass
+                                                .codeforcespurple,
+                                            fontFamily: 'young',
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.015,
                                             fontWeight: FontWeight.bold),
                                       )
                                     ],
@@ -107,106 +188,35 @@ showCodeforcesDialog(BuildContext context, Rect rect, String codeforcesHandle,
                                 SizedBox(
                                     height: MediaQuery.of(context).size.height *
                                         0.01),
-                                FittedBox(
-                                  fit: BoxFit.scaleDown,
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        'Username : ',
-                                        style: TextStyle(
-                                            color: ColorSchemeClass.lightgrey,
-                                            fontFamily: 'young',
-                                            fontSize: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.018),
-                                      ),
-                                      Text(
-                                        '@' + codeforcesHandle,
-                                        style: TextStyle(
-                                            color: ColorSchemeClass
-                                                .codeforcespurple,
-                                            fontFamily: 'young',
-                                            fontSize: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.02,
-                                            fontWeight: FontWeight.bold),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.01),
-                                Row(
-                                  children: [
-                                    Text(
-                                      'Rating : ',
-                                      style: TextStyle(
-                                          color: ColorSchemeClass.lightgrey,
-                                          fontFamily: 'young',
-                                          fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.018),
+                                Flexible(
+                                  child: FittedBox(
+                                    fit: BoxFit.scaleDown,
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          'Title : ',
+                                          style: TextStyle(
+                                              color: ColorSchemeClass.lightgrey,
+                                              fontFamily: 'young',
+                                              fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.018),
+                                        ),
+                                        Text(
+                                          codeforcesTitle,
+                                          style: TextStyle(
+                                              color: ColorSchemeClass
+                                                  .codeforcespurple,
+                                              fontFamily: 'young',
+                                              fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.02,
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
                                     ),
-                                    Text(
-                                      codeforcesRating,
-                                      style: TextStyle(
-                                          color:
-                                              ColorSchemeClass.codeforcespurple,
-                                          fontFamily: 'young',
-                                          fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.025,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Text(
-                                      ' pts',
-                                      style: TextStyle(
-                                          color:
-                                              ColorSchemeClass.codeforcespurple,
-                                          fontFamily: 'young',
-                                          fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.015,
-                                          fontWeight: FontWeight.bold),
-                                    )
-                                  ],
-                                ),
-                                SizedBox(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.01),
-                                FittedBox(
-                                  fit: BoxFit.scaleDown,
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        'Title : ',
-                                        style: TextStyle(
-                                            color: ColorSchemeClass.lightgrey,
-                                            fontFamily: 'young',
-                                            fontSize: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.018),
-                                      ),
-                                      Text(
-                                        codeforcesTitle,
-                                        style: TextStyle(
-                                            color: ColorSchemeClass
-                                                .codeforcespurple,
-                                            fontFamily: 'young',
-                                            fontSize: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.02,
-                                            fontWeight: FontWeight.bold),
-                                      )
-                                    ],
                                   ),
                                 )
                               ],
