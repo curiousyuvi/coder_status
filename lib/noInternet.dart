@@ -2,6 +2,8 @@ import 'package:coderstatus/components/colorscheme.dart';
 import 'package:coderstatus/components/myButtons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:rive/rive.dart';
 
 NoInternet(BuildContext context) {
@@ -69,10 +71,10 @@ NoInternet(BuildContext context) {
             ),
             Flexible(
               child: Container(
-                width: MediaQuery.of(context).size.height * 0.15,
-                child: MyButton(ColorSchemeClass.primarygreen, 'Ok', () {
+                width: MediaQuery.of(context).size.height * 0.5,
+                child: MyButton(ColorSchemeClass.primarygreen, 'Try Again', () {
                   Phoenix.rebirth(context);
-                }),
+                }, Icons.refresh),
               ),
             )
           ],
@@ -82,4 +84,9 @@ NoInternet(BuildContext context) {
   });
 
   overlayState.insert(overlayEntry);
+
+  InternetConnectionChecker().onStatusChange.listen((status) {
+    final hasInternet = status == InternetConnectionStatus.connected;
+    if (!hasInternet) Phoenix.rebirth(context);
+  });
 }

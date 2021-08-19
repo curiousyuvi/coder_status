@@ -1,9 +1,14 @@
+import 'dart:async';
+
 import 'package:coderstatus/components/colorscheme.dart';
 import 'package:coderstatus/components/myButtons.dart';
 import 'package:coderstatus/signInScreen.dart';
 import 'package:coderstatus/signUpScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:rive/rive.dart';
+
+import 'noInternet.dart';
 
 class GetStartedScreen extends StatefulWidget {
   const GetStartedScreen({Key key}) : super(key: key);
@@ -13,6 +18,25 @@ class GetStartedScreen extends StatefulWidget {
 }
 
 class _GetStartedScreenState extends State<GetStartedScreen> {
+  StreamSubscription subscription;
+
+  @override
+  Future<void> initState() {
+    super.initState();
+
+    subscription = InternetConnectionChecker().onStatusChange.listen((status) {
+      final hasInternet = status == InternetConnectionStatus.connected;
+
+      if (!hasInternet) NoInternet(this.context);
+    });
+  }
+
+  @override
+  void dispose() {
+    subscription.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'package:coderstatus/components/colorscheme.dart';
 import 'package:coderstatus/components/urls.dart';
@@ -8,11 +9,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'components/generalLoader.dart';
 import 'components/myAvatarSelection.dart';
 import 'components/myButtons.dart';
 import 'functions/pickImageAndCrop.dart' as pickImageAndCrop;
 import 'components/myCircleAvatar.dart';
+import 'noInternet.dart';
 
 class Registeravatarscreen extends StatefulWidget {
   Registeravatarscreen(String name, String codername) {
@@ -31,6 +34,24 @@ class _RegisteravatarscreenState extends State<Registeravatarscreen> {
   File imagetobeuploaded;
   String urltobeset = Urls.avatar1url;
   bool isLoading = false;
+  StreamSubscription subscription;
+
+  @override
+  Future<void> initState() {
+    super.initState();
+
+    subscription = InternetConnectionChecker().onStatusChange.listen((status) {
+      final hasInternet = status == InternetConnectionStatus.connected;
+
+      if (!hasInternet) NoInternet(this.context);
+    });
+  }
+
+  @override
+  void dispose() {
+    subscription.cancel();
+    super.dispose();
+  }
 
   Future<String> generateUrl(File imagefile) async {
     final url = await UploadUserAvatar.uploadUserAvatar(imagefile);

@@ -30,9 +30,16 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  StreamSubscription subscription;
+
   @override
   void initState() {
     super.initState();
+    InternetConnectionChecker().onStatusChange.listen((status) {
+      final hasInternet = status == InternetConnectionStatus.connected;
+
+      if (!hasInternet) NoInternet(context);
+    });
   }
 
   @override

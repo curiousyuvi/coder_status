@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:coderstatus/components/colorscheme.dart';
 import 'package:coderstatus/components/generalLoader.dart';
 import 'package:coderstatus/components/showAnimatedToast.dart';
@@ -7,6 +9,9 @@ import 'package:coderstatus/firebase_layer/setUserInfo.dart';
 import 'package:coderstatus/introSlider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
+
+import 'noInternet.dart';
 
 class RegisterUserHandleScreen extends StatefulWidget {
   RegisterUserHandleScreen(
@@ -27,6 +32,24 @@ class _RegisterUserHandleScreenState extends State<RegisterUserHandleScreen> {
   static String codername = '';
   static String avatarurl = '';
   static String bio = '';
+  StreamSubscription subscription;
+
+  @override
+  Future<void> initState() {
+    super.initState();
+
+    subscription = InternetConnectionChecker().onStatusChange.listen((status) {
+      final hasInternet = status == InternetConnectionStatus.connected;
+
+      if (!hasInternet) NoInternet(this.context);
+    });
+  }
+
+  @override
+  void dispose() {
+    subscription.cancel();
+    super.dispose();
+  }
 
   String codeforces = '', codechef = '', atcoder = '', spoj = '';
   final _formkey = GlobalKey<FormState>();

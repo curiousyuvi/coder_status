@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coderstatus/components/colorscheme.dart';
 import 'package:coderstatus/components/generalLoader.dart';
@@ -12,8 +14,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'components/myTextFormFields.dart';
 import 'components/myButtons.dart';
+import 'noInternet.dart';
 
 void main() => runApp(
       MaterialApp(
@@ -30,6 +34,24 @@ class SignInEmailScreen extends StatefulWidget {
 
 class _SignInEmailScreenState extends State<SignInEmailScreen> {
   //Form State
+  StreamSubscription subscription;
+
+  @override
+  Future<void> initState() {
+    super.initState();
+
+    subscription = InternetConnectionChecker().onStatusChange.listen((status) {
+      final hasInternet = status == InternetConnectionStatus.connected;
+
+      if (!hasInternet) NoInternet(this.context);
+    });
+  }
+
+  @override
+  void dispose() {
+    subscription.cancel();
+    super.dispose();
+  }
 
   final _formkey = GlobalKey<FormState>();
   String emailid = '';
@@ -98,35 +120,42 @@ class _SignInEmailScreenState extends State<SignInEmailScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      MediaQuery.of(context).viewInsets.bottom==0? Flexible(
-                        child: Hero(
-                          tag: 'appIcon',
-                          child: Image(
-                            width: MediaQuery.of(context).size.width * 0.5,
-                            image: AssetImage('images/appiconnoback.png'),
-                          ),
-                        ),
-                      ):SizedBox.shrink(),
+                      MediaQuery.of(context).viewInsets.bottom == 0
+                          ? Flexible(
+                              child: Hero(
+                                tag: 'appIcon',
+                                child: Image(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.5,
+                                  image: AssetImage('images/appiconnoback.png'),
+                                ),
+                              ),
+                            )
+                          : SizedBox.shrink(),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.01,
                       ),
-                      MediaQuery.of(context).viewInsets.bottom==0?  RichText(
-                        text: TextSpan(
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontFamily: 'headline',
-                                fontSize:
-                                    MediaQuery.of(context).size.height * 0.06),
-                            children: [
-                              TextSpan(
-                                text: 'CODER',
-                              ),
-                              TextSpan(
-                                  text: ' STATUS',
+                      MediaQuery.of(context).viewInsets.bottom == 0
+                          ? RichText(
+                              text: TextSpan(
                                   style: TextStyle(
-                                      color: ColorSchemeClass.primarygreen))
-                            ]),
-                      ):SizedBox.shrink(),
+                                      color: Colors.white,
+                                      fontFamily: 'headline',
+                                      fontSize:
+                                          MediaQuery.of(context).size.height *
+                                              0.06),
+                                  children: [
+                                    TextSpan(
+                                      text: 'CODER',
+                                    ),
+                                    TextSpan(
+                                        text: ' STATUS',
+                                        style: TextStyle(
+                                            color:
+                                                ColorSchemeClass.primarygreen))
+                                  ]),
+                            )
+                          : SizedBox.shrink(),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.04,
                       ),
@@ -141,7 +170,9 @@ class _SignInEmailScreenState extends State<SignInEmailScreen> {
                           (val) => !val.contains('@')
                               ? 'Please enter a valid email'
                               : null),
-                               SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.02,
+                      ),
                       MyTextFormField(Icon(Icons.vpn_key), 'Password', true,
                           (val) {
                         password = val;
@@ -150,7 +181,9 @@ class _SignInEmailScreenState extends State<SignInEmailScreen> {
                           (val) => val.trim().length < 6
                               ? 'Please enter a valid password'
                               : null),
-                               SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.02,
+                      ),
                       Container(
                         padding: EdgeInsets.symmetric(
                             horizontal:

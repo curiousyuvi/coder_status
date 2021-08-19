@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:coderstatus/components/colorscheme.dart';
 import 'package:coderstatus/components/generalLoader.dart';
 import 'package:coderstatus/signInEmailScreen.dart';
@@ -8,8 +10,10 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'components/myTextFormFields.dart';
 import 'components/myButtons.dart';
+import 'noInternet.dart';
 
 class RegisterEmailidScreen extends StatefulWidget {
   @override
@@ -20,6 +24,24 @@ class _RegisterEmailidScreenState extends State<RegisterEmailidScreen> {
   String emailid = '';
   final _formkey = GlobalKey<FormState>();
   bool isLoading = false;
+  StreamSubscription subscription;
+
+  @override
+  Future<void> initState() {
+    super.initState();
+
+    subscription = InternetConnectionChecker().onStatusChange.listen((status) {
+      final hasInternet = status == InternetConnectionStatus.connected;
+
+      if (!hasInternet) NoInternet(this.context);
+    });
+  }
+
+  @override
+  void dispose() {
+    subscription.cancel();
+    super.dispose();
+  }
 
   void _submit() async {
     FocusScopeNode currentFocus = FocusScope.of(context);
@@ -118,18 +140,17 @@ class _RegisterEmailidScreenState extends State<RegisterEmailidScreen> {
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.02,
                       ),
-                      
                       MyTextFormField(Icon(FontAwesomeIcons.solidEnvelope),
                           'email id', false, (val) {
                         emailid = val;
                       },
-
                           TextInputType.emailAddress,
                           (val) => !val.contains('@')
                               ? 'Please enter a valid email'
                               : null),
-                               SizedBox(height: MediaQuery.of(context).size.height*0.02,),
-                               
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.02,
+                      ),
                       Container(
                         padding: EdgeInsets.symmetric(
                             horizontal:

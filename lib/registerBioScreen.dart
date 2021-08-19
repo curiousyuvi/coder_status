@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:coderstatus/components/colorscheme.dart';
 import 'package:coderstatus/registerUserHandleScreen.dart';
 import 'package:flutter/cupertino.dart';
@@ -5,8 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'components/myButtons.dart';
 import 'components/myTextFormFields.dart';
+import 'noInternet.dart';
 
 void main() => runApp(
       MaterialApp(
@@ -32,6 +36,24 @@ class _RegisterbioscreenState extends State<Registerbioscreen> {
   static String avatarurl = '';
   static String bio = '';
   final _formkey = GlobalKey<FormState>();
+  StreamSubscription subscription;
+
+  @override
+  Future<void> initState() {
+    super.initState();
+
+    subscription = InternetConnectionChecker().onStatusChange.listen((status) {
+      final hasInternet = status == InternetConnectionStatus.connected;
+
+      if (!hasInternet) NoInternet(this.context);
+    });
+  }
+
+  @override
+  void dispose() {
+    subscription.cancel();
+    super.dispose();
+  }
 
   void _submit() {
     FocusScopeNode currentFocus = FocusScope.of(context);

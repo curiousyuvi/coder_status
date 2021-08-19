@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:coderstatus/components/colorscheme.dart';
 import 'package:coderstatus/registerAvatarScreen.dart';
 import 'package:coderstatus/registerBioScreen.dart';
@@ -8,8 +10,10 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'components/myTextFormFields.dart';
 import 'components/myButtons.dart';
+import 'noInternet.dart';
 
 class Registercodernamescreen extends StatefulWidget {
   Registercodernamescreen(String name) {
@@ -25,6 +29,24 @@ class _RegistercodernamescreenState extends State<Registercodernamescreen> {
   static String name = '';
   String codername = '';
   final _formkey = GlobalKey<FormState>();
+  StreamSubscription subscription;
+
+  @override
+  Future<void> initState() {
+    super.initState();
+
+    subscription = InternetConnectionChecker().onStatusChange.listen((status) {
+      final hasInternet = status == InternetConnectionStatus.connected;
+
+      if (!hasInternet) NoInternet(this.context);
+    });
+  }
+
+  @override
+  void dispose() {
+    subscription.cancel();
+    super.dispose();
+  }
 
   void _submit() {
     FocusScopeNode currentFocus = FocusScope.of(context);
@@ -100,7 +122,9 @@ class _RegistercodernamescreenState extends State<Registercodernamescreen> {
                       textAlign: TextAlign.center,
                     ),
                   )),
-                   SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
+                  ),
                   MyTextFormField(Icon(FontAwesomeIcons.at), 'codername', false,
                       (val) {
                     codername = val.toString().trim();
@@ -110,7 +134,9 @@ class _RegistercodernamescreenState extends State<Registercodernamescreen> {
                               val.toString().trim().length < 4)
                           ? 'Codername can only be consist a single word'
                           : null),
-                           SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
+                  ),
                   Container(
                     padding: EdgeInsets.symmetric(
                         horizontal: MediaQuery.of(context).size.width * 0.03,

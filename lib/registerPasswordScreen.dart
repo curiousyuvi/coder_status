@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:coderstatus/components/colorscheme.dart';
 import 'package:coderstatus/components/showAnimatedToast.dart';
 import 'package:coderstatus/firebase_layer/emailVerification.dart';
@@ -9,10 +11,13 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'components/generalLoader.dart';
 import 'components/myTextFormFields.dart';
 import 'components/myButtons.dart';
 import 'package:coderstatus/firebase_layer/createuser.dart';
+
+import 'noInternet.dart';
 
 void main() => runApp(
       MaterialApp(
@@ -33,6 +38,24 @@ class _RegisterPasswordScreenState extends State<RegisterPasswordScreen> {
   static String emailid = '';
   String password = '';
   bool isloading = false;
+  StreamSubscription subscription;
+
+  @override
+  Future<void> initState() {
+    super.initState();
+
+    subscription = InternetConnectionChecker().onStatusChange.listen((status) {
+      final hasInternet = status == InternetConnectionStatus.connected;
+
+      if (!hasInternet) NoInternet(this.context);
+    });
+  }
+
+  @override
+  void dispose() {
+    subscription.cancel();
+    super.dispose();
+  }
 
   final _formkey = GlobalKey<FormState>();
 

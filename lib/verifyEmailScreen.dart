@@ -9,6 +9,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
+
+import 'noInternet.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -23,6 +26,13 @@ class VerifyEmailScreen extends StatefulWidget {
 
 class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
   Timer timer;
+  StreamSubscription subscription;
+
+  @override
+  void dispose() {
+    subscription.cancel();
+    super.dispose();
+  }
 
   void _submit() async {
     await sendVerificationEmail(GetUserInfo.getUserEmail());
@@ -30,6 +40,11 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
 
   @override
   void initState() {
+    subscription = InternetConnectionChecker().onStatusChange.listen((status) {
+      final hasInternet = status == InternetConnectionStatus.connected;
+
+      if (!hasInternet) NoInternet(this.context);
+    });
     timer = Timer.periodic(Duration(seconds: 3), (timer) async {
       final flag = await checkEmailVerified();
       if (flag) {

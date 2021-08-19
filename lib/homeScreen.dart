@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:coderstatus/components/colorscheme.dart';
 import 'package:coderstatus/components/urls.dart';
 import 'package:coderstatus/firebase_layer/getUserInfo.dart';
@@ -20,6 +22,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class HomeScreenState extends State<HomeScreen> {
+  StreamSubscription subscription;
   bool isFirstTimeFlag = true;
   String avatarurl = Urls.avatar1url;
   String _currentPage = "MyDashboardScreen";
@@ -53,11 +56,6 @@ class HomeScreenState extends State<HomeScreen> {
   readyUserData() async {
     if (!await InternetConnectionChecker().hasConnection) {
       NoInternet(this.context);
-      InternetConnectionChecker().onStatusChange.listen((status) {
-        final hasInternet = status == InternetConnectionStatus.connected;
-
-        NoInternet(this.context);
-      });
       return;
     }
     avatarurl = await GetUserInfo.getUserAvatarUrl();
@@ -74,11 +72,17 @@ class HomeScreenState extends State<HomeScreen> {
     super.initState();
     futureFunction = readyUserData();
 
-    InternetConnectionChecker().onStatusChange.listen((status) {
+    subscription = InternetConnectionChecker().onStatusChange.listen((status) {
       final hasInternet = status == InternetConnectionStatus.connected;
 
-      NoInternet(this.context);
+      if (!hasInternet) NoInternet(this.context);
     });
+  }
+
+  @override
+  void dispose() {
+    subscription.cancel();
+    super.dispose();
   }
 
   @override

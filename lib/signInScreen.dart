@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coderstatus/components/generalLoader.dart';
 import 'package:coderstatus/registerCodernameScreen.dart';
@@ -5,11 +7,13 @@ import 'package:coderstatus/signInEmailScreen.dart';
 import 'package:coderstatus/signUpScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:provider/provider.dart';
 import 'components/colorscheme.dart';
 import 'components/showAnimatedToast.dart';
 import 'firebase_layer/googleSignInProvider.dart';
 import 'homeScreen.dart';
+import 'noInternet.dart';
 
 class SignInScreen extends StatefulWidget {
   @override
@@ -18,6 +22,24 @@ class SignInScreen extends StatefulWidget {
 
 class _SignInScreenState extends State<SignInScreen> {
   bool isLoading = false;
+  StreamSubscription subscription;
+
+  @override
+  Future<void> initState() {
+    super.initState();
+
+    subscription = InternetConnectionChecker().onStatusChange.listen((status) {
+      final hasInternet = status == InternetConnectionStatus.connected;
+
+      if (!hasInternet) NoInternet(this.context);
+    });
+  }
+
+  @override
+  void dispose() {
+    subscription.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
