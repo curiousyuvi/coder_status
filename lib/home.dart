@@ -3,25 +3,25 @@ import 'dart:async';
 import 'package:coderstatus/components/colorscheme.dart';
 import 'package:coderstatus/components/urls.dart';
 import 'package:coderstatus/firebase_layer/getUserInfo.dart';
-import 'package:coderstatus/myDashboardScreen.dart';
-import 'package:coderstatus/peersScreen.dart';
-import 'package:coderstatus/rankingScreen.dart';
-import 'package:coderstatus/searchScreen.dart';
-import 'package:coderstatus/settingScreen.dart';
+import 'package:coderstatus/screens/myDashboardScreen.dart';
+import 'package:coderstatus/screens/peersScreen.dart';
+import 'package:coderstatus/screens/rankingScreen.dart';
+import 'package:coderstatus/screens/searchScreen.dart';
+import 'package:coderstatus/screens/settingScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'components/generalLoader.dart';
 import 'components/myAvatarButton.dart';
-import 'noInternet.dart';
+import 'components/noInternet.dart';
 
-class HomeScreen extends StatefulWidget {
+class Home extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => HomeScreenState();
+  State<StatefulWidget> createState() => HomeState();
 }
 
-class HomeScreenState extends State<HomeScreen> {
+class HomeState extends State<Home> {
   StreamSubscription subscription;
   bool isFirstTimeFlag = true;
   String avatarurl = Urls.avatar1url;

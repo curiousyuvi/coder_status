@@ -4,20 +4,20 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coderstatus/components/colorscheme.dart';
 import 'package:coderstatus/components/generalLoader.dart';
 import 'package:coderstatus/components/showAnimatedToast.dart';
-import 'package:coderstatus/forgotPasswordscreen.dart';
-import 'package:coderstatus/homeScreen.dart';
+import 'package:coderstatus/screens/forgotPasswordscreen.dart';
+import 'package:coderstatus/home.dart';
 import 'package:coderstatus/firebase_layer/loginUser.dart';
-import 'package:coderstatus/registerEmailidScreen.dart';
-import 'package:coderstatus/verifyEmailScreen.dart';
+import 'package:coderstatus/screens/registerEmailidScreen.dart';
+import 'package:coderstatus/screens/verifyEmailScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'components/myTextFormFields.dart';
-import 'components/myButtons.dart';
-import 'noInternet.dart';
+import '../components/myTextFormFields.dart';
+import '../components/myButtons.dart';
+import '../components/noInternet.dart';
 
 void main() => runApp(
       MaterialApp(
@@ -78,7 +78,7 @@ class _SignInEmailScreenState extends State<SignInEmailScreen> {
           if (flag) {
             Navigator.pushAndRemoveUntil(context,
                 MaterialPageRoute(builder: (context) {
-              return HomeScreen();
+              return Home();
             }), ModalRoute.withName('/home'));
           } else {
             Navigator.pushAndRemoveUntil(context,

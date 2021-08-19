@@ -9,10 +9,10 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'components/generalLoader.dart';
-import 'components/myAppBar.dart';
-import 'components/myTextFormFields.dart';
-import 'components/myButtons.dart';
+import '../components/generalLoader.dart';
+import '../components/myAppBar.dart';
+import '../components/myTextFormFields.dart';
+import '../components/myButtons.dart';
 
 class UpdatePasswordScreen extends StatefulWidget {
   @override

@@ -11,9 +11,9 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'components/myAppBar.dart';
-import 'components/myTextFormFields.dart';
-import 'components/myButtons.dart';
+import '../components/myAppBar.dart';
+import '../components/myTextFormFields.dart';
+import '../components/myButtons.dart';
 
 class DeleteAccountScreen extends StatefulWidget {
   @override

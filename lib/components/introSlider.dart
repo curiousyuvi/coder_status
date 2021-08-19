@@ -1,7 +1,7 @@
 import 'package:coderstatus/components/colorscheme.dart';
 import 'package:flutter/material.dart';
 
-import 'homeScreen.dart';
+import '../home.dart';
 
 class IntroSlider extends StatefulWidget {
   const IntroSlider({Key key}) : super(key: key);
@@ -35,7 +35,7 @@ class _IntroSliderState extends State<IntroSlider> {
                       onTap: () {
                         Navigator.pushAndRemoveUntil(context,
                             MaterialPageRoute(builder: (context) {
-                          return HomeScreen();
+                          return Home();
                         }), ModalRoute.withName('/home'));
                       },
                       child: Text(

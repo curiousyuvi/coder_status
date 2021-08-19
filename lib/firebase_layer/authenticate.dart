@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coderstatus/components/generalLoader.dart';
-import 'package:coderstatus/getStartedScreen.dart';
-import 'package:coderstatus/homeScreen.dart';
-import 'package:coderstatus/registerNameScreen.dart';
-import 'package:coderstatus/verifyEmailScreen.dart';
+import 'package:coderstatus/screens/getStartedScreen.dart';
+import 'package:coderstatus/home.dart';
+import 'package:coderstatus/screens/registerNameScreen.dart';
+import 'package:coderstatus/screens/verifyEmailScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -35,7 +35,7 @@ class Authenticate extends StatelessWidget {
           if (_auth.currentUser != null) {
             if (_auth.currentUser.emailVerified) {
               if (flag) {
-                return HomeScreen();
+                return Home();
               } else {
                 return Registernamescreen();
               }

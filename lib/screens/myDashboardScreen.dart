@@ -18,7 +18,7 @@ import 'package:flutter/widgets.dart';
 import 'package:rect_getter/rect_getter.dart';
 import 'package:rive/rive.dart';
 
-import 'components/myCircleAvatar.dart';
+import '../components/myCircleAvatar.dart';
 
 class MyDashboardScreen extends StatefulWidget {
   @override

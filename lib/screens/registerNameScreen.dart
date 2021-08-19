@@ -1,9 +1,7 @@
 import 'dart:async';
 
 import 'package:coderstatus/components/colorscheme.dart';
-import 'package:coderstatus/registerAvatarScreen.dart';
-import 'package:coderstatus/registerBioScreen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:coderstatus/screens/registerCodernameScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -11,23 +9,25 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'components/myTextFormFields.dart';
-import 'components/myButtons.dart';
-import 'noInternet.dart';
+import '../components/myTextFormFields.dart';
+import '../components/myButtons.dart';
+import '../components/noInternet.dart';
 
-class Registercodernamescreen extends StatefulWidget {
-  Registercodernamescreen(String name) {
-    _RegistercodernamescreenState.name = name;
-  }
+void main() => runApp(
+      MaterialApp(
+        home: Registernamescreen(),
+      ),
+    );
+
+class Registernamescreen extends StatefulWidget {
+  const Registernamescreen({Key key}) : super(key: key);
 
   @override
-  _RegistercodernamescreenState createState() =>
-      _RegistercodernamescreenState();
+  _RegisternamescreenState createState() => _RegisternamescreenState();
 }
 
-class _RegistercodernamescreenState extends State<Registercodernamescreen> {
+class _RegisternamescreenState extends State<Registernamescreen> {
   static String name = '';
-  String codername = '';
   final _formkey = GlobalKey<FormState>();
   StreamSubscription subscription;
 
@@ -52,16 +52,9 @@ class _RegistercodernamescreenState extends State<Registercodernamescreen> {
     FocusScopeNode currentFocus = FocusScope.of(context);
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
-      if (FirebaseAuth.instance.currentUser.photoURL == null) {
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return Registeravatarscreen(name, codername);
-        }));
-      } else {
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return Registerbioscreen(
-              name, codername, FirebaseAuth.instance.currentUser.photoURL);
-        }));
-      }
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return Registercodernamescreen(name);
+      }));
     }
   }
 
@@ -102,10 +95,10 @@ class _RegistercodernamescreenState extends State<Registercodernamescreen> {
                     padding: EdgeInsets.all(
                         MediaQuery.of(context).size.width * 0.02),
                     child: Text(
-                      'Choose Codername',
+                      'Enter Your Full Name',
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: MediaQuery.of(context).size.height * 0.035,
+                          fontSize: MediaQuery.of(context).size.height * 0.033,
                           fontFamily: 'young'),
                     ),
                   )),
@@ -114,10 +107,10 @@ class _RegistercodernamescreenState extends State<Registercodernamescreen> {
                     padding: EdgeInsets.all(
                         MediaQuery.of(context).size.width * 0.02),
                     child: Text(
-                      'Codername is like a Username,\n*Example: @god_Kira',
+                      '*Example: Light Yagami',
                       style: TextStyle(
                           color: ColorSchemeClass.darkgrey,
-                          fontSize: MediaQuery.of(context).size.height * 0.022,
+                          fontSize: MediaQuery.of(context).size.height * 0.023,
                           fontFamily: 'young'),
                       textAlign: TextAlign.center,
                     ),
@@ -125,14 +118,14 @@ class _RegistercodernamescreenState extends State<Registercodernamescreen> {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.02,
                   ),
-                  MyTextFormField(Icon(FontAwesomeIcons.at), 'codername', false,
+                  MyTextFormField(
+                      Icon(FontAwesomeIcons.solidUser), 'Full Name', false,
                       (val) {
-                    codername = val.toString().trim();
+                    name = val.toString().trim();
                   },
-                      TextInputType.text,
-                      (val) => (val.toString().trim().contains(' ') ||
-                              val.toString().trim().length < 4)
-                          ? 'Codername can only be consist a single word'
+                      TextInputType.name,
+                      (val) => val.toString().trim().length < 5
+                          ? 'Name is too short'
                           : null),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.02,

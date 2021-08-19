@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:coderstatus/components/colorscheme.dart';
 import 'package:coderstatus/firebase_layer/authenticate.dart';
 import 'package:coderstatus/firebase_layer/googleSignInProvider.dart';
-import 'package:coderstatus/noInternet.dart';
+import 'package:coderstatus/components/noInternet.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

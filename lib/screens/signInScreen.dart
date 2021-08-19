@@ -2,25 +2,25 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coderstatus/components/generalLoader.dart';
-import 'package:coderstatus/registerCodernameScreen.dart';
-import 'package:coderstatus/registerEmailidScreen.dart';
-import 'package:coderstatus/signInScreen.dart';
+import 'package:coderstatus/screens/registerCodernameScreen.dart';
+import 'package:coderstatus/screens/signInEmailScreen.dart';
+import 'package:coderstatus/screens/signUpScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:provider/provider.dart';
-import 'components/colorscheme.dart';
-import 'components/showAnimatedToast.dart';
-import 'firebase_layer/googleSignInProvider.dart';
-import 'homeScreen.dart';
-import 'noInternet.dart';
+import '../components/colorscheme.dart';
+import '../components/showAnimatedToast.dart';
+import '../firebase_layer/googleSignInProvider.dart';
+import '../home.dart';
+import '../components/noInternet.dart';
 
-class SignUpScreen extends StatefulWidget {
+class SignInScreen extends StatefulWidget {
   @override
-  _SignUpScreenState createState() => _SignUpScreenState();
+  _SignInScreenState createState() => _SignInScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _SignInScreenState extends State<SignInScreen> {
   bool isLoading = false;
   StreamSubscription subscription;
 
@@ -118,7 +118,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         if (flag) {
                           Navigator.pushAndRemoveUntil(context,
                               MaterialPageRoute(builder: (context) {
-                            return HomeScreen();
+                            return Home();
                           }), ModalRoute.withName('/home'));
                         } else {
                           Navigator.pushAndRemoveUntil(context,
@@ -152,7 +152,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               width: MediaQuery.of(context).size.width * 0.08,
                             ),
                             Text(
-                              'Sign Up With Google',
+                              'Sign In With Google',
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize:
@@ -166,13 +166,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.02,
+                    height: MediaQuery.of(context).size.width * 0.055,
                   ),
                   GestureDetector(
                     onTap: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
-                        return RegisterEmailidScreen();
+                        return SignInEmailScreen();
                       }));
                     },
                     child: Container(
@@ -198,7 +198,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               width: MediaQuery.of(context).size.width * 0.08,
                             ),
                             Text(
-                              'Sign Up With Email',
+                              'Sign In With Email',
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize:
@@ -219,11 +219,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         onTap: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
-                            return SignInScreen();
+                            return SignUpScreen();
                           }));
                         },
                         child: Text(
-                          'Already have an account?Sign In',
+                          'Don\'t Have An Account?Create Account',
                           style: TextStyle(
                               color: ColorSchemeClass.lightgrey,
                               fontFamily: 'young',

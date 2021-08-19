@@ -6,7 +6,7 @@ import 'package:coderstatus/components/myDividerWithTitle.dart';
 import 'package:coderstatus/components/spojDialog.dart';
 import 'package:coderstatus/components/urls.dart';
 import 'package:coderstatus/components/viewAnotherUserScreenSkeleton.dart';
-import 'package:coderstatus/editProfileScreen.dart';
+import 'package:coderstatus/screens/editProfileScreen.dart';
 import 'package:coderstatus/firebase_layer/getUserInfo.dart';
 import 'package:coderstatus/firebase_layer/setUserInfo.dart';
 import 'package:coderstatus/functions/getRating.dart';
@@ -20,8 +20,8 @@ import 'package:flutter/widgets.dart';
 import 'package:coderstatus/components/myRatingCard.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rect_getter/rect_getter.dart';
-import 'components/myAppBar.dart';
-import 'components/myCircleAvatar.dart';
+import '../components/myAppBar.dart';
+import '../components/myCircleAvatar.dart';
 import 'myDashboardScreen.dart';
 
 class ViewAnotherUserScreen extends StatefulWidget {

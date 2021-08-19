@@ -11,10 +11,10 @@ import 'package:coderstatus/firebase_layer/uploadAvatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'components/confirmationDialog.dart';
-import 'components/myAppBar.dart';
-import 'components/myTextFormFields.dart';
-import 'functions/pickImageAndCrop.dart' as pickImageAndCrop;
+import '../components/confirmationDialog.dart';
+import '../components/myAppBar.dart';
+import '../components/myTextFormFields.dart';
+import '../functions/pickImageAndCrop.dart' as pickImageAndCrop;
 
 class EditProfileScreen extends StatefulWidget {
   const EditProfileScreen({Key key}) : super(key: key);

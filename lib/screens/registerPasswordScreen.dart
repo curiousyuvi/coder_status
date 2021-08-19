@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:coderstatus/components/colorscheme.dart';
 import 'package:coderstatus/components/showAnimatedToast.dart';
 import 'package:coderstatus/firebase_layer/emailVerification.dart';
-import 'package:coderstatus/signInEmailScreen.dart';
-import 'package:coderstatus/verifyEmailScreen.dart';
+import 'package:coderstatus/screens/signInEmailScreen.dart';
+import 'package:coderstatus/screens/verifyEmailScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -12,12 +12,12 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'components/generalLoader.dart';
-import 'components/myTextFormFields.dart';
-import 'components/myButtons.dart';
+import '../components/generalLoader.dart';
+import '../components/myTextFormFields.dart';
+import '../components/myButtons.dart';
 import 'package:coderstatus/firebase_layer/createuser.dart';
 
-import 'noInternet.dart';
+import '../components/noInternet.dart';
 
 void main() => runApp(
       MaterialApp(

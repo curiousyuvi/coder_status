@@ -6,12 +6,12 @@ import 'package:coderstatus/components/showAnimatedToast.dart';
 import 'package:coderstatus/components/myButtons.dart';
 import 'package:coderstatus/components/myTextFormFields.dart';
 import 'package:coderstatus/firebase_layer/setUserInfo.dart';
-import 'package:coderstatus/introSlider.dart';
+import 'package:coderstatus/components/introSlider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
-import 'noInternet.dart';
+import '../components/noInternet.dart';
 
 class RegisterUserHandleScreen extends StatefulWidget {
   RegisterUserHandleScreen(

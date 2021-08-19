@@ -5,8 +5,8 @@ import 'package:coderstatus/components/topThreeRankingCard.dart';
 import 'package:coderstatus/firebase_layer/getUserInfo.dart';
 import 'package:coderstatus/functions/getRating.dart';
 import 'package:flutter/material.dart';
-import 'components/myAppBar.dart';
-import 'components/myButtons.dart';
+import '../components/myAppBar.dart';
+import '../components/myButtons.dart';
 
 class CodeforcesRankingScreen extends StatefulWidget {
   const CodeforcesRankingScreen({Key key}) : super(key: key);

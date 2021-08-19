@@ -6,13 +6,13 @@ import 'package:coderstatus/components/myButtons.dart';
 import 'package:coderstatus/components/myTextFormFields.dart';
 import 'package:coderstatus/firebase_layer/getUserInfo.dart';
 import 'package:coderstatus/firebase_layer/setUserInfo.dart';
-import 'package:coderstatus/homeScreen.dart';
+import 'package:coderstatus/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rive/rive.dart';
 
-import 'components/myAppBar.dart';
+import '../components/myAppBar.dart';
 
 class EditUserHandlesScreen extends StatefulWidget {
   @override

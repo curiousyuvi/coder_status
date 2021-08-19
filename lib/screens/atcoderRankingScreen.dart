@@ -4,9 +4,9 @@ import 'package:coderstatus/components/rankingScreenSkeleton.dart';
 import 'package:coderstatus/firebase_layer/getUserInfo.dart';
 import 'package:coderstatus/functions/getRating.dart';
 import 'package:flutter/material.dart';
-import 'components/myAppBar.dart';
-import 'components/myButtons.dart';
-import 'components/topThreeRankingCard.dart';
+import '../components/myAppBar.dart';
+import '../components/myButtons.dart';
+import '../components/topThreeRankingCard.dart';
 
 class AtcoderRankingScreen extends StatefulWidget {
   const AtcoderRankingScreen({Key key}) : super(key: key);
