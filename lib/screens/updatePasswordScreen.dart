@@ -1,8 +1,8 @@
-import 'package:coderstatus/components/colorscheme.dart';
-import 'package:coderstatus/components/confirmationDialog.dart';
-import 'package:coderstatus/components/showAnimatedToast.dart';
-import 'package:coderstatus/firebase_layer/updatePassword.dart';
-import 'package:coderstatus/firebase_layer/validatePassword.dart';
+import 'package:CoderStatus/components/colorscheme.dart';
+import 'package:CoderStatus/components/confirmationDialog.dart';
+import 'package:CoderStatus/components/showAnimatedToast.dart';
+import 'package:CoderStatus/firebase_layer/updatePassword.dart';
+import 'package:CoderStatus/firebase_layer/validatePassword.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -109,8 +109,9 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
                                 fontFamily: 'young'),
                             textAlign: TextAlign.center),
                       )),
-
-                      SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.02,
+                      ),
                       MyTextFormField(
                           Icon(Icons.vpn_key),
                           'old password',
@@ -126,7 +127,9 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
                                 ? null
                                 : 'Old password doesn\'t match';
                           }),
-                           SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.02,
+                      ),
                       MyTextFormField(Icon(Icons.vpn_key), 'new password', true,
                           (val) {
                         setState(() {
@@ -137,7 +140,9 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
                           (val) => val.trim().length < 6
                               ? 'Password must contain atleast 6 characters'
                               : null),
-                               SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.02,
+                      ),
                       MyTextFormField(
                           Icon(Icons.vpn_key),
                           'confirm new password',
@@ -147,7 +152,9 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
                           (val) => val != newPass
                               ? 'Password doesn\'t match'
                               : null),
-                               SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.02,
+                      ),
                       Container(
                           padding: EdgeInsets.symmetric(
                               horizontal:

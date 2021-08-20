@@ -1,13 +1,13 @@
 import 'dart:async';
 
-import 'package:coderstatus/components/colorscheme.dart';
-import 'package:coderstatus/components/urls.dart';
-import 'package:coderstatus/firebase_layer/getUserInfo.dart';
-import 'package:coderstatus/screens/myDashboardScreen.dart';
-import 'package:coderstatus/screens/peersScreen.dart';
-import 'package:coderstatus/screens/rankingScreen.dart';
-import 'package:coderstatus/screens/searchScreen.dart';
-import 'package:coderstatus/screens/settingScreen.dart';
+import 'package:CoderStatus/components/colorscheme.dart';
+import 'package:CoderStatus/components/urls.dart';
+import 'package:CoderStatus/firebase_layer/getUserInfo.dart';
+import 'package:CoderStatus/screens/myDashboardScreen.dart';
+import 'package:CoderStatus/screens/peersScreen.dart';
+import 'package:CoderStatus/screens/rankingScreen.dart';
+import 'package:CoderStatus/screens/searchScreen.dart';
+import 'package:CoderStatus/screens/settingScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

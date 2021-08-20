@@ -1,14 +1,14 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:coderstatus/components/colorscheme.dart';
-import 'package:coderstatus/components/generalLoader.dart';
-import 'package:coderstatus/components/showAnimatedToast.dart';
-import 'package:coderstatus/screens/forgotPasswordscreen.dart';
-import 'package:coderstatus/home.dart';
-import 'package:coderstatus/firebase_layer/loginUser.dart';
-import 'package:coderstatus/screens/registerEmailidScreen.dart';
-import 'package:coderstatus/screens/verifyEmailScreen.dart';
+import 'package:CoderStatus/components/colorscheme.dart';
+import 'package:CoderStatus/components/generalLoader.dart';
+import 'package:CoderStatus/components/showAnimatedToast.dart';
+import 'package:CoderStatus/screens/forgotPasswordscreen.dart';
+import 'package:CoderStatus/home.dart';
+import 'package:CoderStatus/firebase_layer/loginUser.dart';
+import 'package:CoderStatus/screens/registerEmailidScreen.dart';
+import 'package:CoderStatus/screens/verifyEmailScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';

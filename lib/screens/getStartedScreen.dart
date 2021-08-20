@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:coderstatus/components/colorscheme.dart';
-import 'package:coderstatus/components/myButtons.dart';
-import 'package:coderstatus/screens/signInScreen.dart';
-import 'package:coderstatus/screens/signUpScreen.dart';
+import 'package:CoderStatus/components/colorscheme.dart';
+import 'package:CoderStatus/components/myButtons.dart';
+import 'package:CoderStatus/screens/signInScreen.dart';
+import 'package:CoderStatus/screens/signUpScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:rive/rive.dart';

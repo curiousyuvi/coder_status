@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'dart:io';
-import 'package:coderstatus/components/colorscheme.dart';
-import 'package:coderstatus/components/urls.dart';
-import 'package:coderstatus/firebase_layer/uploadAvatar.dart';
-import 'package:coderstatus/screens/registerBioScreen.dart';
+import 'package:CoderStatus/components/colorscheme.dart';
+import 'package:CoderStatus/components/urls.dart';
+import 'package:CoderStatus/firebase_layer/uploadAvatar.dart';
+import 'package:CoderStatus/screens/registerBioScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

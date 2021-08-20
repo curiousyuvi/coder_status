@@ -1,5 +1,5 @@
-import 'package:coderstatus/components/colorscheme.dart';
-import 'package:coderstatus/components/myButtons.dart';
+import 'package:CoderStatus/components/colorscheme.dart';
+import 'package:CoderStatus/components/myButtons.dart';
 import 'package:flutter/material.dart';
 
 showConfirmationDialog(BuildContext context, String title, String message,

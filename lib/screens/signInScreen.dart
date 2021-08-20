@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:coderstatus/components/generalLoader.dart';
-import 'package:coderstatus/screens/registerCodernameScreen.dart';
-import 'package:coderstatus/screens/signInEmailScreen.dart';
-import 'package:coderstatus/screens/signUpScreen.dart';
+import 'package:CoderStatus/components/generalLoader.dart';
+import 'package:CoderStatus/screens/registerCodernameScreen.dart';
+import 'package:CoderStatus/screens/signInEmailScreen.dart';
+import 'package:CoderStatus/screens/signUpScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';

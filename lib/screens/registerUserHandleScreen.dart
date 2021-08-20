@@ -1,12 +1,12 @@
 import 'dart:async';
 
-import 'package:coderstatus/components/colorscheme.dart';
-import 'package:coderstatus/components/generalLoader.dart';
-import 'package:coderstatus/components/showAnimatedToast.dart';
-import 'package:coderstatus/components/myButtons.dart';
-import 'package:coderstatus/components/myTextFormFields.dart';
-import 'package:coderstatus/firebase_layer/setUserInfo.dart';
-import 'package:coderstatus/components/introSlider.dart';
+import 'package:CoderStatus/components/colorscheme.dart';
+import 'package:CoderStatus/components/generalLoader.dart';
+import 'package:CoderStatus/components/showAnimatedToast.dart';
+import 'package:CoderStatus/components/myButtons.dart';
+import 'package:CoderStatus/components/myTextFormFields.dart';
+import 'package:CoderStatus/firebase_layer/setUserInfo.dart';
+import 'package:CoderStatus/components/introSlider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';

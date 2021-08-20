@@ -1,17 +1,17 @@
-import 'package:coderstatus/components/atcoderDialog.dart';
-import 'package:coderstatus/components/codechefDialog.dart';
-import 'package:coderstatus/components/codeforcesDialog.dart';
-import 'package:coderstatus/components/myDashboardScreenSkeleton.dart';
-import 'package:coderstatus/components/myDividerWithTitle.dart';
-import 'package:coderstatus/components/myRatingCard.dart';
-import 'package:coderstatus/components/spojDialog.dart';
-import 'package:coderstatus/components/urls.dart';
-import 'package:coderstatus/firebase_layer/getUserInfo.dart';
-import 'package:coderstatus/functions/getRating.dart';
+import 'package:CoderStatus/components/atcoderDialog.dart';
+import 'package:CoderStatus/components/codechefDialog.dart';
+import 'package:CoderStatus/components/codeforcesDialog.dart';
+import 'package:CoderStatus/components/myDashboardScreenSkeleton.dart';
+import 'package:CoderStatus/components/myDividerWithTitle.dart';
+import 'package:CoderStatus/components/myRatingCard.dart';
+import 'package:CoderStatus/components/spojDialog.dart';
+import 'package:CoderStatus/components/urls.dart';
+import 'package:CoderStatus/firebase_layer/getUserInfo.dart';
+import 'package:CoderStatus/functions/getRating.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:coderstatus/components/colorscheme.dart';
+import 'package:CoderStatus/components/colorscheme.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
@@ -178,7 +178,7 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
                           Container(
                               height: MediaQuery.of(context).size.height * 0.22,
                               width: MediaQuery.of(context).size.height * 0.22,
-                              child:  MyCircleAvatar(Image.network(avatarurl))),
+                              child: MyCircleAvatar(Image.network(avatarurl))),
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.025,
                           ),

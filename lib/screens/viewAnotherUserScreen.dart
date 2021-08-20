@@ -1,23 +1,23 @@
-import 'package:coderstatus/components/atcoderDialog.dart';
-import 'package:coderstatus/components/codechefDialog.dart';
-import 'package:coderstatus/components/codeforcesDialog.dart';
-import 'package:coderstatus/components/myButtons.dart';
-import 'package:coderstatus/components/myDividerWithTitle.dart';
-import 'package:coderstatus/components/spojDialog.dart';
-import 'package:coderstatus/components/urls.dart';
-import 'package:coderstatus/components/viewAnotherUserScreenSkeleton.dart';
-import 'package:coderstatus/screens/editProfileScreen.dart';
-import 'package:coderstatus/firebase_layer/getUserInfo.dart';
-import 'package:coderstatus/firebase_layer/setUserInfo.dart';
-import 'package:coderstatus/functions/getRating.dart';
+import 'package:CoderStatus/components/atcoderDialog.dart';
+import 'package:CoderStatus/components/codechefDialog.dart';
+import 'package:CoderStatus/components/codeforcesDialog.dart';
+import 'package:CoderStatus/components/myButtons.dart';
+import 'package:CoderStatus/components/myDividerWithTitle.dart';
+import 'package:CoderStatus/components/spojDialog.dart';
+import 'package:CoderStatus/components/urls.dart';
+import 'package:CoderStatus/components/viewAnotherUserScreenSkeleton.dart';
+import 'package:CoderStatus/screens/editProfileScreen.dart';
+import 'package:CoderStatus/firebase_layer/getUserInfo.dart';
+import 'package:CoderStatus/firebase_layer/setUserInfo.dart';
+import 'package:CoderStatus/functions/getRating.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:coderstatus/components/colorscheme.dart';
+import 'package:CoderStatus/components/colorscheme.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:coderstatus/components/myRatingCard.dart';
+import 'package:CoderStatus/components/myRatingCard.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rect_getter/rect_getter.dart';
 import '../components/myAppBar.dart';
@@ -238,7 +238,8 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
                                     MediaQuery.of(context).size.height * 0.17,
                                 width:
                                     MediaQuery.of(context).size.height * 0.17,
-                                child:  MyCircleAvatar(Image.network(avatarurl))),
+                                child:
+                                    MyCircleAvatar(Image.network(avatarurl))),
                             SizedBox(
                               width: MediaQuery.of(context).size.width * 0.15,
                             ),

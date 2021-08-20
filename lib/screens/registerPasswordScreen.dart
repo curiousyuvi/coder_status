@@ -1,10 +1,10 @@
 import 'dart:async';
 
-import 'package:coderstatus/components/colorscheme.dart';
-import 'package:coderstatus/components/showAnimatedToast.dart';
-import 'package:coderstatus/firebase_layer/emailVerification.dart';
-import 'package:coderstatus/screens/signInEmailScreen.dart';
-import 'package:coderstatus/screens/verifyEmailScreen.dart';
+import 'package:CoderStatus/components/colorscheme.dart';
+import 'package:CoderStatus/components/showAnimatedToast.dart';
+import 'package:CoderStatus/firebase_layer/emailVerification.dart';
+import 'package:CoderStatus/screens/signInEmailScreen.dart';
+import 'package:CoderStatus/screens/verifyEmailScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -15,7 +15,7 @@ import 'package:internet_connection_checker/internet_connection_checker.dart';
 import '../components/generalLoader.dart';
 import '../components/myTextFormFields.dart';
 import '../components/myButtons.dart';
-import 'package:coderstatus/firebase_layer/createuser.dart';
+import 'package:CoderStatus/firebase_layer/createuser.dart';
 
 import '../components/noInternet.dart';
 

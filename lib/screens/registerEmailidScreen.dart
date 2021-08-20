@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:coderstatus/components/colorscheme.dart';
-import 'package:coderstatus/components/generalLoader.dart';
-import 'package:coderstatus/screens/signInEmailScreen.dart';
-import 'package:coderstatus/screens/registerPasswordScreen.dart';
+import 'package:CoderStatus/components/colorscheme.dart';
+import 'package:CoderStatus/components/generalLoader.dart';
+import 'package:CoderStatus/screens/signInEmailScreen.dart';
+import 'package:CoderStatus/screens/registerPasswordScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';

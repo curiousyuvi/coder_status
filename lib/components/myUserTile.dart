@@ -1,4 +1,4 @@
-import 'package:coderstatus/screens/viewAnotherUserScreen.dart';
+import 'package:CoderStatus/screens/viewAnotherUserScreen.dart';
 import 'package:flutter/material.dart';
 import 'colorscheme.dart';
 
@@ -61,8 +61,8 @@ class MyUserTile extends StatelessWidget {
                                 color: ColorSchemeClass.lightgrey,
                                 fontFamily: 'young',
                                 fontWeight: FontWeight.bold,
-                                fontSize: MediaQuery.of(context).size.height *
-                                    0.025),
+                                fontSize:
+                                    MediaQuery.of(context).size.height * 0.025),
                           ),
                         ),
                       ),
@@ -78,11 +78,11 @@ class MyUserTile extends StatelessWidget {
                           child: Text(
                             '@' + codername,
                             style: TextStyle(
-                                color: ColorSchemeClass.lightgrey
-                                    .withOpacity(0.6),
+                                color:
+                                    ColorSchemeClass.lightgrey.withOpacity(0.6),
                                 fontFamily: 'young',
-                                fontSize: MediaQuery.of(context).size.height *
-                                    0.02),
+                                fontSize:
+                                    MediaQuery.of(context).size.height * 0.02),
                           ),
                         ),
                       ),

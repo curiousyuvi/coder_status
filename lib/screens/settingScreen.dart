@@ -1,15 +1,15 @@
-import 'package:coderstatus/screens/aboutDeveloperScreen.dart';
-import 'package:coderstatus/components/colorscheme.dart';
-import 'package:coderstatus/components/confirmationDialog.dart';
-import 'package:coderstatus/components/generalLoader.dart';
-import 'package:coderstatus/components/myAppBar.dart';
-import 'package:coderstatus/components/mySettingTiles.dart';
-import 'package:coderstatus/screens/deleteAccountScreen.dart';
-import 'package:coderstatus/screens/editProfileScreen.dart';
-import 'package:coderstatus/firebase_layer/deleteUser.dart';
-import 'package:coderstatus/firebase_layer/logoutUser.dart';
-import 'package:coderstatus/screens/updatePasswordScreen.dart';
-import 'package:coderstatus/screens/editUserHandlesScreen.dart';
+import 'package:CoderStatus/screens/aboutDeveloperScreen.dart';
+import 'package:CoderStatus/components/colorscheme.dart';
+import 'package:CoderStatus/components/confirmationDialog.dart';
+import 'package:CoderStatus/components/generalLoader.dart';
+import 'package:CoderStatus/components/myAppBar.dart';
+import 'package:CoderStatus/components/mySettingTiles.dart';
+import 'package:CoderStatus/screens/deleteAccountScreen.dart';
+import 'package:CoderStatus/screens/editProfileScreen.dart';
+import 'package:CoderStatus/firebase_layer/deleteUser.dart';
+import 'package:CoderStatus/firebase_layer/logoutUser.dart';
+import 'package:CoderStatus/screens/updatePasswordScreen.dart';
+import 'package:CoderStatus/screens/editUserHandlesScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
@@ -79,20 +79,19 @@ class _SettingScreenState extends State<SettingScreen> {
                       'Account & Security',
                       [
                         GestureDetector(
-                                onTap: () {
-                                  Navigator.push(context,
-                                      MaterialPageRoute(builder: (context) {
-                                    return UpdatePasswordScreen();
-                                  }));
-                                },
-                                child: MyChildListTile(
-                                    Icon(
-                                      FontAwesomeIcons.key,
-                                      color: ColorSchemeClass.dark,
-                                    ),
-                                    'Change Password'),
+                          onTap: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return UpdatePasswordScreen();
+                            }));
+                          },
+                          child: MyChildListTile(
+                              Icon(
+                                FontAwesomeIcons.key,
+                                color: ColorSchemeClass.dark,
                               ),
-                           
+                              'Change Password'),
+                        ),
                         GestureDetector(
                           onTap: () {
                             if (FirebaseAuth.instance.currentUser.photoURL ==

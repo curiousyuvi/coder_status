@@ -1,4 +1,4 @@
-import 'package:coderstatus/components/myCircleAvatar.dart';
+import 'package:CoderStatus/components/myCircleAvatar.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'colorscheme.dart';
@@ -70,10 +70,9 @@ class TopThreeRankingCard extends StatelessWidget {
                         SizedBox(
                             height: MediaQuery.of(context).size.height * 0.02),
                         Container(
-                          height: MediaQuery.of(context).size.width * 0.3,
-                          width: MediaQuery.of(context).size.width * 0.3,
-                          child:  MyCircleAvatar(Image.network(avatarurl2))
-                        ),
+                            height: MediaQuery.of(context).size.width * 0.3,
+                            width: MediaQuery.of(context).size.width * 0.3,
+                            child: MyCircleAvatar(Image.network(avatarurl2))),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.03,
                         ),
@@ -145,9 +144,9 @@ class TopThreeRankingCard extends StatelessWidget {
                               height:
                                   MediaQuery.of(context).size.height * 0.02),
                           Container(
-                            height: MediaQuery.of(context).size.width * 0.3,
-                            width: MediaQuery.of(context).size.width * 0.3,
-                            child:  MyCircleAvatar(Image.network(avatarurl3))),
+                              height: MediaQuery.of(context).size.width * 0.3,
+                              width: MediaQuery.of(context).size.width * 0.3,
+                              child: MyCircleAvatar(Image.network(avatarurl3))),
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.03,
                           ),
@@ -228,11 +227,9 @@ class TopThreeRankingCard extends StatelessWidget {
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.02),
                   Container(
-                    height: MediaQuery.of(context).size.width * 0.4,
-                    width: MediaQuery.of(context).size.width * 0.4,
-                    child:
-                      MyCircleAvatar(Image.network(avatarurl1))
-                  ),
+                      height: MediaQuery.of(context).size.width * 0.4,
+                      width: MediaQuery.of(context).size.width * 0.4,
+                      child: MyCircleAvatar(Image.network(avatarurl1))),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.03,
                   ),
