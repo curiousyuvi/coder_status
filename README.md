@@ -5,7 +5,7 @@ A flutter app for *Competitive Programmers*, in this app you create a profile an
 
 ## Preview
 
-![Dashboard](<img src="https://github.com/curiousyuvi/CoderStatus/READMEImages/Preview1.jpg?raw=true" height="20" align="center" >)
+![Preview 1](https://raw.github.com/curiousyuvi/CoderStatus/READMEImages/Preview1.jpg)
 
 ## Get Started
 
