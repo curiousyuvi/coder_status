@@ -5,7 +5,9 @@ A flutter app for *Competitive Programmers*, in this app you create a profile an
 
 ## Preview
 
-![Preview 1](https://raw.github.com/curiousyuvi/CoderStatus/READMEImages/Preview1.jpg)
+<img src="READMEImages/Preview1.jpg" height="500" align="center" >
+<img src="READMEImages/Preview2.jpg" height="500" align="center" >
+<img src="READMEImages/Preview3.jpg" height="500" align="center" >
 
 ## Get Started
 
