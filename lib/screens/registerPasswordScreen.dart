@@ -162,6 +162,9 @@ class _RegisterPasswordScreenState extends State<RegisterPasswordScreen> {
                                   fontFamily: 'young'),
                               textAlign: TextAlign.center),
                         )),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.02,
+                        ),
                         MyTextFormField(
                             Icon(FontAwesomeIcons.key), 'password', true,
                             (val) {
@@ -173,6 +176,9 @@ class _RegisterPasswordScreenState extends State<RegisterPasswordScreen> {
                             (val) => val.trim().length < 6
                                 ? 'Password must contain atleast 6 characters'
                                 : null),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.02,
+                        ),
                         MyTextFormField(
                             Icon(FontAwesomeIcons.key),
                             'confirm password',
@@ -182,6 +188,9 @@ class _RegisterPasswordScreenState extends State<RegisterPasswordScreen> {
                             (val) => val != password
                                 ? 'Password doesn\'t match'
                                 : null),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.02,
+                        ),
                         Container(
                           padding: EdgeInsets.symmetric(
                               horizontal:

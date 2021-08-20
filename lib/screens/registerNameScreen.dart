@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:coderstatus/components/colorscheme.dart';
 import 'package:coderstatus/screens/registerCodernameScreen.dart';
 import 'package:flutter/cupertino.dart';

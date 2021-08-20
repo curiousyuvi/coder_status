@@ -2,8 +2,6 @@ import 'dart:async';
 
 import 'package:coderstatus/components/colorscheme.dart';
 import 'package:coderstatus/screens/registerAvatarScreen.dart';
-import 'package:coderstatus/screens/registerBioScreen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -52,16 +50,10 @@ class _RegistercodernamescreenState extends State<Registercodernamescreen> {
     FocusScopeNode currentFocus = FocusScope.of(context);
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
-      if (FirebaseAuth.instance.currentUser.photoURL == null) {
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return Registeravatarscreen(name, codername);
-        }));
-      } else {
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return Registerbioscreen(
-              name, codername, FirebaseAuth.instance.currentUser.photoURL);
-        }));
-      }
+
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return Registeravatarscreen(name, codername);
+      }));
     }
   }
 

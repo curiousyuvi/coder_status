@@ -4,6 +4,7 @@ import 'package:coderstatus/components/colorscheme.dart';
 import 'package:coderstatus/components/urls.dart';
 import 'package:coderstatus/firebase_layer/uploadAvatar.dart';
 import 'package:coderstatus/screens/registerBioScreen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -45,6 +46,11 @@ class _RegisteravatarscreenState extends State<Registeravatarscreen> {
 
       if (!hasInternet) NoInternet(this.context);
     });
+
+    if (FirebaseAuth.instance.currentUser.photoURL != null) {
+      urltobeset = FirebaseAuth.instance.currentUser.photoURL;
+      avatarshowimage = Image(image: NetworkImage(urltobeset));
+    }
   }
 
   @override
@@ -259,7 +265,11 @@ class _RegisteravatarscreenState extends State<Registeravatarscreen> {
                               child: Container(
                             child: MyOutlineButton(
                                 ColorSchemeClass.lightgrey, 'Skip', () {
-                              urltobeset = Urls.avatar1url;
+                              urltobeset = FirebaseAuth
+                                          .instance.currentUser.photoURL ==
+                                      null
+                                  ? Urls.avatar1url
+                                  : FirebaseAuth.instance.currentUser.photoURL;
                               Navigator.push(context,
                                   MaterialPageRoute(builder: (context) {
                                 return Registerbioscreen(
