@@ -5,7 +5,7 @@ A flutter app with a *Firebase Backend* for *Competitive Programmers*, in this a
 
 ## Preview
 
-<img src="READMEImages/Preview1.png" height="500" align="center" > <img src="READMEImages/Preview2.png" height="500" align="center" > <img src="READMEImages/Preview3.png" height="500" align="center" >
+<img src="READMEImages/Preview1.png" height="425" align="center" > <img src="READMEImages/Preview2.png" height="425" align="center" > <img src="READMEImages/Preview3.png" height="425" align="center" >
 
 ## Get Started
 
