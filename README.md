@@ -1,7 +1,11 @@
 
 # CoderStatus App
 
-A flutter app for *Competitive Programmers*, in this app you create a profile and add your User Handles from different Competitive Programming websites and your *Ratings* will be displayed in your dashboard. You can add your friends as *Peers*, see their progress and also see *ranking* among your peers for a specific competitive website 
+A flutter app for *Competitive Programmers*, in this app you create a profile and add your User Handles from different Competitive Programming websites and your *Ratings* will be displayed in your dashboard. You can add your friends as *Peers*, see their progress and also see *ranking* among your peers for a specific competitive website
+
+## Preview
+
+![Dashboard](<img src="https://github.com/curiousyuvi/CoderStatus/READMEImages/Preview1.jpg?raw=true" height="20" align="center" >)
 
 ## Get Started
 
