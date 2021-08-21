@@ -1,4 +1,4 @@
-package com.example.codersstatus
+package com.curiousyuvi.coderstatus
 
 import io.flutter.embedding.android.FlutterActivity
 
