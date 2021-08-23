@@ -1,4 +1,4 @@
-import 'package:CoderStatus/components/myCircleAvatar.dart';
+import 'package:coder_status/components/myCircleAvatar.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'colorscheme.dart';

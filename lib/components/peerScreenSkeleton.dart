@@ -1,5 +1,5 @@
-import 'package:CoderStatus/components/colorscheme.dart';
-import 'package:CoderStatus/components/myAppBar.dart';
+import 'package:coder_status/components/colorscheme.dart';
+import 'package:coder_status/components/myAppBar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';

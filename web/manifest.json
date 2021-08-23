@@ -1,6 +1,6 @@
 {
-  "name": "CoderStatus",
-  "short_name": "CoderStatus",
+  "name": "coder_status",
+  "short_name": "coder_status",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#0175C2",

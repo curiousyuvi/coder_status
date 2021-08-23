@@ -1,8 +1,8 @@
-import 'package:CoderStatus/components/colorscheme.dart';
-import 'package:CoderStatus/components/myRankingUserTile.dart';
-import 'package:CoderStatus/components/rankingScreenSkeleton.dart';
-import 'package:CoderStatus/firebase_layer/getUserInfo.dart';
-import 'package:CoderStatus/functions/getRating.dart';
+import 'package:coder_status/components/colorscheme.dart';
+import 'package:coder_status/components/myRankingUserTile.dart';
+import 'package:coder_status/components/rankingScreenSkeleton.dart';
+import 'package:coder_status/firebase_layer/getUserInfo.dart';
+import 'package:coder_status/functions/getRating.dart';
 import 'package:flutter/material.dart';
 import '../components/myAppBar.dart';
 import '../components/myButtons.dart';

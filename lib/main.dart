@@ -1,8 +1,8 @@
 import 'dart:async';
-import 'package:CoderStatus/components/colorscheme.dart';
-import 'package:CoderStatus/firebase_layer/authenticate.dart';
-import 'package:CoderStatus/firebase_layer/googleSignInProvider.dart';
-import 'package:CoderStatus/components/noInternet.dart';
+import 'package:coder_status/components/colorscheme.dart';
+import 'package:coder_status/firebase_layer/authenticate.dart';
+import 'package:coder_status/firebase_layer/googleSignInProvider.dart';
+import 'package:coder_status/components/noInternet.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:CoderStatus/components/colorscheme.dart';
-import 'package:CoderStatus/components/showAnimatedToast.dart';
-import 'package:CoderStatus/firebase_layer/resetPassword.dart';
-import 'package:CoderStatus/screens/signInEmailScreen.dart';
+import 'package:coder_status/components/colorscheme.dart';
+import 'package:coder_status/components/showAnimatedToast.dart';
+import 'package:coder_status/firebase_layer/resetPassword.dart';
+import 'package:coder_status/screens/signInEmailScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';

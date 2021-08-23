@@ -1,4 +1,4 @@
-import 'package:CoderStatus/components/colorscheme.dart';
+import 'package:coder_status/components/colorscheme.dart';
 import 'package:flutter/material.dart';
 
 import '../home.dart';

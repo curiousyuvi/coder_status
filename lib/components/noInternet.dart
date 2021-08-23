@@ -1,5 +1,5 @@
-import 'package:CoderStatus/components/colorscheme.dart';
-import 'package:CoderStatus/components/myButtons.dart';
+import 'package:coder_status/components/colorscheme.dart';
+import 'package:coder_status/components/myButtons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

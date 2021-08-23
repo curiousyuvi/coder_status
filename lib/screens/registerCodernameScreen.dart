@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:CoderStatus/components/colorscheme.dart';
-import 'package:CoderStatus/screens/registerAvatarScreen.dart';
+import 'package:coder_status/components/colorscheme.dart';
+import 'package:coder_status/screens/registerAvatarScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';

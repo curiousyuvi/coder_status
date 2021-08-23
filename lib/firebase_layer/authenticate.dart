@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:CoderStatus/components/generalLoader.dart';
-import 'package:CoderStatus/screens/getStartedScreen.dart';
-import 'package:CoderStatus/home.dart';
-import 'package:CoderStatus/screens/registerNameScreen.dart';
-import 'package:CoderStatus/screens/verifyEmailScreen.dart';
+import 'package:coder_status/components/generalLoader.dart';
+import 'package:coder_status/screens/getStartedScreen.dart';
+import 'package:coder_status/home.dart';
+import 'package:coder_status/screens/registerNameScreen.dart';
+import 'package:coder_status/screens/verifyEmailScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
