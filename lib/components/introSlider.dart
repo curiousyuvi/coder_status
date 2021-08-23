@@ -45,7 +45,31 @@ class _IntroSliderState extends State<IntroSlider> {
                             fontFamily: 'young',
                             fontSize: MediaQuery.of(context).size.width * 0.05),
                       ),
-                    )
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.04,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        if (currentPage == 2) {
+                          Navigator.pushAndRemoveUntil(context,
+                              MaterialPageRoute(builder: (context) {
+                            return Home();
+                          }), ModalRoute.withName('/home'));
+                        } else {
+                          controller.animateToPage(currentPage + 1,
+                              duration: Duration(milliseconds: 300),
+                              curve: Curves.easeInOut);
+                        }
+                      },
+                      child: Text(
+                        'Next',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'young',
+                            fontSize: MediaQuery.of(context).size.width * 0.05),
+                      ),
+                    ),
                   ],
                 ),
                 Row(
