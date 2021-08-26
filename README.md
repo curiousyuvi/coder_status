@@ -1,10 +1,18 @@
-
 # CoderStatus App
-<img src="readmeAssets/appBannerPlaystore.jpg" height="425" align="center" >
 
-A *flutter* app that uses *web-scraping* and has a *Firebase Backend*, this app is for competitive programmers in this app you create a profile and add your User Handles from different Competitive Programming websites and your Ratings will be displayed in your dashboard. You can add your friends as Peers, see their progress and also see ranking among your peers for a specific competitive website.
+<style>
+   .imgCentered {
+      display: flex;
+      justify-content: center;
+   }
+</style>
+<img class="imgCentered" src="readmeAssets/appBannerPlaystore.jpg" height="425">
 
->Do you know why you play multi-player games with your friends so seriously? Even though you know it's just a game, that's because you want to rise in the ranks among your friends in that game and that gives you a feeling of accomplishment. Ever wondered if you can get the same strife towards your Competitive Problem Solving, turns out you can with this app.
+A _flutter_ app that uses _web-scraping_ and has a _Firebase Backend_, this app is for competitive programmers in this app you create a profile and add your User Handles from different Competitive Programming websites and your Ratings will be displayed in your dashboard. You can add your friends as Peers, see their progress and also see ranking among your peers for a specific competitive website.
+
+<a class="imgCentered" href='https://play.google.com/store/apps/details?id=com.curiousyuvi.coderstatus' ><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' height=70px/></a>
+
+> Do you know why you play multi-player games with your friends so seriously? Even though you know it's just a game, that's because you want to rise in the ranks among your friends in that game and that gives you a feeling of accomplishment. Ever wondered if you can get the same strife towards your Competitive Problem Solving, turns out you can with this app.
 
 <br>
 
@@ -15,13 +23,15 @@ A *flutter* app that uses *web-scraping* and has a *Firebase Backend*, this app 
 <br>
 
 ## Rive Animations
-   These are the Rive Animations I have made for my project, I have Open Sourced all of them you can check them out [here](https://rive.app/curiousyuvi/)
+
+These are the Rive Animations I have made for my project, I have Open Sourced all of them you can check them out [here](https://rive.app/curiousyuvi/)
 
 <img src="readmeAssets/trophyHovering.gif" height="200" align="center" > <img src="readmeAssets/trophyCrying.gif" height="200" align="center" > <img src="readmeAssets/crownRotating.gif" height="200" align="center" > <img src="readmeAssets/searching.gif" height="200" align="center" > <img src="readmeAssets/noFriends.gif" height="200" align="center" >
 
 <br>
 
 ## Supported Competitive Websites
+
 - **Codeforces**
 - **Codechef**
 - **Atcoder**
@@ -36,6 +46,7 @@ A *flutter* app that uses *web-scraping* and has a *Firebase Backend*, this app 
 You need to have **Flutter SDK** installed , if not install it from [here](https://flutter.dev/docs/get-started/install)
 
 ### Installing
+
 Clone this repository, open it in an IDE and in the root directory run :
 
 `flutter pub get`

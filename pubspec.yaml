@@ -1,8 +1,8 @@
 name: coder_status
-description: A new Flutter project.
+description: An app to spark up the Competitive Programming strife among your peers.
 
 publish_to: "none"
-version: 1.0.0+1
+version: 1.0.0+2
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
