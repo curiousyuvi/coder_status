@@ -1,16 +1,12 @@
 import 'package:coder_status/components/colorscheme.dart';
 import 'package:coder_status/components/confirmationDialog.dart';
 import 'package:coder_status/components/generalLoader.dart';
-import 'package:coder_status/components/showAnimatedToast.dart';
-import 'package:coder_status/components/myButtons.dart';
 import 'package:coder_status/components/myTextFormFields.dart';
 import 'package:coder_status/firebase_layer/getUserInfo.dart';
 import 'package:coder_status/firebase_layer/setUserInfo.dart';
-import 'package:coder_status/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:rive/rive.dart';
 
 import '../components/myAppBar.dart';
 
@@ -40,7 +36,6 @@ class _EditUserHandlesScreenState extends State<EditUserHandlesScreen> {
   }
 
   void _submit() async {
-    FocusScopeNode currentFocus = FocusScope.of(context);
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
       setState(() {

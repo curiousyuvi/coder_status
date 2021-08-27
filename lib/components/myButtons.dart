@@ -11,7 +11,8 @@ class MyButton extends StatelessWidget {
   IconData iconData;
 
   MyButton(Color buttoncolor, String title, Function dofunction,
-      [IconData iconData = null, Color titlecolor = Colors.white]) {
+      [IconData iconData = Icons.no_encryption,
+      Color titlecolor = Colors.white]) {
     this.prominent = prominent;
     this.title = title;
     this.dofunction = dofunction;
@@ -48,7 +49,7 @@ class MyButton extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              iconData == null
+              iconData == Icons.no_encryption
                   ? SizedBox.shrink()
                   : Row(
                       children: [
@@ -63,12 +64,18 @@ class MyButton extends StatelessWidget {
                       ],
                     ),
               Flexible(
-                child: Text(
-                  title,
-                  style: TextStyle(
-                      color: titlecolor,
-                      fontFamily: 'young',
-                      fontSize: MediaQuery.of(context).size.height * 0.025),
+                child: Container(
+                  child: FittedBox(
+                    fit: BoxFit.contain,
+                    child: Text(
+                      title,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: titlecolor,
+                          fontFamily: 'young',
+                          fontSize: MediaQuery.of(context).size.height * 0.025),
+                    ),
+                  ),
                 ),
               ),
             ],
@@ -79,6 +86,7 @@ class MyButton extends StatelessWidget {
   }
 }
 
+//ignore: must_be_immutable
 class MyOutlineButton extends StatelessWidget {
   Function dofunction;
   bool prominent;
@@ -87,7 +95,7 @@ class MyOutlineButton extends StatelessWidget {
   String title;
   IconData iconData;
   MyOutlineButton(Color buttoncolor, String title, Function dofunction,
-      [IconData iconData = null]) {
+      [IconData iconData = Icons.no_encryption]) {
     this.prominent = prominent;
     this.title = title;
     this.dofunction = dofunction;
@@ -115,7 +123,7 @@ class MyOutlineButton extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              iconData == null
+              iconData == Icons.no_encryption
                   ? SizedBox()
                   : Row(
                       children: [
@@ -130,13 +138,18 @@ class MyOutlineButton extends StatelessWidget {
                       ],
                     ),
               Flexible(
-                child: Text(
-                  title,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: titlecolor,
-                      fontFamily: 'young',
-                      fontSize: MediaQuery.of(context).size.height * 0.025),
+                child: Container(
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      title,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: titlecolor,
+                          fontFamily: 'young',
+                          fontSize: MediaQuery.of(context).size.height * 0.025),
+                    ),
+                  ),
                 ),
               ),
             ],

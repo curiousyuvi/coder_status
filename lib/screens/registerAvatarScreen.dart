@@ -38,13 +38,13 @@ class _RegisteravatarscreenState extends State<Registeravatarscreen> {
   StreamSubscription subscription;
 
   @override
-  Future<void> initState() {
+  initState() {
     super.initState();
 
     subscription = InternetConnectionChecker().onStatusChange.listen((status) {
       final hasInternet = status == InternetConnectionStatus.connected;
 
-      if (!hasInternet) NoInternet(this.context);
+      if (!hasInternet) noInternet(this.context);
     });
 
     if (FirebaseAuth.instance.currentUser.photoURL != null) {

@@ -1,6 +1,7 @@
 import 'package:coder_status/components/colorscheme.dart';
 import 'package:flutter/material.dart';
 
+//ignore: must_be_immutable
 class MyAvatarSelection extends StatelessWidget {
   Image avatarimage;
   double borderwidth = 2;

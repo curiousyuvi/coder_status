@@ -24,6 +24,7 @@ import '../components/myAppBar.dart';
 import '../components/myCircleAvatar.dart';
 import 'myDashboardScreen.dart';
 
+//ignore: must_be_immutable
 class ViewAnotherUserScreen extends StatefulWidget {
   String uid = '';
   ViewAnotherUserScreen(String uid) {

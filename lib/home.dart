@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:coder_status/components/colorscheme.dart';
 import 'package:coder_status/components/urls.dart';
 import 'package:coder_status/firebase_layer/getUserInfo.dart';
@@ -55,7 +54,7 @@ class HomeState extends State<Home> {
 
   readyUserData() async {
     if (!await InternetConnectionChecker().hasConnection) {
-      NoInternet(this.context);
+      noInternet(this.context);
       return;
     }
     avatarurl = await GetUserInfo.getUserAvatarUrl();
@@ -68,14 +67,14 @@ class HomeState extends State<Home> {
   Future futureFunction;
 
   @override
-  Future<void> initState() {
+  initState() {
     super.initState();
     futureFunction = readyUserData();
 
     subscription = InternetConnectionChecker().onStatusChange.listen((status) {
       final hasInternet = status == InternetConnectionStatus.connected;
 
-      if (!hasInternet) NoInternet(this.context);
+      if (!hasInternet) noInternet(this.context);
     });
   }
 

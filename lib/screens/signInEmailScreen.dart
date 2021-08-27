@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coder_status/components/colorscheme.dart';
 import 'package:coder_status/components/generalLoader.dart';
@@ -37,13 +36,13 @@ class _SignInEmailScreenState extends State<SignInEmailScreen> {
   StreamSubscription subscription;
 
   @override
-  Future<void> initState() {
+  initState() {
     super.initState();
 
     subscription = InternetConnectionChecker().onStatusChange.listen((status) {
       final hasInternet = status == InternetConnectionStatus.connected;
 
-      if (!hasInternet) NoInternet(this.context);
+      if (!hasInternet) noInternet(this.context);
     });
   }
 
@@ -59,7 +58,6 @@ class _SignInEmailScreenState extends State<SignInEmailScreen> {
   bool isLoading = false;
 
   void _submit() async {
-    FocusScopeNode currentFocus = FocusScope.of(context);
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
       setState(() {

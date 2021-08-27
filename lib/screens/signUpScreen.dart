@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coder_status/components/generalLoader.dart';
 import 'package:coder_status/screens/registerCodernameScreen.dart';
@@ -25,13 +24,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
   StreamSubscription subscription;
 
   @override
-  Future<void> initState() {
+  initState() {
     super.initState();
 
     subscription = InternetConnectionChecker().onStatusChange.listen((status) {
       final hasInternet = status == InternetConnectionStatus.connected;
 
-      if (!hasInternet) NoInternet(this.context);
+      if (!hasInternet) noInternet(this.context);
     });
   }
 

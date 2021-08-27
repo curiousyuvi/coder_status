@@ -89,7 +89,6 @@ class SetUserInfo {
     final uid = user.uid;
 
     if (peers == null) {
-      List<String> emptyList = [];
       peers = [];
     }
 

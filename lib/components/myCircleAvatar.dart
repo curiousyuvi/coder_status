@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:coder_status/components/colorscheme.dart';
 
+//ignore: must_be_immutable
 class MyCircleAvatar extends StatelessWidget {
   Image avatarimage;
   MyCircleAvatar(this.avatarimage);

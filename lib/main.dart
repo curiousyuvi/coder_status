@@ -30,6 +30,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  // ignore: cancel_subscriptions
   StreamSubscription subscription;
 
   @override
@@ -38,7 +39,7 @@ class _MyAppState extends State<MyApp> {
     InternetConnectionChecker().onStatusChange.listen((status) {
       final hasInternet = status == InternetConnectionStatus.connected;
 
-      if (!hasInternet) NoInternet(context);
+      if (!hasInternet) noInternet(context);
     });
   }
 

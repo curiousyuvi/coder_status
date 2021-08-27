@@ -12,6 +12,7 @@ void showAnimatedToast(BuildContext context, String headline, bool alert) {
       fadeDuration: 700);
 }
 
+//ignore: must_be_immutable
 class AnimatedToast extends StatefulWidget {
   String headline = '';
   bool alert;

@@ -2,11 +2,10 @@ import 'package:coder_status/components/colorscheme.dart';
 import 'package:coder_status/components/myButtons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:rive/rive.dart';
 
-NoInternet(BuildContext context) {
+noInternet(BuildContext context) {
   OverlayState overlayState = Overlay.of(context);
   OverlayEntry overlayEntry;
   overlayEntry = OverlayEntry(builder: (context) {

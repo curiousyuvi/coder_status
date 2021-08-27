@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'colorscheme.dart';
 
+//ignore: must_be_immutable
 class TopThreeRankingCard extends StatelessWidget {
   String avatarurl1 = '',
       avatarurl2 = '',

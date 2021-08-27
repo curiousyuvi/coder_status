@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:coder_status/components/colorscheme.dart';
 import 'package:coder_status/components/generalLoader.dart';
 import 'package:coder_status/screens/signInEmailScreen.dart';
@@ -27,13 +26,13 @@ class _RegisterEmailidScreenState extends State<RegisterEmailidScreen> {
   StreamSubscription subscription;
 
   @override
-  Future<void> initState() {
+  initState() {
     super.initState();
 
     subscription = InternetConnectionChecker().onStatusChange.listen((status) {
       final hasInternet = status == InternetConnectionStatus.connected;
 
-      if (!hasInternet) NoInternet(this.context);
+      if (!hasInternet) noInternet(this.context);
     });
   }
 
@@ -44,7 +43,6 @@ class _RegisterEmailidScreenState extends State<RegisterEmailidScreen> {
   }
 
   void _submit() async {
-    FocusScopeNode currentFocus = FocusScope.of(context);
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
 

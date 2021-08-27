@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:coder_status/components/colorscheme.dart';
 import 'package:coder_status/screens/registerAvatarScreen.dart';
 import 'package:flutter/cupertino.dart';
@@ -30,13 +29,13 @@ class _RegistercodernamescreenState extends State<Registercodernamescreen> {
   StreamSubscription subscription;
 
   @override
-  Future<void> initState() {
+  initState() {
     super.initState();
 
     subscription = InternetConnectionChecker().onStatusChange.listen((status) {
       final hasInternet = status == InternetConnectionStatus.connected;
 
-      if (!hasInternet) NoInternet(this.context);
+      if (!hasInternet) noInternet(this.context);
     });
   }
 
@@ -47,7 +46,6 @@ class _RegistercodernamescreenState extends State<Registercodernamescreen> {
   }
 
   void _submit() {
-    FocusScopeNode currentFocus = FocusScope.of(context);
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
 

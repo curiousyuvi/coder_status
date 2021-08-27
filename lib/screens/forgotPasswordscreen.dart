@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:coder_status/components/colorscheme.dart';
 import 'package:coder_status/components/showAnimatedToast.dart';
 import 'package:coder_status/firebase_layer/resetPassword.dart';
@@ -35,13 +34,13 @@ class _ForgotpasswordscreenState extends State<Forgotpasswordscreen> {
   StreamSubscription subscription;
 
   @override
-  Future<void> initState() {
+  initState() {
     super.initState();
 
     subscription = InternetConnectionChecker().onStatusChange.listen((status) {
       final hasInternet = status == InternetConnectionStatus.connected;
 
-      if (!hasInternet) NoInternet(this.context);
+      if (!hasInternet) noInternet(this.context);
     });
   }
 
@@ -52,7 +51,6 @@ class _ForgotpasswordscreenState extends State<Forgotpasswordscreen> {
   }
 
   void _submit() {
-    FocusScopeNode currentFocus = FocusScope.of(context);
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'colorscheme.dart';
 
+//ignore: must_be_immutable
 class MyRankingUserTile extends StatelessWidget {
   String avatarUrl, userHandle, rating;
   int rank;

@@ -103,8 +103,8 @@ class _SettingScreenState extends State<SettingScreen> {
                             } else {
                               showConfirmationDialog(
                                   this.context,
-                                  'Delete Account',
-                                  'If you continue, your account will be permanently deleted and all your account\'s data will be lost.\nDo you wish to continue',
+                                  'CONFIRM ACCOUNT DELETION',
+                                  'If you accept your account will be deleted permanently. Do you want to continue?',
                                   () async {
                                 setState(() {
                                   isLoading = true;
@@ -113,7 +113,7 @@ class _SettingScreenState extends State<SettingScreen> {
                                 await GoogleSignIn().disconnect();
                                 await logout(context);
                                 Phoenix.rebirth(context);
-                              }, false, FontAwesomeIcons.exclamationTriangle);
+                              }, false, FontAwesomeIcons.trash);
                             }
                           },
                           child: MyChildListTile(

@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-Future<User> login(String email, String password) async {
+login(String email, String password) async {
   FirebaseAuth _auth = FirebaseAuth.instance;
 
   try {
@@ -9,7 +9,6 @@ Future<User> login(String email, String password) async {
         .user;
 
     if (user != null) {
-      final url = user.photoURL;
       return user;
     } else {
       return user;

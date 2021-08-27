@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
-
 import 'colorscheme.dart';
-import 'myAppBar.dart';
 
 class RankingScreenSkeleton extends StatefulWidget {
   @override
@@ -322,6 +320,7 @@ class TopThreeSkeleton extends StatelessWidget {
   }
 }
 
+//ignore: must_be_immutable
 class MyRankingUserTileSkeleton extends StatelessWidget {
   int rank;
   MyRankingUserTileSkeleton(this.rank);

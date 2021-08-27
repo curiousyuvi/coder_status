@@ -2,6 +2,7 @@ import 'package:coder_status/components/colorscheme.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 
+//ignore: must_be_immutable
 class GeneralLoader extends StatelessWidget {
   String heading;
 
@@ -38,6 +39,7 @@ class GeneralLoader extends StatelessWidget {
   }
 }
 
+//ignore: must_be_immutable
 class GeneralLoaderTransparent extends StatelessWidget {
   String heading;
 

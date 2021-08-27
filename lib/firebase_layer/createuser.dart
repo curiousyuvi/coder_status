@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-Future<User> createAccount(String email, String password) async {
+createAccount(String email, String password) async {
   FirebaseAuth _auth = FirebaseAuth.instance;
 
   try {
@@ -13,10 +13,4 @@ Future<User> createAccount(String email, String password) async {
       return user;
     }
   } catch (e) {}
-}
-
-Future<User> createAccountWithGoogle() async {
-  FirebaseAuth _auth = FirebaseAuth.instance;
-
-  try {} catch (e) {}
 }

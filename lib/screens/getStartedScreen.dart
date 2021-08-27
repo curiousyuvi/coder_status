@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:coder_status/components/colorscheme.dart';
 import 'package:coder_status/components/myButtons.dart';
 import 'package:coder_status/screens/signInScreen.dart';
@@ -21,13 +20,13 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
   StreamSubscription subscription;
 
   @override
-  Future<void> initState() {
+  initState() {
     super.initState();
 
     subscription = InternetConnectionChecker().onStatusChange.listen((status) {
       final hasInternet = status == InternetConnectionStatus.connected;
 
-      if (!hasInternet) NoInternet(this.context);
+      if (!hasInternet) noInternet(this.context);
     });
   }
 

@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 //Add below as parent to myAppBar :
 //PreferredSize( preferredSize: Size.fromHeight(MediaQuery.of(context).size.height * 0.12),
 
+//ignore: must_be_immutable
 class MyAppBar extends StatelessWidget {
   String title;
   MyAppBar(String title) {
@@ -27,6 +28,7 @@ class MyAppBar extends StatelessWidget {
   }
 }
 
+//ignore: must_be_immutable
 class MyAppBarWithBack extends StatelessWidget {
   String title;
   MyAppBarWithBack(String title) {
@@ -59,6 +61,7 @@ class MyAppBarWithBack extends StatelessWidget {
   }
 }
 
+//ignore: must_be_immutable
 class MyAppBarWithBackAndDone extends StatelessWidget {
   String title;
   Function function;

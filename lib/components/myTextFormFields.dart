@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'colorscheme.dart';
 import 'constants.dart';
 
+//ignore: must_be_immutable
 class MyTextFormField extends StatelessWidget {
   Icon tficon;
   String tfhintText;
@@ -19,7 +20,7 @@ class MyTextFormField extends StatelessWidget {
       Function onchangedfunction,
       TextInputType textinputtype,
       Function validation,
-      [TextEditingController textEditingController = null,
+      [TextEditingController textEditingController,
       Color bordercolor = ColorSchemeClass.primarygreen]) {
     this.tficon = tficon;
     this.tfhintText = tfhintText;
@@ -35,8 +36,8 @@ class MyTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-          horizontal: MediaQuery.of(context).size.width * 0.02,
-        ),
+        horizontal: MediaQuery.of(context).size.width * 0.02,
+      ),
       child: TextFormField(
         textAlignVertical: TextAlignVertical.center,
         controller: textEditingController,
@@ -47,9 +48,7 @@ class MyTextFormField extends StatelessWidget {
         obscureText: isobscure,
         style: TextStyle(
             color: Colors.white,
-            
             fontFamily: 'young',
-            
             fontSize: 17,
             fontWeight: FontWeight.normal),
         decoration: myInputDecoration.copyWith(
@@ -64,6 +63,7 @@ class MyTextFormField extends StatelessWidget {
   }
 }
 
+//ignore: must_be_immutable
 class MyPassageTextEormField extends StatelessWidget {
   String tfhintText;
   Function onchangedfunction;
@@ -75,7 +75,7 @@ class MyPassageTextEormField extends StatelessWidget {
     String tfhintText,
     Function onchangedfunction,
     Function validation, [
-    TextEditingController textEditingController = null,
+    TextEditingController textEditingController,
     Color bordercolor = ColorSchemeClass.primarygreen,
   ]) {
     this.tfhintText = tfhintText;

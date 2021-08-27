@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 
+//ignore: must_be_immutable
 class MyRatingCard extends StatelessWidget {
   AssetImage tileimage;
   Color tilecolor;

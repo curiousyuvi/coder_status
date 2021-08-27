@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'colorscheme.dart';
 
+//ignore: must_be_immutable
 class MySettingsNonExpansionTile extends StatelessWidget {
   Icon leadingIcon;
   String title;
@@ -72,6 +73,7 @@ class MySettingsNonExpansionTile extends StatelessWidget {
   }
 }
 
+//ignore: must_be_immutable
 class MySettingsExpansionTile extends StatelessWidget {
   Icon leadingIcon;
   String title;
@@ -143,6 +145,7 @@ class MySettingsExpansionTile extends StatelessWidget {
   }
 }
 
+//ignore: must_be_immutable
 class MyChildListTile extends StatelessWidget {
   Icon leadingicon;
   String title;

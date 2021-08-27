@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'colorscheme.dart';
 
+//ignore: must_be_immutable
 class MyDividerWithTitle extends StatelessWidget {
   String title;
   MyDividerWithTitle(this.title);
@@ -35,6 +36,7 @@ class MyDividerWithTitle extends StatelessWidget {
   }
 }
 
+//ignore: must_be_immutable
 class MyMidDividerWithTitle extends StatelessWidget {
   String title;
   MyMidDividerWithTitle(this.title);

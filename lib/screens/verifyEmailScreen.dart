@@ -43,7 +43,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
     subscription = InternetConnectionChecker().onStatusChange.listen((status) {
       final hasInternet = status == InternetConnectionStatus.connected;
 
-      if (!hasInternet) NoInternet(this.context);
+      if (!hasInternet) noInternet(this.context);
     });
     timer = Timer.periodic(Duration(seconds: 3), (timer) async {
       final flag = await checkEmailVerified();

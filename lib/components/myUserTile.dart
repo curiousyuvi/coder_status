@@ -2,6 +2,7 @@ import 'package:coder_status/screens/viewAnotherUserScreen.dart';
 import 'package:flutter/material.dart';
 import 'colorscheme.dart';
 
+//ignore: must_be_immutable
 class MyUserTile extends StatelessWidget {
   String uid, avatarUrl, name, codername;
   MyUserTile(this.uid, this.avatarUrl, this.name, this.codername);
