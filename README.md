@@ -4,7 +4,7 @@
 
 A _flutter_ app that uses _web-scraping_ and has a _Firebase Backend_, this app is for competitive programmers in this app you create a profile and add your User Handles from different Competitive Programming websites and your Ratings will be displayed in your dashboard. You can add your friends as Peers, see their progress and also see ranking among your peers for a specific competitive website.
 
-<a align="center" href='https://play.google.com/store/apps/details?id=com.curiousyuvi.coderstatus' ><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' height=70px/></a>
+<a align="center" href='https://play.google.com/store/apps/details?id=com.curiousyuvi.coderstatus' ><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width=300px/></a>
 
 > Do you know why you play multi-player games with your friends so seriously? Even though you know it's just a game, that's because you want to rise in the ranks among your friends in that game and that gives you a feeling of accomplishment. Ever wondered if you can get the same strife towards your Competitive Problem Solving, turns out you can with this app.
 
