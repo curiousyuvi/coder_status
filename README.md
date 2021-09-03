@@ -16,6 +16,12 @@ A _flutter_ app that uses _web-scraping_ and has a _Firebase Backend_, this app 
 
 <br>
 
+## Demo
+
+https://user-images.githubusercontent.com/58589519/132042365-16c142db-766c-4d61-8d1a-f2f149ed617a.mp4
+
+<br>
+
 ## Rive Animations
 
 These are the Rive Animations I have made for my project, I have Open Sourced all of them you can check them out [here](https://rive.app/curiousyuvi/)
