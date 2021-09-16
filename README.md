@@ -22,6 +22,12 @@ https://user-images.githubusercontent.com/58589519/132042365-16c142db-766c-4d61-
 
 <br>
 
+## Diagram
+
+<div style="width: 960px; height: 720px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:960px; height:720px" src="https://lucid.app/documents/embeddedchart/6bf13108-f8a9-40e6-a203-f961e53387e2" id="EHbad7lNyLj8"></iframe></div>
+
+<br>
+
 ## Rive Animations
 
 These are the Rive Animations I have made for my project, I have Open Sourced all of them you can check them out [here](https://rive.app/curiousyuvi/)
