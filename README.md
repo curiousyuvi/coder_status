@@ -24,7 +24,7 @@ https://user-images.githubusercontent.com/58589519/132042365-16c142db-766c-4d61-
 
 ## Diagram
 
-<iframe allowfullscreen frameborder="0" style="width:960px; height:720px" src="https://lucid.app/documents/embeddedchart/6bf13108-f8a9-40e6-a203-f961e53387e2" id="EHbad7lNyLj8"></iframe>
+<a align="center" href='https://lucid.app/documents/embeddedchart/6bf13108-f8a9-40e6-a203-f961e53387e2' ><img alt='Readme Diagram' src="readmeAssets/diagram.jpeg" width=100%/></a>
 
 <br>
 
