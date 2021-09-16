@@ -12,7 +12,7 @@ A _flutter_ app that uses _web-scraping_ and has a _Firebase Backend_, this app 
 
 ## Preview
 
-<img src="readmeAssets/preview1.jpg" width=33%  > <img src="readmeAssets/preview2.jpg" width=33%   > <img src="readmeAssets/preview3.jpg" width=33%   >
+<img src="readmeAssets/preview1.jpg" width=30%  > <img src="readmeAssets/preview2.jpg" width=30%   > <img src="readmeAssets/preview3.jpg" width=30%   >
 
 <br>
 
