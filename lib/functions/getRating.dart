@@ -1,6 +1,9 @@
 import 'package:html/parser.dart' as parser;
 import 'package:http/http.dart' as http;
 
+//***************************************************************************/
+//*********************WEB SCRAPING******************************/
+//***************************************************************************/
 class GetRating {
   static Future<String> getCodeforcesRating(String userhandle) async {
     if (userhandle == '') return '0';

@@ -25,27 +25,31 @@ class _SearchScreenState extends State<SearchScreen> {
   //***************************************************************************/
   //*********************INSTANT SEARCH ALGORITHM******************************/
   //***************************************************************************/
-  void initateSearch(String value) async {
+  void initateSearch(String searchedValue) async {
     //if search field is empty then clear the queryResultSet and tempSearchStore
-    if (value.length == 0) {
+    if (searchedValue.length == 0) {
       setState(() {
         queryResultSet = [];
         listOfUserTiles = [];
       });
     }
 
-    //the searched string is changed to uppercase and all spaces are removed
-    var capitalizedValue = value.toUpperCase().replaceAll(' ', '');
+    /*the searched string is changed to uppercase and all spaces are removed*/
+    var morphedValue = searchedValue.toUpperCase().replaceAll(' ', '');
 
-    //when the user enters the first character queryResultSet gets populated by the document of users with matching search key as the entered charachter
-    if (queryResultSet.length == 0 && value.length == 1) {
+    /*when the user enters the first character queryResultSet gets populated by 
+    the document of users with matching search key as the entered charachter*/
+    if (queryResultSet.length == 0 && searchedValue.length == 1) {
       QuerySnapshot querySnapshot =
-          await SearchDatabase().searchByKey(capitalizedValue);
+          await SearchDatabase().searchByKey(morphedValue);
       querySnapshot.docs.forEach((element) {
         queryResultSet.add(element.data());
       });
     }
-    //when the user enters more charachter then the document from queryResultSet whose name and username starts with capitalizedValue are added to tempSearchStore and
+
+    /*when the user enters more charachter then the document from queryResultSet
+     whose name and username starts with capitalizedValue is parsed and a 
+     MyUserTile widget of the user is added to listOfUserTiles*/
     else {
       setState(() {
         listOfUserTiles = [];
@@ -54,12 +58,12 @@ class _SearchScreenState extends State<SearchScreen> {
                   .toString()
                   .toUpperCase()
                   .replaceAll(' ', '')
-                  .startsWith(capitalizedValue) ||
+                  .startsWith(morphedValue) ||
               element['codername']
                   .toString()
                   .toUpperCase()
                   .replaceAll(' ', '')
-                  .startsWith(capitalizedValue)) {
+                  .startsWith(morphedValue)) {
             listOfUserTiles.add(MyUserTile(element['id'], element['avatarurl'],
                 element['name'], element['codername']));
           }
