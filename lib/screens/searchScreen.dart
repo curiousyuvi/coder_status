@@ -16,43 +16,50 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
+  //To store the list of users queried from firestore by using search key
   var queryResultSet = [];
-  var tempSearchStore = [];
+
+  //List of User Tiles to be displayed
   List<Widget> listOfUserTiles = [];
 
+  //***************************************************************************/
+  //*********************INSTANT SEARCH ALGORITHM******************************/
+  //***************************************************************************/
   void initateSearch(String value) async {
+    //if search field is empty then clear the queryResultSet and tempSearchStore
     if (value.length == 0) {
       setState(() {
         queryResultSet = [];
-        tempSearchStore = [];
+        listOfUserTiles = [];
       });
     }
 
+    //the searched string is changed to uppercase and all spaces are removed
     var capitalizedValue = value.toUpperCase().replaceAll(' ', '');
 
+    //when the user enters the first character queryResultSet gets populated by the document of users with matching search key as the entered charachter
     if (queryResultSet.length == 0 && value.length == 1) {
       QuerySnapshot querySnapshot =
-          await SearchDatabase().searchByName(capitalizedValue);
-      queryResultSet = [];
+          await SearchDatabase().searchByKey(capitalizedValue);
       querySnapshot.docs.forEach((element) {
         queryResultSet.add(element.data());
       });
-    } else {
+    }
+    //when the user enters more charachter then the document from queryResultSet whose name and username starts with capitalizedValue are added to tempSearchStore and
+    else {
       setState(() {
-        tempSearchStore = [];
         listOfUserTiles = [];
         queryResultSet.forEach((element) {
           if (element['name']
                   .toString()
                   .toUpperCase()
                   .replaceAll(' ', '')
-                  .contains(capitalizedValue) ||
+                  .startsWith(capitalizedValue) ||
               element['codername']
                   .toString()
                   .toUpperCase()
                   .replaceAll(' ', '')
-                  .contains(capitalizedValue)) {
-            tempSearchStore.add(element);
+                  .startsWith(capitalizedValue)) {
             listOfUserTiles.add(MyUserTile(element['id'], element['avatarurl'],
                 element['name'], element['codername']));
           }
@@ -90,7 +97,7 @@ class _SearchScreenState extends State<SearchScreen> {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.03,
               ),
-              tempSearchStore.length == 0
+              listOfUserTiles.length == 0
                   ? Flexible(
                       child: Center(
                         child: FittedBox(
