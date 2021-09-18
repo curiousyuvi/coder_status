@@ -46,12 +46,12 @@ class _SearchScreenState extends State<SearchScreen> {
                   .toString()
                   .toUpperCase()
                   .replaceAll(' ', '')
-                  .startsWith(capitalizedValue) ||
+                  .contains(capitalizedValue) ||
               element['codername']
                   .toString()
                   .toUpperCase()
                   .replaceAll(' ', '')
-                  .startsWith(capitalizedValue)) {
+                  .contains(capitalizedValue)) {
             tempSearchStore.add(element);
             listOfUserTiles.add(MyUserTile(element['id'], element['avatarurl'],
                 element['name'], element['codername']));
@@ -121,8 +121,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         ),
                       ),
                     )
-                  : SingleChildScrollView(
-                      child: Column(children: listOfUserTiles))
+                  : Expanded(child: ListView(children: listOfUserTiles))
             ],
           ),
         )),
