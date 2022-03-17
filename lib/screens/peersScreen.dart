@@ -10,8 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 
 class PeersScreen extends StatefulWidget {
-  const PeersScreen({Key key}) : super(key: key);
-
   @override
   _PeersScreenState createState() => _PeersScreenState();
 }
@@ -41,7 +39,7 @@ class _PeersScreenState extends State<PeersScreen> {
     });
   }
 
-  Future futureFunction;
+  Future? futureFunction;
 
   @override
   void initState() {
@@ -166,7 +164,7 @@ class _PeersScreenState extends State<PeersScreen> {
                     backgroundColor: ColorSchemeClass.unactivatedblack,
                     onRefresh: () async {
                       await getPeersList();
-                      return 0;
+                      return;
                     },
                     child: ListView(
                       children: listOfUserTiles,

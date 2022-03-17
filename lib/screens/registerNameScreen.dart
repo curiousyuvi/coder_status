@@ -19,8 +19,6 @@ void main() => runApp(
     );
 
 class Registernamescreen extends StatefulWidget {
-  const Registernamescreen({Key key}) : super(key: key);
-
   @override
   _RegisternamescreenState createState() => _RegisternamescreenState();
 }
@@ -28,7 +26,7 @@ class Registernamescreen extends StatefulWidget {
 class _RegisternamescreenState extends State<Registernamescreen> {
   static String name = '';
   final _formkey = GlobalKey<FormState>();
-  StreamSubscription subscription;
+  StreamSubscription? subscription;
 
   @override
   initState() {
@@ -43,13 +41,13 @@ class _RegisternamescreenState extends State<Registernamescreen> {
 
   @override
   void dispose() {
-    subscription.cancel();
+    subscription!.cancel();
     super.dispose();
   }
 
   void _submit() {
-    if (_formkey.currentState.validate()) {
-      _formkey.currentState.save();
+    if (_formkey.currentState!.validate()) {
+      _formkey.currentState!.save();
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return Registercodernamescreen(name);
       }));

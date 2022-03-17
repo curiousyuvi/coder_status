@@ -3,10 +3,11 @@ import 'package:rive/rive.dart';
 
 //ignore: must_be_immutable
 class MyRatingCard extends StatelessWidget {
-  AssetImage tileimage;
-  Color tilecolor;
-  String tilestring;
-  MyRatingCard(AssetImage tileimage, Color tilecolor, String tilestring) {
+  late ImageProvider<Object> tileimage;
+  late Color tilecolor;
+  String tilestring = '';
+  MyRatingCard(
+      ImageProvider<Object> tileimage, Color tilecolor, String tilestring) {
     this.tileimage = tileimage;
     this.tilecolor = tilecolor;
     this.tilestring = tilestring;

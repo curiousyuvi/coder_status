@@ -17,7 +17,7 @@ class Authenticate extends StatelessWidget {
     try {
       await FirebaseFirestore.instance
           .collection('users')
-          .doc(_auth.currentUser.uid)
+          .doc(_auth.currentUser!.uid)
           .get()
           .then((doc) {
         flag = doc.exists;
@@ -34,7 +34,7 @@ class Authenticate extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           if (_auth.currentUser != null) {
-            if (_auth.currentUser.emailVerified) {
+            if (_auth.currentUser!.emailVerified) {
               if (flag) {
                 return Home();
               } else {

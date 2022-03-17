@@ -14,7 +14,7 @@ class SetUserInfo {
       String atcoder) async {
     FirebaseAuth _auth = FirebaseAuth.instance;
     final user = _auth.currentUser;
-    final uid = user.uid.toString();
+    final uid = user!.uid.toString();
     List<String> emptyList = [];
     return await FirebaseFirestore.instance.collection("users").doc(uid).set({
       "name": name,
@@ -34,7 +34,7 @@ class SetUserInfo {
   static Future updateName(String name) async {
     FirebaseAuth _auth = FirebaseAuth.instance;
     final user = _auth.currentUser;
-    final uid = user.uid.toString();
+    final uid = user!.uid.toString();
 
     var searchKey = await GetUserInfo.getUserSeachKey();
 
@@ -49,7 +49,7 @@ class SetUserInfo {
   static Future updateCodername(String codername) async {
     FirebaseAuth _auth = FirebaseAuth.instance;
     final user = _auth.currentUser;
-    final uid = user.uid;
+    final uid = user!.uid;
 
     var searchKey = await GetUserInfo.getUserSeachKey();
 
@@ -64,7 +64,7 @@ class SetUserInfo {
   static Future updateAvatar(String urltobeupdated) async {
     FirebaseAuth _auth = FirebaseAuth.instance;
     final user = _auth.currentUser;
-    final uid = user.uid.toString();
+    final uid = user!.uid.toString();
 
     return await FirebaseFirestore.instance
         .collection('users')
@@ -75,7 +75,7 @@ class SetUserInfo {
   static Future updateBio(String bio) async {
     FirebaseAuth _auth = FirebaseAuth.instance;
     final user = _auth.currentUser;
-    final uid = user.uid;
+    final uid = user!.uid;
 
     return await FirebaseFirestore.instance
         .collection('users')
@@ -86,7 +86,7 @@ class SetUserInfo {
   static Future updatePeers(var peers) async {
     FirebaseAuth _auth = FirebaseAuth.instance;
     final user = _auth.currentUser;
-    final uid = user.uid;
+    final uid = user!.uid;
 
     if (peers == null) {
       peers = [];
@@ -102,7 +102,7 @@ class SetUserInfo {
       String codeforces, String codechef, String atcoder, String spoj) async {
     FirebaseAuth _auth = FirebaseAuth.instance;
     final user = _auth.currentUser;
-    final uid = user.uid.toString();
+    final uid = user!.uid.toString();
 
     return await FirebaseFirestore.instance
         .collection('users')

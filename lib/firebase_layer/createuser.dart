@@ -4,7 +4,7 @@ createAccount(String email, String password) async {
   FirebaseAuth _auth = FirebaseAuth.instance;
 
   try {
-    User user = (await _auth.createUserWithEmailAndPassword(
+    User? user = (await _auth.createUserWithEmailAndPassword(
             email: email, password: password))
         .user;
     if (user != null) {

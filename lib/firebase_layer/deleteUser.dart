@@ -6,20 +6,20 @@ Future deleteUser([String password = '']) async {
   FirebaseAuth _auth = FirebaseAuth.instance;
 
   try {
-    User user = _auth.currentUser;
+    User? user = _auth.currentUser;
     var authCredentials;
-    if (user.photoURL == null)
+    if (user!.photoURL == null)
       authCredentials =
           EmailAuthProvider.credential(email: user.email, password: password);
     else {
       final googleUser = await GoogleSignIn().signIn();
-      final googleAuth = await googleUser.authentication;
+      final googleAuth = await googleUser!.authentication;
       authCredentials = GoogleAuthProvider.credential(
           accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
     }
 
     var authResult = await user.reauthenticateWithCredential(authCredentials);
     await FirebaseFirestore.instance.collection("users").doc(user.uid).delete();
-    authResult.user.delete();
+    authResult.user!.delete();
   } catch (e) {}
 }

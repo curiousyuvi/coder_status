@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import '../home.dart';
 
 class IntroSlider extends StatefulWidget {
-  const IntroSlider({Key key}) : super(key: key);
-
   @override
   _IntroSliderState createState() => _IntroSliderState();
 }

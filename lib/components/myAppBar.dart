@@ -7,7 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 //ignore: must_be_immutable
 class MyAppBar extends StatelessWidget {
-  String title;
+  String title = '';
   MyAppBar(String title) {
     this.title = title;
   }
@@ -30,7 +30,7 @@ class MyAppBar extends StatelessWidget {
 
 //ignore: must_be_immutable
 class MyAppBarWithBack extends StatelessWidget {
-  String title;
+  String title = '';
   MyAppBarWithBack(String title) {
     this.title = title;
   }
@@ -63,9 +63,9 @@ class MyAppBarWithBack extends StatelessWidget {
 
 //ignore: must_be_immutable
 class MyAppBarWithBackAndDone extends StatelessWidget {
-  String title;
-  Function function;
-  MyAppBarWithBackAndDone(String title, Function function) {
+  String title = '';
+  void Function()? function;
+  MyAppBarWithBackAndDone(String title, void Function()? function) {
     this.title = title;
     this.function = function;
   }

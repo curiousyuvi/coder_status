@@ -20,8 +20,6 @@ void main() => runApp(
     );
 
 class Forgotpasswordscreen extends StatefulWidget {
-  const Forgotpasswordscreen({Key key}) : super(key: key);
-
   @override
   _ForgotpasswordscreenState createState() => _ForgotpasswordscreenState();
 }
@@ -31,7 +29,7 @@ class _ForgotpasswordscreenState extends State<Forgotpasswordscreen> {
 
   final _formkey = GlobalKey<FormState>();
   String emailid = '';
-  StreamSubscription subscription;
+  StreamSubscription? subscription;
 
   @override
   initState() {
@@ -46,13 +44,13 @@ class _ForgotpasswordscreenState extends State<Forgotpasswordscreen> {
 
   @override
   void dispose() {
-    subscription.cancel();
+    subscription!.cancel();
     super.dispose();
   }
 
   void _submit() {
-    if (_formkey.currentState.validate()) {
-      _formkey.currentState.save();
+    if (_formkey.currentState!.validate()) {
+      _formkey.currentState!.save();
 
       resetpassword(emailid);
 
@@ -120,7 +118,7 @@ class _ForgotpasswordscreenState extends State<Forgotpasswordscreen> {
                     emailid = val;
                   },
                       TextInputType.emailAddress,
-                      (val) => !val.contains('@')
+                      (val) => !val!.contains('@')
                           ? 'Please enter a valid email'
                           : null),
                   SizedBox(

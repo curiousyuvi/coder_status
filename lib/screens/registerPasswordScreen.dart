@@ -37,7 +37,7 @@ class _RegisterPasswordScreenState extends State<RegisterPasswordScreen> {
   static String emailid = '';
   String password = '';
   bool isloading = false;
-  StreamSubscription subscription;
+  StreamSubscription? subscription;
 
   @override
   initState() {
@@ -52,15 +52,15 @@ class _RegisterPasswordScreenState extends State<RegisterPasswordScreen> {
 
   @override
   void dispose() {
-    subscription.cancel();
+    subscription!.cancel();
     super.dispose();
   }
 
   final _formkey = GlobalKey<FormState>();
 
   void _submit() {
-    if (_formkey.currentState.validate()) {
-      _formkey.currentState.save();
+    if (_formkey.currentState!.validate()) {
+      _formkey.currentState!.save();
       setState(() {
         isloading = true;
       });
@@ -171,7 +171,7 @@ class _RegisterPasswordScreenState extends State<RegisterPasswordScreen> {
                           });
                         },
                             TextInputType.visiblePassword,
-                            (val) => val.trim().length < 6
+                            (val) => val!.trim().length < 6
                                 ? 'Password must contain atleast 6 characters'
                                 : null),
                         SizedBox(

@@ -10,14 +10,12 @@ import 'package:rive/rive.dart';
 import '../components/noInternet.dart';
 
 class GetStartedScreen extends StatefulWidget {
-  const GetStartedScreen({Key key}) : super(key: key);
-
   @override
   _GetStartedScreenState createState() => _GetStartedScreenState();
 }
 
 class _GetStartedScreenState extends State<GetStartedScreen> {
-  StreamSubscription subscription;
+  StreamSubscription? subscription;
 
   @override
   initState() {
@@ -32,7 +30,7 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
 
   @override
   void dispose() {
-    subscription.cancel();
+    subscription!.cancel();
     super.dispose();
   }
 

@@ -4,23 +4,23 @@ import 'constants.dart';
 
 //ignore: must_be_immutable
 class MyTextFormField extends StatelessWidget {
-  Icon tficon;
-  String tfhintText;
-  bool isobscure;
-  Function onchangedfunction;
-  TextInputType textinputtype;
-  Function validation;
-  Color bordercolor;
-  TextEditingController textEditingController;
+  Icon? tficon;
+  String tfhintText = '';
+  bool isobscure = false;
+  void Function(String)? onchangedfunction;
+  TextInputType? textinputtype;
+  String? Function(String?)? validation;
+  late Color bordercolor;
+  TextEditingController? textEditingController;
 
   MyTextFormField(
       Icon tficon,
       String tfhintText,
       bool isobscure,
-      Function onchangedfunction,
+      void Function(String)? onchangedfunction,
       TextInputType textinputtype,
-      Function validation,
-      [TextEditingController textEditingController,
+      String? Function(String?)? validation,
+      [TextEditingController? textEditingController,
       Color bordercolor = ColorSchemeClass.primarygreen]) {
     this.tficon = tficon;
     this.tfhintText = tfhintText;
@@ -65,17 +65,17 @@ class MyTextFormField extends StatelessWidget {
 
 //ignore: must_be_immutable
 class MyPassageTextEormField extends StatelessWidget {
-  String tfhintText;
-  Function onchangedfunction;
-  Function validation;
-  Color bordercolor;
-  TextEditingController textEditingController;
+  String tfhintText = '';
+  void Function(String?)? onchangedfunction;
+  String? Function(String?)? validation;
+  late Color bordercolor;
+  TextEditingController? textEditingController;
 
   MyPassageTextEormField(
     String tfhintText,
-    Function onchangedfunction,
-    Function validation, [
-    TextEditingController textEditingController,
+    void Function(String?)? onchangedfunction,
+    String? Function(String?)? validation, [
+    TextEditingController? textEditingController,
     Color bordercolor = ColorSchemeClass.primarygreen,
   ]) {
     this.tfhintText = tfhintText;

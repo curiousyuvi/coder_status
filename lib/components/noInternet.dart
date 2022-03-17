@@ -6,8 +6,8 @@ import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:rive/rive.dart';
 
 noInternet(BuildContext context) {
-  OverlayState overlayState = Overlay.of(context);
-  OverlayEntry overlayEntry;
+  OverlayState? overlayState = Overlay.of(context);
+  OverlayEntry? overlayEntry;
   overlayEntry = OverlayEntry(builder: (context) {
     return Scaffold(
       body: SafeArea(
@@ -82,7 +82,7 @@ noInternet(BuildContext context) {
     );
   });
 
-  overlayState.insert(overlayEntry);
+  overlayState!.insert(overlayEntry);
 
   InternetConnectionChecker().onStatusChange.listen((status) {
     final hasInternet = status == InternetConnectionStatus.connected;

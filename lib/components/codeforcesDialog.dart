@@ -2,7 +2,7 @@ import 'package:coder_status/components/colorscheme.dart';
 import 'package:flutter/material.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 
-showCodeforcesDialog(BuildContext context, Rect rect, String codeforcesHandle,
+showCodeforcesDialog(BuildContext context, Rect? rect, String codeforcesHandle,
     String codeforcesRating) {
   String codeforcesTitle = '';
   int rating = int.parse(codeforcesRating);
@@ -27,12 +27,12 @@ showCodeforcesDialog(BuildContext context, Rect rect, String codeforcesHandle,
   } else if (rating >= 3000) {
     codeforcesTitle = 'LEGENDARY GRANDMASTER';
   }
-  OverlayState overlayState = Overlay.of(context);
-  OverlayEntry overlayEntry;
+  OverlayState? overlayState = Overlay.of(context);
+  OverlayEntry? overlayEntry;
   overlayEntry = OverlayEntry(builder: (context) {
     return GestureDetector(
       onTap: () {
-        overlayEntry.remove();
+        overlayEntry!.remove();
       },
       child: Container(
           padding: EdgeInsets.all(0),
@@ -42,7 +42,7 @@ showCodeforcesDialog(BuildContext context, Rect rect, String codeforcesHandle,
           child: Column(
             children: [
               SizedBox(
-                height: rect.top - MediaQuery.of(context).size.height * 0.13,
+                height: rect!.top - MediaQuery.of(context).size.height * 0.13,
               ),
               Row(
                 children: [
@@ -233,5 +233,5 @@ showCodeforcesDialog(BuildContext context, Rect rect, String codeforcesHandle,
     );
   });
 
-  overlayState.insert(overlayEntry);
+  overlayState!.insert(overlayEntry);
 }

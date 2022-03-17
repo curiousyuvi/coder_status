@@ -6,7 +6,7 @@ class GetUserInfo {
     if (uid == '') {
       FirebaseAuth _auth = FirebaseAuth.instance;
       final user = _auth.currentUser;
-      uid = user.uid.toString();
+      uid = user!.uid.toString();
     }
     final mapofdocument =
         await FirebaseFirestore.instance.collection("users").doc(uid).get();
@@ -18,13 +18,13 @@ class GetUserInfo {
     if (uid == '') {
       FirebaseAuth _auth = FirebaseAuth.instance;
       final user = _auth.currentUser;
-      uid = user.uid.toString();
+      uid = user!.uid.toString();
     }
 
     final mapofdocument =
         await FirebaseFirestore.instance.collection("users").doc(uid).get();
 
-    String name = mapofdocument.data()['name'];
+    String name = mapofdocument.data()!['name'];
     return name;
   }
 
@@ -32,12 +32,12 @@ class GetUserInfo {
     if (uid == '') {
       FirebaseAuth _auth = FirebaseAuth.instance;
       final user = _auth.currentUser;
-      uid = user.uid.toString();
+      uid = user!.uid.toString();
     }
     final mapofdocument =
         await FirebaseFirestore.instance.collection("users").doc(uid).get();
 
-    String codername = mapofdocument.data()['codername'];
+    String codername = mapofdocument.data()!['codername'];
     return codername;
   }
 
@@ -45,12 +45,12 @@ class GetUserInfo {
     if (uid == '') {
       FirebaseAuth _auth = FirebaseAuth.instance;
       final user = _auth.currentUser;
-      uid = user.uid.toString();
+      uid = user!.uid.toString();
     }
     final mapofdocument =
         await FirebaseFirestore.instance.collection("users").doc(uid).get();
 
-    String avatarurl = mapofdocument.data()['avatarurl'];
+    String avatarurl = mapofdocument.data()!['avatarurl'];
     return avatarurl;
   }
 
@@ -58,12 +58,12 @@ class GetUserInfo {
     if (uid == '') {
       FirebaseAuth _auth = FirebaseAuth.instance;
       final user = _auth.currentUser;
-      uid = user.uid.toString();
+      uid = user!.uid.toString();
     }
     final mapofdocument =
         await FirebaseFirestore.instance.collection("users").doc(uid).get();
 
-    String bio = mapofdocument.data()['bio'];
+    String bio = mapofdocument.data()!['bio'];
     return bio;
   }
 
@@ -71,12 +71,12 @@ class GetUserInfo {
     if (uid == '') {
       FirebaseAuth _auth = FirebaseAuth.instance;
       final user = _auth.currentUser;
-      uid = user.uid.toString();
+      uid = user!.uid.toString();
     }
     final mapofdocument =
         await FirebaseFirestore.instance.collection("users").doc(uid).get();
 
-    var searchKey = mapofdocument.data()['searchKey'];
+    var searchKey = mapofdocument.data()!['searchKey'];
 
     return searchKey;
   }
@@ -84,12 +84,12 @@ class GetUserInfo {
   static getUserPeers() async {
     FirebaseAuth _auth = FirebaseAuth.instance;
     final user = _auth.currentUser;
-    final uid = user.uid.toString();
+    final uid = user!.uid.toString();
 
     final mapofdocument =
         await FirebaseFirestore.instance.collection("users").doc(uid).get();
 
-    var peers = mapofdocument.data()['peers'];
+    var peers = mapofdocument.data()!['peers'];
 
     return peers;
   }
@@ -98,36 +98,36 @@ class GetUserInfo {
     if (uid == '') {
       FirebaseAuth _auth = FirebaseAuth.instance;
       final user = _auth.currentUser;
-      uid = user.uid.toString();
+      uid = user!.uid.toString();
     }
     final mapofdocument =
         await FirebaseFirestore.instance.collection("users").doc(uid).get();
 
-    String codeforces = mapofdocument.data()['codeforces'];
-    String codechef = mapofdocument.data()['codechef'];
-    String atcoder = mapofdocument.data()['atcoder'];
-    String spoj = mapofdocument.data()['spoj'];
+    String codeforces = mapofdocument.data()!['codeforces'];
+    String codechef = mapofdocument.data()!['codechef'];
+    String atcoder = mapofdocument.data()!['atcoder'];
+    String spoj = mapofdocument.data()!['spoj'];
     return [codeforces, codechef, atcoder, spoj];
   }
 
   static getUserEmail() {
     FirebaseAuth _auth = FirebaseAuth.instance;
 
-    String email = _auth.currentUser.email;
+    String? email = _auth.currentUser!.email;
     return email;
   }
 
   static getUserUid() {
     FirebaseAuth _auth = FirebaseAuth.instance;
 
-    String uid = _auth.currentUser.uid;
+    String uid = _auth.currentUser!.uid;
     return uid;
   }
 
   static getUserDocumentChnges() async {
     FirebaseAuth _auth = FirebaseAuth.instance;
     final user = _auth.currentUser;
-    final uid = user.uid.toString();
+    final uid = user!.uid.toString();
 
     var documentStream =
         FirebaseFirestore.instance.collection('users').doc(uid).snapshots();

@@ -2,14 +2,14 @@ import 'package:coder_status/components/colorscheme.dart';
 import 'package:flutter/material.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 
-showAtcoderDialog(BuildContext context, Rect rect, String atcoderHandle,
+showAtcoderDialog(BuildContext context, Rect? rect, String atcoderHandle,
     String atcoderRating) {
-  OverlayState overlayState = Overlay.of(context);
-  OverlayEntry overlayEntry;
+  OverlayState? overlayState = Overlay.of(context);
+  OverlayEntry? overlayEntry;
   overlayEntry = OverlayEntry(builder: (context) {
     return GestureDetector(
       onTap: () {
-        overlayEntry.remove();
+        overlayEntry!.remove();
       },
       child: Container(
           height: double.infinity,
@@ -18,7 +18,7 @@ showAtcoderDialog(BuildContext context, Rect rect, String atcoderHandle,
           child: Column(
             children: [
               SizedBox(
-                height: rect.top - MediaQuery.of(context).size.height * 0.13,
+                height: rect!.top - MediaQuery.of(context).size.height * 0.13,
               ),
               Row(
                 children: [
@@ -182,5 +182,5 @@ showAtcoderDialog(BuildContext context, Rect rect, String atcoderHandle,
     );
   });
 
-  overlayState.insert(overlayEntry);
+  overlayState!.insert(overlayEntry);
 }

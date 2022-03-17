@@ -16,10 +16,10 @@ class EditUserHandlesScreen extends StatefulWidget {
 }
 
 class _EditUserHandlesScreenState extends State<EditUserHandlesScreen> {
-  TextEditingController codeforcesEditingController;
-  TextEditingController codechefEditingController;
-  TextEditingController atcoderEditingController;
-  TextEditingController spojEditingController;
+  TextEditingController? codeforcesEditingController;
+  TextEditingController? codechefEditingController;
+  TextEditingController? atcoderEditingController;
+  TextEditingController? spojEditingController;
   final _formkey = GlobalKey<FormState>();
   bool isLoading = false;
   bool isFirstTime = true;
@@ -36,23 +36,23 @@ class _EditUserHandlesScreenState extends State<EditUserHandlesScreen> {
   }
 
   void _submit() async {
-    if (_formkey.currentState.validate()) {
-      _formkey.currentState.save();
+    if (_formkey.currentState!.validate()) {
+      _formkey.currentState!.save();
       setState(() {
         isLoading = true;
       });
 
       await SetUserInfo.updateHandles(
-          codeforcesEditingController.text.trim(),
-          codechefEditingController.text.trim(),
-          atcoderEditingController.text.trim(),
-          spojEditingController.text.trim());
+          codeforcesEditingController!.text.trim(),
+          codechefEditingController!.text.trim(),
+          atcoderEditingController!.text.trim(),
+          spojEditingController!.text.trim());
 
       Phoenix.rebirth(context);
     }
   }
 
-  Future futureFunction;
+  Future? futureFunction;
 
   @override
   void initState() {
@@ -150,7 +150,7 @@ class _EditUserHandlesScreenState extends State<EditUserHandlesScreen> {
                                                 false,
                                                 (val) {},
                                                 TextInputType.name,
-                                                (val) => val
+                                                (val) => val!
                                                         .trim()
                                                         .toString()
                                                         .contains(' ')
@@ -181,7 +181,7 @@ class _EditUserHandlesScreenState extends State<EditUserHandlesScreen> {
                                                 false,
                                                 (val) {},
                                                 TextInputType.name,
-                                                (val) => val
+                                                (val) => val!
                                                         .trim()
                                                         .toString()
                                                         .contains(' ')
@@ -212,7 +212,7 @@ class _EditUserHandlesScreenState extends State<EditUserHandlesScreen> {
                                                 false,
                                                 (val) {},
                                                 TextInputType.name,
-                                                (val) => val
+                                                (val) => val!
                                                         .trim()
                                                         .toString()
                                                         .contains(' ')
@@ -244,7 +244,7 @@ class _EditUserHandlesScreenState extends State<EditUserHandlesScreen> {
                                                 false,
                                                 (val) {},
                                                 TextInputType.name,
-                                                (val) => val
+                                                (val) => val!
                                                         .trim()
                                                         .toString()
                                                         .contains(' ')

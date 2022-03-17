@@ -3,10 +3,10 @@ import 'colorscheme.dart';
 
 //ignore: must_be_immutable
 class MySettingsNonExpansionTile extends StatelessWidget {
-  Icon leadingIcon;
-  String title;
-  Color tilecolor;
-  Color extrusioncolor;
+  Icon? leadingIcon;
+  String title = '';
+  late Color tilecolor;
+  late Color extrusioncolor;
   MySettingsNonExpansionTile(Icon leadingIcon, String title,
       [Color tilecolor = ColorSchemeClass.unactivatedblack,
       Color extrusioncolor = ColorSchemeClass.darkgrey]) {
@@ -75,9 +75,9 @@ class MySettingsNonExpansionTile extends StatelessWidget {
 
 //ignore: must_be_immutable
 class MySettingsExpansionTile extends StatelessWidget {
-  Icon leadingIcon;
-  String title;
-  List<Widget> children;
+  Icon? leadingIcon;
+  String title = '';
+  List<Widget> children = [];
   MySettingsExpansionTile(
       Icon leadingIcon, String title, List<Widget> children) {
     this.leadingIcon = leadingIcon;
@@ -147,9 +147,9 @@ class MySettingsExpansionTile extends StatelessWidget {
 
 //ignore: must_be_immutable
 class MyChildListTile extends StatelessWidget {
-  Icon leadingicon;
-  String title;
-  Color fontcolor;
+  Icon? leadingicon;
+  String title = '';
+  late Color fontcolor;
   MyChildListTile(Icon leadingicon, String title,
       [Color fontcolor = ColorSchemeClass.dark]) {
     this.leadingicon = leadingicon;

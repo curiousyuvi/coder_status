@@ -4,7 +4,7 @@ import 'package:rive/rive.dart';
 
 //ignore: must_be_immutable
 class GeneralLoader extends StatelessWidget {
-  String heading;
+  String heading = '';
 
   GeneralLoader(String heading) {
     this.heading = heading;
@@ -41,7 +41,7 @@ class GeneralLoader extends StatelessWidget {
 
 //ignore: must_be_immutable
 class GeneralLoaderTransparent extends StatelessWidget {
-  String heading;
+  String heading = '';
 
   GeneralLoaderTransparent(String heading) {
     this.heading = heading;

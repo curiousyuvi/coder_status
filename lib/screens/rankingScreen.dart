@@ -7,8 +7,6 @@ import 'package:coder_status/screens/spojRankingScreen.dart';
 import 'package:flutter/material.dart';
 
 class RankingScreen extends StatefulWidget {
-  const RankingScreen({Key key}) : super(key: key);
-
   @override
   _RankingScreenState createState() => _RankingScreenState();
 }

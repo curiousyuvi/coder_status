@@ -17,8 +17,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class SettingScreen extends StatefulWidget {
-  const SettingScreen({Key key}) : super(key: key);
-
   @override
   _SettingScreenState createState() => _SettingScreenState();
 }
@@ -94,7 +92,7 @@ class _SettingScreenState extends State<SettingScreen> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            if (FirebaseAuth.instance.currentUser.photoURL ==
+                            if (FirebaseAuth.instance.currentUser!.photoURL ==
                                 null) {
                               Navigator.push(context,
                                   MaterialPageRoute(builder: (context) {

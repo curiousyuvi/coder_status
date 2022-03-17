@@ -21,7 +21,7 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   bool isLoading = false;
-  StreamSubscription subscription;
+  StreamSubscription? subscription;
 
   @override
   initState() {
@@ -36,7 +36,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   void dispose() {
-    subscription.cancel();
+    subscription!.cancel();
     super.dispose();
   }
 

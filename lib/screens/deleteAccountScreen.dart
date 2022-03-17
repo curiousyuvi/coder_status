@@ -46,8 +46,8 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
       isLoading = false;
     });
 
-    if (_formkey.currentState.validate()) {
-      _formkey.currentState.save();
+    if (_formkey.currentState!.validate()) {
+      _formkey.currentState!.save();
 
       //start loader
       setState(() {

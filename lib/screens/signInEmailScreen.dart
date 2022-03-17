@@ -25,15 +25,13 @@ void main() => runApp(
     );
 
 class SignInEmailScreen extends StatefulWidget {
-  const SignInEmailScreen({Key key}) : super(key: key);
-
   @override
   _SignInEmailScreenState createState() => _SignInEmailScreenState();
 }
 
 class _SignInEmailScreenState extends State<SignInEmailScreen> {
   //Form State
-  StreamSubscription subscription;
+  StreamSubscription? subscription;
 
   @override
   initState() {
@@ -48,7 +46,7 @@ class _SignInEmailScreenState extends State<SignInEmailScreen> {
 
   @override
   void dispose() {
-    subscription.cancel();
+    subscription!.cancel();
     super.dispose();
   }
 
@@ -58,14 +56,14 @@ class _SignInEmailScreenState extends State<SignInEmailScreen> {
   bool isLoading = false;
 
   void _submit() async {
-    if (_formkey.currentState.validate()) {
-      _formkey.currentState.save();
+    if (_formkey.currentState!.validate()) {
+      _formkey.currentState!.save();
       setState(() {
         isLoading = true;
       });
       login(emailid.trim(), password.trim()).then((user) async {
         if (user != null) {
-          bool flag;
+          late bool flag;
           await FirebaseFirestore.instance
               .collection('users')
               .doc(user.uid)
@@ -165,7 +163,7 @@ class _SignInEmailScreenState extends State<SignInEmailScreen> {
                         emailid = val;
                       },
                           TextInputType.emailAddress,
-                          (val) => !val.contains('@')
+                          (val) => !val!.contains('@')
                               ? 'Please enter a valid email'
                               : null),
                       SizedBox(
@@ -176,7 +174,7 @@ class _SignInEmailScreenState extends State<SignInEmailScreen> {
                         password = val;
                       },
                           TextInputType.visiblePassword,
-                          (val) => val.trim().length < 6
+                          (val) => val!.trim().length < 6
                               ? 'Please enter a valid password'
                               : null),
                       SizedBox(

@@ -23,7 +23,7 @@ class _RegisterEmailidScreenState extends State<RegisterEmailidScreen> {
   String emailid = '';
   final _formkey = GlobalKey<FormState>();
   bool isLoading = false;
-  StreamSubscription subscription;
+  StreamSubscription? subscription;
 
   @override
   initState() {
@@ -38,13 +38,13 @@ class _RegisterEmailidScreenState extends State<RegisterEmailidScreen> {
 
   @override
   void dispose() {
-    subscription.cancel();
+    subscription!.cancel();
     super.dispose();
   }
 
   void _submit() async {
-    if (_formkey.currentState.validate()) {
-      _formkey.currentState.save();
+    if (_formkey.currentState!.validate()) {
+      _formkey.currentState!.save();
 
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return RegisterPasswordScreen(emailid);
@@ -143,7 +143,7 @@ class _RegisterEmailidScreenState extends State<RegisterEmailidScreen> {
                         emailid = val;
                       },
                           TextInputType.emailAddress,
-                          (val) => !val.contains('@')
+                          (val) => !val!.contains('@')
                               ? 'Please enter a valid email'
                               : null),
                       SizedBox(

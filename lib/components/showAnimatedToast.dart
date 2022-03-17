@@ -15,10 +15,10 @@ void showAnimatedToast(BuildContext context, String headline, bool alert) {
 //ignore: must_be_immutable
 class AnimatedToast extends StatefulWidget {
   String headline = '';
-  bool alert;
-  Icon leadingIcon;
-  Color toastColor;
-  BuildContext context;
+  bool alert = false;
+  Icon? leadingIcon;
+  late Color toastColor;
+  late BuildContext context;
   AnimatedToast(bool alert, BuildContext context, String headline) {
     this.alert = alert;
     this.headline = headline;
@@ -32,12 +32,12 @@ class AnimatedToast extends StatefulWidget {
 
 class _AnimatedToastState extends State<AnimatedToast> {
   String headline = '';
-  bool alert;
-  IconData leadingIcon;
-  Color toastColor;
-  double height;
-  BuildContext context;
-  double opacity;
+  late bool alert;
+  late IconData leadingIcon;
+  late Color toastColor;
+  late double height;
+  late BuildContext context;
+  late double opacity;
 
   _AnimatedToastState(bool alert, BuildContext context, String headline) {
     this.context = context;
@@ -57,7 +57,7 @@ class _AnimatedToastState extends State<AnimatedToast> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
       setState(() {
         height = MediaQuery.of(context).size.height * 0.3;
         opacity = 1;

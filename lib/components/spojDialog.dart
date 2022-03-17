@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 
 showSpojDialog(
-    BuildContext context, Rect rect, String spojHandle, String spojRating) {
-  OverlayState overlayState = Overlay.of(context);
-  OverlayEntry overlayEntry;
+    BuildContext context, Rect? rect, String spojHandle, String spojRating) {
+  OverlayState? overlayState = Overlay.of(context);
+  OverlayEntry? overlayEntry;
   overlayEntry = OverlayEntry(builder: (context) {
     return GestureDetector(
       onTap: () {
-        overlayEntry.remove();
+        overlayEntry!.remove();
       },
       child: Container(
           height: double.infinity,
@@ -18,7 +18,7 @@ showSpojDialog(
           child: Column(
             children: [
               SizedBox(
-                height: rect.top - MediaQuery.of(context).size.height * 0.13,
+                height: rect!.top - MediaQuery.of(context).size.height * 0.13,
               ),
               Row(
                 children: [
@@ -179,5 +179,5 @@ showSpojDialog(
     );
   });
 
-  overlayState.insert(overlayEntry);
+  overlayState!.insert(overlayEntry);
 }

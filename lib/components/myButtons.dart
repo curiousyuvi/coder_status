@@ -3,16 +3,16 @@ import 'colorscheme.dart';
 
 // ignore: must_be_immutable
 class MyButton extends StatelessWidget {
-  Function dofunction;
-  bool prominent;
-  Color buttoncolor;
-  Color titlecolor;
-  String title;
-  IconData iconData;
+  void Function()? dofunction;
+  bool? prominent;
+  Color? buttoncolor;
+  Color? titlecolor;
+  String title = '';
+  IconData? iconData;
 
-  MyButton(Color buttoncolor, String title, Function dofunction,
-      [IconData iconData = Icons.no_encryption,
-      Color titlecolor = Colors.white]) {
+  MyButton(Color buttoncolor, String title, void Function()? dofunction,
+      [IconData? iconData = Icons.no_encryption,
+      Color? titlecolor = Colors.white]) {
     this.prominent = prominent;
     this.title = title;
     this.dofunction = dofunction;
@@ -32,7 +32,7 @@ class MyButton extends StatelessWidget {
             color: buttoncolor,
             boxShadow: [
               BoxShadow(
-                  color: buttoncolor.withOpacity(0.4),
+                  color: buttoncolor!.withOpacity(0.4),
                   offset: Offset(
                     0,
                     MediaQuery.of(context).size.height * 0.007,
@@ -88,14 +88,14 @@ class MyButton extends StatelessWidget {
 
 //ignore: must_be_immutable
 class MyOutlineButton extends StatelessWidget {
-  Function dofunction;
-  bool prominent;
-  Color buttoncolor;
-  Color titlecolor;
-  String title;
-  IconData iconData;
-  MyOutlineButton(Color buttoncolor, String title, Function dofunction,
-      [IconData iconData = Icons.no_encryption]) {
+  void Function()? dofunction;
+  bool prominent = false;
+  late Color buttoncolor;
+  Color? titlecolor;
+  String title = '';
+  IconData? iconData;
+  MyOutlineButton(Color buttoncolor, String title, void Function()? dofunction,
+      [IconData? iconData = Icons.no_encryption]) {
     this.prominent = prominent;
     this.title = title;
     this.dofunction = dofunction;

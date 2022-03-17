@@ -26,7 +26,7 @@ class _RegistercodernamescreenState extends State<Registercodernamescreen> {
   static String name = '';
   String codername = '';
   final _formkey = GlobalKey<FormState>();
-  StreamSubscription subscription;
+  StreamSubscription? subscription;
 
   @override
   initState() {
@@ -41,13 +41,13 @@ class _RegistercodernamescreenState extends State<Registercodernamescreen> {
 
   @override
   void dispose() {
-    subscription.cancel();
+    subscription!.cancel();
     super.dispose();
   }
 
   void _submit() {
-    if (_formkey.currentState.validate()) {
-      _formkey.currentState.save();
+    if (_formkey.currentState!.validate()) {
+      _formkey.currentState!.save();
 
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return Registeravatarscreen(name, codername);

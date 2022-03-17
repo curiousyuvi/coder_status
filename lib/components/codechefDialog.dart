@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 
-showCodechefDialog(BuildContext context, Rect rect, String codechefHandle,
+showCodechefDialog(BuildContext context, Rect? rect, String codechefHandle,
     String codechefRating) {
   int codechefStarCount = 1;
   int rating = int.parse(codechefRating);
@@ -31,12 +31,12 @@ showCodechefDialog(BuildContext context, Rect rect, String codechefHandle,
       color: ColorSchemeClass.codechefbrown,
     ));
   }
-  OverlayState overlayState = Overlay.of(context);
-  OverlayEntry overlayEntry;
+  OverlayState? overlayState = Overlay.of(context);
+  OverlayEntry? overlayEntry;
   overlayEntry = OverlayEntry(builder: (context) {
     return GestureDetector(
       onTap: () {
-        overlayEntry.remove();
+        overlayEntry!.remove();
       },
       child: Container(
           height: double.infinity,
@@ -45,7 +45,7 @@ showCodechefDialog(BuildContext context, Rect rect, String codechefHandle,
           child: Column(
             children: [
               SizedBox(
-                height: rect.top - MediaQuery.of(context).size.height * 0.13,
+                height: rect!.top - MediaQuery.of(context).size.height * 0.13,
               ),
               Row(
                 children: [
@@ -227,5 +227,5 @@ showCodechefDialog(BuildContext context, Rect rect, String codechefHandle,
     );
   });
 
-  overlayState.insert(overlayEntry);
+  overlayState!.insert(overlayEntry);
 }

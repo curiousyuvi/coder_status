@@ -23,15 +23,13 @@ Future main() async {
 }
 
 class MyApp extends StatefulWidget {
-  MyApp({Key key}) : super(key: key);
-
   @override
   _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
   // ignore: cancel_subscriptions
-  StreamSubscription subscription;
+  StreamSubscription? subscription;
 
   @override
   void initState() {

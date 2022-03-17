@@ -30,7 +30,7 @@ class _RegisterUserHandleScreenState extends State<RegisterUserHandleScreen> {
   static String codername = '';
   static String avatarurl = '';
   static String bio = '';
-  StreamSubscription subscription;
+  StreamSubscription? subscription;
 
   @override
   initState() {
@@ -45,7 +45,7 @@ class _RegisterUserHandleScreenState extends State<RegisterUserHandleScreen> {
 
   @override
   void dispose() {
-    subscription.cancel();
+    subscription!.cancel();
     super.dispose();
   }
 
@@ -54,8 +54,8 @@ class _RegisterUserHandleScreenState extends State<RegisterUserHandleScreen> {
   bool isloading = false;
 
   void _submit() async {
-    if (_formkey.currentState.validate()) {
-      _formkey.currentState.save();
+    if (_formkey.currentState!.validate()) {
+      _formkey.currentState!.save();
       setState(() {
         isloading = true;
       });
@@ -153,7 +153,7 @@ class _RegisterUserHandleScreenState extends State<RegisterUserHandleScreen> {
                                       codeforces = val;
                                     },
                                         TextInputType.name,
-                                        (val) => val
+                                        (val) => val!
                                                 .trim()
                                                 .toString()
                                                 .contains(' ')
@@ -180,7 +180,7 @@ class _RegisterUserHandleScreenState extends State<RegisterUserHandleScreen> {
                                       codechef = val;
                                     },
                                         TextInputType.name,
-                                        (val) => val
+                                        (val) => val!
                                                 .trim()
                                                 .toString()
                                                 .contains(' ')
@@ -207,7 +207,7 @@ class _RegisterUserHandleScreenState extends State<RegisterUserHandleScreen> {
                                       atcoder = val;
                                     },
                                         TextInputType.name,
-                                        (val) => val
+                                        (val) => val!
                                                 .trim()
                                                 .toString()
                                                 .contains(' ')
@@ -235,7 +235,7 @@ class _RegisterUserHandleScreenState extends State<RegisterUserHandleScreen> {
                                       spoj = val;
                                     },
                                         TextInputType.name,
-                                        (val) => val
+                                        (val) => val!
                                                 .trim()
                                                 .toString()
                                                 .contains(' ')

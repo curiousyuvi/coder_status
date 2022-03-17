@@ -6,7 +6,7 @@ updatePassword(String oldpassword, String newpassword) async {
   final currentuser = _auth.currentUser;
   final user = currentuser;
   final cred =
-      EmailAuthProvider.credential(email: user.email, password: oldpassword);
+      EmailAuthProvider.credential(email: user!.email, password: oldpassword);
 
   user.reauthenticateWithCredential(cred).then((value) {
     user.updatePassword(newpassword).then((_) {}).catchError((error) {});

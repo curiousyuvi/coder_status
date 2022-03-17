@@ -9,8 +9,6 @@ import '../components/myButtons.dart';
 import '../components/topThreeRankingCard.dart';
 
 class CodechefRankingScreen extends StatefulWidget {
-  const CodechefRankingScreen({Key key}) : super(key: key);
-
   @override
   _CodechefRankingScreenState createState() => _CodechefRankingScreenState();
 }
@@ -134,7 +132,7 @@ class _CodechefRankingScreenState extends State<CodechefRankingScreen> {
     });
   }
 
-  Future futureFunction;
+  Future? futureFunction;
 
   @override
   void initState() {
@@ -196,7 +194,7 @@ class _CodechefRankingScreenState extends State<CodechefRankingScreen> {
                   backgroundColor: ColorSchemeClass.unactivatedblack,
                   onRefresh: () async {
                     await getPeersList();
-                    return 0;
+                    return;
                   },
                   child: ListView(
                     children: listOfUserTiles,

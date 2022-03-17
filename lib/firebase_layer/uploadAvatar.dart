@@ -7,7 +7,7 @@ class UploadUserAvatar {
     UploadTask imageUploadTask;
     FirebaseAuth _auth = FirebaseAuth.instance;
     final user = _auth.currentUser;
-    final uid = user.uid;
+    final uid = user!.uid;
 
     Reference imageReference = FirebaseStorage.instance
         .ref()

@@ -46,8 +46,8 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
       isLoading = false;
     });
 
-    if (_formkey.currentState.validate()) {
-      _formkey.currentState.save();
+    if (_formkey.currentState!.validate()) {
+      _formkey.currentState!.save();
 
       //start loader
       setState(() {
@@ -137,7 +137,7 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
                         });
                       },
                           TextInputType.visiblePassword,
-                          (val) => val.trim().length < 6
+                          (val) => val!.trim().length < 6
                               ? 'Password must contain atleast 6 characters'
                               : null),
                       SizedBox(

@@ -9,8 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 
 class SearchScreen extends StatefulWidget {
-  const SearchScreen({Key key}) : super(key: key);
-
   @override
   _SearchScreenState createState() => _SearchScreenState();
 }

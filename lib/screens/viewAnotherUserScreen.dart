@@ -192,8 +192,8 @@ class _ViewAnotherUserScreenState extends State<ViewAnotherUserScreen> {
     });
   }
 
-  Future futureFunctionUserData;
-  Future futureFunctionUserRatings;
+  Future? futureFunctionUserData;
+  Future? futureFunctionUserRatings;
 
   @override
   void initState() {

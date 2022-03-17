@@ -32,10 +32,10 @@ class _RegisteravatarscreenState extends State<Registeravatarscreen> {
   static String name = '';
   static String codername = '';
   Image avatarshowimage = Image(image: NetworkImage(Urls.avatar1url));
-  File imagetobeuploaded;
-  String urltobeset = Urls.avatar1url;
+  File? imagetobeuploaded;
+  String? urltobeset = Urls.avatar1url;
   bool isLoading = false;
-  StreamSubscription subscription;
+  StreamSubscription? subscription;
 
   @override
   initState() {
@@ -47,15 +47,16 @@ class _RegisteravatarscreenState extends State<Registeravatarscreen> {
       if (!hasInternet) noInternet(this.context);
     });
 
-    if (FirebaseAuth.instance.currentUser.photoURL != null) {
-      urltobeset = FirebaseAuth.instance.currentUser.photoURL;
-      avatarshowimage = Image(image: NetworkImage(urltobeset));
+    if (FirebaseAuth.instance.currentUser!.photoURL != null) {
+      urltobeset = FirebaseAuth.instance.currentUser!.photoURL;
+      if (urltobeset != null)
+        avatarshowimage = Image(image: NetworkImage(urltobeset.toString()));
     }
   }
 
   @override
   void dispose() {
-    subscription.cancel();
+    subscription!.cancel();
     super.dispose();
   }
 
@@ -71,7 +72,7 @@ class _RegisteravatarscreenState extends State<Registeravatarscreen> {
     imagetobeuploaded = pickedfile;
 
     setState(() {
-      avatarshowimage = Image.file(pickedfile);
+      avatarshowimage = Image.file(pickedfile as File);
     });
 
     return;
@@ -266,14 +267,14 @@ class _RegisteravatarscreenState extends State<Registeravatarscreen> {
                             child: MyOutlineButton(
                                 ColorSchemeClass.lightgrey, 'Skip', () {
                               urltobeset = FirebaseAuth
-                                          .instance.currentUser.photoURL ==
+                                          .instance.currentUser!.photoURL ==
                                       null
                                   ? Urls.avatar1url
-                                  : FirebaseAuth.instance.currentUser.photoURL;
+                                  : FirebaseAuth.instance.currentUser!.photoURL;
                               Navigator.push(context,
                                   MaterialPageRoute(builder: (context) {
                                 return Registerbioscreen(
-                                    name, codername, urltobeset);
+                                    name, codername, urltobeset.toString());
                               }));
                             }),
                           )),
@@ -286,21 +287,21 @@ class _RegisteravatarscreenState extends State<Registeravatarscreen> {
                                 setState(() {
                                   isLoading = true;
                                 });
-                                urltobeset =
-                                    await generateUrl(imagetobeuploaded);
+                                urltobeset = await generateUrl(
+                                    imagetobeuploaded as File);
                                 setState(() {
                                   isLoading = false;
                                 });
                                 Navigator.push(context,
                                     MaterialPageRoute(builder: (context) {
                                   return Registerbioscreen(
-                                      name, codername, urltobeset);
+                                      name, codername, urltobeset.toString());
                                 }));
                               } else {
                                 Navigator.push(context,
                                     MaterialPageRoute(builder: (context) {
                                   return Registerbioscreen(
-                                      name, codername, urltobeset);
+                                      name, codername, urltobeset.toString());
                                 }));
                               }
                             }),

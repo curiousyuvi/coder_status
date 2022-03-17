@@ -9,8 +9,6 @@ import '../components/myButtons.dart';
 import '../components/topThreeRankingCard.dart';
 
 class SpojRankingScreen extends StatefulWidget {
-  const SpojRankingScreen({Key key}) : super(key: key);
-
   @override
   _SpojRankingScreenState createState() => _SpojRankingScreenState();
 }
@@ -134,7 +132,7 @@ class _SpojRankingScreenState extends State<SpojRankingScreen> {
     });
   }
 
-  Future futureFunction;
+  Future? futureFunction;
 
   @override
   void initState() {
@@ -196,7 +194,7 @@ class _SpojRankingScreenState extends State<SpojRankingScreen> {
                   backgroundColor: ColorSchemeClass.unactivatedblack,
                   onRefresh: () async {
                     await getPeersList();
-                    return 0;
+                    return;
                   },
                   child: ListView(
                     children: listOfUserTiles,

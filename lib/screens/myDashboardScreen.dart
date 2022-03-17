@@ -133,8 +133,8 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
     });
   }
 
-  Future futureFunctionUserData;
-  Future futureFunctionUserRatings;
+  Future? futureFunctionUserData;
+  Future? futureFunctionUserRatings;
 
   @override
   void initState() {
@@ -395,10 +395,6 @@ class _MyDashboardScreenState extends State<MyDashboardScreen> {
 }
 
 class RantingTileSkeleton extends StatelessWidget {
-  const RantingTileSkeleton({
-    Key key,
-  }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Container(

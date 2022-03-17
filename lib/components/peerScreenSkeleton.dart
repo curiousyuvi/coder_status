@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 
 class PeersScreenSkeleton extends StatefulWidget {
-  const PeersScreenSkeleton({Key key}) : super(key: key);
-
   @override
   _PeersScreenSkeletonState createState() => _PeersScreenSkeletonState();
 }

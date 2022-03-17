@@ -9,8 +9,6 @@ import '../components/myButtons.dart';
 import '../components/topThreeRankingCard.dart';
 
 class AtcoderRankingScreen extends StatefulWidget {
-  const AtcoderRankingScreen({Key key}) : super(key: key);
-
   @override
   _AtcoderRankingScreenState createState() => _AtcoderRankingScreenState();
 }
@@ -135,7 +133,7 @@ class _AtcoderRankingScreenState extends State<AtcoderRankingScreen> {
     });
   }
 
-  Future futureFunction;
+  Future? futureFunction;
 
   @override
   void initState() {
@@ -197,7 +195,7 @@ class _AtcoderRankingScreenState extends State<AtcoderRankingScreen> {
                   backgroundColor: ColorSchemeClass.unactivatedblack,
                   onRefresh: () async {
                     await getPeersList();
-                    return 0;
+                    return;
                   },
                   child: ListView(
                     children: listOfUserTiles,

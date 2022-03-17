@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 //ignore: must_be_immutable
 class MyAvatarButton extends StatelessWidget {
-  Image avatarimage;
+  Image? avatarimage;
   double borderwidth = 2;
   Color bordercolor = ColorSchemeClass.lightgrey;
 
@@ -30,7 +30,7 @@ class MyAvatarButton extends StatelessWidget {
           border: Border.all(color: bordercolor, width: borderwidth),
           shape: BoxShape.circle,
           image: DecorationImage(
-            image: avatarimage.image,
+            image: avatarimage!.image,
           )),
     );
   }

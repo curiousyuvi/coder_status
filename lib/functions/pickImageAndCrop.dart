@@ -11,15 +11,16 @@ final picker = ImagePicker();
 
 Image avatarimage = Image(image: AssetImage('images/avatar1.jpg'));
 
-Future<File> cropSquareImage(File imageFile) async {
-  return await ImageCropper.cropImage(
+Future<File?> cropSquareImage(File imageFile) async {
+  ImageCropper? ic;
+  return await ic!.cropImage(
       sourcePath: imageFile.path,
       aspectRatio: CropAspectRatio(ratioX: 1, ratioY: 1),
       aspectRatioPresets: [CropAspectRatioPreset.square]);
 }
 
-Future<File> pickimage() async {
-  final pickedfile = await picker.getImage(source: ImageSource.gallery);
+Future<File?> pickimage() async {
+  final pickedfile = await picker.pickImage(source: ImageSource.gallery);
   if (pickedfile == null) return null;
   final croppedfile = await cropSquareImage(File(pickedfile.path));
 

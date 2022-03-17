@@ -25,12 +25,12 @@ class VerifyEmailScreen extends StatefulWidget {
 }
 
 class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
-  Timer timer;
-  StreamSubscription subscription;
+  Timer? timer;
+  StreamSubscription? subscription;
 
   @override
   void dispose() {
-    subscription.cancel();
+    subscription!.cancel();
     super.dispose();
   }
 

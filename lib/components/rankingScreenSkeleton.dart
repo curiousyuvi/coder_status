@@ -26,10 +26,6 @@ class _RankingScreenSkeletonState extends State<RankingScreenSkeleton> {
 }
 
 class TopThreeSkeleton extends StatelessWidget {
-  const TopThreeSkeleton({
-    Key key,
-  }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return ListTile(

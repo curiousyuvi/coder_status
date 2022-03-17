@@ -21,7 +21,7 @@ class Home extends StatefulWidget {
 }
 
 class HomeState extends State<Home> {
-  StreamSubscription subscription;
+  StreamSubscription? subscription;
   bool isFirstTimeFlag = true;
   String avatarurl = Urls.avatar1url;
   String _currentPage = "MyDashboardScreen";
@@ -43,7 +43,7 @@ class HomeState extends State<Home> {
 
   void _selectTab(String tabItem, int index) {
     if (tabItem == _currentPage) {
-      _navigatorKeys[tabItem].currentState.popUntil((route) => route.isFirst);
+      _navigatorKeys[tabItem]!.currentState!.popUntil((route) => route.isFirst);
     } else {
       setState(() {
         _currentPage = pageKeys[index];
@@ -64,7 +64,7 @@ class HomeState extends State<Home> {
     });
   }
 
-  Future futureFunction;
+  Future? futureFunction;
 
   @override
   initState() {
@@ -80,7 +80,7 @@ class HomeState extends State<Home> {
 
   @override
   void dispose() {
-    subscription.cancel();
+    subscription!.cancel();
     super.dispose();
   }
 
@@ -97,7 +97,7 @@ class HomeState extends State<Home> {
         : WillPopScope(
             onWillPop: () async {
               final isFirstRouteInCurrentTab =
-                  !await _navigatorKeys[_currentPage].currentState.maybePop();
+                  !await _navigatorKeys[_currentPage]!.currentState!.maybePop();
               if (isFirstRouteInCurrentTab) {
                 if (_currentPage != "MyDashboardScreen") {
                   _selectTab("MyDashBoardScreen", 2);
@@ -197,7 +197,7 @@ class HomeState extends State<Home> {
 }*/
 
   Widget _buildOffstageNavigator(String tabItem) {
-    Widget child;
+    late Widget child;
     if (tabItem == "RankingScreen")
       child = RankingScreen();
     else if (tabItem == "SearchScreen")

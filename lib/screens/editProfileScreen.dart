@@ -17,8 +17,6 @@ import '../components/myTextFormFields.dart';
 import '../functions/pickImageAndCrop.dart' as pickImageAndCrop;
 
 class EditProfileScreen extends StatefulWidget {
-  const EditProfileScreen({Key key}) : super(key: key);
-
   @override
   _EditProfileScreenState createState() => _EditProfileScreenState();
 }
@@ -27,11 +25,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   String urltobeset = Urls.avatar1url;
 
   Image avatarshowimage = Image(image: NetworkImage(Urls.avatar1url));
-  TextEditingController nameEditingController;
-  TextEditingController codernameEditingController;
-  TextEditingController bioEditingController;
+  TextEditingController? nameEditingController;
+  TextEditingController? codernameEditingController;
+  TextEditingController? bioEditingController;
 
-  File imagetobeuploaded;
+  File? imagetobeuploaded;
   bool isLoading = false;
   bool isFirstTime = true;
 
@@ -51,20 +49,23 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     });
   }
 
-  Future<String> generateUrl(File imagefile) async {
-    final url = await UploadUserAvatar.uploadUserAvatar(imagefile);
+  Future<String> generateUrl(File? imagefile) async {
+    String url = '';
+    if (imagefile != null)
+      url = await UploadUserAvatar.uploadUserAvatar(imagefile);
 
     return url;
   }
 
   pick() async {
-    urltobeset = null;
-    final pickedfile = await pickImageAndCrop.pickimage();
+    urltobeset = '';
+    File? pickedfile = await pickImageAndCrop.pickimage();
     imagetobeuploaded = pickedfile;
 
-    setState(() {
-      avatarshowimage = Image.file(pickedfile);
-    });
+    if (pickedfile != null)
+      setState(() {
+        avatarshowimage = Image.file(pickedfile);
+      });
 
     return;
   }
@@ -93,25 +94,27 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   final _formkey = GlobalKey<FormState>();
 
   _updateProfile() async {
-    if (_formkey.currentState.validate()) {
-      _formkey.currentState.save();
+    if (_formkey.currentState!.validate()) {
+      _formkey.currentState!.save();
       setState(() {
         isLoading = true;
       });
       if (imagetobeuploaded != null) {
+        // urltobeset = await generateUrl(imagetobeuploaded);
         urltobeset = await generateUrl(imagetobeuploaded);
       }
 
       await SetUserInfo.updateAvatar(urltobeset);
-      await SetUserInfo.updateName(nameEditingController.text.trim());
-      await SetUserInfo.updateCodername(codernameEditingController.text.trim());
-      await SetUserInfo.updateBio(bioEditingController.text.trim());
+      await SetUserInfo.updateName(nameEditingController!.text.trim());
+      await SetUserInfo.updateCodername(
+          codernameEditingController!.text.trim());
+      await SetUserInfo.updateBio(bioEditingController!.text.trim());
 
       Phoenix.rebirth(context);
     }
   }
 
-  Future futureFunction;
+  Future? futureFunction;
 
   @override
   void initState() {
@@ -362,14 +365,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                       height:
                                           MediaQuery.of(context).size.height *
                                               0.028),
-                                  MyPassageTextEormField(
-                                      'Bio',
-                                      (val) {},
-                                      (val) => val.toString().trim().length >
-                                              100
-                                          ? 'Bio should be less than 100 charachters'
-                                          : null,
-                                      bioEditingController),
+                                  MyPassageTextEormField('Bio', (val) {},
+                                      (val) {
+                                    if (val == null) return null;
+                                    return val.toString().trim().length > 100
+                                        ? 'Bio should be less than 100 charachters'
+                                        : null;
+                                  }, bioEditingController),
                                   SizedBox(
                                       height:
                                           MediaQuery.of(context).size.height *
