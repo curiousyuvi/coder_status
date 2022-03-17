@@ -9,8 +9,8 @@ Future deleteUser([String password = '']) async {
     User? user = _auth.currentUser;
     var authCredentials;
     if (user!.photoURL == null)
-      authCredentials =
-          EmailAuthProvider.credential(email: user.email, password: password);
+      authCredentials = EmailAuthProvider.credential(
+          email: user.email as String, password: password);
     else {
       final googleUser = await GoogleSignIn().signIn();
       final googleAuth = await googleUser!.authentication;
